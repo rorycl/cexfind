@@ -8,6 +8,8 @@ import (
 	"os"
 	"slices"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 // testTypeExtraction attempts to extract equipment types from their
@@ -135,4 +137,35 @@ func TestSearch(t *testing.T) {
 			t.Log("\t", b)
 		}
 	}
+}
+
+// TestBoxMapIter iterates over a BoxMap container in key order and then
+// by Box Model
+func TestBoxMapIter(t *testing.T) {
+
+	boxes := BoxMap{
+		"b": []Box{
+			{"bb", "bb", "id1", 20},
+			{"bc", "cc", "id2", 25},
+			{"ba", "aa", "id3", 15},
+		},
+		"a": []Box{
+			{"ab", "db", "id3", 30},
+			{"ac", "dc", "id2", 35},
+			{"aa", "da", "id1", 35},
+		},
+	}
+
+	all := []boxMapIter{}
+	for bi := range boxes.Iter() {
+		all = append(all, bi)
+	}
+
+	if diff := cmp.Diff(all[0].Box, boxes["a"][0]); diff != "" {
+		t.Errorf("mismatch (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff(all[3].Box, boxes["b"][0]); diff != "" {
+		t.Errorf("mismatch (-want +got):\n%s", diff)
+	}
+
 }

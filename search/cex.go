@@ -47,11 +47,11 @@ type Box struct {
 	Price int
 }
 
-// Boxes is a slice of Box
-type Boxes []Box
+// boxes is a slice of Box
+type boxes []Box
 
-// Sort Boxes by a Box attribute
-func (b Boxes) Sort(typer string) {
+// sort boxes by a Box attribute
+func (b boxes) sort(typer string) {
 	sort.SliceStable(b, func(i, j int) bool {
 		switch typer {
 		case "ID":
@@ -68,8 +68,38 @@ func (b Boxes) Sort(typer string) {
 	return
 }
 
-// BoxMap is a map of Boxes by model name
-type BoxMap map[string]Boxes
+// BoxMap is a map of boxes by model name
+type BoxMap map[string]boxes
+
+// BoxMapIter is a BoxMap key/Box pair
+type boxMapIter struct {
+	Key string
+	Box Box
+}
+
+// Iter iterates over a BoxMap returning a key, Box pair over the whole
+// BoxMap collection
+func (b BoxMap) Iter() <-chan boxMapIter {
+	bmi := make(chan boxMapIter)
+
+	go func() {
+		defer close(bmi)
+		keys := []string{}
+		for k := range b {
+			keys = append(keys, k)
+		}
+		slices.Sort(keys)
+
+		for _, k := range keys {
+			v := b[k]
+			v.sort("Price")
+			for _, iv := range v {
+				bmi <- boxMapIter{k, iv}
+			}
+		}
+	}()
+	return bmi
+}
 
 // boxResults encapsulates the responses from a search query
 type boxResults struct {
@@ -203,7 +233,7 @@ func Search(queries []string) (BoxMap, error) {
 				allResults[k] = v
 			} else {
 				tmp := slices.Concat(allResults[k], v)
-				tmp.Sort("ID")
+				tmp.sort("ID")
 				allResults[k] = slices.Compact(tmp)
 			}
 		}
