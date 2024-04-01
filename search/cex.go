@@ -13,6 +13,9 @@ import (
 	"slices"
 	"sort"
 	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var (
@@ -67,7 +70,6 @@ func (b boxes) sort(typer string) {
 		}
 		return false
 	})
-	return
 }
 
 // BoxMap is a map of boxes by model name
@@ -168,6 +170,9 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 // is likely to be needed.
 func extractModelType(s string) string {
 
+	// set the titling type to English
+	titleCase := cases.Title(language.English)
+
 	// clean some Title strings to remove string r + space
 	cleaner := func(o, r string) string {
 		i := strings.Index(strings.ToLower(o), strings.ToLower(r))
@@ -188,14 +193,14 @@ func extractModelType(s string) string {
 	// some titles have a "/" character summarizing the model
 	parts := strings.Split(s, "/")
 	if len(parts) > 1 {
-		return cleaners(strings.Title(strings.ToLower(parts[0])))
+		return cleaners(titleCase.String(strings.ToLower(parts[0])))
 	}
 	// grab first two words
 	parts = strings.SplitN(s, " ", 3)
 	if len(parts) == 1 {
-		return strings.Title(strings.ToLower(parts[0]))
+		return titleCase.String(strings.ToLower(parts[0]))
 	}
-	return cleaners(strings.Title(strings.ToLower(strings.Join(parts[:2], " "))))
+	return cleaners(titleCase.String(strings.ToLower(strings.Join(parts[:2], " "))))
 }
 
 // makeQueries makes queries concurrently
