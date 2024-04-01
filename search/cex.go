@@ -160,18 +160,38 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 }
 
 // extractModelType tries to extract a meaningful model type from a
-// boxname
+// boxname. Since models are fairly poorly normalised more cleaning work
+// is likely to be needed.
 func extractModelType(s string) string {
+
+	// clean some Title strings to remove string r + space
+	cleaner := func(o, r string) string {
+		i := strings.Index(strings.ToLower(o), strings.ToLower(r))
+		if i == -1 {
+			return o
+		}
+		return strings.ReplaceAll(o[:i]+o[i+len(r):], "  ", " ")
+	}
+	// remove known
+	cleaners := func(o string) string {
+		stringsToRemove := "Thinkpad AddMoreHere"
+		for _, w := range strings.Split(stringsToRemove, " ") {
+			o = cleaner(o, w)
+		}
+		return o
+	}
+
+	// some titles have a "/" character summarizing the model
 	parts := strings.Split(s, "/")
 	if len(parts) > 1 {
-		return strings.Title(strings.ToLower(parts[0]))
+		return cleaners(strings.Title(strings.ToLower(parts[0])))
 	}
 	// grab first two words
 	parts = strings.SplitN(s, " ", 3)
 	if len(parts) == 1 {
 		return strings.Title(strings.ToLower(parts[0]))
 	}
-	return strings.Title(strings.ToLower(strings.Join(parts[:2], " ")))
+	return cleaners(strings.Title(strings.ToLower(strings.Join(parts[:2], " "))))
 }
 
 // makeQueries makes queries concurrently

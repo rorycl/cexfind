@@ -44,6 +44,10 @@ func TestTypeExtraction(t *testing.T) {
 			name:  `Lenovo XT90 True Wireless In-Ear Earphones, XYZTNLTZ AA`,
 			typer: "Lenovo Xt90",
 		},
+		{
+			name:  `Lenovo Thinkpad T14S/Ryzen3500U/16GB Ram/256GB SSD/14"/W10/B PALSLENTXXXXXXB`,
+			typer: "Lenovo T14s",
+		},
 	} {
 		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
 			if got, want := extractModelType(r.name), r.typer; got != want {
