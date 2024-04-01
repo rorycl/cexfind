@@ -58,6 +58,40 @@ func TestTypeExtraction(t *testing.T) {
 	}
 }
 
+// TestBoxInQuery tests strict query/Box.Name matches
+func TestBoxInQuery(t *testing.T) {
+
+	tests := []struct {
+		box     Box
+		queries []string
+		result  bool
+	}{
+		{
+			box:     Box{Name: "ABC def hij"},
+			queries: []string{"xyz ntz", "hij abc"},
+			result:  true,
+		},
+		{
+			box:     Box{Name: "ABC def hij"},
+			queries: []string{"xyz ntz", "hij dbc"},
+			result:  false,
+		},
+		{
+			box:     Box{Name: "abc def hij"},
+			queries: []string{"HIJ ABC"},
+			result:  true,
+		},
+	}
+
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
+			if got, want := tt.box.inQuery(tt.queries), tt.result; got != want {
+				t.Errorf("got %t != want %t", got, want)
+			}
+		})
+	}
+}
+
 // TestHeadingExtract tests if extracting an h1 heading from a stream of
 // bytes works
 func TestHeadingExtract(t *testing.T) {
@@ -120,7 +154,8 @@ func TestSearch(t *testing.T) {
 	// overwrite global URL with test URL
 	URL = ts.URL
 
-	results, err := Search([]string{"lenovo x390s"})
+	// non-strict search
+	results, err := Search([]string{"lenovo x390s"}, false)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -141,6 +176,13 @@ func TestSearch(t *testing.T) {
 			t.Log("\t", b)
 		}
 	}
+
+	// strict search for non-existing model
+	_, err = Search([]string{"lenovo x390st"}, true)
+	if err == nil || err.Error() != "no results" {
+		t.Fatalf("expected no results error, got %v", err)
+	}
+
 }
 
 // TestBoxMapIter iterates over a BoxMap container in key order and then

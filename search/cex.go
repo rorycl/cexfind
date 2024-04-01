@@ -52,6 +52,27 @@ type Box struct {
 	Price int
 }
 
+// inQuery checks to see if each of the words in at least one of the
+// supplied queries are in the Name of a Box. inQuery is used for
+// determining if a particular Box should be returned from a "strict"
+// Search
+func (b *Box) inQuery(queries []string) bool {
+	for _, q := range queries {
+		matches := 0
+		name := strings.ToLower(b.Name)
+		words := strings.Split(strings.ToLower(q), " ")
+		for _, w := range words {
+			if strings.Contains(name, w) {
+				matches++
+			}
+		}
+		if matches == len(words) {
+			return true
+		}
+	}
+	return false
+}
+
 // boxes is a slice of Box
 type boxes []Box
 
@@ -166,9 +187,12 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 }
 
 // extractModelType tries to extract a meaningful model type from a
-// boxname. Since models are fairly poorly normalised more cleaning work
-// is likely to be needed.
+// boxname. Since models are not well normalised further cleaning work
+// is likely to be needed in future.
 func extractModelType(s string) string {
+
+	// words to remove from box model descriptions
+	stringsToRemove := strings.Split("Thinkpad AddMoreHere", " ")
 
 	// set the titling type to English
 	titleCase := cases.Title(language.English)
@@ -183,8 +207,7 @@ func extractModelType(s string) string {
 	}
 	// remove known
 	cleaners := func(o string) string {
-		stringsToRemove := "Thinkpad AddMoreHere"
-		for _, w := range strings.Split(stringsToRemove, " ") {
+		for _, w := range stringsToRemove {
 			o = cleaner(o, w)
 		}
 		return o
@@ -203,8 +226,9 @@ func extractModelType(s string) string {
 	return cleaners(titleCase.String(strings.ToLower(strings.Join(parts[:2], " "))))
 }
 
-// makeQueries makes queries concurrently
-func makeQueries(queries []string) chan boxResults {
+// makeQueries makes queries concurrently; strict true requires that the
+// return results contain all terms in at least one query
+func makeQueries(queries []string, strict bool) chan boxResults {
 
 	results := make(chan boxResults)
 
@@ -232,6 +256,11 @@ func makeQueries(queries []string) chan boxResults {
 				box.ID = j.BoxID
 				box.Price = j.Price
 
+				// in strict mode, don't add box if it doesn't match any query
+				if strict && !box.inQuery(queries) {
+					continue
+				}
+
 				if _, ok := br.boxmap[box.Model]; !ok {
 					br.boxmap[box.Model] = []Box{}
 				}
@@ -244,11 +273,12 @@ func makeQueries(queries []string) chan boxResults {
 }
 
 // Search searches the Cex json endpoint at URL for the provided
-// queries, returning a BoxMap or error
-func Search(queries []string) (BoxMap, error) {
+// queries, returning a BoxMap or error. The strict flag ensures that
+// the results contain terms from the search queries
+func Search(queries []string, strict bool) (BoxMap, error) {
 
 	allResults := BoxMap{}
-	results := makeQueries(queries)
+	results := makeQueries(queries, strict)
 
 	for br := range results {
 		// exit on first error
