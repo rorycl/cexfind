@@ -1,0 +1,4 @@
+README
+
+Put template files in this directory for mounting dynamic content (when
+in development mode) or for embedding into the web server binary.

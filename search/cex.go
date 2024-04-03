@@ -25,6 +25,8 @@ var (
 	MODEL = "MODEL"
 	// json body with placeholder; note that the availability online filter ensures only available kit is returned
 	BODY = `{"requests":[{"indexName":"prod_cex_uk","params":"clickAnalytics=true&facetFilters=%5B%5B%22availability%3AIn%20Stock%20Online%22%5D%5D&facets=%5B%22*%22%5D&filters=boxVisibilityOnWeb%3D1%20AND%20boxSaleAllowed%3D1&highlightPostTag=__%2Fais-highlight__&highlightPreTag=__ais-highlight__&hitsPerPage=17&maxValuesPerFacet=1000&page=0&query=MODEL&tagFilters=&userToken=71d182c769bd4dbc94081214a363c014"}]}`
+	// detail url placeholder
+	URLDETAIL = "https://uk.webuy.com/product-detail?id="
 	// save web output to temp file if DEBUG true
 	DEBUG = false
 )
