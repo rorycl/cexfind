@@ -34,6 +34,12 @@ var (
 	BaseURL string = ""
 )
 
+// searcher is an indirect of search.Search to allow testing
+var searcher func(queries []string, strict bool) (search.BoxMap, error) = search.Search
+
+// listenAndServe is an indirect of http/net.Server.ListenAndServe
+var listenAndServe = (*http.Server).ListenAndServe
+
 // development flags and static and template directory locations
 var (
 	// production is default; set inDevelopment to true with build tag
@@ -45,18 +51,16 @@ var (
 	DirFS         *fileSystem
 )
 
-// SetupFSsetup the filesystem for templates or static files, depending on
+// SetupFS setup the filesystem for templates or static files, depending on
 // development (filesystem) or not (embedded)
-func SetupFS() {
+func SetupFS() error {
 	var err error
 	if inDevelopment {
 		DirFS, err = NewFileSystem(inDevelopment, tplDirDev, staticDirDev)
 	} else {
 		DirFS, err = NewFileSystem(inDevelopment, tplDir, staticDir)
 	}
-	if err != nil {
-		log.Fatal(err)
-	}
+	return err
 }
 
 // Serve runs the web server on the specified address and port
@@ -75,7 +79,9 @@ func Serve(addr, port string) {
 	}
 
 	// setup the filesystem
-	SetupFS()
+	if err := SetupFS(); err != nil {
+		log.Fatal(err)
+	}
 
 	// endpoint routing; gorilla mux is used because "/" in http.NewServeMux
 	// is a catch-all pattern
@@ -91,7 +97,7 @@ func Serve(addr, port string) {
 	// routes
 	r.HandleFunc("/results", Results)
 	r.HandleFunc("/health", Health)
-	r.HandleFunc("GET /favicon.ico", Favicon)
+	r.HandleFunc("/favicon.ico", Favicon)
 	r.HandleFunc("/", Home)
 
 	// logging converts gorilla's handlers.CombinedLoggingHandler to a
@@ -130,7 +136,7 @@ func Serve(addr, port string) {
 	}
 	log.Printf("serving on %s:%s", addr, port)
 
-	err := server.ListenAndServe()
+	err := listenAndServe(server)
 	if err != nil {
 		log.Printf("fatal server error: %v", err)
 	}
@@ -172,6 +178,8 @@ func Results(w http.ResponseWriter, r *http.Request) {
 	err = decoder.Decode(&postResults, urlVals)
 	if err != nil || len(postResults.Queries) == 0 {
 		log.Printf("cex POST : %+v %v", postResults, err)
+		w.WriteHeader(http.StatusNoContent)
+		fmt.Fprint(w, "no query found")
 		return
 	}
 
@@ -194,7 +202,7 @@ func Results(w http.ResponseWriter, r *http.Request) {
 	// push the postResults terms to the url
 	w.Header().Set("HX-Push-Url", BaseURL+"/?"+base)
 
-	// search
+	// search; note that searcher is an indirect to search/cex.Search
 	type SearchResults struct {
 		Results   search.BoxMap
 		DetailURL string
@@ -203,7 +211,7 @@ func Results(w http.ResponseWriter, r *http.Request) {
 	sr := SearchResults{
 		DetailURL: search.URLDETAIL,
 	}
-	sr.Results, sr.Err = search.Search(queries, postResults.Strict)
+	sr.Results, sr.Err = searcher(queries, postResults.Strict)
 
 	t := template.Must(template.ParseFS(DirFS.TplFS, "partial-results.html"))
 	err = t.Execute(w, sr)
@@ -263,5 +271,6 @@ func Health(w http.ResponseWriter, r *http.Request) {
 
 // Favicon serves up the favicon
 func Favicon(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "/static/favicon.svg")
+	log.Println("got favicon")
+	http.ServeFileFS(w, r, DirFS.StaticFS, "/favicon.svg")
 }
