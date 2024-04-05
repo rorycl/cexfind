@@ -4,7 +4,9 @@
 name: artifacts-component
 
 on:
+  # run on both call (trigger event) and dispatch (manual)
   workflow_call:
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,19 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3 # needed for cache
+        uses: actions/checkout@v4 # needed for cache
       - name: set up go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5 # note that this uses cache by default(?)
         with:
           go-version: '1.22'
           cache: true
       - name: build
-        run: make build-all
+        run: make build-many
       - name: Copy Files
         run: |
           mkdir artifacts
-          cp cli artifacts/cli-linux-amd64
-          cp webserver artifacts/webserver-linux-amd64
+          cp bin/cli* artifacts/
+          cp bin/webserver* artifacts
       - name: archive
         uses: actions/upload-artifact@v3
         with:

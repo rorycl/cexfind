@@ -1,6 +1,8 @@
 \.*
 /cli
 /webserver
+/bin/webserver*
+/bin/cli*
 cover.html
 cover.rpt
 coverage.out

@@ -35,12 +35,17 @@ HEREGOPATH := `go env GOPATH`
 # 	wget -o web/static/htmx.min.js https://unpkg.com/hyperscript.org@0.9.11
 
 build-cli:
-	go test ./... && echo "---ok---" && go build -o cli cmd/cli/main.go
+	go test ./... && echo "---ok---" && go build -o bin/cli cmd/cli/main.go
 
 build-web:
-	go test ./... && echo "---ok---" && go build -o webserver cmd/web/main.go
+	go test ./... && echo "---ok---" && go build -o bin/webserver cmd/web/main.go
 
 build-all: build-cli build-web
+
+build-many:
+	go test ./... || exit 1
+	bin/builder.sh cmd/web/main.go webserver
+	bin/builder.sh cmd/cli/main.go cli
 
 # build-dev:
 # 	go test ./... && echo "---ok---" && go build -o timeaway -tags=development cmd/main.go
