@@ -5,7 +5,7 @@ SHELL=/bin/bash
 
 GO_VERSION := 1.22  # <1>
 
-COVERAGE_AMT := 60  # should be 80
+COVERAGE_AMT := 70  # should be 80
 
 HEREGOPATH := `go env GOPATH`
 
@@ -34,8 +34,13 @@ HEREGOPATH := `go env GOPATH`
 # 	# hyperscript (as at 15 October 2023)
 # 	wget -o web/static/htmx.min.js https://unpkg.com/hyperscript.org@0.9.11
 
-build:
+build-cli:
 	go test ./... && echo "---ok---" && go build -o cli cmd/cli/main.go
+
+build-web:
+	go test ./... && echo "---ok---" && go build -o webserver cmd/web/main.go
+
+build-all: build-cli build-web
 
 # build-dev:
 # 	go test ./... && echo "---ok---" && go build -o timeaway -tags=development cmd/main.go

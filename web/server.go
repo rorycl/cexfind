@@ -43,7 +43,7 @@ var listenAndServe = (*http.Server).ListenAndServe
 // development flags and static and template directory locations
 var (
 	// production is default; set inDevelopment to true with build tag
-	inDevelopment bool   = true
+	inDevelopment bool   = false
 	staticDirDev  string = "web/static"
 	tplDirDev     string = "web/templates"
 	staticDir     string = "static"

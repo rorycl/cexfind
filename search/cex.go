@@ -168,7 +168,7 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 
 	/* save to a temporary json file for inspection */
 	if DEBUG {
-		err = os.WriteFile("tmp.json", responseBytes, 0644)
+		err = os.WriteFile("tmp.json", responseBytes, 0600)
 		if err != nil {
 			panic(err)
 		}

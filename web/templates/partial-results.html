@@ -6,6 +6,7 @@
 {{ else }}
 
 <div id="result-listing">
+{{ $detailURL := .DetailURL }}
 {{ $thisKey := "" }}
 {{ range $result := .Results.Iter }}
 {{ $key := $result.Key }}
@@ -16,7 +17,11 @@
 <ul>
 {{ $thisKey = $key }}
 {{ end }} {{/* end of thisKey */}}
-<li><span class="price">{{ $box.Price }} <span class="name">{{ $box.Name }}</span> <span class="boxid"><a href="{{ .DetailURL }}{{ $box.ID }}">{{ $box.ID}}</a></span></li>
+<li>
+    <span class="price">&pound;{{ $box.Price }}</span>
+    <span class="name">{{ $box.Name }}</span>
+    <span class="boxid"><a href="{{ $detailURL }}{{ $box.ID }}">{{ $box.ID}}</a></span>
+</li>
 {{ end }}
 </div>
 
