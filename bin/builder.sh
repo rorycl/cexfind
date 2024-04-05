@@ -13,7 +13,7 @@ TARGET=$1
 BASEBIN=$2
 
 LINUX='linux:amd64:linux-amd64'
-WIN='windows:amd64:win-amd64'
+WIN='windows:amd64:win-amd64.exe'
 MACAMD='darwin:amd64:darwin-amd64'
 MACARM='darwin:arm64:darwin-arm64'
 
