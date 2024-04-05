@@ -1,0 +1,22 @@
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+# This re-usable component runs a test
+
+name: test-component
+
+on:
+  workflow_call:
+
+jobs:
+
+  test:
+    name: test-component
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3 # needed for cache
+      - name: set up go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
+      - name: test
+        run: go test -v ./...

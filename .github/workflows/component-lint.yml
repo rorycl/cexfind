@@ -1,0 +1,25 @@
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+# This re-usable component runs a lint
+
+name: lint-component
+
+on:
+  workflow_call:
+
+jobs:
+
+  # https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow#example-not-requiring-successful-dependent-jobs
+  golangci:
+    name: lint-component
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 
+      - uses: actions/setup-go@v4 
+        with:
+          go-version: '1.22'
+          cache: false
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.57
+
