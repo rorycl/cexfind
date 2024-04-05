@@ -4,7 +4,9 @@
 name: test-component
 
 on:
+  # run on both call (trigger event) and dispatch (manual)
   workflow_call:
+  workflow_dispatch:
 
 jobs:
 
