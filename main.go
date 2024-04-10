@@ -5,91 +5,41 @@ import (
 	"log"
 	"os"
 
-	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 )
 
-var docStyle = lipgloss.NewStyle().Margin(1, 2)
-
-// emptyItem is s special "empty" item to provide padding between item
-// headings
-const emptyItem = "-empty-"
-
-type item struct {
-	desc      string
-	isHeading bool
-}
-
-func (i item) Description() string { return i.desc }
-func (i item) IsHeading() bool     { return i.isHeading }
-func (i item) FilterValue() string { return i.desc }
+var (
+	docStyle = lipgloss.NewStyle().Margin(1, 0, 0, 3)
+)
 
 type model struct {
-	list list.Model
+	input tiModel
+	list  liModel
 }
 
 func (m model) Init() tea.Cmd {
-	return nil
+	return m.input.Init()
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
-
-	switch msg := msg.(type) {
-	case tea.KeyMsg:
-		switch {
-		case msg.String() == "ctrl+c":
-			return m, tea.Quit
-		case key.Matches(msg, m.list.KeyMap.CursorDown):
-			m.Next()
-			return m, cmd // return early to override default list.CursorDown()
-		case key.Matches(msg, m.list.KeyMap.CursorUp):
-			m.Prev()
-			return m, cmd // return early to override default list.CursorUp()
-		}
-	case tea.WindowSizeMsg:
-		h, v := docStyle.GetFrameSize()
-		m.list.SetSize(msg.Width-h, msg.Height-v)
-	}
-
-	m.list, cmd = m.list.Update(msg)
+	m.input.Update(msg)
+	var t tea.Model
+	t, cmd = m.list.Update(msg)
+	m.list = t.(liModel)
 	return m, cmd
 }
 
 func (m model) View() string {
-	return docStyle.Render(m.list.View())
-}
-
-// Next skips down to the next non empty, non heading item utilizing
-// list.CursorDown under the hood for pagination logic etc
-func (m *model) Next() {
-	is := m.list.Items()
-	for i := 1; i < 4; i++ {
-		m.list.CursorDown() // utilize list.CursorDown
-		idx := m.list.Index()
-		thisItem := is[idx].(item)
-		if thisItem.isHeading || thisItem.desc == emptyItem {
-			continue
-		}
-		return
-	}
-}
-
-// Prev skips up to the next non empty, non heading item utilizing
-// list.CursorUp under the hood for pagination logic etc
-func (m *model) Prev() {
-	is := m.list.Items()
-	for i := 1; i < 4; i++ {
-		m.list.CursorUp() // utilize list.CursorUp
-		idx := m.list.Index()
-		thisItem := is[idx].(item)
-		if thisItem.isHeading || thisItem.desc == emptyItem {
-			continue
-		}
-		return
-	}
+	return docStyle.Render(
+		lipgloss.JoinVertical(
+			lipgloss.Left,
+			m.input.View(),
+			m.list.View(),
+		),
+	)
 }
 
 const debug bool = true
@@ -132,11 +82,9 @@ func main() {
 		item{desc: "e this is a normal item 5"},
 	}
 
-	m := model{list: list.New(items, NewCustomDelegate(), 0, 0)}
-	m.list.Title = "My Fave Things"
-	m.list.SetFilteringEnabled(true)
-	m.list.SetShowFilter(true)
-
+	li := liModel{list.New(items, NewCustomDelegate(), 0, 0)}
+	in := newTextInputModel()
+	m := model{input: in, list: li}
 	p := tea.NewProgram(m, tea.WithAltScreen())
 
 	if _, err := p.Run(); err != nil {
