@@ -14,21 +14,80 @@ var (
 	docStyle = lipgloss.NewStyle().Margin(1, 0, 0, 3)
 )
 
+type state int
+
+const (
+	listState state = iota // default
+	inputState
+)
+
+func (s state) String() string {
+	return []string{"list", "input"}[s]
+}
+
+// model contains a model for the textinput model and list model,
+// together with state variables
 type model struct {
-	input tiModel
-	list  liModel
+	input  tiModel
+	list   liModel
+	state  state
+	inited bool
 }
 
 func (m model) Init() tea.Cmd {
 	return m.input.Init()
 }
 
+// stateSwitch switches state between the input and list panels
+func (m *model) stateSwitch() {
+	switch m.state {
+	case inputState:
+		m.state = listState
+		m.input.Blur()
+	default:
+		m.state = inputState
+		m.input.Focus()
+	}
+	log.Printf("state %d %s input.focus %v", m.state, m.state, m.input.input.Focused())
+}
+
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
-	m.input.Update(msg)
-	var t tea.Model
-	t, cmd = m.list.Update(msg)
-	m.list = t.(liModel)
+
+	switch msg := msg.(type) {
+	case tea.WindowSizeMsg:
+		log.Println("at window resize")
+		// initialise
+		if !m.inited {
+			m.stateSwitch()
+			m.inited = true
+		}
+		var t tea.Model
+		// m.list.list.Select(min(1, len(m.list.list.Items())-1))
+		t, cmd = m.list.Update(msg)
+		m.list = t.(liModel)
+		m.input.Update(msg)
+		return m, cmd
+	case tea.KeyMsg:
+		log.Printf("state %s input.focus %v key %s", m.state, m.input.input.Focused(), msg.String())
+		if msg.String() == "]" {
+			log.Println("at ]")
+			m.stateSwitch()
+		}
+	}
+
+	// defer to input or list models
+	switch m.state {
+	case inputState:
+		var t tea.Model
+		t, cmd = m.input.Update(msg)
+		m.input = t.(tiModel)
+	case listState:
+		var t tea.Model
+		t, cmd = m.list.Update(msg)
+		m.list = t.(liModel)
+	}
+	log.Printf("state %s selection %s", m.state, m.input.selection)
 	return m, cmd
 }
 
@@ -83,7 +142,7 @@ func main() {
 	}
 
 	li := liModel{list.New(items, NewCustomDelegate(), 0, 0)}
-	in := newTextInputModel()
+	in := newTIModel()
 	m := model{input: in, list: li}
 	p := tea.NewProgram(m, tea.WithAltScreen())
 
