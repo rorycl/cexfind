@@ -11,7 +11,19 @@ import (
 )
 
 var (
-	docStyle = lipgloss.NewStyle().Margin(1, 0, 0, 3)
+	docStyle = lipgloss.NewStyle().Margin(2, 0, 0, 3)
+	// top panel
+	topPanelStyle = lipgloss.NewStyle().
+		// Border(lipgloss.RoundedBorder()).
+		BorderForeground(lipgloss.Color("#ff5a56")).
+		Border(lipgloss.NormalBorder(), false, false, true, false).
+		BorderBottom(true).
+		Padding(0, 0, 1, 0).
+		Margin(1, 0, 0, 2).
+		Height(5).
+		Width(60).
+		Background(lipgloss.Color("#000000")).
+		UnsetBold()
 )
 
 type state int
@@ -28,8 +40,13 @@ func (s state) String() string {
 // model contains a model for the textinput model and list model,
 // together with state variables
 type model struct {
-	input  tiModel
-	list   liModel
+	// a wrapped bubbles.textinput.Model for the input
+	input tiModel
+	// a wrapped bubbles.list.Model for the list elements
+	list liModel
+	// a wrapped string (as tea.Model) for the status updates
+	status status
+	// flags etc.
 	state  state
 	inited bool
 }
@@ -60,6 +77,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		// initialise
 		if !m.inited {
 			m.stateSwitch()
+			m.status = newSelection()
 			m.inited = true
 		}
 		var t tea.Model
@@ -68,6 +86,19 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.list = t.(liModel)
 		m.input.Update(msg)
 		return m, cmd
+
+	// data was entered into input and needs to be percolated to status
+	case inputEnterMsg:
+		log.Printf("inputEnterMsg received %v", msg)
+		m.status = status(msg)
+		return m, func() tea.Msg { return "" }
+
+	// data was entered into input and needs to be percolated to status
+	case listEnterMsg:
+		log.Printf("listEnterMsg received %v", msg)
+		m.status = status(msg)
+		return m, func() tea.Msg { return "" }
+
 	case tea.KeyMsg:
 		log.Printf("state %s input.focus %v key %s", m.state, m.input.input.Focused(), msg.String())
 		if msg.String() == "]" {
@@ -87,7 +118,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		t, cmd = m.list.Update(msg)
 		m.list = t.(liModel)
 	}
-	log.Printf("state %s selection %s", m.state, m.input.selection)
 	return m, cmd
 }
 
@@ -95,7 +125,10 @@ func (m model) View() string {
 	return docStyle.Render(
 		lipgloss.JoinVertical(
 			lipgloss.Left,
-			m.input.View(),
+			topPanelStyle.Render(
+				m.input.View(),
+				m.status.View(),
+			),
 			m.list.View(),
 		),
 	)

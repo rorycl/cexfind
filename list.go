@@ -36,6 +36,7 @@ func (li liModel) Init() tea.Cmd {
 
 func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
+	var cmds []tea.Cmd
 
 	// move to Init?
 	li.list.SetShowTitle(false)
@@ -53,6 +54,12 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case key.Matches(msg, li.list.KeyMap.CursorUp):
 			li.Prev()
 			return li, cmd // return early to override default list.CursorUp()
+		case msg.String() == "enter":
+			i := li.list.SelectedItem().(item)
+			cmd = func() tea.Msg {
+				return listEnterMsg(i.desc)
+			}
+			cmds = append(cmds, cmd)
 		}
 	case tea.WindowSizeMsg:
 		h, v := docStyle.GetFrameSize()
@@ -63,7 +70,8 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 
 	li.list, cmd = li.list.Update(msg)
-	return li, cmd
+	cmds = append(cmds, cmd)
+	return li, tea.Batch(cmds...)
 }
 
 func (li liModel) View() string {
@@ -73,11 +81,9 @@ func (li liModel) View() string {
 // Next skips down to the next non empty, non heading item utilizing
 // list.CursorDown under the hood for pagination logic etc
 func (li *liModel) Next() {
-	is := li.list.Items()
 	for i := 1; i < 4; i++ {
 		li.list.CursorDown() // utilize list.CursorDown
-		idx := li.list.Index()
-		thisItem := is[idx].(item)
+		thisItem := li.list.SelectedItem().(item)
 		if thisItem.isHeading || thisItem.desc == emptyItem {
 			continue
 		}
@@ -88,14 +94,15 @@ func (li *liModel) Next() {
 // Prev skips up to the next non empty, non heading item utilizing
 // list.CursorUp under the hood for pagination logic etc
 func (li *liModel) Prev() {
-	is := li.list.Items()
 	for i := 1; i < 4; i++ {
 		li.list.CursorUp() // utilize list.CursorUp
-		idx := li.list.Index()
-		thisItem := is[idx].(item)
+		thisItem := li.list.SelectedItem().(item)
 		if thisItem.isHeading || thisItem.desc == emptyItem {
 			continue
 		}
 		return
 	}
 }
+
+// enter event message
+type listEnterMsg string

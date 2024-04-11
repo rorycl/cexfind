@@ -1,3 +1,7 @@
+/*
+delegate is a list delegate as set out in the bubble documentation for
+customising list items.
+*/
 package main
 
 import (
