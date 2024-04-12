@@ -33,6 +33,8 @@ const (
 	inputState
 )
 
+const searchPrefixTpl string = "searching for \"%s\"..."
+
 func (s state) String() string {
 	return []string{"list", "input"}[s]
 }
@@ -90,20 +92,36 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	// data was entered into input and needs to be percolated to status
 	case inputEnterMsg:
 		log.Printf("inputEnterMsg received %v", msg)
-		m.status = status(msg)
-		return m, func() tea.Msg { return "" }
+		m.status = status(fmt.Sprintf(searchPrefixTpl, msg))
+		strict := false // hardcoded for now
+		return m, findPerform(string(msg), strict)
 
 	// data was entered into input and needs to be percolated to status
 	case listEnterMsg:
 		log.Printf("listEnterMsg received %v", msg)
 		m.status = status(msg)
-		return m, func() tea.Msg { return "" }
+		return m, nil
+
+	// perform a web search
+	case findPerformMsg:
+		log.Printf("findPerformMsg received %v", msg)
+		items, num, err := find(msg.query, msg.strict)
+		var cmd tea.Cmd
+		if err != nil {
+			m.status = status("Error: " + err.Error())
+		} else {
+			m.status = status(fmt.Sprintf("%d items found", num))
+			cmd = m.list.list.SetItems(items)
+			m.stateSwitch()
+		}
+		return m, cmd
 
 	case tea.KeyMsg:
 		log.Printf("state %s input.focus %v key %s", m.state, m.input.input.Focused(), msg.String())
-		if msg.String() == "]" {
-			log.Println("at ]")
+		if msg.String() == "tab" {
+			log.Println("at tab")
 			m.stateSwitch()
+			return m, func() tea.Msg { return "" } // or nil
 		}
 	}
 

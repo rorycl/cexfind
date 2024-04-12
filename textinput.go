@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/charmbracelet/bubbles/textinput"
@@ -21,8 +20,6 @@ var (
 	// search cursor style
 	tiCursorStyle = tiFocusedStyle.Copy()
 )
-
-const searchPrefixTpl string = "searching for \"%s\"..."
 
 type tiModel struct {
 	input textinput.Model
@@ -74,7 +71,7 @@ func (ti tiModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return ti, tea.Quit
 		case "enter":
 			return ti, func() tea.Msg {
-				return inputEnterMsg(fmt.Sprintf(searchPrefixTpl, ti.input.Value()))
+				return inputEnterMsg(ti.input.Value())
 			}
 		}
 	}
