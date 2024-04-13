@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
@@ -8,19 +10,22 @@ import (
 )
 
 var (
-	listPanel = lipgloss.NewStyle().Padding(0, 0, 0, 0)
+	listPanel = lipgloss.NewStyle().Padding(0, 0, 0, 2)
 	// arbitrary spacing offsets for the list panel sizing
 	arbitraryVerticalOffset, arbitraryHorizantalOffset = 5, 7
 )
 
+// an item is a list item, meeting the list delegate CustomItem
+// interface
+type item struct {
+	desc      string // a rendered description
+	isHeading bool
+	url       string // the url to see this item
+}
+
 // emptyItem is s special "empty" item to provide padding between item
 // headings
 const emptyItem = "-empty-"
-
-type item struct {
-	desc      string
-	isHeading bool
-}
 
 func (i item) Description() string { return i.desc }
 func (i item) IsHeading() bool     { return i.isHeading }
@@ -30,18 +35,27 @@ type liModel struct {
 	list list.Model
 }
 
+// newLiModel create a new liModel with the relevant delegate. The 0, 0
+// arguments to list.New are for width and height
+func newLiModel() liModel {
+	li := liModel{
+		list: list.New([]list.Item{}, NewCustomDelegate(), 0, 0),
+	}
+	li.list.SetShowTitle(false)
+	li.list.SetShowStatusBar(false)
+	li.list.InfiniteScrolling = false
+	return li
+}
+
+// bubbletea Init
 func (li liModel) Init() tea.Cmd {
 	return nil
 }
 
+// bubbletea Update
 func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	var cmds []tea.Cmd
-
-	// move to Init?
-	li.list.SetShowTitle(false)
-	li.list.SetShowStatusBar(false)
-	li.list.InfiniteScrolling = true
 
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
@@ -57,7 +71,10 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case msg.String() == "enter":
 			i := li.list.SelectedItem().(item)
 			cmd = func() tea.Msg {
-				return listEnterMsg(i.desc)
+				return listEnterMsg{
+					desc: i.desc,
+					url:  i.url,
+				}
 			}
 			cmds = append(cmds, cmd)
 		}
@@ -104,5 +121,40 @@ func (li *liModel) Prev() {
 	}
 }
 
+// ReplaceList replaces the items in the list and sets the Index
+// appropriately
+func (li *liModel) ReplaceList(items []list.Item) tea.Cmd {
+	var cmd tea.Cmd
+	if len(items) == 0 {
+		listPanel.Padding(0, 0, 0, 2) // for empty list
+		return cmd
+	}
+	listPanel.Padding(0, 0, 0, 0) // for non-empty list
+	cmd = li.list.SetItems(items)
+	if li.list.Index() != 0 {
+		li.list.Select(0)
+	}
+	// continue to the first non-heading, non-empty item
+	thisItem := li.list.SelectedItem().(item)
+	if thisItem.isHeading || thisItem.desc == emptyItem {
+		li.Next()
+	}
+	return cmd
+}
+
 // enter event message
-type listEnterMsg string
+type listEnterMsg struct {
+	desc string
+	url  string
+}
+
+// string representation of a listEnterMsg is used for status
+func (l listEnterMsg) String() string {
+	trimmedDesc := l.desc
+	fields := strings.Fields(l.desc)
+	if len(fields) > 1 {
+		rightWord := fields[len(fields)-1]
+		trimmedDesc = strings.TrimRight(strings.ReplaceAll(l.desc, rightWord, " "), " ")
+	}
+	return trimmedDesc
+}

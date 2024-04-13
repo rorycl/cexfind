@@ -9,10 +9,9 @@ import (
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
+
 	"github.com/rorycl/cexfind/search"
 )
-
-var boxTpl = "%4d %-40s %s"
 
 // find makes cexfind/search queries and turns the results into
 // list.Items as required by the bubbletea list and delegate which uses
@@ -45,14 +44,24 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 	for sortedResults := range results.Iter() {
 		key, box := sortedResults.Key, sortedResults.Box
 		if key != k {
+			if len(items) != 0 {
+				// add an empty item for spacing ahead of headings,
+				// except for the first heading
+				items = append(items, item{desc: emptyItem})
+			}
 			items = append(items, item{desc: key, isHeading: true})
 			k = key
 		}
-		items = append(items, item{desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID)})
+		items = append(items, item{
+			desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID),
+			url:  search.URLDETAIL + box.ID,
+		})
 		itemNo++
 	}
 	return
 }
+
+const boxTpl string = "£%-3d %30s %s"
 
 // findPerformMsg is a bubbletea Cmd message for performing a find
 type findPerformMsg struct {

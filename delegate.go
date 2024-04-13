@@ -27,11 +27,11 @@ type CustomItemStyles struct {
 	// A section heading; with a "First" variant with no padding
 	Heading         lipgloss.Style
 	SelectedHeading lipgloss.Style
-	FirstHeading    lipgloss.Style
 
 	// A Normal description
 	NormalDescription   lipgloss.Style
 	SelectedDescription lipgloss.Style
+	DimmedDesc          lipgloss.Style // default
 	// DimmedDescription lipgloss.Style
 
 	// Characters matching the current filter, if any.
@@ -51,10 +51,6 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 		BorderForeground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).
 		Padding(0, 0, 0, 2).
 		Bold(true)
-	s.FirstHeading = lipgloss.NewStyle().
-		Foreground(lipgloss.AdaptiveColor{Light: "#dc40e7", Dark: "#dc40e7"}).
-		Margin(0, 0, 0, 2).
-		Bold(true)
 
 	s.NormalDescription = lipgloss.NewStyle().
 		Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
@@ -66,12 +62,12 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 		Padding(0, 0, 0, 1)
 
 	/*
-		s.DimmedDesc = lipgloss.NewStyle().
-			Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
+		    s.DimmedDesc = lipgloss.NewStyle().
+		    Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
 			Padding(0, 0, 0, 2)
-	*/
 
-	s.FilterMatch = lipgloss.NewStyle().Underline(true)
+			s.FilterMatch = lipgloss.NewStyle().Underline(true)
+	*/
 
 	return s
 }
