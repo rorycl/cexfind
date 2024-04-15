@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"golang.design/x/clipboard"
@@ -31,10 +32,11 @@ type state int
 const (
 	listState state = iota // default
 	inputState
+	checkboxState
 )
 
 func (s state) String() string {
-	return []string{"list", "input"}[s]
+	return []string{"list", "input", "checkbox"}[s]
 }
 
 // model contains a model for the textinput model and list model,
@@ -46,10 +48,16 @@ type model struct {
 	list liModel
 	// a wrapped string (as tea.Model) for the status updates
 	status status
+
 	// flags etc.
 	state       state
+	listLen     int
 	inited      bool
 	clipboardOK bool
+
+	// find function indirector allows for local/testing swapping of
+	// functions
+	finder func(query string, strict bool) (items []list.Item, itemNo int, err error)
 }
 
 // NewModel creates a new model containing the input, status and list
@@ -63,12 +71,17 @@ func NewModel() *model {
 	m.input.Focus()
 	m.status = newSelection()
 	m.inited = true
+	m.listLen = 0
 
 	// check if clipboard can run
 	err := clipboard.Init()
 	if err == nil {
 		m.clipboardOK = true
 	}
+
+	// set find function (normally find, but can use findLocal for
+	// testing
+	m.finder = find
 
 	return &m
 }
@@ -77,21 +90,37 @@ func (m model) Init() tea.Cmd {
 	return m.input.Init()
 }
 
-// stateSwitch switches state between the input and list panels
-func (m *model) stateSwitch() {
-	switch m.state {
+// stateSwitch switches state between the input, checkbox and list.
+// The input and checkbox are part of the input model, while the list is
+// separate. tea.Msgs (which are converted to tea.Cmds) are triggered on
+// state switch to update the status area
+func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
+	defer log.Printf("state %s input.cursor %d input.focus %v", m.state, m.input.cursor, m.input.input.Focused())
+	m.state = targetState
+	switch targetState {
 	case inputState:
-		m.state = listState
-		m.input.Blur()
-	default:
-		m.state = inputState
+		m.input.cursor = cursorInput
 		m.input.Focus()
+		if withStatus {
+			m.status.setInputting()
+		}
+	case checkboxState:
+		m.input.cursor = cursorBox
+		m.input.Blur()
+		if withStatus {
+			m.status.setCheckbox()
+		}
+	case listState:
+		m.input.cursor = cursorInput
+		m.input.Blur()
+		m.state = listState
 	}
-	log.Printf("state %d %s input.focus %v", m.state, m.state, m.input.input.Focused())
+	return nil
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
+	var cmds []tea.Cmd
 
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
@@ -103,19 +132,18 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.input.Update(msg)
 		return m, cmd
 
-	// data was entered into input and needs to be percolated to status
+	// search data was entered into input and needs to be percolated to status
 	case inputEnterMsg:
 		log.Printf("inputEnterMsg received %v", msg)
 		m.status = m.status.setSearching(string(msg))
-		strict := false // hardcoded for now
-		return m, findPerform(string(msg), strict)
+		return m, findPerform(string(msg), m.input.checkbox)
 
 	// data was selected in the list view
 	case listEnterMsg:
 		log.Printf("listEnterMsg received %#v", msg)
 		if m.clipboardOK {
 			clipboard.Write(clipboard.FmtText, []byte(msg.url))
-			m.status = "url for \"" + status(msg.String()) + "\" copied to clipboard"
+			m.status = "url for \"" + status(msg.String()) + ellipsis + "\" copied to clipboard"
 		} else {
 			m.status = "you selected \"" + status(msg.String()) + "\""
 		}
@@ -123,31 +151,50 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	// perform a web search
 	case findPerformMsg:
-		time.Sleep(200 * time.Millisecond) // give time for messages to arrive
+		time.Sleep(250 * time.Millisecond) // give time for status to show
 		log.Printf("findPerformMsg received %v", msg)
-		items, num, err := find(msg.query, msg.strict)
+		items, num, err := m.finder(msg.query, msg.strict)
 		var cmd tea.Cmd
 		if err != nil {
 			m.status = status("Error: " + err.Error())
-		} else {
-			m.status = status(fmt.Sprintf("%d items found", num))
-			cmd = m.list.ReplaceList(items)
-			m.stateSwitch() // switch to list view
+			cmd = m.stateSwitch(inputState, false)
+			return m, cmd
 		}
-		return m, cmd
+		m.listLen = num
+		m.status = status(fmt.Sprintf("%d items found", num))
+		cmd = m.list.ReplaceList(items)
+		cmds = append(cmds, cmd)
+		cmd = m.stateSwitch(listState, false) // switch to list view
+		cmds = append(cmds, cmd)
+		return m, tea.Batch(cmds...)
 
 	case tea.KeyMsg:
-		log.Printf("state %s input.focus %v key %s", m.state, m.input.input.Focused(), msg.String())
+		log.Printf("state %s input.focus %v key '%s'", m.state, m.input.input.Focused(), msg.String())
 		if msg.String() == "tab" {
 			log.Println("at tab")
-			m.stateSwitch()
-			return m, func() tea.Msg { return "" } // or nil
+			var s state
+			var w bool = true
+			switch m.state {
+			case inputState:
+				s = checkboxState
+			case checkboxState:
+				if m.listLen > 0 {
+					s = listState
+				} else {
+					s = inputState
+				}
+				log.Printf(" -> state now %s", s)
+			case listState:
+				s = inputState
+			}
+			cmd = m.stateSwitch(s, w)
+			return m, cmd
 		}
 	}
 
 	// defer to input or list models
 	switch m.state {
-	case inputState:
+	case inputState, checkboxState:
 		var t tea.Model
 		t, cmd = m.input.Update(msg)
 		m.input = t.(tiModel)

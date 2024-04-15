@@ -24,6 +24,10 @@ import (
 // The query is received from the app as a single string with queries
 // separated (potentially) by a comma. Queries are expected to each be
 // at least 4 characters in length.
+//
+// The itemNo number of items is included since heading and empty items
+// are introduced for formatting reasons. itemNo counts the number of
+// valid items returned.
 func find(query string, strict bool) (items []list.Item, itemNo int, err error) {
 
 	queries := strings.Split(query, ",")
@@ -49,9 +53,11 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 				// except for the first heading
 				items = append(items, item{desc: emptyItem})
 			}
+			// make heading
 			items = append(items, item{desc: key, isHeading: true})
 			k = key
 		}
+		// add standard item
 		items = append(items, item{
 			desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID),
 			url:  search.URLDETAIL + box.ID,
@@ -59,6 +65,17 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		itemNo++
 	}
 	return
+}
+
+// findLocal simple returns the example list
+func findLocal(query string, strict bool) (items []list.Item, itemNo int, err error) {
+	queries := strings.Split(query, ",")
+	for _, q := range queries {
+		if len(q) < 4 {
+			return items, 0, errors.New("queries need to be at least 4 characters in length")
+		}
+	}
+	return theseExampleItems, 15, nil
 }
 
 const boxTpl string = "£%-3d %30s %s"
@@ -72,6 +89,7 @@ type findPerformMsg struct {
 // findPerform wraps a findPerformMsg in a tea.Cmd for deferred
 // processing. See bubbleta/tutorials/commands
 func findPerform(query string, strict bool) tea.Cmd {
+	log.Println("   query triggered", query, strict)
 	return func() tea.Msg {
 		return findPerformMsg{
 			query:  query,

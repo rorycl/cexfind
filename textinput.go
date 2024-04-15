@@ -17,12 +17,27 @@ var (
 	tiFocusedStyle = lipgloss.NewStyle().
 			Foreground(lipgloss.Color("#FF0000")).
 			PaddingTop(1)
+
 	// search cursor style
 	tiCursorStyle = tiFocusedStyle.Copy()
+	// checkbox
+	checkBoxFocusedStyle = tiFocusedStyle.Copy()
+	checkBoxNormalStyle  = lipgloss.NewStyle().
+				Foreground(lipgloss.AdaptiveColor{Light: "#e7e223", Dark: "#e7e223"}).
+				PaddingTop(1)
+)
+
+type tiCursor int
+
+const (
+	cursorInput tiCursor = iota
+	cursorBox
 )
 
 type tiModel struct {
-	input textinput.Model
+	input    textinput.Model
+	checkbox bool
+	cursor   tiCursor
 }
 
 func newTIModel() tiModel {
@@ -31,8 +46,11 @@ func newTIModel() tiModel {
 	t.CharLimit = 55
 	t.Placeholder = "enter terms"
 	t.PromptStyle = tiFocusedStyle
+	t.Width = 65
+
 	return tiModel{
-		input: t,
+		input:    t,
+		checkbox: false,
 	}
 }
 
@@ -54,11 +72,30 @@ func (ti *tiModel) Blur() {
 	ti.input.Blur()
 }
 
+func (ti *tiModel) checkBoxAsString() string {
+	// log.Println("-> checkBoxAsString with checkbox set to ", ti.checkbox)
+	switch {
+	case ti.cursor == cursorBox && ti.checkbox:
+		return checkBoxFocusedStyle.Render("strict [x]")
+	case ti.cursor == cursorBox && !ti.checkbox:
+		return checkBoxFocusedStyle.Render("strict [ ]")
+	case ti.cursor != cursorBox && ti.checkbox:
+		return checkBoxNormalStyle.Render("strict [x]")
+	}
+	return checkBoxNormalStyle.Render("strict [ ]")
+}
+
 func (ti tiModel) View() string {
 	var b strings.Builder
 	b.WriteString(tiNormalStyle.Render("search cex"))
 	b.WriteRune('\n')
-	b.WriteString(ti.input.View())
+	b.WriteString(
+		lipgloss.JoinHorizontal(
+			lipgloss.Left,
+			ti.input.View(),
+			ti.checkBoxAsString(),
+		),
+	)
 	return b.String()
 }
 
@@ -75,9 +112,28 @@ func (ti tiModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 	}
+
+	if ti.cursor == cursorBox { // focus is on checkbox
+		switch msg := msg.(type) {
+		case tea.KeyMsg:
+			switch msg.String() {
+			case "space", " ", "x":
+				if ti.checkbox {
+					ti.checkbox = false
+				} else {
+					ti.checkbox = true
+				}
+				return ti, nil
+			}
+		}
+	}
+
 	ti.input, cmd = ti.input.Update(msg)
 	return ti, cmd
 }
 
 // enter event message
 type inputEnterMsg string
+
+// other status update messages
+type statusUpdateMsg string

@@ -22,7 +22,7 @@ type status string
 
 // newSelection constructor
 func newSelection() status {
-	return status("add searches separated by a comma")
+	return status("add searches separated by a comma, tab to switch fields, enter to search")
 }
 
 // bubbletea Init
@@ -40,8 +40,18 @@ func (s status) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return s, nil
 }
 
-// status formatting
+// status formatting when in input
+func (s status) setInputting() status {
+	return status("add searches separated by a comma, tab to switch fields, enter to search")
+}
+
+// status formatting when searching
 func (s status) setSearching(t string) status {
 	var searchPrefixTpl = "searching for \"%s\"..."
 	return status(fmt.Sprintf(searchPrefixTpl, t))
+}
+
+// status formatting when in checkbox
+func (s status) setCheckbox() status {
+	return status("space or 'x' to select strict searching, enter to search")
 }
