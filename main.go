@@ -8,11 +8,11 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-const debug bool = true
-
-func main() {
+// set the logger if the DEBUG environmental variable is set, otherwise
+// log to /dev/null or the operating system alternative
+func setLog() {
 	var logfile string
-	if debug {
+	if _, ok := os.LookupEnv("DEBUG"); ok {
 		logfile = "debug.log"
 	} else {
 		logfile = os.DevNull
@@ -23,6 +23,11 @@ func main() {
 	}
 	defer f.Close()
 	log.Println("-------------------")
+}
+
+func main() {
+
+	setLog()
 
 	m := NewModel()
 	p := tea.NewProgram(m, tea.WithAltScreen())

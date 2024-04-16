@@ -1,3 +1,7 @@
+// this is a file of an example listing of bubbletea.list delegate items
+// which can be used for local testing. To use it locally set the
+// model.finder function to the findLocal function name
+
 package main
 
 import "github.com/charmbracelet/bubbles/list"

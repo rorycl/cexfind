@@ -67,7 +67,7 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 	return
 }
 
-// findLocal simple returns the example list
+// findLocal simple returns the example list in list_example.go
 func findLocal(query string, strict bool) (items []list.Item, itemNo int, err error) {
 	queries := strings.Split(query, ",")
 	for _, q := range queries {

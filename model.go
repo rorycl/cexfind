@@ -1,7 +1,12 @@
+// This model file is the top level model file which controls the
+// subsidiary inModel search input and checkbox model and the liModel
+// list model. State transitions are managed through the Update function
+// here and, depending on the focus state, percolated to the subsidiary
+// models.
+
 package main
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -15,16 +20,15 @@ var (
 	docStyle = lipgloss.NewStyle().Margin(2, 0, 0, 3)
 	// top panel
 	topPanelStyle = lipgloss.NewStyle().
-		// Border(lipgloss.RoundedBorder()).
-		BorderForeground(lipgloss.Color("#ff5a56")).
-		Border(lipgloss.NormalBorder(), false, false, true, false).
-		BorderBottom(true).
-		Padding(0, 0, 1, 0).
-		Margin(1, 0, 0, 2).
-		Height(5).
-		Width(80).
-		Background(lipgloss.Color("#000000")).
-		UnsetBold()
+			BorderForeground(lipgloss.Color("#ff5a56")).
+			Border(lipgloss.NormalBorder(), false, false, true, false).
+			BorderBottom(true).
+			Padding(0, 0, 1, 0).
+			Margin(1, 0, 0, 2).
+			Height(5).
+			Width(80).
+			Background(lipgloss.Color("#000000")).
+			UnsetBold()
 )
 
 type state int
@@ -43,7 +47,7 @@ func (s state) String() string {
 // together with state variables
 type model struct {
 	// a wrapped bubbles.textinput.Model for the input
-	input tiModel
+	input inModel
 	// a wrapped bubbles.list.Model for the list elements
 	list liModel
 	// a wrapped string (as tea.Model) for the status updates
@@ -64,7 +68,7 @@ type model struct {
 // models within it. Focus starts in the input model
 func NewModel() *model {
 	m := model{
-		input: newTIModel(),
+		input: newInModel(),
 		list:  newLiModel(),
 	}
 	m.state = inputState
@@ -81,7 +85,8 @@ func NewModel() *model {
 
 	// set find function (normally find, but can use findLocal for
 	// testing
-	m.finder = find
+	// m.finder = find
+	m.finder = findLocal
 
 	return &m
 }
@@ -118,13 +123,15 @@ func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 	return nil
 }
 
+// Update is a required bubbletea function and is the programme's main
+// update loop which also calls each subsidiary model's Update function
+// when appropriate.
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	var cmds []tea.Cmd
 
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
-		log.Println("at window resize")
 		var t tea.Model
 		// m.list.list.Select(min(1, len(m.list.list.Items())-1))
 		t, cmd = m.list.Update(msg)
@@ -143,9 +150,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		log.Printf("listEnterMsg received %#v", msg)
 		if m.clipboardOK {
 			clipboard.Write(clipboard.FmtText, []byte(msg.url))
-			m.status = "url for \"" + status(msg.String()) + ellipsis + "\" copied to clipboard"
+			m.status = m.status.setCopied(msg.String())
 		} else {
-			m.status = "you selected \"" + status(msg.String()) + "\""
+			m.status = m.status.setNotCopied(msg.String())
 		}
 		return m, nil
 
@@ -161,17 +168,17 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, cmd
 		}
 		m.listLen = num
-		m.status = status(fmt.Sprintf("%d items found", num))
+		m.status = m.status.setFoundItems(num)
 		cmd = m.list.ReplaceList(items)
 		cmds = append(cmds, cmd)
 		cmd = m.stateSwitch(listState, false) // switch to list view
 		cmds = append(cmds, cmd)
 		return m, tea.Batch(cmds...)
 
+	// catch tab here for switching between input, checkbox and list
 	case tea.KeyMsg:
-		log.Printf("state %s input.focus %v key '%s'", m.state, m.input.input.Focused(), msg.String())
+		// log.Printf("state %s input.focus %v key '%s'", m.state, m.input.input.Focused(), msg.String())
 		if msg.String() == "tab" {
-			log.Println("at tab")
 			var s state
 			var w bool = true
 			switch m.state {
@@ -183,7 +190,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				} else {
 					s = inputState
 				}
-				log.Printf(" -> state now %s", s)
 			case listState:
 				s = inputState
 			}
@@ -192,12 +198,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 	}
 
-	// defer to input or list models
+	// defer to input or list models depending on state
 	switch m.state {
 	case inputState, checkboxState:
 		var t tea.Model
 		t, cmd = m.input.Update(msg)
-		m.input = t.(tiModel)
+		m.input = t.(inModel)
 	case listState:
 		var t tea.Model
 		t, cmd = m.list.Update(msg)
@@ -206,7 +212,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-// bubbletea View
+// bubbletea View; this is the main view bringing the subsidiary views
+// together
 func (m model) View() string {
 	return docStyle.Render(
 		lipgloss.JoinVertical(

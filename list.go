@@ -1,3 +1,7 @@
+// The list file contains the code for the list components of the code,
+// managed through the liModel which contains a bubbles/list component.
+// List items are dealt with through the list delegate CustomDelegate.
+
 package main
 
 import (
@@ -91,6 +95,8 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return li, tea.Batch(cmds...)
 }
 
+// View is a bubbletea required function and renders the lower part of
+// the TUI window
 func (li liModel) View() string {
 	return listPanel.Render(li.list.View())
 }

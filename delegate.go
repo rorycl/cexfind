@@ -1,7 +1,14 @@
-/*
-delegate is a list delegate as set out in the bubble documentation for
-customising list items.
-*/
+// delegate is a list delegate as set out in the bubble documentation for
+// customising list items. This file is a modified copy of the bubbletea
+// list-fancy example custom delegate with a simplified CustomItem
+// interface and CustomDelegate that meets that interface.
+
+// type DefaultItem interface {
+// 	Item
+// 	Title() string
+// 	Description() string
+// }
+
 package main
 
 import (
@@ -61,14 +68,6 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 		Foreground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).
 		Padding(0, 0, 0, 1)
 
-	/*
-		    s.DimmedDesc = lipgloss.NewStyle().
-		    Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
-			Padding(0, 0, 0, 2)
-
-			s.FilterMatch = lipgloss.NewStyle().Underline(true)
-	*/
-
 	return s
 }
 
@@ -79,8 +78,10 @@ type CustomItem interface {
 	IsHeading() bool
 }
 
+// This section is largely copied from bubbles/list/defaultitem.go
+//
 // CustomDelegate is a standard delegate designed to work in lists. It's
-// styled by CustomItemStyles, which can be customized as you like.
+// styled by CustomItemStyles.
 //
 // The spacing between items can be set with the SetSpacing method.
 //

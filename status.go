@@ -1,7 +1,6 @@
-/*
-status shows status messages in the app, receiving and displaying
-bubbletea cmd (tea.Cmd) messages to help instruct the user.
-*/
+// status shows status messages in the TUI, below the search bar. The
+// status area shows messages set directly or received from bubbletea
+// cmd (tea.Cmd) messages to help instruct the user.
 
 package main
 
@@ -54,4 +53,26 @@ func (s status) setSearching(t string) status {
 // status formatting when in checkbox
 func (s status) setCheckbox() status {
 	return status("space or 'x' to select strict searching, enter to search")
+}
+
+// status on finding items
+func (s status) setFoundItems(n int) status {
+	i := "item"
+	if n > 1 {
+		i = "items"
+	}
+	tpl := "%d %s found. Copy an item's url by pressing enter"
+	return status(fmt.Sprintf(tpl, n, i))
+}
+
+// status on copying to clipboard
+func (s status) setCopied(msg string) status {
+	tpl := `url for "%s%s" copied to clipboard`
+	return status(fmt.Sprintf(tpl, msg, ellipsis))
+}
+
+// status on failing to copy to clipboard
+func (s status) setNotCopied(msg string) status {
+	tpl := `you selected "%s%s"`
+	return status(fmt.Sprintf(tpl, msg, ellipsis))
 }
