@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -38,7 +37,8 @@ type JsonResults struct {
 			BoxName string `json:"boxName"`
 			BoxID   string `json:"boxId"`
 			// Available int `json:"collectionQuantity"` // returns 0 or greater
-			Price int `json:"sellPrice"`
+			Price  int      `json:"sellPrice"`
+			Stores []string `json:"stores"`
 		} `json:"hits"`
 		NbHits      int `json:"nbHits"`
 		HitsPerPage int `json:"hitsPerPage"`
@@ -180,7 +180,7 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 		if reason == "" {
 			reason = "unknown or unmarshalling error"
 		}
-		return r, fmt.Errorf("error: %s", reason)
+		return r, errors.New(reason)
 	}
 	if len(r.Results) < 1 || len(r.Results[0].Hits) < 1 {
 		return r, errors.New("no results")
@@ -190,42 +190,46 @@ func postQuery(queryBytes []byte) (JsonResults, error) {
 
 // extractModelType tries to extract a meaningful model type from a
 // boxname. Since models are not well normalised further cleaning work
-// is likely to be needed in future.
+// is likely to be needed in future. The titling type is set to English.
+// If cleaning doesn't work only the first two words of the the
+// description is used.
 func extractModelType(s string) string {
-
-	// words to remove from box model descriptions
-	stringsToRemove := strings.Split("Thinkpad AddMoreHere", " ")
-
-	// set the titling type to English
 	titleCase := cases.Title(language.English)
 
-	// clean some Title strings to remove string r + space
-	cleaner := func(o, r string) string {
-		i := strings.Index(strings.ToLower(o), strings.ToLower(r))
-		if i == -1 {
-			return o
-		}
-		return strings.ReplaceAll(o[:i]+o[i+len(r):], "  ", " ")
-	}
-	// remove known
-	cleaners := func(o string) string {
-		for _, w := range stringsToRemove {
-			o = cleaner(o, w)
-		}
-		return o
+	// slice of regexps and replacements
+	type replacement struct {
+		pattern     *regexp.Regexp // case insensitive regexp
+		replacement string         // replacement string, potentially with bracketed match offset
 	}
 
-	// some titles have a "/" character summarizing the model
-	parts := strings.Split(s, "/")
-	if len(parts) > 1 {
-		return cleaners(titleCase.String(strings.ToLower(parts[0])))
+	var reReplacements = []replacement{
+		// remove items after "/" character
+		replacement{regexp.MustCompile(`(?i)^\s*(\w.*?)/.+`), "$1"},
+		// "thinkpad" is unneeded
+		replacement{regexp.MustCompile(`(?i)thinkpad\s`), ""},
+		// rationalise "(Gen 3)", "Gen3", "Gen 3" etc.
+		replacement{regexp.MustCompile(`(?i)\(*gen\s*([0-9]+)\)*`), "Gen$1"},
 	}
-	// grab first two words
-	parts = strings.SplitN(s, " ", 3)
-	if len(parts) == 1 {
-		return titleCase.String(strings.ToLower(parts[0]))
+
+	titleCleaner := func(s string) string {
+		for _, r := range reReplacements {
+			result := r.pattern.ReplaceAllString(s, r.replacement)
+			if result != s {
+				s = result
+			}
+		}
+		return s
 	}
-	return cleaners(titleCase.String(strings.ToLower(strings.Join(parts[:2], " "))))
+
+	cleaned := titleCleaner(s)
+	if cleaned != s {
+		return titleCase.String(cleaned)
+	}
+	fields := strings.Fields(s)
+	if len(fields) < 3 {
+		return s
+	}
+	return titleCase.String(strings.Join(fields[:2], " "))
 }
 
 // makeQueries makes queries concurrently; strict true requires that the
