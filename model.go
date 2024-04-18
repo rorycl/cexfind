@@ -19,7 +19,9 @@ import (
 )
 
 var (
-	docStyle = lipgloss.NewStyle().Margin(2, 0, 0, 3)
+	// the style container for the app
+	docStyle = lipgloss.NewStyle().Margin(4, 0, 0, 3)
+
 	// top panel
 	topPanelStyle = lipgloss.NewStyle().
 			BorderForeground(lipgloss.Color("#ff5a56")).
@@ -31,6 +33,10 @@ var (
 			Width(80).
 			Background(lipgloss.Color("#000000")).
 			UnsetBold()
+
+	// help panel
+	helpPanelStyle = lipgloss.NewStyle().
+			Padding(0, 0, 1, 2)
 )
 
 type state int
@@ -161,7 +167,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.status = m.status.setSearching(string(msg))
 		return m, findPerform(string(msg), m.input.checkbox)
 
-	// data was selected in the list view
+	// data was selected in the list view; reset the status after a
+	// short wait
 	case listEnterMsg:
 		log.Printf("listEnterMsg received %#v", msg)
 		if m.clipboardOK {
@@ -170,7 +177,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		} else {
 			m.status = m.status.setNotCopied(msg.String())
 		}
-		return m, nil
+		return m, func() tea.Msg {
+			time.Sleep(2500 * time.Millisecond)
+			return resetListStatus{}
+		}
 
 	// perform a web search
 	case findPerformMsg:
@@ -190,6 +200,11 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		cmd = m.stateSwitch(listState, false) // switch to list view
 		cmds = append(cmds, cmd)
 		return m, tea.Batch(cmds...)
+
+	// reset the list status
+	case resetListStatus:
+		m.status = m.status.setFoundItems(m.listLen)
+		return m, nil
 
 	// Catch tab here for switching between input, checkbox and list
 	// One can use
@@ -244,7 +259,7 @@ func (m model) View() string {
 				m.status.View(),
 			),
 			m.list.View(),
-			m.help.View(m.keys),
+			helpPanelStyle.Render(m.help.View(m.keys)),
 		),
 	)
 }

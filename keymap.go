@@ -23,15 +23,15 @@ func getKeyMap(k keyState) help.KeyMap {
 
 type inputKeyMap struct {
 	Search   key.Binding // enter, do the search
-	Selector key.Binding // select or deselect strict
 	Tab      key.Binding // switch focus
+	Selector key.Binding // select or deselect strict
 	Exit     key.Binding // exit the app
 }
 
 // ShortHelp returns keybindings to be shown in the mini help view. It's part
 // of the key.Map interface.
 func (k inputKeyMap) ShortHelp() []key.Binding {
-	return []key.Binding{k.Search, k.Selector, k.Tab, k.Exit}
+	return []key.Binding{k.Search, k.Tab, k.Selector, k.Exit}
 }
 
 // FullHelp returns keybindings for the expanded help view. It's part of the
@@ -45,13 +45,13 @@ var inputKeys = inputKeyMap{
 		key.WithKeys("enter"),
 		key.WithHelp("enter", "search"),
 	),
-	Selector: key.NewBinding(
-		key.WithKeys(" ", "x"),
-		key.WithHelp("<space>,x", "de/select"),
-	),
 	Tab: key.NewBinding(
 		key.WithKeys("tab"),
 		key.WithHelp("tab", "change focus"),
+	),
+	Selector: key.NewBinding(
+		key.WithKeys(" ", "x"),
+		key.WithHelp("<space>,x", "de/select strict"),
 	),
 	Exit: key.NewBinding(
 		key.WithKeys("ctrl+c"),

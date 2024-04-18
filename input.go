@@ -157,3 +157,6 @@ type inputEnterMsg string
 
 // other status update messages
 type statusUpdateMsg string
+
+// reset the list status (typically after a short-lived status message)
+type resetListStatus struct{}
