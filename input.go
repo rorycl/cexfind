@@ -8,6 +8,7 @@ package main
 import (
 	"strings"
 
+	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -52,7 +53,7 @@ type inModel struct {
 	cursor   inCursor
 }
 
-// newInModel constructs a new inModel
+// newInModel constructs a new inModel input model
 func newInModel() inModel {
 	t := textinput.New()
 	t.Cursor.Style = inCursorStyle
@@ -60,8 +61,6 @@ func newInModel() inModel {
 	t.Placeholder = "enter terms"
 	t.PromptStyle = inFocusedStyle
 	t.Width = 65
-
-	// t.KeyMap = *inputKeyMap()
 
 	return inModel{
 		input:    t,
@@ -121,23 +120,24 @@ func (in inModel) View() string {
 // Update is a bubbletea required function
 func (in inModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
+
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		switch msg.String() {
-		case "ctrl+c", "esc":
+		switch {
+		case key.Matches(msg, inputKeys.Exit):
 			return in, tea.Quit
-		case "enter":
+		case key.Matches(msg, inputKeys.Search):
 			return in, func() tea.Msg {
 				return inputEnterMsg(in.input.Value())
 			}
 		}
 	}
-
-	if in.cursor == cursorBox { // focus is on checkbox
+	// selector in cursor focus area
+	if in.cursor == cursorBox {
 		switch msg := msg.(type) {
 		case tea.KeyMsg:
-			switch msg.String() {
-			case "space", " ", "x":
+			switch {
+			case key.Matches(msg, inputKeys.Selector):
 				if in.checkbox {
 					in.checkbox = false
 				} else {

@@ -10,6 +10,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/charmbracelet/bubbles/help"
+	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -52,12 +54,18 @@ type model struct {
 	list liModel
 	// a wrapped string (as tea.Model) for the status updates
 	status status
+	// a standard help model
+	help help.Model
 
 	// flags etc.
 	state       state
 	listLen     int
 	inited      bool
 	clipboardOK bool
+
+	// keys are the current key set based on the focus state, switched
+	// through getKeyMap in keymap.go
+	keys help.KeyMap
 
 	// find function indirector allows for local/testing swapping of
 	// functions
@@ -76,6 +84,11 @@ func NewModel() *model {
 	m.status = newSelection()
 	m.inited = true
 	m.listLen = 0
+
+	// initialise the help model and related keys
+	m.help = help.New()
+	m.help.ShowAll = false // only show short help
+	m.keys = getKeyMap(inputKeysState)
 
 	// check if clipboard can run
 	err := clipboard.Init()
@@ -98,7 +111,8 @@ func (m model) Init() tea.Cmd {
 // stateSwitch switches state between the input, checkbox and list.
 // The input and checkbox are part of the input model, while the list is
 // separate. tea.Msgs (which are converted to tea.Cmds) are triggered on
-// state switch to update the status area
+// state switch to update the status area. The relevant key.KeyMap is
+// selected based on the current focus area
 func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 	defer log.Printf("state %s input.cursor %d input.focus %v", m.state, m.input.cursor, m.input.input.Focused())
 	m.state = targetState
@@ -106,18 +120,21 @@ func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 	case inputState:
 		m.input.cursor = cursorInput
 		m.input.Focus()
+		m.keys = getKeyMap(inputKeysState)
 		if withStatus {
 			m.status.setInputting()
 		}
 	case checkboxState:
 		m.input.cursor = cursorBox
 		m.input.Blur()
+		m.keys = getKeyMap(inputKeysState)
 		if withStatus {
 			m.status.setCheckbox()
 		}
 	case listState:
 		m.input.cursor = cursorInput
 		m.input.Blur()
+		m.keys = getKeyMap(listKeysState)
 		m.state = listState
 	}
 	return nil
@@ -133,7 +150,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		var t tea.Model
-		// m.list.list.Select(min(1, len(m.list.list.Items())-1))
 		t, cmd = m.list.Update(msg)
 		m.list = t.(liModel)
 		m.input.Update(msg)
@@ -175,10 +191,15 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		cmds = append(cmds, cmd)
 		return m, tea.Batch(cmds...)
 
-	// catch tab here for switching between input, checkbox and list
+	// Catch tab here for switching between input, checkbox and list
+	// One can use
+	//
+	//		if msg.String() == "tab" {
+	//
+	// for key matching, or use key.Matches
 	case tea.KeyMsg:
 		// log.Printf("state %s input.focus %v key '%s'", m.state, m.input.input.Focused(), msg.String())
-		if msg.String() == "tab" {
+		if key.Matches(msg, inputKeys.Tab) {
 			var s state
 			var w bool = true
 			switch m.state {
@@ -223,6 +244,7 @@ func (m model) View() string {
 				m.status.View(),
 			),
 			m.list.View(),
+			m.help.View(m.keys),
 		),
 	)
 }

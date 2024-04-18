@@ -48,6 +48,8 @@ func newLiModel() liModel {
 	li.list.SetShowTitle(false)
 	li.list.SetShowStatusBar(false)
 	li.list.InfiniteScrolling = false
+	li.list.SetShowHelp(false) // help is customised in main model
+
 	return li
 }
 
@@ -64,15 +66,15 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch {
-		case msg.String() == "ctrl+c":
+		case key.Matches(msg, listKeys.Exit):
 			return li, tea.Quit
-		case key.Matches(msg, li.list.KeyMap.CursorDown):
+		case key.Matches(msg, listKeys.CursorDown):
 			li.Next()
 			return li, cmd // return early to override default list.CursorDown()
-		case key.Matches(msg, li.list.KeyMap.CursorUp):
+		case key.Matches(msg, listKeys.CursorUp):
 			li.Prev()
 			return li, cmd // return early to override default list.CursorUp()
-		case msg.String() == "enter":
+		case key.Matches(msg, listKeys.Enter):
 			i := li.list.SelectedItem().(item)
 			cmd = func() tea.Msg {
 				return listEnterMsg{
@@ -82,6 +84,7 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 			cmds = append(cmds, cmd)
 		}
+
 	case tea.WindowSizeMsg:
 		h, v := docStyle.GetFrameSize()
 		li.list.SetSize(
