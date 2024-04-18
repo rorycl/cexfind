@@ -1,3 +1,5 @@
+debug.log
+go.work
 \.*
 /cli
 /webserver
@@ -6,4 +8,3 @@
 cover.html
 cover.rpt
 coverage.out
-
