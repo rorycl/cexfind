@@ -1,0 +1,775 @@
+{
+  "results": [
+    {
+      "hits": [
+        {
+          "Operating System": [
+            "Windows 10"
+          ],
+          "masterBoxname": null,
+          "showOnWebHotProducts": 1,
+          "stores": [
+            "store 10"
+          ],
+          "Storage Drive Type": [
+            "SSD"
+          ],
+          "CPU Family": [
+            "Core i5"
+          ],
+          "networkName": null,
+          "boxWebBuyAllowed": 1,
+          "operatorId": null,
+          "Manufacturer": [
+            "Lenovo"
+          ],
+          "collectionQuantity": 1,
+          "collectionStores": [
+            "Streatham"
+          ],
+          "exchangePriceCalculated": 116,
+          "superCatActive": 1,
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39065B_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39065B_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39065B_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "categoryName": "Laptops - Windows",
+          "superCatFriendlyName": "Computing",
+          "boxVisibilityOnWeb": 1,
+          "Model Number": [
+            "X390"
+          ],
+          "Screen Size 'Inches'": [
+            "13\""
+          ],
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i5-8265U/8GB Ram/256GB SSD/13\"/W10/B",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "imageFileName": null,
+          "exchangePrice": 0,
+          "imageNames": null,
+          "categoryId": "1065",
+          "objectID": "PALSLENX39065B",
+          "manufacturerId": null,
+          "CPU Model": [
+            "Intel i5-8265U"
+          ],
+          "productImage": 0,
+          "webShowSellPrice": 1,
+          "priceLastChanged": "2024-03-08 03:01:45",
+          "boxSaleAllowed": 1,
+          "timestamp": "2024-03-31 03:20:32",
+          "boxName": "Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13\"/W10/B",
+          "rating": 0,
+          "manufacturerName": null,
+          "gradeId": null,
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "firstStockInDate": "2019-11-16 13:30:39",
+          "firstPrice": 500,
+          "cashBuyPrice": 0,
+          "previousPrice": 170,
+          "webShowBuyPrice": 1,
+          "categoryFriendlyName": "Laptops - Windows",
+          "masterBoxId": 0,
+          "Storage": [
+            "256GB"
+          ],
+          "ecomQuantity": 1,
+          "boxDeleted": 0,
+          "showOnWeb": 1,
+          "productLineId": [
+            26
+          ],
+          "isImageTypeInternal": null,
+          "webBuyAllowed": 1,
+          "productLineName": [
+            "Laptops"
+          ],
+          "scId": "3",
+          "popularityScore": 0.001101322,
+          "superCatDisplayOrder": 3,
+          "superCatName": "Computing",
+          "firstStockDate": "2019-11-16 13:30:39",
+          "new": 0,
+          "buyPerc": 47,
+          "superCatShowOnWWW": 1,
+          "priceReduced": 0,
+          "origin": "UK",
+          "categoryReadOnly": 0,
+          "cashPriceCalculated": 82,
+          "webSaleAllowed": 1,
+          "priceLastChanged_timestamp": 1709866905,
+          "discontinued": 0,
+          "RAM": [
+            "8GB"
+          ],
+          "firstImageDate": null,
+          "boxId": "PALSLENX39065B",
+          "sellPrice": 175,
+          "boxBuyAllowed": 1,
+          "exchangePerc": 66.67,
+          "boxWebSaleAllowed": 1,
+          "Model Name": [
+            "Thinkpad "
+          ],
+          "Grade": [
+            "B"
+          ],
+          "outOfStock": [
+            "long list of irrelevant data"
+          ]
+        },
+        {
+          "cashPriceCalculated": 169,
+          "webShowSellPrice": 1,
+          "manufacturerName": null,
+          "categoryId": "1065",
+          "timestamp": "2024-03-27 03:32:42",
+          "webBuyAllowed": 1,
+          "collectionQuantity": 2,
+          "imageFileName": null,
+          "boxWebSaleAllowed": 1,
+          "webSaleAllowed": 1,
+          "boxWebBuyAllowed": 1,
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i7-8665U/16GB Ram/512GB SSD/13\"/W11/B",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "exchangePrice": 0,
+          "boxId": "PALSLENX39097B",
+          "showOnWeb": 1,
+          "scId": "3",
+          "webShowBuyPrice": 1,
+          "exchangePriceCalculated": 240,
+          "firstPrice": 360,
+          "cashBuyPrice": 0,
+          "superCatName": "Computing",
+          "productImage": 0,
+          "boxName": "Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13\"/W11/B",
+          "exchangePerc": 66.67,
+          "firstStockDate": "2024-02-25 15:38:30",
+          "operatorId": null,
+          "boxVisibilityOnWeb": 1,
+          "sellPrice": 360,
+          "superCatDisplayOrder": 3,
+          "masterBoxname": null,
+          "popularityScore": 0,
+          "rating": 0,
+          "productLineName": [
+            "Laptops"
+          ],
+          "imageNames": null,
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39097B_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39097B_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39097B_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "new": 0,
+          "objectID": "PALSLENX39097B",
+          "categoryReadOnly": 0,
+          "outOfStock": [
+            "long list of irrelevant data"
+          ],
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "priceLastChanged": "2024-02-25 15:32:47",
+          "showOnWebHotProducts": 1,
+          "firstStockInDate": "2024-02-25 15:38:30",
+          "ecomQuantity": 2,
+          "productLineId": [
+            26
+          ],
+          "gradeId": null,
+          "firstImageDate": null,
+          "superCatShowOnWWW": 1,
+          "previousPrice": 360,
+          "discontinued": 0,
+          "buyPerc": 47,
+          "boxDeleted": 0,
+          "origin": "UK",
+          "superCatFriendlyName": "Computing",
+          "priceReduced": 0,
+          "collectionStores": [
+            "store 1",
+            "store 2"
+          ],
+          "priceLastChanged_timestamp": 1708875167,
+          "boxSaleAllowed": 1,
+          "masterBoxId": 0,
+          "stores": [
+            "store 1",
+            "store 2"
+          ],
+          "categoryFriendlyName": "Laptops - Windows",
+          "categoryName": "Laptops - Windows",
+          "boxBuyAllowed": 1,
+          "isImageTypeInternal": null,
+          "manufacturerId": null,
+          "networkName": null,
+          "superCatActive": 1
+        },
+        {
+          "masterBoxname": null,
+          "webSaleAllowed": 1,
+          "productImage": 0,
+          "superCatFriendlyName": "Computing",
+          "firstStockInDate": "2024-01-04 11:15:22",
+          "boxVisibilityOnWeb": 1,
+          "exchangePerc": 66.67,
+          "popularityScore": 0,
+          "ecomQuantity": 1,
+          "exchangePriceCalculated": 143,
+          "showOnWeb": 1,
+          "stores": [
+            "store 3"
+          ],
+          "boxDeleted": 0,
+          "webShowSellPrice": 1,
+          "imageNames": null,
+          "superCatName": "Computing",
+          "productLineId": [
+            26
+          ],
+          "cashPriceCalculated": 101,
+          "isImageTypeInternal": null,
+          "boxBuyAllowed": 1,
+          "discontinued": 0,
+          "imageFileName": null,
+          "operatorId": null,
+          "firstImageDate": null,
+          "priceReduced": 0,
+          "productLineName": [
+            "Laptops"
+          ],
+          "collectionStores": [
+            "Kidderminster"
+          ],
+          "webBuyAllowed": 1,
+          "showOnWebHotProducts": 1,
+          "boxSaleAllowed": 1,
+          "origin": "UK",
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39078C_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39078C_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39078C_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "superCatActive": 1,
+          "firstPrice": 235,
+          "sellPrice": 215,
+          "superCatDisplayOrder": 3,
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "timestamp": "2024-03-27 03:31:58",
+          "superCatShowOnWWW": 1,
+          "categoryFriendlyName": "Laptops - Windows",
+          "masterBoxId": 0,
+          "networkName": null,
+          "categoryReadOnly": 0,
+          "collectionQuantity": 1,
+          "boxId": "PALSLENX39078C",
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i5-8365U/8GB Ram/256GB SSD/13\"/W11/C",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "categoryId": "1065",
+          "boxWebSaleAllowed": 1,
+          "previousPrice": 235,
+          "new": 0,
+          "manufacturerId": null,
+          "webShowBuyPrice": 1,
+          "manufacturerName": null,
+          "buyPerc": 47,
+          "scId": "3",
+          "categoryName": "Laptops - Windows",
+          "objectID": "PALSLENX39078C",
+          "priceLastChanged": "2024-03-08 03:01:45",
+          "gradeId": null,
+          "firstStockDate": "2024-01-04 11:15:22",
+          "boxWebBuyAllowed": 1,
+          "boxName": "Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13\"/W11/C",
+          "cashBuyPrice": 0,
+          "exchangePrice": 0,
+          "priceLastChanged_timestamp": 1709866905,
+          "outOfStock": [
+            "long list of irrelevant data"
+          ],
+          "rating": 0
+        },
+        {
+          "masterBoxId": 0,
+          "gradeId": null,
+          "priceReduced": 0,
+          "boxSaleAllowed": 1,
+          "categoryId": "1065",
+          "exchangePerc": 66.67,
+          "discontinued": 0,
+          "productLineId": [
+            26
+          ],
+          "objectID": "PALSLENX390662B",
+          "popularityScore": 0,
+          "showOnWeb": 1,
+          "categoryName": "Laptops - Windows",
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390662B_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390662B_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390662B_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "webBuyAllowed": 1,
+          "productLineName": [
+            "Laptops"
+          ],
+          "new": 0,
+          "firstStockDate": "2024-03-10 11:41:30",
+          "operatorId": null,
+          "collectionStores": [
+            "Bulwell"
+          ],
+          "outOfStock": [
+            "long list of irrelevant data"
+          ],
+          "boxDeleted": 0,
+          "boxBuyAllowed": 1,
+          "categoryFriendlyName": "Laptops - Windows",
+          "cashBuyPrice": 0,
+          "stores": [
+            "store name"
+          ],
+          "showOnWebHotProducts": 1,
+          "superCatName": "Computing",
+          "firstImageDate": null,
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i5-8365U/16GB Ram/240GB SSD/13\"/W11/B",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "exchangePrice": 0,
+          "imageNames": null,
+          "masterBoxname": null,
+          "exchangePriceCalculated": 126,
+          "webShowBuyPrice": 1,
+          "priceLastChanged": "2024-03-09 11:28:29",
+          "firstStockInDate": "2024-03-10 11:41:30",
+          "categoryReadOnly": 0,
+          "superCatFriendlyName": "Computing",
+          "origin": "UK",
+          "manufacturerName": null,
+          "priceLastChanged_timestamp": 1709983709,
+          "boxId": "PALSLENX390662B",
+          "webSaleAllowed": 1,
+          "boxVisibilityOnWeb": 1,
+          "buyPerc": 47,
+          "boxWebBuyAllowed": 1,
+          "rating": 0,
+          "webShowSellPrice": 1,
+          "manufacturerId": null,
+          "scId": "3",
+          "boxWebSaleAllowed": 1,
+          "cashPriceCalculated": 89,
+          "isImageTypeInternal": null,
+          "productImage": 0,
+          "firstPrice": 190,
+          "sellPrice": 190,
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "superCatShowOnWWW": 1,
+          "collectionQuantity": 1,
+          "superCatActive": 1,
+          "previousPrice": 190,
+          "timestamp": "2024-03-27 03:31:30",
+          "superCatDisplayOrder": 3,
+          "boxName": "Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13\"/W11/B",
+          "imageFileName": null,
+          "networkName": null,
+          "ecomQuantity": 1
+        },
+        {
+          "collectionStores": [
+            "Brighton"
+          ],
+          "boxId": "PALSLENX39061C",
+          "manufacturerId": null,
+          "exchangePerc": 66.67,
+          "outOfStock": [
+            "long list of irrelevant data"
+          ],
+          "superCatName": "Computing",
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i5-8265U/8GB Ram/256GB SSD/13\"/W11/C",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "productLineName": [
+            "Laptops"
+          ],
+          "productLineId": [
+            26
+          ],
+          "superCatDisplayOrder": 3,
+          "previousPrice": 175,
+          "boxBuyAllowed": 1,
+          "masterBoxId": 0,
+          "categoryFriendlyName": "Laptops - Windows",
+          "boxWebSaleAllowed": 1,
+          "masterBoxname": null,
+          "webBuyAllowed": 1,
+          "priceLastChanged_timestamp": 1711811184,
+          "firstStockDate": "2024-03-30 17:12:04",
+          "ecomQuantity": 1,
+          "webShowSellPrice": 1,
+          "boxName": "Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13\"/W11/C",
+          "boxDeleted": 0,
+          "categoryName": "Laptops - Windows",
+          "superCatFriendlyName": "Computing",
+          "networkName": null,
+          "new": 0,
+          "sellPrice": 175,
+          "productImage": 0,
+          "webSaleAllowed": 1,
+          "superCatActive": 1,
+          "isImageTypeInternal": null,
+          "exchangePriceCalculated": 116,
+          "exchangePrice": 0,
+          "firstPrice": 175,
+          "rating": 0,
+          "categoryId": "1065",
+          "boxWebBuyAllowed": 1,
+          "cashPriceCalculated": 82,
+          "popularityScore": 0,
+          "superCatShowOnWWW": 1,
+          "discontinued": 0,
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "imageFileName": null,
+          "showOnWebHotProducts": 1,
+          "cashBuyPrice": 0,
+          "firstStockInDate": "2024-03-30 17:12:04",
+          "collectionQuantity": 1,
+          "categoryReadOnly": 0,
+          "buyPerc": 47,
+          "boxSaleAllowed": 1,
+          "operatorId": null,
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39061C_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39061C_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX39061C_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "webShowBuyPrice": 1,
+          "priceReduced": 0,
+          "timestamp": "2024-03-30 21:40:03",
+          "priceLastChanged": "2024-03-30 15:06:24",
+          "gradeId": null,
+          "objectID": "PALSLENX39061C",
+          "stores": [
+            "store 4"
+          ],
+          "manufacturerName": null,
+          "boxVisibilityOnWeb": 1,
+          "imageNames": null,
+          "scId": "3",
+          "origin": "UK",
+          "showOnWeb": 1,
+          "firstImageDate": null
+        },
+        {
+          "boxWebSaleAllowed": 1,
+          "origin": "UK",
+          "availability": [
+            "In Stock In Store",
+            "In Stock Online"
+          ],
+          "imageFileName": null,
+          "firstPrice": 200,
+          "isImageTypeInternal": null,
+          "superCatName": "Computing",
+          "buyPerc": 47,
+          "_highlightResult": {
+            "boxName": {
+              "value": "__ais-highlight__Lenovo__/ais-highlight__ __ais-highlight__X390__/ais-highlight__/i5-8265U/16GB Ram/256GB SSD/13\"/W11/B",
+              "matchLevel": "full",
+              "fullyHighlighted": false,
+              "matchedWords": [
+                "lenovo",
+                "x390s"
+              ]
+            },
+            "categoryFriendlyName": {
+              "value": "Laptops - Windows",
+              "matchLevel": "none",
+              "matchedWords": []
+            }
+          },
+          "productLineId": [
+            26
+          ],
+          "boxName": "Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13\"/W11/B",
+          "categoryName": "Laptops - Windows",
+          "priceLastChanged": "2024-03-08 03:01:45",
+          "showOnWeb": 1,
+          "firstStockInDate": "2024-02-27 15:12:55",
+          "boxSaleAllowed": 1,
+          "webShowBuyPrice": 1,
+          "stores": [
+            "a specific store 2"
+          ],
+          "outOfStock": [
+            "long list of irrelevant data"
+          ],
+          "masterBoxId": 0,
+          "gradeId": null,
+          "superCatDisplayOrder": 3,
+          "imageNames": null,
+          "superCatShowOnWWW": 1,
+          "discontinued": 0,
+          "priceReduced": 0,
+          "exchangePrice": 0,
+          "exchangePerc": 66.67,
+          "firstStockDate": "2024-02-27 15:12:55",
+          "networkName": null,
+          "imageUrls": {
+            "large": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390420B_l.jpg",
+            "small": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390420B_s.jpg",
+            "medium": "https://example.com/product_images/Computing/Laptops - Windows/PALSLENX390420B_m.jpg",
+            "masterBoxLarge": null,
+            "masterBoxSmall": null,
+            "masterBoxMedium": null
+          },
+          "sellPrice": 205,
+          "webSaleAllowed": 1,
+          "ecomQuantity": 1,
+          "exchangePriceCalculated": 136,
+          "firstImageDate": null,
+          "categoryFriendlyName": "Laptops - Windows",
+          "boxVisibilityOnWeb": 1,
+          "productLineName": [
+            "Laptops"
+          ],
+          "superCatFriendlyName": "Computing",
+          "operatorId": null,
+          "manufacturerName": null,
+          "objectID": "PALSLENX390420B",
+          "collectionStores": [
+            "Coventry - Hertford St"
+          ],
+          "collectionQuantity": 1,
+          "cashBuyPrice": 0,
+          "cashPriceCalculated": 96,
+          "rating": 0,
+          "productImage": 0,
+          "manufacturerId": null,
+          "showOnWebHotProducts": 1,
+          "boxDeleted": 0,
+          "webBuyAllowed": 1,
+          "boxWebBuyAllowed": 1,
+          "popularityScore": 0,
+          "priceLastChanged_timestamp": 1709866905,
+          "scId": "3",
+          "previousPrice": 200,
+          "boxId": "PALSLENX390420B",
+          "categoryReadOnly": 0,
+          "boxBuyAllowed": 1,
+          "masterBoxname": null,
+          "new": 0,
+          "superCatActive": 1,
+          "webShowSellPrice": 1,
+          "timestamp": "2024-03-29 11:30:04",
+          "categoryId": "1065"
+        }
+      ],
+      "nbHits": 6,
+      "hitsPerPage": 17,
+      "index": "prod_cex_uk",
+      "page": 0,
+      "nbPages": 1,
+      "processingTimeMS": 1,
+      "processingTimingsMS": {
+        "total": 1,
+        "fetch": {
+          "total": 1
+        }
+      },
+      "exhaustiveNbHits": true,
+      "exhaustiveTypo": true,
+      "facets_stats": {
+        "scId": {
+          "min": 3,
+          "max": 3,
+          "avg": 3,
+          "sum": 18
+        },
+        "sellPrice": {
+          "min": 175,
+          "max": 360,
+          "avg": 220,
+          "sum": 1320
+        },
+        "categoryId": {
+          "min": 1065,
+          "max": 1065,
+          "avg": 1065,
+          "sum": 6390
+        }
+      },
+      "query": "lenovo x390s",
+      "queryID": "307a472778fcf220c8560ff7a4cb1453",
+      "params": "clickAnalytics=true&facetFilters=%5B%5B%22availability%3AIn+Stock+Online%22%5D%5D&facets=%5B%22%2A%22%5D&filters=boxVisibilityOnWeb%3D1+AND+boxSaleAllowed%3D1&highlightPostTag=__%2Fais-highlight__&highlightPreTag=__ais-highlight__&hitsPerPage=17&maxValuesPerFacet=1000&page=0&query=lenovo+x390s&tagFilters&userToken=71d182c769bd4dbc94081214a363c014",
+      "facets": {
+        "RAM": {
+          "8GB": 1
+        },
+        "scId": {
+          "3": 6
+        },
+        "Grade": {
+          "B": 1
+        },
+        "stores": {
+          "store 1": 1,
+          "store 2": 1,
+          "store 3": 1,
+          "store 4": 1,
+          "store 5": 1,
+          "store 6": 1,
+          "store 7": 1
+        },
+        "Storage": {
+          "256GB": 1
+        },
+        "CPU Model": {
+          "Intel i5-8265U": 1
+        },
+        "sellPrice": {
+          "175": 2,
+          "190": 1,
+          "205": 1,
+          "215": 1,
+          "360": 1
+        },
+        "CPU Family": {
+          "Core i5": 1
+        },
+        "Model Name": {
+          "Thinkpad": 1
+        },
+        "categoryId": {
+          "1065": 6
+        },
+        "Manufacturer": {
+          "Lenovo": 1
+        },
+        "Model Number": {
+          "X390": 1
+        },
+        "availability": {
+          "In Stock In Store": 6,
+          "In Stock Online": 6
+        },
+        "Operating System": {
+          "Windows 10": 1
+        },
+        "Storage Drive Type": {
+          "SSD": 1
+        },
+        "Screen Size 'Inches'": {
+          "13\"": 1
+        },
+        "categoryFriendlyName": {
+          "Laptops - Windows": 6
+        }
+      },
+      "renderingContent": {},
+      "exhaustive": {
+        "facetsCount": true,
+        "nbHits": true,
+        "typo": true
+      },
+      "exhaustiveFacetsCount": true
+    }
+  ]
+}

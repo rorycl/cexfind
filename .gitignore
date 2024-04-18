@@ -1,2 +1,10 @@
 debug.log
 go.work
+\.*
+/cli
+/webserver
+/bin/webserver*
+/bin/cli*
+cover.html
+cover.rpt
+coverage.out
