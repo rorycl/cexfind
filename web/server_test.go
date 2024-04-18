@@ -13,7 +13,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind"
 )
 
 // TestSetupFS sets up the FS
@@ -108,7 +108,7 @@ func TestFavicon(t *testing.T) {
 	}
 }
 
-// TestResults tests a POST to Results; note that search.Search is
+// TestResults tests a POST to Results; note that cex.Search is
 // swapped out
 func TestResults(t *testing.T) {
 
@@ -117,18 +117,18 @@ func TestResults(t *testing.T) {
 	DirFS.TplFS = os.DirFS("templates")
 
 	// override package global searcher which indirects Search
-	searcher = func(queries []string, strict bool) (search.BoxMap, error) {
-		bm := search.BoxMap{}
+	searcher = func(queries []string, strict bool) (cex.BoxMap, error) {
+		bm := cex.BoxMap{}
 		if len(queries) < 1 {
 			return bm, errors.New("no results")
 		}
-		bm = search.BoxMap{
-			"test 1": []search.Box{
-				search.Box{Model: "1a", Name: "1a name", ID: "id1", Price: 1},
-				search.Box{Model: "1b", Name: "1b name", ID: "id2", Price: 2},
+		bm = cex.BoxMap{
+			"test 1": []cex.Box{
+				cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: 1},
+				cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: 2},
 			},
-			"test 2": []search.Box{
-				search.Box{Model: "2a", Name: "2a name", ID: "id3", Price: 3},
+			"test 2": []cex.Box{
+				cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: 3},
 			},
 		}
 		return bm, nil

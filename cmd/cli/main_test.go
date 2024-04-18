@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind"
 )
 
 func TestMainFlags(t *testing.T) {
@@ -85,7 +85,7 @@ func TestMainMain(t *testing.T) {
 		return queriesType{"query 1", "query2"}, false
 	}
 
-	f, err := os.Open("../../search/testdata/example.json")
+	f, err := os.Open("../../testdata/example.json")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -100,7 +100,7 @@ func TestMainMain(t *testing.T) {
 	defer ts.Close()
 
 	// overwrite global URL with test URL
-	search.URL = ts.URL
+	cex.URL = ts.URL
 
 	// https://stackoverflow.com/a/74299854
 	storeStdout := os.Stdout

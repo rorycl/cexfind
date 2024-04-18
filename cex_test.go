@@ -48,6 +48,18 @@ func TestTypeExtraction(t *testing.T) {
 			name:  `Lenovo Thinkpad T14S/Ryzen3500U/16GB Ram/256GB SSD/14"/W10/B PALSLENTXXXXXXB`,
 			typer: "Lenovo T14s",
 		},
+		{
+			name:  `Lenovo T14 Gen 1/i7-10610U/32GB Ram/512GB SSD/14"/MX330/W10/B PALSLENT14G178B`,
+			typer: "Lenovo T14 Gen1",
+		},
+		{
+			name:  `Lenovo T14 Gen4/i7-1355u/16GB RAM/512GB SSD/14"/W11/A PALSLENT14G4142A`,
+			typer: "Lenovo T14 Gen4",
+		},
+		{
+			name:  `Lenovo T14 (Gen3)/i5-1245U/16GB Ram/512GB SSD/14"/W11/B PALSLENT14GEN3514B`,
+			typer: "Lenovo T14 Gen3",
+		},
 	} {
 		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
 			if got, want := extractModelType(r.name), r.typer; got != want {

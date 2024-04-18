@@ -16,7 +16,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/gorilla/schema"
 
-	"github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind"
 )
 
 var (
@@ -34,8 +34,8 @@ var (
 	BaseURL string = ""
 )
 
-// searcher is an indirect of search.Search to allow testing
-var searcher func(queries []string, strict bool) (search.BoxMap, error) = search.Search
+// searcher is an indirect of cex.Search to allow testing
+var searcher func(queries []string, strict bool) (cex.BoxMap, error) = cex.Search
 
 // listenAndServe is an indirect of http/net.Server.ListenAndServe
 var listenAndServe = (*http.Server).ListenAndServe
@@ -204,12 +204,12 @@ func Results(w http.ResponseWriter, r *http.Request) {
 
 	// search; note that searcher is an indirect to search/cex.Search
 	type SearchResults struct {
-		Results   search.BoxMap
+		Results   cex.BoxMap
 		DetailURL string
 		Err       error
 	}
 	sr := SearchResults{
-		DetailURL: search.URLDETAIL,
+		DetailURL: cex.URLDETAIL,
 	}
 	sr.Results, sr.Err = searcher(queries, postResults.Strict)
 

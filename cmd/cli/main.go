@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind"
 )
 
 var usage = `
@@ -62,7 +62,7 @@ func main() {
 
 	queries, strict := flagGetter()
 
-	results, err := search.Search(queries, strict)
+	results, err := cex.Search(queries, strict)
 	if err != nil {
 		fmt.Println(err)
 		Exit(1)
