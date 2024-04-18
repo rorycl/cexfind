@@ -73,12 +73,6 @@ func (in inModel) Init() tea.Cmd {
 	return textinput.Blink
 }
 
-func (in *inModel) updateInput(msg tea.Msg) tea.Cmd {
-	var cmd tea.Cmd
-	in.input, cmd = in.input.Update(msg)
-	return cmd
-}
-
 func (in *inModel) Focus() {
 	in.input.Focus()
 }

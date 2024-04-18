@@ -8,6 +8,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"time"
 
 	"github.com/charmbracelet/bubbles/help"
@@ -104,8 +105,10 @@ func NewModel() *model {
 
 	// set find function (normally find, but can use findLocal for
 	// testing
-	// m.finder = find
-	m.finder = findLocal
+	m.finder = find
+	if _, ok := os.LookupEnv("DEBUGFIND"); ok {
+		m.finder = findLocal
+	}
 
 	return &m
 }
