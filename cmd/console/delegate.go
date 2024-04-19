@@ -109,6 +109,28 @@ func NewCustomDelegate() CustomDelegate {
 	}
 }
 
+// SetHeight sets delegate's preferred height.
+func (d *CustomDelegate) SetHeight(i int) {
+	d.height = i
+}
+
+// Height returns the delegate's preferred height.
+// This has effect only if ShowDescription is true,
+// otherwise height is always 1.
+func (d CustomDelegate) Height() int {
+	return 1
+}
+
+// SetSpacing sets the delegate's spacing.
+func (d *CustomDelegate) SetSpacing(i int) {
+	d.spacing = i
+}
+
+// Spacing returns the delegate's spacing.
+func (d CustomDelegate) Spacing() int {
+	return d.spacing
+}
+
 // Update checks whether the delegate's UpdateFunc is set and calls it.
 func (d CustomDelegate) Update(msg tea.Msg, m *list.Model) tea.Cmd {
 	if d.UpdateFunc == nil {
@@ -151,6 +173,7 @@ func (d CustomDelegate) Render(w io.Writer, m list.Model, index int, item list.I
 		isEmpty    = desc == emptyItem
 	)
 
+	// fixme (set heading)
 	if isEmpty {
 		desc = ""
 	}

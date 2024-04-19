@@ -73,6 +73,6 @@ func (s status) setCopied(msg string) status {
 
 // status on failing to copy to clipboard
 func (s status) setNotCopied(msg string) status {
-	tpl := `you selected "%s%s"`
+	tpl := `"%s%s" selected`
 	return status(fmt.Sprintf(tpl, msg, ellipsis))
 }

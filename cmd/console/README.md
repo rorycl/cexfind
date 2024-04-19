@@ -12,18 +12,19 @@ delegate is adapted from the example provided in the bubbletea
 
 ![](diagram.png)
 
-I found it helpful to watch the Charm
-[kancli](https://www.youtube.com/watch?v=ZA93qgdLUzM) simple cli kanban
-board helpful to understand the relationship between models, together
-with the two short but invaluable tutorials in the bubbletea repo.
+The bubbletea repo includes two short but informative tutorials about
+the bubbletea ELM architecture and commands.
+
+I also found the Charm video on YouTube about the mini-project
+[kancli](https://www.youtube.com/watch?v=ZA93qgdLUzM) helpful. The
+`kancli` app is a simple cli kanban board with several models.
 
 Commands (as explained in the tutorial/commands/README.md) are
-particularly fun and to use once one has got to grips with the ELM
-architecture. For example the following `case` in the main model's
-Update function is triggered on a `listEnterMsg`, which temporarily sets
-the status area to notify the user of text having been copied to the
-clipboard. This event which itself triggers an asynchronous update to
-the status area to reset status after 2.5s.
+particularly fun to use. For example the following `case` in the main
+model's Update function is triggered on a `listEnterMsg`, which
+temporarily sets the status area to notify the user of text having been
+copied to the clipboard. This event itself triggers an asynchronous
+update to reset the status area after 2.5s.
 
 ```go
 // data was selected in the list view; reset the status after a

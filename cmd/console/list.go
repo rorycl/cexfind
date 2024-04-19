@@ -163,9 +163,11 @@ type listEnterMsg struct {
 func (l listEnterMsg) String() string {
 	trimmedDesc := l.desc
 	fields := strings.Fields(l.desc)
-	if len(fields) > 1 {
-		rightWord := fields[len(fields)-1]
-		trimmedDesc = strings.TrimRight(strings.ReplaceAll(l.desc, rightWord, " "), " ")
+	if len(fields) > 2 {
+		trimmedDesc = strings.Join(fields[1:len(fields)-1], " ")
+	}
+	if len(trimmedDesc) > 40 {
+		trimmedDesc = trimmedDesc[:40]
 	}
 	return trimmedDesc
 }
