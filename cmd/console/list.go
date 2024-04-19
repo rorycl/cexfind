@@ -19,8 +19,10 @@ var (
 	arbitraryVerticalOffset, arbitraryHorizantalOffset = 5, 7
 )
 
-// an item is a list item, meeting the list delegate CustomItem
-// interface
+// an item is a list item, meeting the list.Item interface (which
+// requires a
+//     FilterValue() string
+// function
 type item struct {
 	desc      string // a rendered description
 	isHeading bool
@@ -98,8 +100,8 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return li, tea.Batch(cmds...)
 }
 
-// View is a bubbletea required function and renders the lower part of
-// the TUI window
+// View is a bubbletea required function and renders the list component
+// of the TUI window
 func (li liModel) View() string {
 	return listPanel.Render(li.list.View())
 }

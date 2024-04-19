@@ -6,6 +6,7 @@ import (
 	"github.com/charmbracelet/bubbles/key"
 )
 
+// keyState indicates the main model's current keymap
 type keyState int
 
 const (

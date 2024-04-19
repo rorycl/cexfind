@@ -40,6 +40,7 @@ var (
 			Padding(0, 0, 1, 2)
 )
 
+// state indicates the main model's state
 type state int
 
 const (
