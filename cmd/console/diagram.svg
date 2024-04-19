@@ -30,14 +30,14 @@
      showgrid="false"
      showguides="false"
      inkscape:zoom="1.3197694"
-     inkscape:cx="198.51953"
-     inkscape:cy="305.73523"
-     inkscape:window-width="1221"
+     inkscape:cx="168.2112"
+     inkscape:cy="468.64248"
+     inkscape:window-width="1108"
      inkscape:window-height="990"
      inkscape:window-x="0"
      inkscape:window-y="89"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg6352"
+     inkscape:current-layer="layer1"
      inkscape:document-units="mm">
     <sodipodi:guide
        position="1553.7158,-8.5795852"
@@ -182,2435 +182,2452 @@
        height="19.726892"
        id="rect1386" />
   </defs>
-  <rect
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0.851116px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
-     id="rect2124"
-     width="182.54372"
-     height="146.71725"
-     x="611.42322"
-     y="176.84277" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="0"
-     x="1520.5"
-     y="303.38229"
-     id="text5635"
-     transform="translate(-27.884625,-48.315365)" />
-  <rect
-     fill="#fefece"
-     height="33.098938"
-     id="main.CustomItem"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="60.703609"
-     x="525.06409"
-     y="485.21625" />
-  <circle
-     cx="537.677"
-     cy="492.41077"
-     fill="#b4a7e5"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5670"
-     r="4.9462204" />
-  <path
-     d="m 535.84325,490.50665 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
-     id="path5672"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     font-style="italic"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="74"
-     x="1371.45"
-     y="288.10739"
-     id="text5674"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.405158,364.72931)">CustomItem</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="525.51385"
-     x2="585.31805"
-     y1="499.60513"
-     y2="499.60513"
-     id="line5676" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="525.51385"
-     x2="585.31805"
-     y1="503.20236"
-     y2="503.20236"
-     id="line5678" />
-  <circle
-     cx="530.01038"
-     cy="508.14859"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5680"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="109"
-     x="1346.5"
-     y="322.1636"
-     id="text5682"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.405158,364.72931)">Description() string</text>
-  <circle
-     cx="530.01038"
-     cy="513.90631"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5684"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="92"
-     x="1346.5"
-     y="334.96829"
-     id="text5686"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.405158,364.72931)">IsHeading() bool</text>
   <g
-     id="g7116"
-     transform="matrix(0.4496564,0,0,0.4496564,-339.61197,40.881155)">
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="bottom">
     <rect
-       fill="#fefece"
-       height="48"
-       id="main.findPerformMsg"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="129"
-       x="1763.12"
-       y="81.166344" />
-    <circle
-       cx="1778.12"
-       cy="97.166344"
-       fill="#7fffd4"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5763"
-       r="11" />
-    <path
-       d="m 1777.6045,97.728848 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875002 -1.1094,2.796802 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.156202 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
-       id="path5765" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="12px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="97"
-       x="1929.5"
-       y="301.10739"
-       id="text5767"
-       transform="translate(-137.37995,-199.78675)">findPerformMsg</text>
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1764.12"
-       x2="1891.1201"
-       y1="113.16634"
-       y2="113.16634"
-       id="line5769" />
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1764.12"
-       x2="1891.1201"
-       y1="121.16634"
-       y2="121.16634"
-       id="line5771" />
+       style="opacity:0.7;fill:#ffffff;stroke:#ffffff;stroke-width:4.66875;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000"
+       id="rect988"
+       width="799.90411"
+       height="645.80261"
+       x="1.9507754"
+       y="1.9507754" />
   </g>
-  <rect
-     fill="#fefece"
-     height="50.37204"
-     id="main.inModel"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674485"
-     width="173.11772"
-     x="193.00746"
-     y="258.60919" />
-  <circle
-     cx="266.86349"
-     cy="265.80368"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5774"
-     r="4.9462204" />
-  <path
-     d="m 266.63166,266.05664 q -0.83609,-0.31615 -1.13115,-0.66041 -0.2881,-0.35131 -0.2881,-0.94149 0,-0.75879 0.48482,-1.19437 0.48477,-0.43563 1.32788,-0.43563 0.38644,0 0.76581,0.0914 0.38644,0.0843 0.76581,0.25994 v 1.07495 q -0.35127,-0.25293 -0.72363,-0.37937 -0.36535,-0.1335 -0.72368,-0.1335 -0.39345,0 -0.61126,0.1616 -0.21076,0.16156 -0.21076,0.45667 0,0.23185 0.15455,0.38644 0.15459,0.14753 0.64638,0.33018 l 0.47776,0.1827 q 0.66747,0.24591 0.98363,0.65339 0.32321,0.40753 0.32321,1.0258 0,0.84311 -0.49885,1.2576 -0.49885,0.41454 -1.51058,0.41454 -0.41453,0 -0.82903,-0.0983 -0.41454,-0.0984 -0.80097,-0.28809 v -1.13818 q 0.43563,0.30914 0.85012,0.46369 0.41454,0.15459 0.815,0.15459 0.40753,0 0.63235,-0.18269 0.22483,-0.18967 0.22483,-0.5199 0,-0.25293 -0.15459,-0.43562 -0.14753,-0.18967 -0.42857,-0.30208 z"
-     id="path5776"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="48"
-     x="2653.25"
-     y="269.10739"
-     id="text5778"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)">inModel</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674485"
-     x1="193.45711"
-     x2="365.67557"
-     y1="272.9982"
-     y2="272.9982"
-     id="line5780" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674485"
-     x1="193.45711"
-     x2="365.67557"
-     y1="276.59546"
-     y2="276.59546"
-     id="line5782" />
-  <circle
-     cx="197.95367"
-     cy="281.54166"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5784"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="115"
-     x="2488.5"
-     y="303.1636"
-     id="text5786"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)">Init() bubbletea.Cmd</text>
-  <circle
-     cx="197.95367"
-     cy="287.29938"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5788"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="41"
-     x="2488.5"
-     y="315.96829"
-     id="text5790"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)">Focus()</text>
-  <circle
-     cx="197.95367"
-     cy="293.0571"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5792"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="31"
-     x="2488.5"
-     y="328.77289"
-     id="text5794"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)">Blur()</text>
-  <circle
-     cx="197.95367"
-     cy="298.81482"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5796"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="71"
-     x="2488.5"
-     y="341.57761"
-     id="text5798"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)">View() string</text>
-  <circle
-     cx="197.95367"
-     cy="304.57254"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5800"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="359"
-     x="2488.5"
-     y="354.38229"
-     id="text5802"
-     transform="matrix(0.4496564,0,0,0.4496564,-916.96937,146.66585)"><tspan
-       sodipodi:role="line"
-       id="tspan7368"
-       x="2488.5"
-       y="354.38229">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</tspan></text>
-  <rect
-     fill="#fefece"
-     height="38.856651"
-     id="main.item"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="60.703609"
-     x="524.78693"
-     y="398.07806" />
-  <circle
-     cx="547.15741"
-     cy="405.27258"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5840"
-     r="4.9462204" />
-  <path
-     d="m 546.92548,405.52548 q -0.83611,-0.31615 -1.13123,-0.66041 -0.28805,-0.35131 -0.28805,-0.94149 0,-0.7588 0.4848,-1.19439 0.48479,-0.43562 1.32797,-0.43562 0.38642,0 0.76577,0.0913 0.38643,0.0843 0.76578,0.25995 v 1.07495 q -0.35132,-0.25293 -0.7236,-0.37938 -0.36533,-0.1335 -0.72372,-0.1335 -0.39337,0 -0.6112,0.16161 -0.21077,0.16156 -0.21077,0.45667 0,0.23184 0.15457,0.38644 0.15457,0.14752 0.64631,0.33018 l 0.47773,0.18269 q 0.66752,0.24592 0.98373,0.65339 0.32316,0.40754 0.32316,1.02581 0,0.84311 -0.49882,1.25759 -0.49893,0.41455 -1.51058,0.41455 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13818 q 0.43567,0.30915 0.85013,0.46369 0.41458,0.1546 0.81502,0.1546 0.40751,0 0.63229,-0.18271 0.22491,-0.18966 0.22491,-0.51989 0,-0.25293 -0.15457,-0.43562 -0.14762,-0.18967 -0.4286,-0.30208 z"
-     id="path5842"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="27"
-     x="1396.75"
-     y="511.60739"
-     id="text5844"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.682308,177.09301)">item</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="525.23669"
-     x2="585.04089"
-     y1="412.4671"
-     y2="412.4671"
-     id="line5846" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="525.23669"
-     x2="585.04089"
-     y1="416.06433"
-     y2="416.06433"
-     id="line5848" />
-  <circle
-     cx="529.73315"
-     cy="421.01053"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5850"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="109"
-     x="1346.5"
-     y="545.66357"
-     id="text5852"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.682308,177.09301)">Description() string</text>
-  <circle
-     cx="529.73315"
-     cy="426.76828"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5854"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="92"
-     x="1346.5"
-     y="558.46832"
-     id="text5856"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.682308,177.09301)">IsHeading() bool</text>
-  <circle
-     cx="529.73315"
-     cy="432.52594"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5858"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="104"
-     x="1346.5"
-     y="571.27289"
-     id="text5860"
-     transform="matrix(0.4496564,0,0,0.4496564,-71.682308,177.09301)">FilterValue() string</text>
   <g
-     id="g7185"
-     transform="matrix(0.4496564,0,0,0.4496564,-630.02231,111.63192)">
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="above">
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0.851116px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       id="rect2124"
+       width="182.54372"
+       height="146.71725"
+       x="611.42322"
+       y="176.84277" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="0"
+       x="1520.5"
+       y="303.38229"
+       id="text5635"
+       transform="translate(-27.884632,-48.315378)" />
     <rect
        fill="#fefece"
-       height="124.8281"
-       id="main.liModel"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="385"
-       x="2255.9443"
-       y="326.86575" />
+       height="33.098938"
+       id="main.CustomItem"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="60.703609"
+       x="525.06409"
+       y="485.21625" />
     <circle
-       cx="2422.6943"
-       cy="342.86575"
-       fill="#7fffd4"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5863"
-       r="11" />
+       cx="537.677"
+       cy="492.41077"
+       fill="#b4a7e5"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5670"
+       r="4.9462204" />
     <path
-       d="m 2422.1788,343.42827 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
-       id="path5865" />
+       d="m 535.84325,490.50665 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
+       id="path5672"
+       style="stroke-width:0.449656" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       font-style="italic"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="74"
+       x="1371.45"
+       y="288.10739"
+       id="text5674"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.405177,364.72941)">CustomItem</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="525.51385"
+       x2="585.31805"
+       y1="499.60513"
+       y2="499.60513"
+       id="line5676" />
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="525.51385"
+       x2="585.31805"
+       y1="503.20236"
+       y2="503.20236"
+       id="line5678" />
+    <circle
+       cx="530.01038"
+       cy="508.14859"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5680"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="109"
+       x="1346.5"
+       y="322.1636"
+       id="text5682"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.405177,364.72941)">Description() string</text>
+    <circle
+       cx="530.01038"
+       cy="513.90631"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5684"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="92"
+       x="1346.5"
+       y="334.96829"
+       id="text5686"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.405177,364.72941)">IsHeading() bool</text>
+    <g
+       id="g7116"
+       transform="matrix(0.44965652,0,0,0.44965652,-339.61206,40.881166)">
+      <rect
+         fill="#fefece"
+         height="48"
+         id="main.findPerformMsg"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="129"
+         x="1763.12"
+         y="81.166344" />
+      <circle
+         cx="1778.12"
+         cy="97.166344"
+         fill="#7fffd4"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5763"
+         r="11" />
+      <path
+         d="m 1777.6045,97.728848 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875002 -1.1094,2.796802 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.156202 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
+         id="path5765" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="97"
+         x="1929.5"
+         y="301.10739"
+         id="text5767"
+         transform="translate(-137.37995,-199.78675)">findPerformMsg</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1764.12"
+         x2="1891.1201"
+         y1="113.16634"
+         y2="113.16634"
+         id="line5769" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1764.12"
+         x2="1891.1201"
+         y1="121.16634"
+         y2="121.16634"
+         id="line5771" />
+    </g>
+    <rect
+       fill="#fefece"
+       height="50.37204"
+       id="main.inModel"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674485"
+       width="173.11772"
+       x="193.00746"
+       y="258.60919" />
+    <circle
+       cx="266.86349"
+       cy="265.80368"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5774"
+       r="4.9462204" />
+    <path
+       d="m 266.63166,266.05664 q -0.83609,-0.31615 -1.13115,-0.66041 -0.2881,-0.35131 -0.2881,-0.94149 0,-0.75879 0.48482,-1.19437 0.48477,-0.43563 1.32788,-0.43563 0.38644,0 0.76581,0.0914 0.38644,0.0843 0.76581,0.25994 v 1.07495 q -0.35127,-0.25293 -0.72363,-0.37937 -0.36535,-0.1335 -0.72368,-0.1335 -0.39345,0 -0.61126,0.1616 -0.21076,0.16156 -0.21076,0.45667 0,0.23185 0.15455,0.38644 0.15459,0.14753 0.64638,0.33018 l 0.47776,0.1827 q 0.66747,0.24591 0.98363,0.65339 0.32321,0.40753 0.32321,1.0258 0,0.84311 -0.49885,1.2576 -0.49885,0.41454 -1.51058,0.41454 -0.41453,0 -0.82903,-0.0983 -0.41454,-0.0984 -0.80097,-0.28809 v -1.13818 q 0.43563,0.30914 0.85012,0.46369 0.41454,0.15459 0.815,0.15459 0.40753,0 0.63235,-0.18269 0.22483,-0.18967 0.22483,-0.5199 0,-0.25293 -0.15459,-0.43562 -0.14753,-0.18967 -0.42857,-0.30208 z"
+       id="path5776"
+       style="stroke-width:0.449656" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="12px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="43"
-       x="3075.75"
-       y="262.60739"
-       id="text5867"
-       transform="translate(-632.55559,84.412666)">liModel</text>
+       textLength="48"
+       x="2653.25"
+       y="269.10739"
+       id="text5778"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)">inModel</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="2256.9443"
-       x2="2639.9443"
-       y1="358.86575"
-       y2="358.86575"
-       id="line5869" />
+       style="stroke:#a80036;stroke-width:0.674485"
+       x1="193.45711"
+       x2="365.67557"
+       y1="272.9982"
+       y2="272.9982"
+       id="line5780" />
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="2256.9443"
-       x2="2639.9443"
-       y1="366.86575"
-       y2="366.86575"
-       id="line5871" />
+       style="stroke:#a80036;stroke-width:0.674485"
+       x1="193.45711"
+       x2="365.67557"
+       y1="276.59546"
+       y2="276.59546"
+       id="line5782" />
     <circle
-       cx="2266.9443"
-       cy="377.86575"
+       cx="197.95367"
+       cy="281.54166"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5873"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5784"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
        textLength="115"
-       x="2908.5"
-       y="296.6636"
-       id="text5875"
-       transform="translate(-632.55559,84.412666)">Init() bubbletea.Cmd</text>
+       x="2488.5"
+       y="303.1636"
+       id="text5786"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)">Init() bubbletea.Cmd</text>
     <circle
-       cx="2266.9443"
-       cy="390.67047"
+       cx="197.95367"
+       cy="287.29938"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5877"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5788"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="359"
-       x="2908.5"
-       y="309.46829"
-       id="text5879"
-       transform="translate(-632.55559,84.412666)">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</text>
+       textLength="41"
+       x="2488.5"
+       y="315.96829"
+       id="text5790"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)">Focus()</text>
     <circle
-       cx="2266.9443"
-       cy="403.47516"
+       cx="197.95367"
+       cy="293.0571"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5881"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5792"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="31"
+       x="2488.5"
+       y="328.77289"
+       id="text5794"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)">Blur()</text>
+    <circle
+       cx="197.95367"
+       cy="298.81482"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5796"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
        textLength="71"
-       x="2908.5"
-       y="322.27289"
-       id="text5883"
-       transform="translate(-632.55559,84.412666)">View() string</text>
+       x="2488.5"
+       y="341.57761"
+       id="text5798"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)">View() string</text>
     <circle
-       cx="2266.9443"
-       cy="416.27985"
+       cx="197.95367"
+       cy="304.57254"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5885"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5800"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="33"
-       x="2908.5"
-       y="335.07761"
-       id="text5887"
-       transform="translate(-632.55559,84.412666)">Next()</text>
-    <circle
-       cx="2266.9443"
-       cy="429.08456"
-       fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5889"
-       r="3" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="11px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="33"
-       x="2908.5"
-       y="347.88229"
-       id="text5891"
-       transform="translate(-632.55559,84.412666)">Prev()</text>
-    <circle
-       cx="2266.9443"
-       cy="441.88925"
-       fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5893"
-       r="3" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="11px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="252"
-       x="2908.5"
-       y="360.68701"
-       id="text5895"
-       transform="translate(-632.55559,84.412666)">ReplaceList(items []list.Item) bubbletea.Cmd</text>
-  </g>
-  <g
-     id="g7092"
-     transform="matrix(0.4496564,0,0,0.4496564,-341.79574,40.815055)">
+       textLength="359"
+       x="2488.5"
+       y="354.38229"
+       id="text5802"
+       transform="matrix(0.44965652,0,0,0.44965652,-916.96961,146.66589)"><tspan
+         sodipodi:role="line"
+         id="tspan7368"
+         x="2488.5"
+         y="354.38229">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</tspan></text>
     <rect
        fill="#fefece"
-       height="60.804699"
-       id="main.listEnterMsg"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="109"
-       x="1643.9614"
-       y="81.313324" />
+       height="38.856651"
+       id="main.item"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="60.703609"
+       x="524.78693"
+       y="398.07806" />
     <circle
-       cx="1658.9614"
-       cy="97.313354"
+       cx="547.15741"
+       cy="405.27258"
        fill="#7fffd4"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5898"
-       r="11" />
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5840"
+       r="4.9462204" />
     <path
-       d="m 1658.4459,97.875838 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875002 -1.1094,2.796802 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.156202 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
-       id="path5900" />
+       d="m 546.92548,405.52548 q -0.83611,-0.31615 -1.13123,-0.66041 -0.28805,-0.35131 -0.28805,-0.94149 0,-0.7588 0.4848,-1.19439 0.48479,-0.43562 1.32797,-0.43562 0.38642,0 0.76577,0.0913 0.38643,0.0843 0.76578,0.25995 v 1.07495 q -0.35132,-0.25293 -0.7236,-0.37938 -0.36533,-0.1335 -0.72372,-0.1335 -0.39337,0 -0.6112,0.16161 -0.21077,0.16156 -0.21077,0.45667 0,0.23184 0.15457,0.38644 0.15457,0.14752 0.64631,0.33018 l 0.47773,0.18269 q 0.66752,0.24592 0.98373,0.65339 0.32316,0.40754 0.32316,1.02581 0,0.84311 -0.49882,1.25759 -0.49893,0.41455 -1.51058,0.41455 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13818 q 0.43567,0.30915 0.85013,0.46369 0.41458,0.1546 0.81502,0.1546 0.40751,0 0.63229,-0.18271 0.22491,-0.18966 0.22491,-0.51989 0,-0.25293 -0.15457,-0.43562 -0.14762,-0.18967 -0.4286,-0.30208 z"
+       id="path5842"
+       style="stroke-width:0.449656" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="12px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="77"
-       x="1939.5"
-       y="524.10742"
-       id="text5902"
-       transform="translate(-266.53854,-422.63976)">listEnterMsg</text>
+       textLength="27"
+       x="1396.75"
+       y="511.60739"
+       id="text5844"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.682327,177.09306)">item</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1644.9614"
-       x2="1751.9614"
-       y1="113.31335"
-       y2="113.31335"
-       id="line5904" />
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="525.23669"
+       x2="585.04089"
+       y1="412.4671"
+       y2="412.4671"
+       id="line5846" />
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1644.9614"
-       x2="1751.9614"
-       y1="121.31335"
-       y2="121.31335"
-       id="line5906" />
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="525.23669"
+       x2="585.04089"
+       y1="416.06433"
+       y2="416.06433"
+       id="line5848" />
     <circle
-       cx="1654.9614"
-       cy="132.31335"
+       cx="529.73315"
+       cy="421.01053"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5908"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5850"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="109"
+       x="1346.5"
+       y="545.66357"
+       id="text5852"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.682327,177.09306)">Description() string</text>
+    <circle
+       cx="529.73315"
+       cy="426.76828"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5854"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="92"
+       x="1346.5"
+       y="558.46832"
+       id="text5856"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.682327,177.09306)">IsHeading() bool</text>
+    <circle
+       cx="529.73315"
+       cy="432.52594"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5858"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="104"
+       x="1346.5"
+       y="571.27289"
+       id="text5860"
+       transform="matrix(0.44965652,0,0,0.44965652,-71.682327,177.09306)">FilterValue() string</text>
+    <g
+       id="g7185"
+       transform="matrix(0.44965652,0,0,0.44965652,-630.02248,111.63195)">
+      <rect
+         fill="#fefece"
+         height="124.8281"
+         id="main.liModel"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="385"
+         x="2255.9443"
+         y="326.86575" />
+      <circle
+         cx="2422.6943"
+         cy="342.86575"
+         fill="#7fffd4"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5863"
+         r="11" />
+      <path
+         d="m 2422.1788,343.42827 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
+         id="path5865" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="43"
+         x="3075.75"
+         y="262.60739"
+         id="text5867"
+         transform="translate(-632.55559,84.412666)">liModel</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2256.9443"
+         x2="2639.9443"
+         y1="358.86575"
+         y2="358.86575"
+         id="line5869" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2256.9443"
+         x2="2639.9443"
+         y1="366.86575"
+         y2="366.86575"
+         id="line5871" />
+      <circle
+         cx="2266.9443"
+         cy="377.86575"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5873"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="115"
+         x="2908.5"
+         y="296.6636"
+         id="text5875"
+         transform="translate(-632.55559,84.412666)">Init() bubbletea.Cmd</text>
+      <circle
+         cx="2266.9443"
+         cy="390.67047"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5877"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="359"
+         x="2908.5"
+         y="309.46829"
+         id="text5879"
+         transform="translate(-632.55559,84.412666)">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</text>
+      <circle
+         cx="2266.9443"
+         cy="403.47516"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5881"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="71"
+         x="2908.5"
+         y="322.27289"
+         id="text5883"
+         transform="translate(-632.55559,84.412666)">View() string</text>
+      <circle
+         cx="2266.9443"
+         cy="416.27985"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5885"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="33"
+         x="2908.5"
+         y="335.07761"
+         id="text5887"
+         transform="translate(-632.55559,84.412666)">Next()</text>
+      <circle
+         cx="2266.9443"
+         cy="429.08456"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5889"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="33"
+         x="2908.5"
+         y="347.88229"
+         id="text5891"
+         transform="translate(-632.55559,84.412666)">Prev()</text>
+      <circle
+         cx="2266.9443"
+         cy="441.88925"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5893"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="252"
+         x="2908.5"
+         y="360.68701"
+         id="text5895"
+         transform="translate(-632.55559,84.412666)">ReplaceList(items []list.Item) bubbletea.Cmd</text>
+    </g>
+    <g
+       id="g7092"
+       transform="matrix(0.44965652,0,0,0.44965652,-341.79583,40.815066)">
+      <rect
+         fill="#fefece"
+         height="60.804699"
+         id="main.listEnterMsg"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="109"
+         x="1643.9614"
+         y="81.313324" />
+      <circle
+         cx="1658.9614"
+         cy="97.313354"
+         fill="#7fffd4"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5898"
+         r="11" />
+      <path
+         d="m 1658.4459,97.875838 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875002 -1.1094,2.796802 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.156202 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
+         id="path5900" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="77"
+         x="1939.5"
+         y="524.10742"
+         id="text5902"
+         transform="translate(-266.53854,-422.63976)">listEnterMsg</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1644.9614"
+         x2="1751.9614"
+         y1="113.31335"
+         y2="113.31335"
+         id="line5904" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1644.9614"
+         x2="1751.9614"
+         y1="121.31335"
+         y2="121.31335"
+         id="line5906" />
+      <circle
+         cx="1654.9614"
+         cy="132.31335"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5908"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="79"
+         x="1930.5"
+         y="558.16357"
+         id="text5910"
+         transform="translate(-266.53854,-422.63976)">String() string</text>
+    </g>
+    <rect
+       fill="#fefece"
+       height="21.583508"
+       id="main.inCursor"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="37.771137"
+       x="98.517365"
+       y="109.93864" />
+    <circle
+       cx="105.26223"
+       cy="117.13316"
+       fill="#ff7700"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5913"
+       r="4.9462204" />
+    <path
+       d="m 105.64154,120.16834 h -1.10307 v -4.60898 h -1.41221 v -0.96253 h 3.92749 v 0.96253 h -1.41221 z"
+       id="path5915"
+       style="stroke-width:0.449656" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="52"
+       x="1236"
+       y="301.10739"
+       id="text5917"
+       transform="matrix(0.44965652,0,0,0.44965652,-444.21811,-16.393703)">inCursor</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="98.966942"
+       x2="135.83888"
+       y1="124.32767"
+       y2="124.32767"
+       id="line5919" />
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="98.966942"
+       x2="135.83888"
+       y1="127.92493"
+       y2="127.92493"
+       id="line5921" />
+    <g
+       id="g7108"
+       transform="matrix(0.44965652,0,0,0.44965652,-156.83775,71.206294)">
+      <rect
+         fill="#fefece"
+         height="48"
+         id="main.inputEnterMsg"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="123"
+         x="1505.8146"
+         y="81.422386" />
+      <circle
+         cx="1520.8146"
+         cy="97.422386"
+         fill="#ff7700"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5924"
+         r="11" />
+      <path
+         d="m 1521.6584,104.17239 h -2.4532 V 93.922388 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
+         id="path5926" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="91"
+         x="649.5"
+         y="301.10739"
+         id="text5928"
+         transform="translate(885.3146,-199.53071)">inputEnterMsg</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1506.8146"
+         x2="1627.8146"
+         y1="113.42238"
+         y2="113.42238"
+         id="line5930" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1506.8146"
+         x2="1627.8146"
+         y1="121.42238"
+         y2="121.42238"
+         id="line5932" />
+    </g>
+    <g
+       id="g7132"
+       transform="matrix(0.44965652,0,0,0.44965652,-991.15916,28.279888)">
+      <rect
+         fill="#fefece"
+         height="48"
+         id="main.keyState"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="87"
+         x="2521.9736"
+         y="181.51143" />
+      <circle
+         cx="2536.9736"
+         cy="197.51143"
+         fill="#ff7700"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5935"
+         r="11" />
+      <path
+         d="m 2537.8173,204.26144 h -2.4532 v -10.25 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
+         id="path5937" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="55"
+         x="1113.5"
+         y="301.10739"
+         id="text5939"
+         transform="translate(1437.4735,-99.441661)">keyState</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2522.9736"
+         x2="2607.9736"
+         y1="213.51143"
+         y2="213.51143"
+         id="line5941" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2522.9736"
+         x2="2607.9736"
+         y1="221.51143"
+         y2="221.51143"
+         id="line5943" />
+    </g>
+    <rect
+       fill="#fefece"
+       height="27.341223"
+       id="main.state"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="47.213921"
+       x="98.84127"
+       y="76.710434" />
+    <circle
+       cx="113.67995"
+       cy="83.904953"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5965"
+       r="4.9462204" />
+    <path
+       d="m 113.44807,84.157875 q -0.83611,-0.31615 -1.13111,-0.66041 -0.28817,-0.35132 -0.28817,-0.94149 0,-0.75879 0.4848,-1.19438 0.48479,-0.43562 1.32797,-0.43562 0.38642,0 0.76577,0.0913 0.38643,0.0844 0.76578,0.25995 v 1.07495 q -0.3512,-0.25293 -0.7236,-0.37938 -0.36533,-0.13351 -0.72372,-0.13351 -0.39337,0 -0.6112,0.16161 -0.21077,0.16156 -0.21077,0.45667 0,0.23184 0.15457,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.0258 0,0.8431 -0.49882,1.2576 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28808 v -1.13818 q 0.43567,0.30914 0.85013,0.46368 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.63241,-0.18269 0.22479,-0.18966 0.22479,-0.51989 0,-0.25293 -0.15457,-0.43563 -0.14762,-0.18966 -0.4286,-0.30208 z"
+       id="path5967"
+       style="stroke-width:0.449656" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="33"
+       x="995.5"
+       y="294.60739"
+       id="text5969"
+       transform="matrix(0.44965652,0,0,0.44965652,-325.85925,-46.699164)">state</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="99.290924"
+       x2="145.60561"
+       y1="91.099457"
+       y2="91.099457"
+       id="line5971" />
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="99.290924"
+       x2="145.60561"
+       y1="94.696716"
+       y2="94.696716"
+       id="line5973" />
+    <circle
+       cx="103.78756"
+       cy="99.642914"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5975"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
        textLength="79"
-       x="1930.5"
-       y="558.16357"
-       id="text5910"
-       transform="translate(-266.53854,-422.63976)">String() string</text>
-  </g>
-  <rect
-     fill="#fefece"
-     height="21.583508"
-     id="main.inCursor"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="37.771137"
-     x="98.517365"
-     y="109.93864" />
-  <circle
-     cx="105.26223"
-     cy="117.13316"
-     fill="#ff7700"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5913"
-     r="4.9462204" />
-  <path
-     d="m 105.64154,120.16834 h -1.10307 v -4.60898 h -1.41221 v -0.96253 h 3.92749 v 0.96253 h -1.41221 z"
-     id="path5915"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="52"
-     x="1236"
-     y="301.10739"
-     id="text5917"
-     transform="matrix(0.4496564,0,0,0.4496564,-444.21799,-16.393699)">inCursor</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="98.966942"
-     x2="135.83888"
-     y1="124.32767"
-     y2="124.32767"
-     id="line5919" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="98.966942"
-     x2="135.83888"
-     y1="127.92493"
-     y2="127.92493"
-     id="line5921" />
-  <g
-     id="g7108"
-     transform="matrix(0.4496564,0,0,0.4496564,-156.83771,71.206275)">
+       x="964.5"
+       y="328.6636"
+       id="text5977"
+       transform="matrix(0.44965652,0,0,0.44965652,-325.85925,-46.699164)">String() string</text>
+    <g
+       id="g7706"
+       transform="matrix(0.44965652,0,0,0.44965652,-627.74786,106.508)">
+      <rect
+         fill="#fefece"
+         height="106.03773"
+         id="main.status"
+         rx="11.119603"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.26816"
+         width="224.26056"
+         x="1419.2638"
+         y="338.14508" />
+      <circle
+         cx="1510.429"
+         cy="354.26102"
+         fill="#7fffd4"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse5980"
+         r="11" />
+      <path
+         d="m 1509.9133,354.82352 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
+         id="path5982" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="40"
+         x="211.25"
+         y="282.10739"
+         id="text5984"
+         transform="translate(1319.6789,76.30792)">status</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.14382"
+         x1="1420.3798"
+         x2="1643.0863"
+         y1="370.26102"
+         y2="370.26102"
+         id="line5986" />
+      <line
+         style="stroke:#a80036;stroke-width:1.14382"
+         x1="1420.3798"
+         x2="1643.0863"
+         y1="378.26102"
+         y2="378.26102"
+         id="line5988" />
+      <circle
+         cx="1430.3798"
+         cy="389.26102"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5990"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="115"
+         x="42.5"
+         y="316.1636"
+         id="text5992"
+         transform="translate(1396.8797,76.30792)">Init() bubbletea.Cmd</text>
+      <circle
+         cx="1430.3798"
+         cy="402.06573"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5994"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="71"
+         x="42.5"
+         y="328.96829"
+         id="text5996"
+         transform="translate(1396.8797,76.30792)">View() string</text>
+      <circle
+         cx="1430.3798"
+         cy="414.87042"
+         fill="#84be84"
+         style="stroke:#038048;stroke-width:1"
+         id="ellipse5998"
+         r="3" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="11px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="359"
+         x="42.5"
+         y="341.77289"
+         id="text6000"
+         transform="translate(1396.8797,76.30792)"><tspan
+           sodipodi:role="line"
+           id="tspan7360"
+           x="42.5"
+           y="341.77289">Update(msg bubbletea.Msg)</tspan><tspan
+           sodipodi:role="line"
+           x="42.5"
+           y="356.90118"
+           id="tspan7364">(bubbletea.Model, bubbletea.Cmd)</tspan></text>
+    </g>
+    <g
+       id="g7100"
+       transform="matrix(0.44965652,0,0,0.44965652,-155.52954,71.206294)">
+      <rect
+         fill="#fefece"
+         height="48"
+         id="main.statusUpdateMsg"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="143"
+         x="1344.89"
+         y="81.422386" />
+      <circle
+         cx="1359.89"
+         cy="97.422386"
+         fill="#ff7700"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse6003"
+         r="11" />
+      <path
+         d="m 1360.7338,104.17239 h -2.4532 V 93.922388 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
+         id="path6005" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="111"
+         x="471.5"
+         y="301.10739"
+         id="text6007"
+         transform="translate(902.39003,-199.53071)">statusUpdateMsg</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1345.89"
+         x2="1486.89"
+         y1="113.42238"
+         y2="113.42238"
+         id="line6009" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1345.89"
+         x2="1486.89"
+         y1="121.42238"
+         y2="121.42238"
+         id="line6011" />
+    </g>
     <rect
        fill="#fefece"
-       height="48"
-       id="main.inputEnterMsg"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="123"
-       x="1505.8146"
-       y="81.422386" />
+       height="42.864616"
+       id="main.model"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:1.78509"
+       width="173.03262"
+       x="223.39093"
+       y="154.0282" />
     <circle
-       cx="1520.8146"
-       cy="97.422386"
-       fill="#ff7700"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5924"
-       r="11" />
-    <path
-       d="m 1521.6584,104.17239 h -2.4532 V 93.922388 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
-       id="path5926" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="12px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="91"
-       x="649.5"
-       y="301.10739"
-       id="text5928"
-       transform="translate(885.3146,-199.53071)">inputEnterMsg</text>
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1506.8146"
-       x2="1627.8146"
-       y1="113.42238"
-       y2="113.42238"
-       id="line5930" />
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1506.8146"
-       x2="1627.8146"
-       y1="121.42238"
-       y2="121.42238"
-       id="line5932" />
-  </g>
-  <g
-     id="g7132"
-     transform="matrix(0.4496564,0,0,0.4496564,-991.1589,28.279881)">
-    <rect
-       fill="#fefece"
-       height="48"
-       id="main.keyState"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="87"
-       x="2521.9736"
-       y="181.51143" />
-    <circle
-       cx="2536.9736"
-       cy="197.51143"
-       fill="#ff7700"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5935"
-       r="11" />
-    <path
-       d="m 2537.8173,204.26144 h -2.4532 v -10.25 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
-       id="path5937" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="12px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="55"
-       x="1113.5"
-       y="301.10739"
-       id="text5939"
-       transform="translate(1437.4735,-99.441661)">keyState</text>
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="2522.9736"
-       x2="2607.9736"
-       y1="213.51143"
-       y2="213.51143"
-       id="line5941" />
-    <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="2522.9736"
-       x2="2607.9736"
-       y1="221.51143"
-       y2="221.51143"
-       id="line5943" />
-  </g>
-  <rect
-     fill="#fefece"
-     height="27.341223"
-     id="main.state"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="47.213921"
-     x="98.84127"
-     y="76.710434" />
-  <circle
-     cx="113.67995"
-     cy="83.904953"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5965"
-     r="4.9462204" />
-  <path
-     d="m 113.44807,84.157875 q -0.83611,-0.31615 -1.13111,-0.66041 -0.28817,-0.35132 -0.28817,-0.94149 0,-0.75879 0.4848,-1.19438 0.48479,-0.43562 1.32797,-0.43562 0.38642,0 0.76577,0.0913 0.38643,0.0844 0.76578,0.25995 v 1.07495 q -0.3512,-0.25293 -0.7236,-0.37938 -0.36533,-0.13351 -0.72372,-0.13351 -0.39337,0 -0.6112,0.16161 -0.21077,0.16156 -0.21077,0.45667 0,0.23184 0.15457,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.0258 0,0.8431 -0.49882,1.2576 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28808 v -1.13818 q 0.43567,0.30914 0.85013,0.46368 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.63241,-0.18269 0.22479,-0.18966 0.22479,-0.51989 0,-0.25293 -0.15457,-0.43563 -0.14762,-0.18966 -0.4286,-0.30208 z"
-     id="path5967"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="33"
-     x="995.5"
-     y="294.60739"
-     id="text5969"
-     transform="matrix(0.4496564,0,0,0.4496564,-325.85916,-46.699152)">state</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="99.290924"
-     x2="145.60561"
-     y1="91.099457"
-     y2="91.099457"
-     id="line5971" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="99.290924"
-     x2="145.60561"
-     y1="94.696716"
-     y2="94.696716"
-     id="line5973" />
-  <circle
-     cx="103.78756"
-     cy="99.642914"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5975"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="79"
-     x="964.5"
-     y="328.6636"
-     id="text5977"
-     transform="matrix(0.4496564,0,0,0.4496564,-325.85916,-46.699152)">String() string</text>
-  <g
-     id="g7706"
-     transform="matrix(0.4496564,0,0,0.4496564,-627.74769,106.50797)">
-    <rect
-       fill="#fefece"
-       height="106.03773"
-       id="main.status"
-       rx="11.119603"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.26816"
-       width="224.26056"
-       x="1419.2638"
-       y="338.14508" />
-    <circle
-       cx="1510.429"
-       cy="354.26102"
+       cx="299.4527"
+       cy="162.89594"
        fill="#7fffd4"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse5980"
-       r="11" />
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse6014"
+       r="4.9462204" />
     <path
-       d="m 1509.9133,354.82352 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.6875 1.0782,-2.6562 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.3906 q -0.7812,-0.5625 -1.6093,-0.8437 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.0156 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
-       id="path5982" />
+       d="m 299.22092,163.14885 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94149 0,-0.75879 0.48479,-1.19437 0.4848,-0.43563 1.32798,-0.43563 0.38642,0 0.76577,0.0914 0.38642,0.0844 0.76578,0.25995 v 1.07495 q -0.3512,-0.25294 -0.7236,-0.37938 -0.36533,-0.1335 -0.72372,-0.1335 -0.39337,0 -0.6112,0.1616 -0.21077,0.16157 -0.21077,0.45667 0,0.23185 0.15457,0.38644 0.15457,0.14753 0.64631,0.33018 l 0.47785,0.1827 q 0.6674,0.24592 0.98361,0.65339 0.32315,0.40753 0.32315,1.0258 0,0.84311 -0.49881,1.2576 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13817 q 0.43567,0.30914 0.85013,0.46368 0.41458,0.1546 0.81502,0.1546 0.40751,0 0.63229,-0.18269 0.2249,-0.18967 0.2249,-0.5199 0,-0.25294 -0.15456,-0.43563 -0.14762,-0.18966 -0.4286,-0.30208 z"
+       id="path6016"
+       style="stroke-width:0.449656" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="12px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="40"
-       x="211.25"
-       y="282.10739"
-       id="text5984"
-       transform="translate(1319.6789,76.30792)">status</text>
+       textLength="38"
+       x="2244.25"
+       y="511.60739"
+       id="text6018"
+       transform="matrix(0.44965652,0,0,0.44965652,-700.47084,-65.283629)">model</text>
     <line
-       style="stroke:#a80036;stroke-width:1.14382"
-       x1="1420.3798"
-       x2="1643.0863"
-       y1="370.26102"
-       y2="370.26102"
-       id="line5986" />
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="223.79802"
+       x2="396.01639"
+       y1="170.09044"
+       y2="170.09044"
+       id="line6020" />
     <line
-       style="stroke:#a80036;stroke-width:1.14382"
-       x1="1420.3798"
-       x2="1643.0863"
-       y1="378.26102"
-       y2="378.26102"
-       id="line5988" />
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="223.79802"
+       x2="396.01639"
+       y1="173.6877"
+       y2="173.6877"
+       id="line6022" />
     <circle
-       cx="1430.3798"
-       cy="389.26102"
+       cx="228.29465"
+       cy="178.6339"
        fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5990"
-       r="3" />
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse6024"
+       r="1.3489692" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
        textLength="115"
-       x="42.5"
-       y="316.1636"
-       id="text5992"
-       transform="translate(1396.8797,76.30792)">Init() bubbletea.Cmd</text>
-    <circle
-       cx="1430.3798"
-       cy="402.06573"
-       fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5994"
-       r="3" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="11px"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="71"
-       x="42.5"
-       y="328.96829"
-       id="text5996"
-       transform="translate(1396.8797,76.30792)">View() string</text>
-    <circle
-       cx="1430.3798"
-       cy="414.87042"
-       fill="#84be84"
-       style="stroke:#038048;stroke-width:1"
-       id="ellipse5998"
-       r="3" />
+       x="2074.5"
+       y="545.66357"
+       id="text6026"
+       transform="matrix(0.44965652,0,0,0.44965652,-700.47084,-65.283629)">Init() bubbletea.Cmd</text>
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="11px"
        lengthAdjust="spacingAndGlyphs"
        textLength="359"
-       x="42.5"
-       y="341.77289"
-       id="text6000"
-       transform="translate(1396.8797,76.30792)"><tspan
-         sodipodi:role="line"
-         id="tspan7360"
-         x="42.5"
-         y="341.77289">Update(msg bubbletea.Msg)</tspan><tspan
-         sodipodi:role="line"
-         x="42.5"
-         y="356.90118"
-         id="tspan7364">(bubbletea.Model, bubbletea.Cmd)</tspan></text>
-  </g>
-  <g
-     id="g7100"
-     transform="matrix(0.4496564,0,0,0.4496564,-155.5295,71.206275)">
+       x="2074.5"
+       y="558.46832"
+       id="text6030"
+       transform="matrix(0.44965652,0,0,0.44965652,-700.47084,-65.283629)">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="71"
+       x="2074.5"
+       y="571.27289"
+       id="text6034"
+       transform="matrix(0.44965652,0,0,0.44965652,-700.47084,-65.283629)">View() string</text>
+    <g
+       id="g7124"
+       transform="matrix(0.44965652,0,0,0.44965652,-340.42834,37.892303)">
+      <rect
+         fill="#fefece"
+         height="48"
+         id="main.resetListStatus"
+         rx="11.119601"
+         ry="11.119601"
+         style="stroke:#a80036;stroke-width:1.5"
+         width="127"
+         x="1908.9504"
+         y="87.813324" />
+      <circle
+         cx="1923.9504"
+         cy="103.81335"
+         fill="#7fffd4"
+         style="stroke:#a80036;stroke-width:1"
+         id="ellipse6037"
+         r="11" />
+      <path
+         d="m 1923.4348,104.37584 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.687502 1.0782,-2.656202 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.390602 q -0.7812,-0.562502 -1.6093,-0.843702 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.015602 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
+         id="path6039" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="12px"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="95"
+         x="2503.5"
+         y="530.60742"
+         id="text6041"
+         transform="translate(-565.54962,-422.63976)">resetListStatus</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1909.9504"
+         x2="2034.9504"
+         y1="119.81335"
+         y2="119.81335"
+         id="line6043" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1909.9504"
+         x2="2034.9504"
+         y1="127.81335"
+         y2="127.81335"
+         id="line6045" />
+    </g>
+    <path
+       d="m 554.34386,476.55711 c 0,-12.19226 0,-28.20642 0,-39.34221"
+       fill="none"
+       id="main.CustomItem&lt;-main.item"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.666889;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
+    <polygon
+       fill="none"
+       points="1387.0001,362.0813 1394,342.0813 1401.0001,362.0813 "
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="polygon6267"
+       transform="matrix(0.44965652,0,0,-0.44965652,-72.311429,638.60804)" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="76"
+       x="1312.1813"
+       y="480.37549"
+       id="text6269"
+       transform="matrix(0.44965652,0,0,0.44965652,-76.215948,229.93166)">implements</text>
+    <path
+       id="polygon5560"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 415.23228,639.38953 H 369.55921 V 602.3094 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <line
+       style="stroke:#000000;stroke-width:0.671845"
+       x1="369.51141"
+       x2="402.20807"
+       y1="612.24835"
+       y2="612.24835"
+       id="line5562" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="60"
+       x="1646"
+       y="644.94818"
+       id="text5564"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,320.10748)">lipgloss</text>
     <rect
        fill="#fefece"
-       height="48"
-       id="main.statusUpdateMsg"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="143"
-       x="1344.89"
-       y="81.422386" />
+       height="96.433723"
+       id="main.CustomDelegate"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="165.92322"
+       x="304.07657"
+       y="397.62537" />
     <circle
-       cx="1359.89"
-       cy="97.422386"
-       fill="#ff7700"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse6003"
-       r="11" />
+       cx="361.78537"
+       cy="405.24933"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.447897"
+       id="ellipse5597"
+       r="4.9268708" />
     <path
-       d="m 1360.7338,104.17239 h -2.4532 V 93.922388 h -3.1406 v -2.1406 h 8.7344 v 2.1406 h -3.1406 z"
-       id="path6005" />
+       d="m 361.55433,405.5012 q -0.83275,-0.31491 -1.12679,-0.65782 -0.28685,-0.34994 -0.28685,-0.93781 0,-0.75583 0.48288,-1.1897 0.48287,-0.43393 1.3227,-0.43393 0.38486,0 0.76278,0.0911 0.38498,0.084 0.7629,0.25894 v 1.07074 q -0.35,-0.25195 -0.72085,-0.37789 -0.36389,-0.13298 -0.72084,-0.13298 -0.39193,0 -0.60893,0.16097 -0.20992,0.16093 -0.20992,0.45489 0,0.23094 0.15397,0.38492 0.15397,0.14696 0.64379,0.32888 l 0.47593,0.18199 q 0.66489,0.24496 0.97978,0.65084 0.32195,0.40593 0.32195,1.02178 0,0.83982 -0.49689,1.25268 -0.4969,0.41292 -1.50459,0.41292 -0.41302,0 -0.82581,-0.0979 -0.41302,-0.098 -0.79788,-0.28696 v -1.13372 q 0.43399,0.30793 0.84677,0.46188 0.4129,0.15398 0.81179,0.15398 0.40595,0 0.62989,-0.18197 0.22395,-0.18894 0.22395,-0.51787 0,-0.25195 -0.15397,-0.43392 -0.1469,-0.18892 -0.42692,-0.3009 z"
+       id="path5599"
+       style="stroke-width:0.447897" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="104"
+       x="1645.25"
+       y="218.10741"
+       id="text5601"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">CustomDelegate</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="304.52618"
+       x2="469.5502"
+       y1="412.0144"
+       y2="412.0144"
+       id="line5603" />
+    <circle
+       cx="309.26944"
+       cy="417.3425"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5605"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="143"
+       x="1516.5"
+       y="244.1636"
+       id="text5607"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">Styles CustomItemStyles</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="304.52618"
+       x2="469.5502"
+       y1="421.36932"
+       y2="421.36932"
+       id="line5609" />
+    <circle
+       cx="309.26944"
+       cy="426.66092"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5611"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="66"
+       x="1516.5"
+       y="264.96829"
+       id="text5613"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">UpdateFunc</text>
+    <text
+       fill="#0000ff"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="24"
+       x="1586.5"
+       y="264.96829"
+       id="text5615"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">func</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="249"
+       x="1610.5"
+       y="264.96829"
+       id="text5617"
+       transform="matrix(0.44965652,0,0,0.44965652,-368.83423,308.61454)">(bubbletea.Msg, *list.Model) bubbletea.Cmd</text>
+    <circle
+       cx="309.26944"
+       cy="432.39606"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5619"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="82"
+       x="1516.5"
+       y="277.77289"
+       id="text5621"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">ShortHelpFunc</text>
+    <text
+       fill="#0000ff"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="24"
+       x="1602.5"
+       y="277.77289"
+       id="text5623"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">func</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="85"
+       x="1626.5"
+       y="277.77289"
+       id="text5625"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">() []key.Binding</text>
+    <circle
+       cx="309.26944"
+       cy="438.13129"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5627"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="70"
+       x="1516.5"
+       y="290.57761"
+       id="text5629"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">FullHelpFunc</text>
+    <text
+       fill="#0000ff"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="24"
+       x="1590.5"
+       y="290.57761"
+       id="text5631"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">func</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="93"
+       x="1614.5"
+       y="290.57761"
+       id="text5633"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">() [][]key.Binding</text>
+    <circle
+       cx="309.26944"
+       cy="449.60165"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5637"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="84"
+       x="1516.5"
+       y="316.18701"
+       id="text5639"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">SetHeight(i int)</text>
+    <circle
+       cx="309.26944"
+       cy="455.33688"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5641"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="1516.5"
+       y="328.9917"
+       id="text5643"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">Height() int</text>
+    <circle
+       cx="309.26944"
+       cy="461.07196"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5645"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="93"
+       x="1516.5"
+       y="341.79639"
+       id="text5647"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">SetSpacing(i int)</text>
+    <circle
+       cx="309.26944"
+       cy="466.80719"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5649"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="71"
+       x="1516.5"
+       y="354.6011"
+       id="text5651"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">Spacing() int</text>
+    <circle
+       cx="309.26944"
+       cy="472.54239"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5653"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="333"
+       x="1516.5"
+       y="367.40579"
+       id="text5655"
+       transform="matrix(0.44965652,0,0,0.44965652,-368.83423,308.61454)">Update(msg bubbletea.Msg, m *list.Model) bubbletea.Cmd</text>
+    <circle
+       cx="309.26944"
+       cy="478.27756"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5657"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="324"
+       x="1516.5"
+       y="380.21039"
+       id="text5659"
+       transform="matrix(0.44965652,0,0,0.44965652,-368.83423,308.61454)">Render(w io.Writer, m list.Model, index int, item list.Item)</text>
+    <circle
+       cx="309.26944"
+       cy="484.01276"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5661"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="141"
+       x="1516.5"
+       y="393.01511"
+       id="text5663"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">ShortHelp() []key.Binding</text>
+    <circle
+       cx="309.26944"
+       cy="489.74799"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5665"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="137"
+       x="1516.5"
+       y="405.81979"
+       id="text5667"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">FullHelp() [][]key.Binding</text>
+    <rect
+       fill="#fefece"
+       height="55.910175"
+       id="main.CustomItemStyles"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.671845"
+       width="98.089523"
+       x="337.93472"
+       y="520.80682" />
+    <circle
+       cx="360.21768"
+       cy="527.97308"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.447897"
+       id="ellipse5689"
+       r="4.9268708" />
+    <path
+       d="m 359.98672,528.22503 q -0.83288,-0.31489 -1.1268,-0.65781 -0.28697,-0.34988 -0.28697,-0.93772 0,-0.75583 0.483,-1.1897 0.48288,-0.43399 1.3227,-0.43399 0.38487,0 0.76278,0.0911 0.38487,0.0839 0.76278,0.25893 v 1.07072 q -0.34988,-0.25198 -0.72084,-0.37791 -0.3639,-0.133 -0.72084,-0.133 -0.39182,0 -0.60881,0.16104 -0.20993,0.16091 -0.20993,0.45483 0,0.2309 0.15397,0.38499 0.15397,0.1469 0.6438,0.32879 l 0.47593,0.18201 q 0.66488,0.24503 0.97977,0.65086 0.32196,0.40595 0.32196,1.02183 0,0.83971 -0.4969,1.25261 -0.49689,0.4129 -1.50471,0.4129 -0.4129,0 -0.8258,-0.0983 -0.4129,-0.0983 -0.79777,-0.28697 v -1.13375 q 0.43387,0.30794 0.84678,0.46191 0.4129,0.15397 0.81178,0.15397 0.40595,0 0.6299,-0.182 0.22394,-0.18896 0.22394,-0.51787 0,-0.25186 -0.15397,-0.43387 -0.14702,-0.18896 -0.42692,-0.30087 z"
+       id="path5691"
+       style="stroke-width:0.447897" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="12px"
        lengthAdjust="spacingAndGlyphs"
        textLength="111"
-       x="471.5"
-       y="301.10739"
-       id="text6007"
-       transform="translate(902.39003,-199.53071)">statusUpdateMsg</text>
+       x="1641.75"
+       y="492.10739"
+       id="text5693"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">CustomItemStyles</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1345.89"
-       x2="1486.89"
-       y1="113.42238"
-       y2="113.42238"
-       id="line6009" />
+       style="stroke:#a80036;stroke-width:0.671845"
+       x1="338.38272"
+       x2="435.57639"
+       y1="535.13953"
+       y2="535.13953"
+       id="line5695" />
+    <circle
+       cx="342.86166"
+       cy="540.06635"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5697"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="126"
+       x="1591.5"
+       y="518.16357"
+       id="text5699"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">Heading lipgloss.Style</text>
+    <circle
+       cx="342.86166"
+       cy="545.80157"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5701"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="175"
+       x="1591.5"
+       y="530.96832"
+       id="text5703"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">SelectedHeading lipgloss.Style</text>
+    <circle
+       cx="342.86166"
+       cy="551.5368"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5705"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="185"
+       x="1591.5"
+       y="543.77289"
+       id="text5707"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">NormalDescription lipgloss.Style</text>
+    <circle
+       cx="342.86166"
+       cy="557.27203"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5709"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="193"
+       x="1591.5"
+       y="556.57758"
+       id="text5711"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">SelectedDescription lipgloss.Style</text>
+    <circle
+       cx="342.86166"
+       cy="563.00708"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5713"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="155"
+       x="1591.5"
+       y="569.38232"
+       id="text5715"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">DimmedDesc lipgloss.Style</text>
+    <circle
+       cx="342.86166"
+       cy="568.74231"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.447897"
+       id="ellipse5717"
+       r="1.3436921" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="141"
+       x="1591.5"
+       y="582.18701"
+       id="text5719"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)">FilterMatch lipgloss.Style</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1345.89"
-       x2="1486.89"
-       y1="121.42238"
-       y2="121.42238"
-       id="line6011" />
-  </g>
-  <rect
-     fill="#fefece"
-     height="42.864616"
-     id="main.model"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:1.78509"
-     width="173.03262"
-     x="223.39093"
-     y="154.0282" />
-  <circle
-     cx="299.4527"
-     cy="162.89594"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse6014"
-     r="4.9462204" />
-  <path
-     d="m 299.22092,163.14885 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94149 0,-0.75879 0.48479,-1.19437 0.4848,-0.43563 1.32798,-0.43563 0.38642,0 0.76577,0.0914 0.38642,0.0844 0.76578,0.25995 v 1.07495 q -0.3512,-0.25294 -0.7236,-0.37938 -0.36533,-0.1335 -0.72372,-0.1335 -0.39337,0 -0.6112,0.1616 -0.21077,0.16157 -0.21077,0.45667 0,0.23185 0.15457,0.38644 0.15457,0.14753 0.64631,0.33018 l 0.47785,0.1827 q 0.6674,0.24592 0.98361,0.65339 0.32315,0.40753 0.32315,1.0258 0,0.84311 -0.49881,1.2576 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13817 q 0.43567,0.30914 0.85013,0.46368 0.41458,0.1546 0.81502,0.1546 0.40751,0 0.63229,-0.18269 0.2249,-0.18967 0.2249,-0.5199 0,-0.25294 -0.15456,-0.43563 -0.14762,-0.18966 -0.4286,-0.30208 z"
-     id="path6016"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="38"
-     x="2244.25"
-     y="511.60739"
-     id="text6018"
-     transform="matrix(0.4496564,0,0,0.4496564,-700.47066,-65.283612)">model</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="223.79802"
-     x2="396.01639"
-     y1="170.09044"
-     y2="170.09044"
-     id="line6020" />
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="223.79802"
-     x2="396.01639"
-     y1="173.6877"
-     y2="173.6877"
-     id="line6022" />
-  <circle
-     cx="228.29465"
-     cy="178.6339"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse6024"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="115"
-     x="2074.5"
-     y="545.66357"
-     id="text6026"
-     transform="matrix(0.4496564,0,0,0.4496564,-700.47066,-65.283612)">Init() bubbletea.Cmd</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="359"
-     x="2074.5"
-     y="558.46832"
-     id="text6030"
-     transform="matrix(0.4496564,0,0,0.4496564,-700.47066,-65.283612)">Update(msg bubbletea.Msg) (bubbletea.Model, bubbletea.Cmd)</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="71"
-     x="2074.5"
-     y="571.27289"
-     id="text6034"
-     transform="matrix(0.4496564,0,0,0.4496564,-700.47066,-65.283612)">View() string</text>
-  <g
-     id="g7124"
-     transform="matrix(0.4496564,0,0,0.4496564,-340.42825,37.892293)">
+       style="stroke:#a80036;stroke-width:0.671845"
+       x1="338.38272"
+       x2="435.57639"
+       y1="573.13379"
+       y2="573.13379"
+       id="line5721" />
+    <path
+       d="m 386.97947,499.32248 c 0,7.38389 0,14.69922 0,21.3705"
+       fill="none"
+       id="main.CustomDelegate&lt;-main.CustomItemStyles"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
+    <polygon
+       fill="#ffffff"
+       points="1685,417.9761 1681,411.9761 1677,417.9761 1681,423.9761 "
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.50589;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="polygon6272"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.86632)" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="30"
+       x="1649.8984"
+       y="432.44131"
+       id="text6274"
+       transform="matrix(0.44789747,0,0,0.44789747,-370.43264,309.42032)">uses</text>
+    <path
+       d="m 386.97947,582.13784 c 0,7.28454 0,14.4913 0,20.06184"
+       fill="none"
+       id="main.CustomItemStyles&lt;-lipgloss.Style"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
+    <polygon
+       fill="#ffffff"
+       points="1681,609.0072 1685,603.0072 1681,597.0072 1677,603.0072 "
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.50589;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="polygon6277"
+       transform="matrix(0.44789747,0,0,0.44789747,-365.93601,309.42032)" />
+    <path
+       d="m 681.00454,249.27297 10.67177,28.0342"
+       fill="none"
+       id="path7710"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       d="m 716.29234,253.85156 -24.29715,23.14936"
+       fill="none"
+       id="path7712"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 304.62374,197.78535 -25.37019,61.02547"
+       id="path8322"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 222.66693,175.61856 H 66.555291 v 82.6519"
+       id="path8326" />
+    <rect
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0.851116px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       id="rect1495"
+       width="249.78752"
+       height="41.451286"
+       x="345.54407"
+       y="338.32803" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 416.77107,353.04786 54.04249,-37.64076 55.06071,37.83299"
+       id="path8328"
+       sodipodi:nodetypes="ccc" />
     <rect
        fill="#fefece"
-       height="48"
-       id="main.resetListStatus"
-       rx="11.119601"
-       ry="11.119601"
-       style="stroke:#a80036;stroke-width:1.5"
-       width="127"
-       x="1908.9504"
-       y="87.813324" />
+       height="61.887466"
+       id="main.KeyMap"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="75.092621"
+       x="710.57532"
+       y="186.90776" />
     <circle
-       cx="1923.9504"
-       cy="103.81335"
+       cx="735.6438"
+       cy="194.10228"
        fill="#7fffd4"
-       style="stroke:#a80036;stroke-width:1"
-       id="ellipse6037"
-       r="11" />
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5724"
+       r="4.9462204" />
     <path
-       d="m 1923.4348,104.37584 q -1.8594,-0.7031 -2.5156,-1.4687 -0.6407,-0.7813 -0.6407,-2.0938 0,-1.687502 1.0782,-2.656202 1.0781,-0.9688 2.9531,-0.9688 0.8594,0 1.7031,0.2032 0.8594,0.1875 1.7031,0.5781 v 2.390602 q -0.7812,-0.562502 -1.6093,-0.843702 -0.8125,-0.2969 -1.6094,-0.2969 -0.875,0 -1.3594,0.3594 -0.4687,0.3593 -0.4687,1.015602 0,0.5156 0.3437,0.8594 0.3438,0.3281 1.4375,0.7343 l 1.0625,0.4063 q 1.4844,0.5469 2.1875,1.4531 0.7188,0.9063 0.7188,2.2813 0,1.875 -1.1094,2.7968 -1.1094,0.9219 -3.3594,0.9219 -0.9219,0 -1.8437,-0.2187 -0.9219,-0.2188 -1.7813,-0.6407 v -2.5312 q 0.9688,0.6875 1.8906,1.0312 0.9219,0.3438 1.8125,0.3438 0.9063,0 1.4063,-0.4063 0.5,-0.4218 0.5,-1.1562 0,-0.5625 -0.3438,-0.9688 -0.3281,-0.4218 -0.9531,-0.6718 z"
-       id="path6039" />
+       d="m 735.41193,194.35523 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94149 0,-0.75879 0.4848,-1.19438 0.48479,-0.43563 1.32797,-0.43563 0.38642,0 0.76578,0.0914 0.38642,0.0844 0.76577,0.25995 v 1.07495 q -0.35119,-0.25293 -0.7236,-0.37938 -0.36533,-0.13351 -0.72371,-0.13351 -0.39338,0 -0.61121,0.16161 -0.21076,0.16156 -0.21076,0.45667 0,0.23184 0.15456,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.0258 0,0.8431 -0.49882,1.2576 -0.49881,0.41453 -1.51058,0.41453 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.2881 v -1.13816 q 0.43567,0.30913 0.85013,0.46368 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.6323,-0.18269 0.2249,-0.18966 0.2249,-0.51989 0,-0.25294 -0.15457,-0.43563 -0.14762,-0.18967 -0.4286,-0.30208 z"
+       id="path5726"
+       style="stroke-width:0.449656" />
     <text
        fill="#000000"
        font-family="sans-serif"
        font-size="12px"
        lengthAdjust="spacingAndGlyphs"
-       textLength="95"
-       x="2503.5"
-       y="530.60742"
-       id="text6041"
-       transform="translate(-565.54962,-422.63976)">resetListStatus</text>
+       textLength="47"
+       x="2342.75"
+       y="256.10739"
+       id="text5728"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">KeyMap</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1909.9504"
-       x2="2034.9504"
-       y1="119.81335"
-       y2="119.81335"
-       id="line6043" />
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="711.02527"
+       x2="785.21844"
+       y1="201.2968"
+       y2="201.2968"
+       id="line5730" />
+    <circle
+       cx="715.52173"
+       cy="206.24298"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5732"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="99"
+       x="2286.5"
+       y="282.1636"
+       id="text5734"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">Enter key.Binding</text>
+    <circle
+       cx="715.52173"
+       cy="212.00075"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5736"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="90"
+       x="2286.5"
+       y="294.96829"
+       id="text5738"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">Tab key.Binding</text>
+    <circle
+       cx="715.52173"
+       cy="217.75847"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5740"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="89"
+       x="2286.5"
+       y="307.77289"
+       id="text5742"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">Exit key.Binding</text>
+    <circle
+       cx="715.52173"
+       cy="223.51616"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5744"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="123"
+       x="2286.5"
+       y="320.57761"
+       id="text5746"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">CursorUp key.Binding</text>
+    <circle
+       cx="715.52173"
+       cy="229.27391"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5748"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="139"
+       x="2286.5"
+       y="333.38229"
+       id="text5750"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">CursorDown key.Binding</text>
     <line
-       style="stroke:#a80036;stroke-width:1.5"
-       x1="1909.9504"
-       x2="2034.9504"
-       y1="127.81335"
-       y2="127.81335"
-       id="line6045" />
-  </g>
-  <path
-     d="m 554.34386,476.55711 c 0,-12.19226 0,-28.20642 0,-39.34221"
-     fill="none"
-     id="main.CustomItem&lt;-main.item"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.666889;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
-  <polygon
-     fill="none"
-     points="1387.0001,362.0813 1394,342.0813 1401.0001,362.0813 "
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     id="polygon6267"
-     transform="matrix(0.4496564,0,0,-0.4496564,-72.31141,638.60787)" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="13px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="76"
-     x="1312.1813"
-     y="480.37549"
-     id="text6269"
-     transform="matrix(0.4496564,0,0,0.4496564,-76.215928,229.9316)">implements</text>
-  <path
-     id="polygon5560"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 415.23228,639.38953 H 369.55921 V 602.3094 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <line
-     style="stroke:#000000;stroke-width:0.671845"
-     x1="369.51141"
-     x2="402.20807"
-     y1="612.24835"
-     y2="612.24835"
-     id="line5562" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="14px"
-     font-weight="bold"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="60"
-     x="1646"
-     y="644.94818"
-     id="text5564"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,320.1074)">lipgloss</text>
-  <rect
-     fill="#fefece"
-     height="96.433723"
-     id="main.CustomDelegate"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="165.92322"
-     x="304.07657"
-     y="397.62537" />
-  <circle
-     cx="361.78537"
-     cy="405.24933"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.447897"
-     id="ellipse5597"
-     r="4.9268708" />
-  <path
-     d="m 361.55433,405.5012 q -0.83275,-0.31491 -1.12679,-0.65782 -0.28685,-0.34994 -0.28685,-0.93781 0,-0.75583 0.48288,-1.1897 0.48287,-0.43393 1.3227,-0.43393 0.38486,0 0.76278,0.0911 0.38498,0.084 0.7629,0.25894 v 1.07074 q -0.35,-0.25195 -0.72085,-0.37789 -0.36389,-0.13298 -0.72084,-0.13298 -0.39193,0 -0.60893,0.16097 -0.20992,0.16093 -0.20992,0.45489 0,0.23094 0.15397,0.38492 0.15397,0.14696 0.64379,0.32888 l 0.47593,0.18199 q 0.66489,0.24496 0.97978,0.65084 0.32195,0.40593 0.32195,1.02178 0,0.83982 -0.49689,1.25268 -0.4969,0.41292 -1.50459,0.41292 -0.41302,0 -0.82581,-0.0979 -0.41302,-0.098 -0.79788,-0.28696 v -1.13372 q 0.43399,0.30793 0.84677,0.46188 0.4129,0.15398 0.81179,0.15398 0.40595,0 0.62989,-0.18197 0.22395,-0.18894 0.22395,-0.51787 0,-0.25195 -0.15397,-0.43392 -0.1469,-0.18892 -0.42692,-0.3009 z"
-     id="path5599"
-     style="stroke-width:0.447897" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="104"
-     x="1645.25"
-     y="218.10741"
-     id="text5601"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">CustomDelegate</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="304.52618"
-     x2="469.5502"
-     y1="412.0144"
-     y2="412.0144"
-     id="line5603" />
-  <circle
-     cx="309.26944"
-     cy="417.3425"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5605"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="143"
-     x="1516.5"
-     y="244.1636"
-     id="text5607"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">Styles CustomItemStyles</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="304.52618"
-     x2="469.5502"
-     y1="421.36932"
-     y2="421.36932"
-     id="line5609" />
-  <circle
-     cx="309.26944"
-     cy="426.66092"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5611"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="66"
-     x="1516.5"
-     y="264.96829"
-     id="text5613"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">UpdateFunc</text>
-  <text
-     fill="#0000ff"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="24"
-     x="1586.5"
-     y="264.96829"
-     id="text5615"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">func</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="249"
-     x="1610.5"
-     y="264.96829"
-     id="text5617"
-     transform="matrix(0.4496564,0,0,0.4496564,-368.83413,308.61446)">(bubbletea.Msg, *list.Model) bubbletea.Cmd</text>
-  <circle
-     cx="309.26944"
-     cy="432.39606"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5619"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="82"
-     x="1516.5"
-     y="277.77289"
-     id="text5621"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">ShortHelpFunc</text>
-  <text
-     fill="#0000ff"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="24"
-     x="1602.5"
-     y="277.77289"
-     id="text5623"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">func</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="85"
-     x="1626.5"
-     y="277.77289"
-     id="text5625"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">() []key.Binding</text>
-  <circle
-     cx="309.26944"
-     cy="438.13129"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5627"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="70"
-     x="1516.5"
-     y="290.57761"
-     id="text5629"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">FullHelpFunc</text>
-  <text
-     fill="#0000ff"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="24"
-     x="1590.5"
-     y="290.57761"
-     id="text5631"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">func</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="93"
-     x="1614.5"
-     y="290.57761"
-     id="text5633"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">() [][]key.Binding</text>
-  <circle
-     cx="309.26944"
-     cy="449.60165"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5637"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="84"
-     x="1516.5"
-     y="316.18701"
-     id="text5639"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">SetHeight(i int)</text>
-  <circle
-     cx="309.26944"
-     cy="455.33688"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5641"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="62"
-     x="1516.5"
-     y="328.9917"
-     id="text5643"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">Height() int</text>
-  <circle
-     cx="309.26944"
-     cy="461.07196"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5645"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="93"
-     x="1516.5"
-     y="341.79639"
-     id="text5647"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">SetSpacing(i int)</text>
-  <circle
-     cx="309.26944"
-     cy="466.80719"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5649"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="71"
-     x="1516.5"
-     y="354.6011"
-     id="text5651"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">Spacing() int</text>
-  <circle
-     cx="309.26944"
-     cy="472.54239"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5653"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="333"
-     x="1516.5"
-     y="367.40579"
-     id="text5655"
-     transform="matrix(0.4496564,0,0,0.4496564,-368.83413,308.61446)">Update(msg bubbletea.Msg, m *list.Model) bubbletea.Cmd</text>
-  <circle
-     cx="309.26944"
-     cy="478.27756"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5657"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="324"
-     x="1516.5"
-     y="380.21039"
-     id="text5659"
-     transform="matrix(0.4496564,0,0,0.4496564,-368.83413,308.61446)">Render(w io.Writer, m list.Model, index int, item list.Item)</text>
-  <circle
-     cx="309.26944"
-     cy="484.01276"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5661"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="141"
-     x="1516.5"
-     y="393.01511"
-     id="text5663"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">ShortHelp() []key.Binding</text>
-  <circle
-     cx="309.26944"
-     cy="489.74799"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5665"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="137"
-     x="1516.5"
-     y="405.81979"
-     id="text5667"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">FullHelp() [][]key.Binding</text>
-  <rect
-     fill="#fefece"
-     height="55.910175"
-     id="main.CustomItemStyles"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.671845"
-     width="98.089523"
-     x="337.93472"
-     y="520.80682" />
-  <circle
-     cx="360.21768"
-     cy="527.97308"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.447897"
-     id="ellipse5689"
-     r="4.9268708" />
-  <path
-     d="m 359.98672,528.22503 q -0.83288,-0.31489 -1.1268,-0.65781 -0.28697,-0.34988 -0.28697,-0.93772 0,-0.75583 0.483,-1.1897 0.48288,-0.43399 1.3227,-0.43399 0.38487,0 0.76278,0.0911 0.38487,0.0839 0.76278,0.25893 v 1.07072 q -0.34988,-0.25198 -0.72084,-0.37791 -0.3639,-0.133 -0.72084,-0.133 -0.39182,0 -0.60881,0.16104 -0.20993,0.16091 -0.20993,0.45483 0,0.2309 0.15397,0.38499 0.15397,0.1469 0.6438,0.32879 l 0.47593,0.18201 q 0.66488,0.24503 0.97977,0.65086 0.32196,0.40595 0.32196,1.02183 0,0.83971 -0.4969,1.25261 -0.49689,0.4129 -1.50471,0.4129 -0.4129,0 -0.8258,-0.0983 -0.4129,-0.0983 -0.79777,-0.28697 v -1.13375 q 0.43387,0.30794 0.84678,0.46191 0.4129,0.15397 0.81178,0.15397 0.40595,0 0.6299,-0.182 0.22394,-0.18896 0.22394,-0.51787 0,-0.25186 -0.15397,-0.43387 -0.14702,-0.18896 -0.42692,-0.30087 z"
-     id="path5691"
-     style="stroke-width:0.447897" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="111"
-     x="1641.75"
-     y="492.10739"
-     id="text5693"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">CustomItemStyles</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.671845"
-     x1="338.38272"
-     x2="435.57639"
-     y1="535.13953"
-     y2="535.13953"
-     id="line5695" />
-  <circle
-     cx="342.86166"
-     cy="540.06635"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5697"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="126"
-     x="1591.5"
-     y="518.16357"
-     id="text5699"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">Heading lipgloss.Style</text>
-  <circle
-     cx="342.86166"
-     cy="545.80157"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5701"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="175"
-     x="1591.5"
-     y="530.96832"
-     id="text5703"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">SelectedHeading lipgloss.Style</text>
-  <circle
-     cx="342.86166"
-     cy="551.5368"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5705"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="185"
-     x="1591.5"
-     y="543.77289"
-     id="text5707"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">NormalDescription lipgloss.Style</text>
-  <circle
-     cx="342.86166"
-     cy="557.27203"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5709"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="193"
-     x="1591.5"
-     y="556.57758"
-     id="text5711"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">SelectedDescription lipgloss.Style</text>
-  <circle
-     cx="342.86166"
-     cy="563.00708"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5713"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="155"
-     x="1591.5"
-     y="569.38232"
-     id="text5715"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">DimmedDesc lipgloss.Style</text>
-  <circle
-     cx="342.86166"
-     cy="568.74231"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.447897"
-     id="ellipse5717"
-     r="1.3436921" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="141"
-     x="1591.5"
-     y="582.18701"
-     id="text5719"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)">FilterMatch lipgloss.Style</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.671845"
-     x1="338.38272"
-     x2="435.57639"
-     y1="573.13379"
-     y2="573.13379"
-     id="line5721" />
-  <path
-     d="m 386.97947,499.32248 c 0,7.38389 0,14.69922 0,21.3705"
-     fill="none"
-     id="main.CustomDelegate&lt;-main.CustomItemStyles"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
-  <polygon
-     fill="#ffffff"
-     points="1685,417.9761 1681,411.9761 1677,417.9761 1681,423.9761 "
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.50589;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     id="polygon6272"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.86624)" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="13px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="30"
-     x="1649.8984"
-     y="432.44131"
-     id="text6274"
-     transform="matrix(0.44789735,0,0,0.44789735,-370.43254,309.42024)">uses</text>
-  <path
-     d="m 386.97947,582.13784 c 0,7.28454 0,14.4913 0,20.06184"
-     fill="none"
-     id="main.CustomItemStyles&lt;-lipgloss.Style"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1" />
-  <polygon
-     fill="#ffffff"
-     points="1681,609.0072 1685,603.0072 1681,597.0072 1677,603.0072 "
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.50589;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     id="polygon6277"
-     transform="matrix(0.44789735,0,0,0.44789735,-365.93591,309.42024)" />
-  <path
-     d="m 681.00454,249.27297 10.67177,28.0342"
-     fill="none"
-     id="path7710"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     sodipodi:nodetypes="cc" />
-  <path
-     d="m 716.29234,253.85156 -24.29715,23.14936"
-     fill="none"
-     id="path7712"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.674484;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     sodipodi:nodetypes="cc" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 304.62374,197.78535 -25.37019,61.02547"
-     id="path8322"
-     sodipodi:nodetypes="cc" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 222.66693,175.61856 H 66.555291 v 82.6519"
-     id="path8326" />
-  <rect
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0.851116px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
-     id="rect1495"
-     width="249.78752"
-     height="41.451286"
-     x="345.54407"
-     y="338.32803" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 416.77107,353.04786 54.04249,-37.64076 55.06071,37.83299"
-     id="path8328"
-     sodipodi:nodetypes="ccc" />
-  <rect
-     fill="#fefece"
-     height="61.887466"
-     id="main.KeyMap"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="75.092621"
-     x="710.57532"
-     y="186.90776" />
-  <circle
-     cx="735.6438"
-     cy="194.10228"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5724"
-     r="4.9462204" />
-  <path
-     d="m 735.41193,194.35523 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94149 0,-0.75879 0.4848,-1.19438 0.48479,-0.43563 1.32797,-0.43563 0.38642,0 0.76578,0.0914 0.38642,0.0844 0.76577,0.25995 v 1.07495 q -0.35119,-0.25293 -0.7236,-0.37938 -0.36533,-0.13351 -0.72371,-0.13351 -0.39338,0 -0.61121,0.16161 -0.21076,0.16156 -0.21076,0.45667 0,0.23184 0.15456,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.0258 0,0.8431 -0.49882,1.2576 -0.49881,0.41453 -1.51058,0.41453 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.2881 v -1.13816 q 0.43567,0.30913 0.85013,0.46368 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.6323,-0.18269 0.2249,-0.18966 0.2249,-0.51989 0,-0.25294 -0.15457,-0.43563 -0.14762,-0.18967 -0.4286,-0.30208 z"
-     id="path5726"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="47"
-     x="2342.75"
-     y="256.10739"
-     id="text5728"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">KeyMap</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="711.02527"
-     x2="785.21844"
-     y1="201.2968"
-     y2="201.2968"
-     id="line5730" />
-  <circle
-     cx="715.52173"
-     cy="206.24298"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5732"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="99"
-     x="2286.5"
-     y="282.1636"
-     id="text5734"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">Enter key.Binding</text>
-  <circle
-     cx="715.52173"
-     cy="212.00075"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5736"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="90"
-     x="2286.5"
-     y="294.96829"
-     id="text5738"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">Tab key.Binding</text>
-  <circle
-     cx="715.52173"
-     cy="217.75847"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5740"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="89"
-     x="2286.5"
-     y="307.77289"
-     id="text5742"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">Exit key.Binding</text>
-  <circle
-     cx="715.52173"
-     cy="223.51616"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5744"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="123"
-     x="2286.5"
-     y="320.57761"
-     id="text5746"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">CursorUp key.Binding</text>
-  <circle
-     cx="715.52173"
-     cy="229.27391"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5748"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="139"
-     x="2286.5"
-     y="333.38229"
-     id="text5750"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">CursorDown key.Binding</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="711.02527"
-     x2="785.21844"
-     y1="233.68263"
-     y2="233.68263"
-     id="line5752" />
-  <circle
-     cx="715.52173"
-     cy="238.62883"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5754"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="141"
-     x="2286.5"
-     y="354.18701"
-     id="text5756"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">ShortHelp() []key.Binding</text>
-  <circle
-     cx="715.52173"
-     cy="244.38661"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5758"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="137"
-     x="2286.5"
-     y="366.9917"
-     id="text5760"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,80.809975)">FullHelp() [][]key.Binding</text>
-  <rect
-     fill="#fefece"
-     height="56.129753"
-     id="main.inputKeyMap"
-     rx="5"
-     ry="5"
-     style="stroke:#a80036;stroke-width:0.674484"
-     width="75.092621"
-     x="619.74481"
-     y="187.06204" />
-  <circle
-     cx="637.82104"
-     cy="194.25648"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="ellipse5805"
-     r="4.9462204" />
-  <path
-     d="m 637.58916,194.50943 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94148 0,-0.7588 0.48492,-1.19438 0.48467,-0.43562 1.32785,-0.43562 0.38642,0 0.76578,0.0914 0.38642,0.0844 0.76577,0.25995 v 1.07495 q -0.35119,-0.25293 -0.7236,-0.37938 -0.36533,-0.1335 -0.72371,-0.1335 -0.39338,0 -0.61121,0.1616 -0.21077,0.16157 -0.21077,0.45668 0,0.23184 0.15457,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.02579 0,0.84311 -0.49882,1.25761 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13818 q 0.43567,0.30914 0.85013,0.46369 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.63241,-0.18269 0.22479,-0.18967 0.22479,-0.51989 0,-0.25293 -0.15457,-0.43563 -0.1475,-0.18967 -0.4286,-0.30208 z"
-     id="path5807"
-     style="stroke-width:0.449656" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="12px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="79"
-     x="2124.3"
-     y="262.60739"
-     id="text5809"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">inputKeyMap</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="620.19458"
-     x2="694.38782"
-     y1="201.45099"
-     y2="201.45099"
-     id="line5811" />
-  <circle
-     cx="624.6911"
-     cy="206.39726"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5813"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="109"
-     x="2084.5"
-     y="288.6636"
-     id="text5815"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">Search key.Binding</text>
-  <circle
-     cx="624.6911"
-     cy="212.15492"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5817"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="90"
-     x="2084.5"
-     y="301.46829"
-     id="text5819"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">Tab key.Binding</text>
-  <circle
-     cx="624.6911"
-     cy="217.91267"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5821"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="116"
-     x="2084.5"
-     y="314.27289"
-     id="text5823"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">Selector key.Binding</text>
-  <circle
-     cx="624.6911"
-     cy="223.67036"
-     fill="none"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="ellipse5825"
-     r="1.3489692" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="89"
-     x="2084.5"
-     y="327.07761"
-     id="text5827"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">Exit key.Binding</text>
-  <line
-     style="stroke:#a80036;stroke-width:0.674484"
-     x1="620.19458"
-     x2="694.38782"
-     y1="228.07918"
-     y2="228.07918"
-     id="line5829" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="141"
-     x="2084.5"
-     y="347.88229"
-     id="text5833"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">ShortHelp() []key.Binding</text>
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="11px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="137"
-     x="2084.5"
-     y="360.68701"
-     id="text5837"
-     transform="matrix(0.4496564,0,0,0.4496564,-308.57079,78.041415)">FullHelp() [][]key.Binding</text>
-  <polygon
-     fill="#ffffff"
-     points="2409.4269,382.564 2407.94,375.5079 2400.8548,374.1664 2402.3416,381.2226 "
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     id="polygon6282"
-     transform="matrix(-0.44323705,0.07570862,0.07570862,0.44323705,1755.3561,-98.133587)" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="13px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="30"
-     x="2374.2722"
-     y="393.56891"
-     id="text6284"
-     transform="matrix(0.4496564,0,0,0.4496564,-345.68607,81.244595)">uses</text>
-  <polygon
-     fill="#ffffff"
-     points="2199.5376,369.2428 2192.5047,367.6497 2193.7392,374.7544 2200.7721,376.3474 "
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     id="polygon6287"
-     transform="matrix(0.37282592,0.25137963,-0.25137963,0.37282592,-44.934426,-444.31473)" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="13px"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="30"
-     x="2165.7317"
-     y="387.41101"
-     id="text6289"
-     transform="matrix(0.4496564,0,0,0.4496564,-309.55818,78.041415)">uses</text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="98.285179"
-     y="66.681473"
-     id="text8334"><tspan
-       sodipodi:role="line"
-       id="tspan8332"
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="711.02527"
+       x2="785.21844"
+       y1="233.68263"
+       y2="233.68263"
+       id="line5752" />
+    <circle
+       cx="715.52173"
+       cy="238.62883"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5754"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="141"
+       x="2286.5"
+       y="354.18701"
+       id="text5756"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">ShortHelp() []key.Binding</text>
+    <circle
+       cx="715.52173"
+       cy="244.38661"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5758"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="137"
+       x="2286.5"
+       y="366.9917"
+       id="text5760"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,80.809996)">FullHelp() [][]key.Binding</text>
+    <rect
+       fill="#fefece"
+       height="56.129753"
+       id="main.inputKeyMap"
+       rx="5"
+       ry="5"
+       style="stroke:#a80036;stroke-width:0.674484"
+       width="75.092621"
+       x="619.74481"
+       y="187.06204" />
+    <circle
+       cx="637.82104"
+       cy="194.25648"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="ellipse5805"
+       r="4.9462204" />
+    <path
+       d="m 637.58916,194.50943 q -0.83611,-0.31616 -1.13111,-0.66042 -0.28817,-0.35131 -0.28817,-0.94148 0,-0.7588 0.48492,-1.19438 0.48467,-0.43562 1.32785,-0.43562 0.38642,0 0.76578,0.0914 0.38642,0.0844 0.76577,0.25995 v 1.07495 q -0.35119,-0.25293 -0.7236,-0.37938 -0.36533,-0.1335 -0.72371,-0.1335 -0.39338,0 -0.61121,0.1616 -0.21077,0.16157 -0.21077,0.45668 0,0.23184 0.15457,0.38643 0.15457,0.14754 0.64632,0.33019 l 0.47784,0.18269 q 0.6674,0.24592 0.98361,0.6534 0.32316,0.40752 0.32316,1.02579 0,0.84311 -0.49882,1.25761 -0.49881,0.41454 -1.51058,0.41454 -0.41458,0 -0.82904,-0.0984 -0.41458,-0.0984 -0.801,-0.28809 v -1.13818 q 0.43567,0.30914 0.85013,0.46369 0.41458,0.15459 0.81502,0.15459 0.40751,0 0.63241,-0.18269 0.22479,-0.18967 0.22479,-0.51989 0,-0.25293 -0.15457,-0.43563 -0.1475,-0.18967 -0.4286,-0.30208 z"
+       id="path5807"
+       style="stroke-width:0.449656" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="79"
+       x="2124.3"
+       y="262.60739"
+       id="text5809"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">inputKeyMap</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="620.19458"
+       x2="694.38782"
+       y1="201.45099"
+       y2="201.45099"
+       id="line5811" />
+    <circle
+       cx="624.6911"
+       cy="206.39726"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5813"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="109"
+       x="2084.5"
+       y="288.6636"
+       id="text5815"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">Search key.Binding</text>
+    <circle
+       cx="624.6911"
+       cy="212.15492"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5817"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="90"
+       x="2084.5"
+       y="301.46829"
+       id="text5819"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">Tab key.Binding</text>
+    <circle
+       cx="624.6911"
+       cy="217.91267"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5821"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="116"
+       x="2084.5"
+       y="314.27289"
+       id="text5823"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">Selector key.Binding</text>
+    <circle
+       cx="624.6911"
+       cy="223.67036"
+       fill="none"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="ellipse5825"
+       r="1.3489692" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="89"
+       x="2084.5"
+       y="327.07761"
+       id="text5827"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">Exit key.Binding</text>
+    <line
+       style="stroke:#a80036;stroke-width:0.674484"
+       x1="620.19458"
+       x2="694.38782"
+       y1="228.07918"
+       y2="228.07918"
+       id="line5829" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="141"
+       x="2084.5"
+       y="347.88229"
+       id="text5833"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">ShortHelp() []key.Binding</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="137"
+       x="2084.5"
+       y="360.68701"
+       id="text5837"
+       transform="matrix(0.44965652,0,0,0.44965652,-308.57087,78.041436)">FullHelp() [][]key.Binding</text>
+    <polygon
+       fill="#ffffff"
+       points="2409.4269,382.564 2407.94,375.5079 2400.8548,374.1664 2402.3416,381.2226 "
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="polygon6282"
+       transform="matrix(-0.44323717,0.07570864,0.07570864,0.44323717,1755.3566,-98.133613)" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="30"
+       x="2374.2722"
+       y="393.56891"
+       id="text6284"
+       transform="matrix(0.44965652,0,0,0.44965652,-345.68616,81.244616)">uses</text>
+    <polygon
+       fill="#ffffff"
+       points="2199.5376,369.2428 2192.5047,367.6497 2193.7392,374.7544 2200.7721,376.3474 "
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#a80036;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="polygon6287"
+       transform="matrix(0.37282602,0.2513797,-0.2513797,0.37282602,-44.934438,-444.31485)" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="30"
+       x="2165.7317"
+       y="387.41101"
+       id="text6289"
+       transform="matrix(0.44965652,0,0,0.44965652,-309.55826,78.041436)">uses</text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="98.285179"
        y="66.681473"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">enums/state</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="397.93378"
-     y="66.681473"
-     id="text8338"><tspan
-       sodipodi:role="line"
-       id="tspan8336"
+       id="text8334"><tspan
+         sodipodi:role="line"
+         id="tspan8332"
+         x="98.285179"
+         y="66.681473"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">enums/state</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="397.93378"
        y="66.681473"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">tea.Msg message types</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="223.22459"
-     y="144.70641"
-     id="text8342"><tspan
-       sodipodi:role="line"
-       id="tspan8340"
+       id="text8338"><tspan
+         sodipodi:role="line"
+         id="tspan8336"
+         x="397.93378"
+         y="66.681473"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">tea.Msg message types</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="223.22459"
        y="144.70641"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">main model</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="608.49963"
-     y="167.21512"
-     id="text8346"><tspan
-       sodipodi:role="line"
-       id="tspan8344"
+       id="text8342"><tspan
+         sodipodi:role="line"
+         id="tspan8340"
+         x="223.22459"
+         y="144.70641"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">main model</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="608.49963"
        y="167.21512"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">keymaps, help</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="11.532851"
-     y="320.59045"
-     id="text8350"><tspan
-       sodipodi:role="line"
-       id="tspan8348"
+       id="text8346"><tspan
+         sodipodi:role="line"
+         id="tspan8344"
+         x="608.49963"
+         y="167.21512"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">keymaps, help</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="11.532851"
        y="320.59045"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">status area</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="313.43463"
-     y="248.97917"
-     id="text8354"><tspan
-       sodipodi:role="line"
-       id="tspan8352"
+       id="text8350"><tspan
+         sodipodi:role="line"
+         id="tspan8348"
+         x="11.532851"
+         y="320.59045"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">status area</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="313.43463"
        y="248.97917"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">input model</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="516.11584"
-     y="248.7075"
-     id="text8358"><tspan
-       sodipodi:role="line"
-       id="tspan8356"
+       id="text8354"><tspan
+         sodipodi:role="line"
+         id="tspan8352"
+         x="313.43463"
+         y="248.97917"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">input model</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="516.11584"
        y="248.7075"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">list model</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="292.51559"
-     y="478.86008"
-     id="text8364"><tspan
-       sodipodi:role="line"
-       id="tspan8362"
+       id="text8358"><tspan
+         sodipodi:role="line"
+         id="tspan8356"
+         x="516.11584"
+         y="248.7075"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">list model</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="292.51559"
        y="478.86008"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end">list item</tspan><tspan
-       sodipodi:role="line"
-       x="292.51559"
-       y="490.06006"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
-       id="tspan8366">custom delegate</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="596.49597"
-     y="435.41263"
-     id="text8376"><tspan
-       sodipodi:role="line"
-       id="tspan8374"
+       id="text8364"><tspan
+         sodipodi:role="line"
+         id="tspan8362"
+         x="292.51559"
+         y="478.86008"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end">list item</tspan><tspan
+         sodipodi:role="line"
+         x="292.51559"
+         y="490.06006"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
+         id="tspan8366">custom delegate</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="596.49597"
        y="435.41263"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">customized list item</tspan></text>
-  <text
-     xml:space="preserve"
-     id="text8969"
-     style="font-size:13.3333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect8971);display:inline"
-     transform="translate(-27.884625,-48.315365)"><tspan
-       x="37.068359"
-       y="69.819791"
-       id="tspan3472">Cexfind bubbletea console app structure</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="325.03146"
-     y="564.24561"
-     id="text8979"><tspan
-       sodipodi:role="line"
+       id="text8376"><tspan
+         sodipodi:role="line"
+         id="tspan8374"
+         x="596.49597"
+         y="435.41263"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">customized list item</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text8969"
+       style="font-size:13.3333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect8971);display:inline"
+       transform="translate(-27.884632,-48.315378)"><tspan
+         x="37.068359"
+         y="69.819791"
+         id="tspan1804">Cexfind bubbletea console app structure</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="325.03146"
        y="564.24561"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
-       id="tspan8977">list item</tspan><tspan
-       sodipodi:role="line"
-       x="325.03146"
-       y="575.44562"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
-       id="tspan8983">styles</tspan></text>
-  <path
-     id="path9294"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 721.58408,315.08187 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="14px"
-     font-weight="bold"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="28"
-     x="3294"
-     y="498.44821"
-     id="text9298"
-     transform="matrix(0.47659104,0,0,0.44941877,-891.32497,60.953941)">key</text>
-  <line
-     style="stroke:#000000;stroke-width:0.674668"
-     x1="676.10645"
-     x2="709.07849"
-     y1="288.18118"
-     y2="288.18118"
-     id="line5562-9" />
-  <text
-     xml:space="preserve"
-     id="text9326"
-     style="font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9328);display:inline"
-     transform="translate(-27.884625,572.36965)"><tspan
-       x="37.068359"
-       y="66.280317"
-       id="tspan3474">diagram made partly using dumels</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
-     x="9.6686287"
-     y="36.423321"
-     id="text11050"><tspan
-       sodipodi:role="line"
-       id="tspan11048"
+       id="text8979"><tspan
+         sodipodi:role="line"
+         x="325.03146"
+         y="564.24561"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
+         id="tspan8977">list item</tspan><tspan
+         sodipodi:role="line"
+         x="325.03146"
+         y="575.44562"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end"
+         id="tspan8983">styles</tspan></text>
+    <path
+       id="path9294"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 721.58408,315.08187 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="28"
+       x="3294"
+       y="498.44821"
+       id="text9298"
+       transform="matrix(0.47659117,0,0,0.44941889,-891.32521,60.953957)">key</text>
+    <line
+       style="stroke:#000000;stroke-width:0.674668"
+       x1="676.10645"
+       x2="709.07849"
+       y1="288.18118"
+       y2="288.18118"
+       id="line5562-9" />
+    <text
+       xml:space="preserve"
+       id="text9326"
+       style="font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9328);display:inline"
+       transform="translate(-27.884632,572.3698)"><tspan
+         x="37.068359"
+         y="66.280317"
+         id="tspan1806">diagram made partly using dumels</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px"
        x="9.6686287"
        y="36.423321"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">conceptual structure</tspan></text>
-  <rect
-     style="font-variation-settings:normal;opacity:1;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
-     id="rect11104"
-     width="63.849377"
-     height="18.49275"
-     x="118.39255"
-     y="233.36037"
-     ry="5.5035124"
-     rx="5.5035124" />
-  <path
-     id="path13040"
-     style="fill:#0000ff;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.6;vector-effect:none;fill-opacity:0.22162744;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 176.59134,354.62263 H 130.91827 V 317.5425 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <line
-     style="stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     x1="130.8705"
-     x2="163.56715"
-     y1="327.48148"
-     y2="327.48148"
-     id="line13042" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 224.4791,193.99428 -43.8473,40.54576"
-     id="path13480"
-     sodipodi:nodetypes="cc" />
-  <circle
-     cx="140.85869"
-     cy="242.60674"
-     fill="#7fffd4"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="circle13081"
-     r="4.9462204" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
-     x="161.21365"
-     y="244.51271"
-     id="text13091"><tspan
-       sodipodi:role="line"
+       id="text11050"><tspan
+         sodipodi:role="line"
+         id="tspan11048"
+         x="9.6686287"
+         y="36.423321"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.33333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">conceptual structure</tspan></text>
+    <rect
+       style="font-variation-settings:normal;opacity:1;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       id="rect11104"
+       width="63.849377"
+       height="18.49275"
+       x="118.39255"
+       y="233.36037"
+       ry="5.5035124"
+       rx="5.5035124" />
+    <path
+       id="path13040"
+       style="fill:#0000ff;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.6;vector-effect:none;fill-opacity:0.22162744;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 176.59134,354.62263 H 130.91827 V 317.5425 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <line
+       style="stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       x1="130.8705"
+       x2="163.56715"
+       y1="327.48148"
+       y2="327.48148"
+       id="line13042" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 224.4791,193.99428 -43.8473,40.54576"
+       id="path13480"
+       sodipodi:nodetypes="cc" />
+    <circle
+       cx="140.85869"
+       cy="242.60674"
+       fill="#7fffd4"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="circle13081"
+       r="4.9462204" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
        x="161.21365"
        y="244.51271"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
-       id="tspan13089">find</tspan></text>
-  <text
-     xml:space="preserve"
-     id="text13095"
-     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13097);display:inline"
-     transform="matrix(0.59769484,0,0,0.59769484,64.634813,117.06062)"><tspan
-       x="124.00781"
-       y="214.72849"
-       id="tspan3476">F</tspan></text>
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.06059px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 147.63359,317.77335 V 251.7525"
-     id="path13482"
-     sodipodi:nodetypes="cc" />
-  <text
-     xml:space="preserve"
-     id="text13533"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13535);display:inline"
-     transform="matrix(0.48014671,0,0,0.48014671,73.264614,166.94088)"><tspan
-       x="123.70703"
-       y="328.71547"
-       id="tspan3478">cexfind</tspan></text>
-  <circle
-     cx="228.29465"
-     cy="184.54922"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="circle13744"
-     r="1.3489692" />
-  <circle
-     cx="228.29465"
-     cy="189.83331"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="circle13746"
-     r="1.3489692" />
-  <circle
-     cx="624.6911"
-     cy="232.48799"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="circle13748"
-     r="1.3489692" />
-  <circle
-     cx="624.6911"
-     cy="238.24577"
-     fill="#84be84"
-     style="stroke:#038048;stroke-width:0.449656"
-     id="circle13750"
-     r="1.3489692" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 387.74992,197.78535 25.44673,61.02547"
-     id="path13752"
-     sodipodi:nodetypes="cc" />
-  <rect
-     fill="#fefece"
-     height="15.582821"
-     id="rect14570"
-     rx="5"
-     ry="5"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
-     width="60.914497"
-     x="356.88638"
-     y="351.61584" />
-  <circle
-     cx="365.60474"
-     cy="358.9158"
-     fill="#b4a7e5"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="circle14572"
-     r="4.9462204" />
-  <path
-     d="m 363.77096,357.0117 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
-     id="path14574"
-     style="stroke-width:0.449656" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.25467px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 387.34369,367.54646 v 29.4974"
-     id="path14592" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.27855px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 554.5831,367.54646 v 30.63059"
-     id="path14594" />
-  <rect
-     fill="#fefece"
-     height="15.582821"
-     id="rect14598"
-     rx="5"
-     ry="5"
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
-     width="60.914497"
-     x="525.08337"
-     y="351.61584" />
-  <circle
-     cx="537.8017"
-     cy="358.9158"
-     fill="#b4a7e5"
-     style="stroke:#a80036;stroke-width:0.449656"
-     id="circle14600"
-     r="4.9462204" />
-  <path
-     d="m 535.96794,357.0117 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
-     id="path14602"
-     style="stroke-width:0.449656" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
-     x="414.7674"
-     y="361.11069"
-     id="text14703"><tspan
-       sodipodi:role="line"
+       id="text13091"><tspan
+         sodipodi:role="line"
+         x="161.21365"
+         y="244.51271"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
+         id="tspan13089">find</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text13095"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13097);display:inline"
+       transform="matrix(0.597695,0,0,0.597695,64.63483,117.06065)"><tspan
+         x="124.00781"
+         y="214.72849"
+         id="tspan1808">F</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.06059px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 147.63359,317.77335 V 251.7525"
+       id="path13482"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       id="text13533"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect13535);display:inline"
+       transform="matrix(0.48014684,0,0,0.48014684,73.264633,166.94092)"><tspan
+         x="123.70703"
+         y="328.71547"
+         id="tspan1810">cexfind</tspan></text>
+    <circle
+       cx="228.29465"
+       cy="184.54922"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="circle13744"
+       r="1.3489692" />
+    <circle
+       cx="228.29465"
+       cy="189.83331"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="circle13746"
+       r="1.3489692" />
+    <circle
+       cx="624.6911"
+       cy="232.48799"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="circle13748"
+       r="1.3489692" />
+    <circle
+       cx="624.6911"
+       cy="238.24577"
+       fill="#84be84"
+       style="stroke:#038048;stroke-width:0.449656"
+       id="circle13750"
+       r="1.3489692" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 387.74992,197.78535 25.44673,61.02547"
+       id="path13752"
+       sodipodi:nodetypes="cc" />
+    <rect
+       fill="#fefece"
+       height="15.582821"
+       id="rect14570"
+       rx="5"
+       ry="5"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       width="60.914497"
+       x="356.88638"
+       y="351.61584" />
+    <circle
+       cx="365.60474"
+       cy="358.9158"
+       fill="#b4a7e5"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="circle14572"
+       r="4.9462204" />
+    <path
+       d="m 363.77096,357.0117 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
+       id="path14574"
+       style="stroke-width:0.449656" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.25467px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 387.34369,367.54646 v 29.4974"
+       id="path14592" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.27855px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 554.5831,367.54646 v 30.63059"
+       id="path14594" />
+    <rect
+       fill="#fefece"
+       height="15.582821"
+       id="rect14598"
+       rx="5"
+       ry="5"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#fefece;fill-opacity:1;stroke:#a80036;stroke-width:0.823937;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
+       width="60.914497"
+       x="525.08337"
+       y="351.61584" />
+    <circle
+       cx="537.8017"
+       cy="358.9158"
+       fill="#b4a7e5"
+       style="stroke:#a80036;stroke-width:0.449656"
+       id="circle14600"
+       r="4.9462204" />
+    <path
+       d="m 535.96794,357.0117 v -0.96959 h 3.32323 v 0.96959 h -1.11014 v 3.63236 h 1.11014 v 0.96959 h -3.32323 v -0.96959 h 1.11002 v -3.63236 z"
+       id="path14602"
+       style="stroke-width:0.449656" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
        x="414.7674"
        y="361.11069"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
-       id="tspan14701">list.ItemDelegate</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
-     x="567.12354"
-     y="361.11069"
-     id="text1087"><tspan
-       sodipodi:role="line"
+       id="text14703"><tspan
+         sodipodi:role="line"
+         x="414.7674"
+         y="361.11069"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
+         id="tspan14701">list.ItemDelegate</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;stroke-width:0.611729"
        x="567.12354"
        y="361.11069"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
-       id="tspan1085">list.Item</tspan></text>
-  <path
-     id="path1429"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 666.44706,378.26054 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <line
-     style="stroke:#000000;stroke-width:0.671845"
-     x1="620.7262"
-     x2="653.42285"
-     y1="351.11938"
-     y2="351.11938"
-     id="line1431" />
-  <text
-     xml:space="preserve"
-     id="text1435"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1437);display:inline"
-     transform="matrix(0.48014671,0,0,0.48014671,563.12033,190.57879)"><tspan
-       x="123.70703"
-       y="328.71547"
-       id="tspan3480">list</tspan></text>
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 620.57925,359.24162 H 586.88924"
-     id="path2102" />
-  <path
-     id="path2104"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;opacity:0.7"
-     d="m 290.46261,381.67549 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <line
-     style="stroke:#000000;stroke-width:0.671845"
-     x1="244.74176"
-     x2="277.43842"
-     y1="354.53433"
-     y2="354.53433"
-     id="line2106" />
-  <path
-     style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 261.50486,344.82621 V 309.03054"
-     id="path2108"
-     sodipodi:nodetypes="cc" />
-  <text
-     xml:space="preserve"
-     id="text2112"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2114);display:inline"
-     transform="matrix(0.48014671,0,0,0.48014671,187.13588,193.99374)"><tspan
-       x="123.70703"
-       y="328.71547"
-       id="tspan3482">input</tspan></text>
-  <path
-     id="path2116"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 770.24575,142.32775 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <text
-     fill="#000000"
-     font-family="sans-serif"
-     font-size="14px"
-     font-weight="bold"
-     lengthAdjust="spacingAndGlyphs"
-     textLength="28"
-     x="3294"
-     y="498.44821"
-     id="text2118"
-     transform="matrix(0.47659104,0,0,0.44941877,-842.6633,-111.80018)">help</text>
-  <line
-     style="stroke:#000000;stroke-width:0.674668"
-     x1="724.76813"
-     x2="757.74017"
-     y1="115.42706"
-     y2="115.42706"
-     id="line2120" />
-  <path
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="m 736.33275,142.19675 v 34.05884"
-     id="path2122" />
-  <path
-     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 610.96629,176.88033 H 397.20586"
-     id="path2183" />
-  <path
-     id="path2104-1"
-     style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
-     d="M 55.155651,591.71993 H 9.4825806 V 554.6398 H 39.163461 l 4.99224,9.96111 h 10.99995 z"
-     sodipodi:nodetypes="ccccccc" />
-  <line
-     style="stroke:#000000;stroke-width:0.671845"
-     x1="9.4347963"
-     x2="42.131454"
-     y1="564.57874"
-     y2="564.57874"
-     id="line2106-2" />
-  <text
-     xml:space="preserve"
-     id="text2112-7"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2114-9);display:inline"
-     transform="matrix(0.48014671,0,0,0.48014671,-48.171079,404.03818)"><tspan
-       x="123.70703"
-       y="328.71547"
-       id="tspan3484">input</tspan></text>
-  <text
-     xml:space="preserve"
-     id="text2614"
-     style="font-size:6.66666px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2616);display:inline"
-     transform="translate(-27.884625,542.16086)"><tspan
-       x="37.068359"
-       y="63.920646"
-       id="tspan3486">folder icon indicates package, for example &quot;input&quot; relates to </tspan><tspan
-       x="37.068359"
-       y="71.920639"
-       id="tspan3488">https://github.com/charmbracelet/bubbles/tree/master/textinput</tspan></text>
-  <text
-     xml:space="preserve"
-     id="text1384"
-     style="font-size:6.66666px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1386);display:inline"
-     transform="translate(93.341052,303.05489)"><tspan
-       x="37.068359"
-       y="63.920646"
-       id="tspan3490">this project</tspan></text>
+       id="text1087"><tspan
+         sodipodi:role="line"
+         x="567.12354"
+         y="361.11069"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.70947px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-anchor:end;stroke-width:0.611729"
+         id="tspan1085">list.Item</tspan></text>
+    <path
+       id="path1429"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 666.44706,378.26054 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <line
+       style="stroke:#000000;stroke-width:0.671845"
+       x1="620.7262"
+       x2="653.42285"
+       y1="351.11938"
+       y2="351.11938"
+       id="line1431" />
+    <text
+       xml:space="preserve"
+       id="text1435"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1437);display:inline"
+       transform="matrix(0.48014684,0,0,0.48014684,563.12048,190.57884)"><tspan
+         x="123.70703"
+         y="328.71547"
+         id="tspan1812">list</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 620.57925,359.24162 H 586.88924"
+       id="path2102" />
+    <path
+       id="path2104"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;opacity:0.7"
+       d="m 290.46261,381.67549 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <line
+       style="stroke:#000000;stroke-width:0.671845"
+       x1="244.74176"
+       x2="277.43842"
+       y1="354.53433"
+       y2="354.53433"
+       id="line2106" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-variation-settings:normal;opacity:1;vector-effect:none;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 261.50486,344.82621 V 309.03054"
+       id="path2108"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       id="text2112"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2114);display:inline"
+       transform="matrix(0.48014684,0,0,0.48014684,187.13593,193.99379)"><tspan
+         x="123.70703"
+         y="328.71547"
+         id="tspan1814">input</tspan></text>
+    <path
+       id="path2116"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 770.24575,142.32775 h -45.67307 v -37.08013 h 29.68088 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="28"
+       x="3294"
+       y="498.44821"
+       id="text2118"
+       transform="matrix(0.47659117,0,0,0.44941889,-842.66352,-111.80021)">help</text>
+    <line
+       style="stroke:#000000;stroke-width:0.674668"
+       x1="724.76813"
+       x2="757.74017"
+       y1="115.42706"
+       y2="115.42706"
+       id="line2120" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="m 736.33275,142.19675 v 34.05884"
+       id="path2122" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.34088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 610.96629,176.88033 H 397.20586"
+       id="path2183" />
+    <path
+       id="path2104-1"
+       style="fill:#ffe6d5;stroke:#000000;stroke-width:0.767195;font-variation-settings:normal;opacity:0.7;vector-effect:none;fill-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       d="M 55.155651,591.71993 H 9.4825806 V 554.6398 H 39.163461 l 4.99224,9.96111 h 10.99995 z"
+       sodipodi:nodetypes="ccccccc" />
+    <line
+       style="stroke:#000000;stroke-width:0.671845"
+       x1="9.4347963"
+       x2="42.131454"
+       y1="564.57874"
+       y2="564.57874"
+       id="line2106-2" />
+    <text
+       xml:space="preserve"
+       id="text2112-7"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.2;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2114-9);display:inline"
+       transform="matrix(0.48014684,0,0,0.48014684,-48.171092,404.03829)"><tspan
+         x="123.70703"
+         y="328.71547"
+         id="tspan1816">input</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text2614"
+       style="font-size:6.66666px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2616);display:inline"
+       transform="translate(-27.884632,542.161)"><tspan
+         x="37.068359"
+         y="63.920646"
+         id="tspan1818">folder icon indicates package, for example &quot;input&quot; relates to </tspan><tspan
+         x="37.068359"
+         y="71.920639"
+         id="tspan1820">https://github.com/charmbracelet/bubbles/tree/master/textinput</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1384"
+       style="font-size:6.66666px;line-height:1.2;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1386);display:inline"
+       transform="translate(93.341077,303.05497)"><tspan
+         x="37.068359"
+         y="63.920646"
+         id="tspan1822">this project</tspan></text>
+  </g>
 </svg>
