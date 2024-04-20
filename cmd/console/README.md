@@ -17,7 +17,7 @@ This gif was made using [vhs](https://github.com/charmbracelet/vhs):
 vhs console.vhs
 ```
 
-(I've been using `sxiv -af console.gif` to check the recording.)
+(I've been using `sxiv -af console.gif` or my browser to view the recording.)
 
 
 ## Structure
@@ -53,4 +53,28 @@ case listEnterMsg:
 		time.Sleep(2500 * time.Millisecond)
 		return resetListStatus{}
 	}
+```
+
+### Files
+
+The console component includes the following files:
+
+```
+README.md
+go.mod
+go.sum
+main.go         # entry point
+model.go        # the main model
+status.go       # the status component (used in the model)
+input.go        # the input sub-model
+list.go         # the list sub-model
+delegate.go     # the list item delegate
+find.go         # the model's adapter to the main cexfind
+keymap.go       # keymaps, used for interaction and help
+model_test.go   # test
+list_example.go # example list contents
+console.vhs     # vhs instruction file
+console.gif     # example gif
+diagram.svg     # diagram of the program
+diagram.png     # diagram png
 ```
