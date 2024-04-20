@@ -1,4 +1,4 @@
-package web
+package main
 
 import (
 	"encoding/json"
@@ -51,9 +51,9 @@ var (
 	DirFS         *fileSystem
 )
 
-// SetupFS setup the filesystem for templates or static files, depending on
+// setupFS setup the filesystem for templates or static files, depending on
 // development (filesystem) or not (embedded)
-func SetupFS() error {
+func setupFS() error {
 	var err error
 	if inDevelopment {
 		DirFS, err = NewFileSystem(inDevelopment, tplDirDev, staticDirDev)
@@ -79,7 +79,7 @@ func Serve(addr, port string) {
 	}
 
 	// setup the filesystem
-	if err := SetupFS(); err != nil {
+	if err := setupFS(); err != nil {
 		log.Fatal(err)
 	}
 

@@ -6,11 +6,9 @@ import (
 	"net"
 	"os"
 	"strconv"
-
-	"github.com/rorycl/cexfind/web"
 )
 
-var Server func(address, port string) = web.Serve
+var Server func(address, port string) = Serve
 
 var usage = `
 run a webserver to search Cex/Webuy for second hand equipment

@@ -1,4 +1,4 @@
-package web
+package main
 
 // https://ieftimov.com/posts/testing-in-go-testing-http-servers/
 // https://bignerdranch.com/blog/using-the-httptest-package-in-golang/
@@ -20,7 +20,7 @@ import (
 func TestSetupFS(t *testing.T) {
 	staticDirDev = "static"
 	tplDirDev = "templates"
-	if got, want := SetupFS(), error(nil); got != want {
+	if got, want := setupFS(), error(nil); got != want {
 		t.Errorf("testsetupfs error got %v != want %v", got, want)
 	}
 }
