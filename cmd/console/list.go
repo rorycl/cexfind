@@ -14,7 +14,9 @@ import (
 
 // an item is a list item, meeting the list.Item interface (which
 // requires a
-//     FilterValue() string
+//
+//	FilterValue() string
+//
 // function
 type item struct {
 	desc      string // a rendered description
@@ -127,8 +129,7 @@ func (li *liModel) Prev() {
 // ReplaceList replaces the items in the list and sets the Index
 // appropriately
 func (li *liModel) ReplaceList(items []list.Item) tea.Cmd {
-	var cmd tea.Cmd
-	cmd = li.list.SetItems(items)
+	var cmd tea.Cmd = li.list.SetItems(items)
 	if li.list.Index() != 0 {
 		li.list.Select(0)
 	}

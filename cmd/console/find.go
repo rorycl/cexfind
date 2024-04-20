@@ -17,9 +17,9 @@ import (
 // list.Items as required by the bubbletea list and delegate which uses
 // the following format:
 //
-//		items := []list.Item{
-//			item{desc: "this is a heading", isHeading: true},
-//			item{desc: "this is a normal item 1"},
+//	items := []list.Item{
+//		item{desc: "this is a heading", isHeading: true},
+//		item{desc: "this is a normal item 1"},
 //
 // The query is received from the app as a single string with queries
 // separated (potentially) by a comma. Queries are expected to each be
