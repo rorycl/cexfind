@@ -65,6 +65,7 @@ jobs:
           files: |
             artifacts/cli*
             artifacts/webserver*
+            artifacts/console*
           # draft: true
           name: Release for ${{ github.ref_name }} (automated)
           prerelease: true

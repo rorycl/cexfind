@@ -31,7 +31,8 @@ jobs:
         run: |
           mkdir artifacts
           cp bin/cli* artifacts/
-          cp bin/webserver* artifacts
+          cp bin/webserver* artifacts/
+          cp bin/console* artifacts/
       - name: archive
         uses: actions/upload-artifact@v4
         with:

@@ -25,4 +25,5 @@ jobs:
         uses: golangci/golangci-lint-action@v4
         with:
           version: v1.57 # can use "latest"
+        run: make lint
 
