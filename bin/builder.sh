@@ -12,6 +12,8 @@ fi
 TARGET=$1
 BASEBIN=$2
 
+THISDIR=$(dirname "$0")
+
 LINUX='linux:amd64:linux-amd64'
 WIN='windows:amd64:win-amd64.exe'
 MACAMD='darwin:amd64:darwin-amd64'
@@ -22,5 +24,5 @@ for II in $LINUX $WIN $MACAMD $MACARM; do
 	arch=$(echo $II | cut -d":" -f2)
 	suffix=$(echo $II | cut -d":" -f3)
 	# echo $os $arch $suffix;
-	GOOS=${os} GOARCH=${arch} go build -o bin/${BASEBIN}-${suffix} ${TARGET}
+	GOOS=${os} GOARCH=${arch} go build -o ${THISDIR}/${BASEBIN}-${suffix} ${TARGET}
 done

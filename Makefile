@@ -1,13 +1,12 @@
 # Based on the Example from Joel Homes, author of "Shipping Go" at
 # https://github.com/holmes89/hello-api/blob/main/ch10/Makefile
 
+#  https://stackoverflow.com/a/54776239
 SHELL=/bin/bash
-
 GO_VERSION := 1.22  # <1>
-
 COVERAGE_AMT := 70  # should be 80
-
-HEREGOPATH := `go env GOPATH`
+HEREGOPATH := $(shell go env GOPATH)
+CURDIR := $(shell pwd)
 
 # setup: # <2>
 # 	install-go
@@ -40,12 +39,17 @@ build-cli:
 build-web:
 	go test ./... && echo "---ok---" && go build -o bin/webserver cmd/web/main.go
 
-build-all: build-cli build-web
+build-console:
+	@echo ${CURDIR}
+	cd ${CURDIR}/cmd/console && go test . && echo "---ok---" && go build -o ${CURDIR}/bin/console .
+
+build-all: build-cli build-web build-console
 
 build-many:
 	go test ./... || exit 1
 	bin/builder.sh cmd/web/main.go webserver
 	bin/builder.sh cmd/cli/main.go cli
+	cd ${CURDIR}/cmd/console && ${CURDIR}/bin/builder.sh . console
 
 # build-dev:
 # 	go test ./... && echo "---ok---" && go build -o timeaway -tags=development cmd/main.go
@@ -80,11 +84,11 @@ install-lint:
 	# https://golangci-lint.run/usage/install/#local-installation to GOPATH
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(HEREGOPATH)/bin v1.57.2
 	# report version
-	golangci-lint --version
+	${HEREGOPATH}/bin/golangci-lint --version
 
 lint:
 	# golangci-lint run -v ./... 
-	golangci-lint run ./... 
+	${HEREGOPATH}/bin/golangci-lint run ./... 
 
 module-update-tidy:
 	go get -u ./...

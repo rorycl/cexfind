@@ -1,4 +1,4 @@
-module list-test
+module console
 
 go 1.22
 

@@ -10,7 +10,7 @@ import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 
-	"github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind/search"
 )
 
 // find makes cexfind/search queries and turns the results into
@@ -37,9 +37,9 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		}
 	}
 
-	var results search.BoxMap
+	var results cex.BoxMap
 	log.Printf("  making search for %v, strict %t", queries, strict)
-	results, err = search.Search(queries, strict)
+	results, err = cex.Search(queries, strict)
 	if err != nil {
 		return
 	}
@@ -65,7 +65,7 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		// add standard item
 		items = append(items, item{
 			desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID),
-			url:  search.URLDETAIL + box.ID,
+			url:  cex.URLDETAIL + box.ID,
 		})
 		itemNo++
 	}
