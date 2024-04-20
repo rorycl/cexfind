@@ -12,6 +12,7 @@ var usage = `
 a programme to search Cex/Webuy for second hand equipment
 
 eg <programme> [-strict] -query "query 1" [-query "query 2"...]
+
 `
 
 // queriesType is a flag list type
@@ -72,9 +73,9 @@ func main() {
 	for sortedResults := range results.Iter() {
 		key, box := sortedResults.Key, sortedResults.Box
 		if key != k {
-			fmt.Println(key)
+			fmt.Printf("\n%s\n", key)
 			k = key
 		}
-		fmt.Printf("   %d %s %s\n", box.Price, box.Name, box.ID)
+		fmt.Printf("✱ %-3d %s %s\n      %s\n", box.Price, box.Name, box.ID, cex.URLDETAIL+box.ID)
 	}
 }

@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -72,13 +73,20 @@ func TestMainFlags(t *testing.T) {
 
 func TestMainMain(t *testing.T) {
 
-	expectedOutput := `Lenovo X390
-   175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
-   175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B PALSLENX39065B
-   190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B PALSLENX390662B
-   205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B PALSLENX390420B
-   215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39078C
-   360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B PALSLENX39097B
+	expectedOutput := `
+Lenovo X390
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
+      https://uk.webuy.com/product-detail?id=PALSLENX39061C
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B PALSLENX39065B
+      https://uk.webuy.com/product-detail?id=PALSLENX39065B
+✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B PALSLENX390662B
+      https://uk.webuy.com/product-detail?id=PALSLENX390662B
+✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B PALSLENX390420B
+      https://uk.webuy.com/product-detail?id=PALSLENX390420B
+✱ 215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39078C
+      https://uk.webuy.com/product-detail?id=PALSLENX39078C
+✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B PALSLENX39097B
+      https://uk.webuy.com/product-detail?id=PALSLENX39097B
 `
 
 	flagGetter = func() (queriesType, bool) {
@@ -114,4 +122,6 @@ func TestMainMain(t *testing.T) {
 	if diff := cmp.Diff(expectedOutput, string(out)); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
+
+	log.Println("\n", string(out))
 }
