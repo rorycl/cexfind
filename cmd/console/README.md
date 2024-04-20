@@ -3,6 +3,23 @@
 This console app is written using the
 [bubbletea](https://github.com/charmbracelet/bubbletea) TUI framework.
 
+## Running the programme
+
+This console app needs to be built or downloaded from the
+[releases](https://github.com/rorycl/cexfind/releases) page. Please note
+that the app only works for queries emanating from the UK.
+
+![](console.gif)
+
+This gif was made using [vhs](https://github.com/charmbracelet/vhs):
+
+```
+vhs console.vhs
+```
+
+(I've been using `sxiv -af console.gif` to check the recording.)
+
+
 ## Structure
 
 The app is structured around a main model which contains a list and
