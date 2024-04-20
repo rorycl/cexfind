@@ -32,7 +32,7 @@ A simple cli client.
 
 Run `./bin/cli -h` or the windows alternative to see the switch options.
 
-<img width="1000" src="cmd/web/cli.gif" />
+<img width="1000" src="cmd/cli/cli.gif" />
 
 **web server**
 
