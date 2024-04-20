@@ -5,6 +5,7 @@ go.work
 /webserver
 /bin/webserver*
 /bin/cli*
+/bin/console*
 cover.html
 cover.rpt
 coverage.out

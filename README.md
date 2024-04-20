@@ -3,15 +3,14 @@
 A Go module with console, cli and web app clients for rapid and
 effective searches for equipment on Cex/Webuy using the unofficial
 `webuy.io` json search endpoint. Note that these programs only work for
-queries made in the UK (or via a proxy terminating in the UK.)
+queries made in the UK (or via a proxy terminating in the UK).
 
 ## Usage
 
-Simply download the binaries for your machine's architecture from [the
-project releases page](https://github.com/rorycl/cexfind/releases).
-Alternatively, build for your local machine using `make build-all` if
-you have go (>= 1.22) installed. The resulting binaries can be found in
-`bin`.
+Simply download the binaries for your machine's architecture from
+[releases](https://github.com/rorycl/cexfind/releases). Alternatively,
+build for your local machine using `make build-all` if you have go (>=
+1.22) installed. The resulting binaries can be found in `bin`.
 
 ## Clients
 
