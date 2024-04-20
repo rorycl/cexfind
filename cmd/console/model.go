@@ -21,23 +21,34 @@ import (
 
 var (
 	// the style container for the app
-	docStyle = lipgloss.NewStyle().Margin(4, 0, 0, 3)
+	docPanelStyle = lipgloss.NewStyle().
+			Margin(0, 0, 0, 0).
+			Padding(0, 0, 0, 0)
 
 	// top panel
 	topPanelStyle = lipgloss.NewStyle().
 			BorderForeground(lipgloss.Color("#ff5a56")).
 			Border(lipgloss.NormalBorder(), false, false, true, false).
 			BorderBottom(true).
-			Padding(0, 0, 1, 0).
-			Margin(1, 0, 0, 2).
 			Height(5).
+			Margin(1, 2, 0, 3).
 			Width(80).
-			Background(lipgloss.Color("#000000")).
 			UnsetBold()
+
+	// an arbitrary offset amount to ensure the list panel does not push
+	// the other panels off the page
+	topVerticalOffset = 8
+
+	// list panel
+	listPanelStyle = lipgloss.NewStyle().
+			Padding(0, 0, 0, 2).
+			Margin(0, 0, 0, 1)
 
 	// help panel
 	helpPanelStyle = lipgloss.NewStyle().
-			Padding(0, 0, 1, 2)
+			Height(1).
+			Padding(0, 0, 0, 0).
+			Margin(0, 0, 0, 3)
 )
 
 // state indicates the main model's state
@@ -114,6 +125,23 @@ func NewModel() *model {
 	return &m
 }
 
+// switchStylesForListing sets the list panel style padding and margins
+// to deal with empty lists or the pagination marker that only appears
+// at the bottom of a listing when more than one page of results are
+// found.
+func (m model) switchStylesForListing() {
+	listPanelStyle.PaddingLeft(0)
+	if m.listLen == 0 || m.list.list.Paginator.TotalPages < 1 {
+		// offset padding of empty items
+		listPanelStyle.PaddingLeft(2)
+	}
+	helpPanelStyle.MarginTop(1)
+	if m.list.list.Paginator.TotalPages > 1 {
+		// when listing force the help panel up
+		helpPanelStyle.MarginTop(0)
+	}
+}
+
 func (m model) Init() tea.Cmd {
 	return m.input.Init()
 }
@@ -132,14 +160,14 @@ func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 		m.input.Focus()
 		m.keys = getKeyMap(inputKeysState)
 		if withStatus {
-			m.status.setInputting()
+			m.status = m.status.setInputting()
 		}
 	case checkboxState:
 		m.input.cursor = cursorBox
 		m.input.Blur()
 		m.keys = getKeyMap(inputKeysState)
 		if withStatus {
-			m.status.setCheckbox()
+			m.status = m.status.setCheckbox()
 		}
 	case listState:
 		m.input.cursor = cursorInput
@@ -158,8 +186,23 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	var cmds []tea.Cmd
 
 	switch msg := msg.(type) {
+
 	case tea.WindowSizeMsg:
+		dh, dv := docPanelStyle.GetFrameSize()
+		th, tv := topPanelStyle.GetFrameSize()
+		lh, lv := listPanelStyle.GetFrameSize()
+		hh, hv := helpPanelStyle.GetFrameSize()
+
+		windowWidth := msg.Width
+		windowHeight := msg.Height
+
+		w := windowWidth - dh - th - lh - hh
+		h := windowHeight - dv - tv - lv - hv - topVerticalOffset
+
+		log.Printf("window %d:%d remaining %d:%d", windowWidth, windowHeight, w, h)
+		m.list.list.SetSize(w, h)
 		var t tea.Model
+
 		t, cmd = m.list.Update(msg)
 		m.list = t.(liModel)
 		m.input.Update(msg)
@@ -194,8 +237,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		var cmd tea.Cmd
 		if err != nil {
 			m.status = status("Error: " + err.Error())
+			emptyItem := item{}
+			emptyList := []list.Item{emptyItem} // empty list
+			cmd = m.list.ReplaceList(emptyList)
+			cmds = append(cmds, cmd)
 			cmd = m.stateSwitch(inputState, false)
-			return m, cmd
+			cmds = append(cmds, cmd)
+			return m, tea.Batch(cmds...)
 		}
 		m.listLen = num
 		m.status = m.status.setFoundItems(num)
@@ -220,7 +268,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		// log.Printf("state %s input.focus %v key '%s'", m.state, m.input.input.Focused(), msg.String())
 		if key.Matches(msg, inputKeys.Tab) {
 			var s state
-			var w bool = true
 			switch m.state {
 			case inputState:
 				s = checkboxState
@@ -233,7 +280,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			case listState:
 				s = inputState
 			}
-			cmd = m.stateSwitch(s, w)
+			cmd = m.stateSwitch(s, true)
 			return m, cmd
 		}
 	}
@@ -255,14 +302,15 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 // bubbletea View; this is the main view bringing the subsidiary views
 // together
 func (m model) View() string {
-	return docStyle.Render(
+	m.switchStylesForListing() // fix list panel styling if needed
+	return docPanelStyle.Render(
 		lipgloss.JoinVertical(
 			lipgloss.Left,
 			topPanelStyle.Render(
 				m.input.View(),
 				m.status.View(),
 			),
-			m.list.View(),
+			listPanelStyle.Render(m.list.View()),
 			helpPanelStyle.Render(m.help.View(m.keys)),
 		),
 	)

@@ -14,7 +14,7 @@ import (
 var (
 	statusStyle = lipgloss.NewStyle().
 		Foreground(lipgloss.Color("#A3A3A3")).
-		PaddingTop(2)
+		Margin(2, 0, 1, 0)
 )
 
 type status string

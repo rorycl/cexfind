@@ -10,13 +10,6 @@ import (
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-)
-
-var (
-	listPanel = lipgloss.NewStyle().Padding(0, 0, 0, 2)
-	// arbitrary spacing offsets for the list panel sizing
-	arbitraryVerticalOffset, arbitraryHorizantalOffset = 5, 7
 )
 
 // an item is a list item, meeting the list.Item interface (which
@@ -51,6 +44,7 @@ func newLiModel() liModel {
 	li.list.SetShowStatusBar(false)
 	li.list.InfiniteScrolling = false
 	li.list.SetShowHelp(false) // help is customised in main model
+	li.list.SetShowPagination(true)
 
 	return li
 }
@@ -87,12 +81,10 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			cmds = append(cmds, cmd)
 		}
 
-	case tea.WindowSizeMsg:
-		h, v := docStyle.GetFrameSize()
-		li.list.SetSize(
-			msg.Width-h-arbitraryVerticalOffset,
-			msg.Height-v-arbitraryHorizantalOffset,
-		)
+		/* window size calculations are done in the main model
+		case tea.WindowSizeMsg:
+			...
+		*/
 	}
 
 	li.list, cmd = li.list.Update(msg)
@@ -103,7 +95,7 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 // View is a bubbletea required function and renders the list component
 // of the TUI window
 func (li liModel) View() string {
-	return listPanel.Render(li.list.View())
+	return li.list.View()
 }
 
 // Next skips down to the next non empty, non heading item utilizing
@@ -136,11 +128,6 @@ func (li *liModel) Prev() {
 // appropriately
 func (li *liModel) ReplaceList(items []list.Item) tea.Cmd {
 	var cmd tea.Cmd
-	if len(items) == 0 {
-		listPanel.Padding(0, 0, 0, 2) // for empty list
-		return cmd
-	}
-	listPanel.Padding(0, 0, 0, 0) // for non-empty list
 	cmd = li.list.SetItems(items)
 	if li.list.Index() != 0 {
 		li.list.Select(0)

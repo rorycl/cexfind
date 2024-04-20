@@ -44,6 +44,11 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		return
 	}
 
+	if results == nil {
+		err = errors.New("no results found")
+		return
+	}
+
 	k := ""
 	for sortedResults := range results.Iter() {
 		key, box := sortedResults.Key, sortedResults.Box

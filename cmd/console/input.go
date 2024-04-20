@@ -32,10 +32,10 @@ var (
 	checkBoxFocusedStyle = lipgloss.NewStyle().
 				Foreground(lipgloss.AdaptiveColor{Light: "#d7d7d7", Dark: "#d7d7d7"}).
 				Bold(true).
-				PaddingTop(1)
+				MarginTop(1)
 	checkBoxNormalStyle = lipgloss.NewStyle().
 				Foreground(lipgloss.AdaptiveColor{Light: "#ff5a56", Dark: "#ff5a56"}).
-				PaddingTop(1)
+				MarginTop(1)
 )
 
 // inCursor tracks the cursor state between the input and checkboxes
@@ -60,7 +60,7 @@ func newInModel() inModel {
 	t.CharLimit = 55
 	t.Placeholder = "enter terms"
 	t.PromptStyle = inFocusedStyle
-	t.Width = 65
+	t.Width = 60
 
 	return inModel{
 		input:    t,
