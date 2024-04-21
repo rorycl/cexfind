@@ -11,12 +11,12 @@ import (
 	"os"
 	"time"
 
+	"github.com/atotto/clipboard"
 	"github.com/charmbracelet/bubbles/help"
 	"github.com/charmbracelet/bubbles/key"
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"golang.design/x/clipboard"
 )
 
 var (
@@ -77,10 +77,9 @@ type model struct {
 	help help.Model
 
 	// flags etc.
-	state       state
-	listLen     int
-	inited      bool
-	clipboardOK bool
+	state   state
+	listLen int
+	inited  bool
 
 	// keys are the current key set based on the focus state, switched
 	// through getKeyMap in keymap.go
@@ -108,12 +107,6 @@ func NewModel() *model {
 	m.help = help.New()
 	m.help.ShowAll = false // only show short help
 	m.keys = getKeyMap(inputKeysState)
-
-	// check if clipboard can run
-	err := clipboard.Init()
-	if err == nil {
-		m.clipboardOK = true
-	}
 
 	// set find function (normally find, but can use findLocal for
 	// testing
@@ -218,11 +211,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	// short wait
 	case listEnterMsg:
 		log.Printf("listEnterMsg received %#v", msg)
-		if m.clipboardOK {
-			clipboard.Write(clipboard.FmtText, []byte(msg.url))
-			m.status = m.status.setCopied(msg.String())
-		} else {
+		if err := clipboard.WriteAll(msg.url); err != nil {
 			m.status = m.status.setNotCopied(msg.String())
+		} else {
+			m.status = m.status.setCopied(msg.String())
 		}
 		return m, func() tea.Msg {
 			time.Sleep(2500 * time.Millisecond)
