@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/fatih/color"
 	cex "github.com/rorycl/cexfind"
 )
 
@@ -15,6 +16,12 @@ a cli programme to search Cex/Webuy for second hand equipment
 eg <programme> [-strict] -query "query 1" [-query "query 2"...]
 
 `
+
+// styles
+var (
+	urlStyle = color.New(color.FgCyan).SprintFunc()
+	dotStyle = color.New(color.FgCyan).SprintFunc()
+)
 
 // queriesType is a flag list type
 type queriesType []string
@@ -71,12 +78,18 @@ func main() {
 	}
 
 	k := ""
-	for sortedResults := range results.Iter() {
-		model, box := sortedResults.Model, sortedResults.Box
-		if model != k {
-			fmt.Printf("\n%s\n", model)
-			k = model
+	for _, box := range results {
+		if box.Model != k {
+			fmt.Printf("\n%s\n", box.Model)
+			k = box.Model
 		}
-		fmt.Printf("✱ %-3d %s %s\n      %s\n", box.Price, box.Name, box.ID, cex.URLDETAIL+box.ID)
+		fmt.Printf(
+			"%s %-3d %s %s\n      %s\n",
+			dotStyle("✱"),
+			box.Price,
+			box.Name,
+			box.ID,
+			urlStyle(box.IDUrl()),
+		)
 	}
 }
