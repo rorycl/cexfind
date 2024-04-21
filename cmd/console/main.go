@@ -1,3 +1,4 @@
+// A bubbletea TUI console client to github.com/rorycl/cexfind
 package main
 
 import (

@@ -1,3 +1,4 @@
+// A cli client to github.com/rorycl/cexfind
 package main
 
 import (
@@ -9,7 +10,7 @@ import (
 )
 
 var usage = `
-a programme to search Cex/Webuy for second hand equipment
+a cli programme to search Cex/Webuy for second hand equipment
 
 eg <programme> [-strict] -query "query 1" [-query "query 2"...]
 
@@ -71,10 +72,10 @@ func main() {
 
 	k := ""
 	for sortedResults := range results.Iter() {
-		key, box := sortedResults.Key, sortedResults.Box
-		if key != k {
-			fmt.Printf("\n%s\n", key)
-			k = key
+		model, box := sortedResults.Model, sortedResults.Box
+		if model != k {
+			fmt.Printf("\n%s\n", model)
+			k = model
 		}
 		fmt.Printf("✱ %-3d %s %s\n      %s\n", box.Price, box.Name, box.ID, cex.URLDETAIL+box.ID)
 	}

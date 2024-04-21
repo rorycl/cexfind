@@ -1,3 +1,4 @@
+// A webserver client to github.com/rorycl/cexfind
 package main
 
 import (

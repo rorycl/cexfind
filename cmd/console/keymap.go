@@ -1,4 +1,5 @@
-// help and action keymaps
+// help and key-binding keymaps
+
 package main
 
 import (

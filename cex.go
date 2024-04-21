@@ -1,52 +1,30 @@
-// search for devices for sale at Cex
-package search
+// Package cexfind searches for devices for sale at Cex/Webuy via the
+// unofficial `webuy.io` query endpoint which responds in a json format.
+//
+// Queries are required to be made in the UK as the endpoint is
+// protected by region-sensitive CDN.
+//
+// Example usage:
+//
+//    results, err := cex.Search(queries, strict)
+//    if err != nil {
+//    	log.Fatal(err)
+//    }
+//
+//    for _, box := range results {
+//    	fmt.Printf("%20s : %3d %s\n", box.Model, box.Price, box.Name)
+//    }
+package cexfind
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
-	"io"
-	"net/http"
-	"os"
-	"regexp"
 	"slices"
 	"sort"
 	"strings"
-
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
 )
 
-var (
-	//URL search url
-	URL = "https://search.webuy.io/1/indexes/*/queries"
-	// MODEL placeholder
-	MODEL = "MODEL"
-	// json body with placeholder; note that the availability online filter ensures only available kit is returned
-	BODY = `{"requests":[{"indexName":"prod_cex_uk","params":"clickAnalytics=true&facetFilters=%5B%5B%22availability%3AIn%20Stock%20Online%22%5D%5D&facets=%5B%22*%22%5D&filters=boxVisibilityOnWeb%3D1%20AND%20boxSaleAllowed%3D1&highlightPostTag=__%2Fais-highlight__&highlightPreTag=__ais-highlight__&hitsPerPage=17&maxValuesPerFacet=1000&page=0&query=MODEL&tagFilters=&userToken=71d182c769bd4dbc94081214a363c014"}]}`
-	// detail url placeholder
-	URLDETAIL = "https://uk.webuy.com/product-detail?id="
-	// save web output to temp file if DEBUG true
-	DEBUG = false
-)
-
-// JsonResults encompasses the interesting fields in a Cex web search result
-type JsonResults struct {
-	Results []struct {
-		Hits []struct {
-			BoxName string `json:"boxName"`
-			BoxID   string `json:"boxId"`
-			// Available int `json:"collectionQuantity"` // returns 0 or greater
-			Price  int      `json:"sellPrice"`
-			Stores []string `json:"stores"`
-		} `json:"hits"`
-		NbHits      int `json:"nbHits"`
-		HitsPerPage int `json:"hitsPerPage"`
-	} `json:"results"`
-}
-
-// Box is a rationalised JsonResults.Results.Hits entry, notionally
-// representing a "Box" or computer or other item for sale
+// Box is a rationalised representation of a Cex/Webuy json entry, where
+// each entry represents a "Box" or computer or other item for sale.
 type Box struct {
 	Model string
 	Name  string
@@ -75,6 +53,12 @@ func (b *Box) inQuery(queries []string) bool {
 	return false
 }
 
+// IDUrl returns the full url path to the Cex/Webuy webpage showing Box
+// in question
+func (b Box) IDUrl() string {
+	return urlDetail + b.ID
+}
+
 // boxes is a slice of Box
 type boxes []Box
 
@@ -95,201 +79,52 @@ func (b boxes) sort(typer string) {
 	})
 }
 
-// BoxMap is a map of boxes by model name
-type BoxMap map[string]boxes
+// boxMap is a map of boxes by model name, used for aggregating the
+// results of several queries into a single map to avoid duplicate items
+type boxMap map[string]boxes
 
-// BoxMapIter is a BoxMap key/Box pair
-type boxMapIter struct {
-	Key string
-	Box Box
-}
+// asBoxes returns an ordered slice of Box contained in the boxMap
+func (b boxMap) asBoxes() []Box {
+	var theseBoxes []Box
+	keys := []string{}
+	for k := range b {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
 
-// Iter iterates over a BoxMap returning a key, Box pair over the whole
-// BoxMap collection
-func (b BoxMap) Iter() <-chan boxMapIter {
-	bmi := make(chan boxMapIter)
-
-	go func() {
-		defer close(bmi)
-		keys := []string{}
-		for k := range b {
-			keys = append(keys, k)
+	for _, k := range keys {
+		bSlice := b[k]
+		bSlice.sort("Price")
+		for _, b := range bSlice {
+			theseBoxes = append(theseBoxes, b)
 		}
-		slices.Sort(keys)
-
-		for _, k := range keys {
-			v := b[k]
-			v.sort("Price")
-			for _, iv := range v {
-				bmi <- boxMapIter{k, iv}
-			}
-		}
-	}()
-	return bmi
+	}
+	return theseBoxes
 }
 
 // boxResults encapsulates the responses from a search query
 type boxResults struct {
-	boxmap BoxMap
+	boxmap boxMap
 	err    error
 }
 
-// headingExtract attempts to extract an h1 heading from a stream of
-// bytes, typically needed if there is an html error page
-func headingExtract(b []byte) string {
-	reH1 := regexp.MustCompile(`<h1[^>]*>([^<]+)</h1>`)
-	results := reH1.FindSubmatch(b)
-	if len(results) < 2 {
-		return ""
-	}
-	return string(results[1])
-}
-
-// postQuery posts the web query
-func postQuery(queryBytes []byte) (JsonResults, error) {
-	var r JsonResults
-	request, err := http.NewRequest("POST", URL, bytes.NewBuffer(queryBytes))
-	if err != nil {
-		return r, err
-	}
-
-	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
-	client := &http.Client{}
-	response, err := client.Do(request)
-	if err != nil {
-		return r, err
-	}
-	defer response.Body.Close()
-
-	responseBytes, err := io.ReadAll(response.Body)
-	if err != nil {
-		return r, err
-	}
-
-	/* save to a temporary json file for inspection */
-	if DEBUG {
-		err = os.WriteFile("tmp.json", responseBytes, 0600)
-		if err != nil {
-			panic(err)
-		}
-	}
-
-	err = json.Unmarshal(responseBytes, &r)
-	if err != nil {
-		reason := headingExtract(responseBytes)
-		if reason == "" {
-			reason = "unknown or unmarshalling error"
-		}
-		return r, errors.New(reason)
-	}
-	if len(r.Results) < 1 || len(r.Results[0].Hits) < 1 {
-		return r, errors.New("no results")
-	}
-	return r, nil
-}
-
-// extractModelType tries to extract a meaningful model type from a
-// boxname. Since models are not well normalised further cleaning work
-// is likely to be needed in future. The titling type is set to English.
-// If cleaning doesn't work only the first two words of the the
-// description is used.
-func extractModelType(s string) string {
-	titleCase := cases.Title(language.English)
-
-	// slice of regexps and replacements
-	type replacement struct {
-		pattern     *regexp.Regexp // case insensitive regexp
-		replacement string         // replacement string, potentially with bracketed match offset
-	}
-
-	var reReplacements = []replacement{
-		// remove items after "/" character
-		replacement{regexp.MustCompile(`(?i)^\s*(\w.*?)/.+`), "$1"},
-		// "thinkpad" is unneeded
-		replacement{regexp.MustCompile(`(?i)thinkpad\s`), ""},
-		// rationalise "(Gen 3)", "Gen3", "Gen 3" etc.
-		replacement{regexp.MustCompile(`(?i)\(*gen\s*([0-9]+)\)*`), "Gen$1"},
-	}
-
-	titleCleaner := func(s string) string {
-		for _, r := range reReplacements {
-			result := r.pattern.ReplaceAllString(s, r.replacement)
-			if result != s {
-				s = result
-			}
-		}
-		return s
-	}
-
-	cleaned := titleCleaner(s)
-	if cleaned != s {
-		return titleCase.String(cleaned)
-	}
-	fields := strings.Fields(s)
-	if len(fields) < 3 {
-		return s
-	}
-	return titleCase.String(strings.Join(fields[:2], " "))
-}
-
-// makeQueries makes queries concurrently; strict true requires that the
-// return results contain all terms in at least one query
-func makeQueries(queries []string, strict bool) chan boxResults {
-
-	results := make(chan boxResults)
-
-	go func() {
-		defer close(results)
-
-		for _, query := range queries {
-			br := boxResults{}
-			br.boxmap = BoxMap{}
-
-			queryBody := strings.ReplaceAll(BODY, "MODEL", query)
-			queryBytes := []byte(queryBody)
-
-			response, err := postQuery(queryBytes)
-			if err != nil {
-				br.err = err
-				results <- br
-				return
-			}
-
-			for _, j := range response.Results[0].Hits {
-				box := Box{}
-				box.Model = extractModelType(j.BoxName)
-				box.Name = j.BoxName
-				box.ID = j.BoxID
-				box.Price = j.Price
-
-				// in strict mode, don't add box if it doesn't match any query
-				if strict && !box.inQuery(queries) {
-					continue
-				}
-
-				if _, ok := br.boxmap[box.Model]; !ok {
-					br.boxmap[box.Model] = []Box{}
-				}
-				br.boxmap[box.Model] = append(br.boxmap[box.Model], box)
-			}
-			results <- br
-		}
-	}()
-	return results
-}
-
 // Search searches the Cex json endpoint at URL for the provided
-// queries, returning a BoxMap or error. The strict flag ensures that
-// the results contain terms from the search queries
-func Search(queries []string, strict bool) (BoxMap, error) {
+// queries, returning a slice of Box or error. The strict flag ensures
+// that the results contain terms from the search queries as the
+// non-strict results include additional suggestions from the
+// Cex/Webuy system.
+func Search(queries []string, strict bool) ([]Box, error) {
 
-	allResults := BoxMap{}
+	var allBoxes []Box
+	allResults := boxMap{}
+
+	// get chan results from the (potentially) multiple queries
 	results := makeQueries(queries, strict)
 
 	for br := range results {
 		// exit on first error
 		if br.err != nil {
-			return allResults, br.err
+			return allBoxes, br.err
 		}
 
 		// aggregate results and compact to remove duplicates
@@ -303,9 +138,8 @@ func Search(queries []string, strict bool) (BoxMap, error) {
 			}
 		}
 	}
-
 	if len(allResults) == 0 {
-		return allResults, errors.New("no results")
+		return allBoxes, errors.New("no results")
 	}
-	return allResults, nil
+	return allResults.asBoxes(), nil
 }
