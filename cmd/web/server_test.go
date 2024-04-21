@@ -4,7 +4,6 @@ package main
 // https://bignerdranch.com/blog/using-the-httptest-package-in-golang/
 
 import (
-	"errors"
 	"io"
 	"log"
 	"net/http"
@@ -117,21 +116,12 @@ func TestResults(t *testing.T) {
 	DirFS.TplFS = os.DirFS("templates")
 
 	// override package global searcher which indirects Search
-	searcher = func(queries []string, strict bool) (cex.BoxMap, error) {
-		bm := cex.BoxMap{}
-		if len(queries) < 1 {
-			return bm, errors.New("no results")
-		}
-		bm = cex.BoxMap{
-			"test 1": []cex.Box{
-				cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: 1},
-				cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: 2},
-			},
-			"test 2": []cex.Box{
-				cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: 3},
-			},
-		}
-		return bm, nil
+	searcher = func(queries []string, strict bool) ([]cex.Box, error) {
+		return []cex.Box{
+			cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: 3},
+			cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: 1},
+			cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: 2},
+		}, nil
 	}
 
 	tt := []struct {

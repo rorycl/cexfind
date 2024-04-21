@@ -35,7 +35,7 @@ var (
 )
 
 // searcher is an indirect of cex.Search to allow testing
-var searcher func(queries []string, strict bool) (cex.BoxMap, error) = cex.Search
+var searcher func(queries []string, strict bool) ([]cex.Box, error) = cex.Search
 
 // listenAndServe is an indirect of http/net.Server.ListenAndServe
 var listenAndServe = (*http.Server).ListenAndServe
@@ -204,13 +204,10 @@ func Results(w http.ResponseWriter, r *http.Request) {
 
 	// search; note that searcher is an indirect to search/cex.Search
 	type SearchResults struct {
-		Results   cex.BoxMap
-		DetailURL string
-		Err       error
+		Results []cex.Box
+		Err     error
 	}
-	sr := SearchResults{
-		DetailURL: cex.URLDETAIL,
-	}
+	sr := SearchResults{}
 	sr.Results, sr.Err = searcher(queries, postResults.Strict)
 
 	t := template.Must(template.ParseFS(DirFS.TplFS, "partial-results.html"))

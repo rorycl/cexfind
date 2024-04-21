@@ -6,23 +6,21 @@
 {{ else }}
 
 <div id="result-listing">
-{{ $detailURL := .DetailURL }}
-{{ $thisKey := "" }}
-{{ range $result := .Results.Iter }}
-{{ $key := $result.Key }}
-{{ $box := $result.Box }}
-{{ if ne $thisKey $key }}
-{{ if eq $thisKey "" }}</ul>{{ end }}
-<p class="model">{{- $key }}</p>
+{{ $currentModel := "" }}
+{{ range $box := .Results }}
+{{ if ne $currentModel $box.Model }}
+{{ if eq $currentModel "" }}</ul>{{ end }}
+<p class="model">{{- $box.Model }}</p>
 <ul>
-{{ $thisKey = $key }}
-{{ end }} {{/* end of thisKey */}}
+{{ $currentModel = $box.Model }}
+{{ end }} {{/* end of Model check */}}
 <li>
     <span class="price">&pound;{{ $box.Price }}</span>
     <span class="name">{{ $box.Name }}</span>
-    <span class="boxid"><a href="{{ $detailURL }}{{ $box.ID }}">{{ $box.ID}}</a></span>
+    <span class="boxid"><a href="{{ $box.IDUrl }}">{{ $box.ID }}</a></span>
 </li>
 {{ end }}
+</ul>
 </div>
 
 {{- end }} {{/* end not error */}}
