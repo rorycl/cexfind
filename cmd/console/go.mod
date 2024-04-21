@@ -2,6 +2,8 @@ module console
 
 go 1.22
 
+replace github.com/rorycl/cexfind => ../../
+
 require (
 	github.com/atotto/clipboard v0.1.4
 	github.com/charmbracelet/bubbles v0.18.0

@@ -11,10 +11,10 @@ import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 
-	cex "github.com/rorycl/cexfind/search"
+	cex "github.com/rorycl/cexfind"
 )
 
-// find makes cexfind/search queries and turns the results into
+// find makes cexfind.Search queries and turns the results into
 // list.Items as required by the bubbletea list and delegate which uses
 // the following format:
 //
@@ -38,37 +38,35 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		}
 	}
 
-	var results cex.BoxMap
+	var results []cex.Box
 	log.Printf("  making search for %v, strict %t", queries, strict)
 	results, err = cex.Search(queries, strict)
 	if err != nil {
 		return
 	}
-
 	if results == nil {
 		err = errors.New("no results found")
 		return
 	}
+	itemNo = len(results)
 
-	k := ""
-	for sortedResults := range results.Iter() {
-		key, box := sortedResults.Key, sortedResults.Box
-		if key != k {
+	latestModel := ""
+	for _, box := range results {
+		if box.Model != latestModel {
 			if len(items) != 0 {
 				// add an empty item for spacing ahead of headings,
 				// except for the first heading
 				items = append(items, item{desc: emptyItem})
 			}
 			// make heading
-			items = append(items, item{desc: key, isHeading: true})
-			k = key
+			items = append(items, item{desc: box.Model, isHeading: true})
+			latestModel = box.Model
 		}
 		// add standard item
 		items = append(items, item{
 			desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID),
-			url:  cex.URLDETAIL + box.ID,
+			url:  box.IDUrl(),
 		})
-		itemNo++
 	}
 	return
 }
