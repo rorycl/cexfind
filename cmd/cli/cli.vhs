@@ -8,7 +8,8 @@ Output cli.gif
 # Set WindowBar Colorful
 # Set Framerate 120
 
-# set the PS1 prompt to '> '!
+# Require the cli binary!
+Require "./cli"
 
 # Typing Speed
 Set TypingSpeed 100ms
@@ -18,6 +19,7 @@ Set FontSize 16
 Set Width 1000
 Set Height 660
 
+# set the PS1 prompt to '> '!
 # run the cli in a subshell with a custom prompt
 # https://wiki.archlinux.org/title/Bash/Prompt_customization
 Hide
