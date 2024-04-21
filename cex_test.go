@@ -115,5 +115,12 @@ func TestBoxMapIter(t *testing.T) {
 	if diff := cmp.Diff(all[3], boxes["b"][0]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
+}
 
+// TestBoxIDUrl checks a valid url is returned
+func TestBoxIDUrl(t *testing.T) {
+	b := Box{ID: "xyz"}
+	if got, want := b.IDUrl(), urlDetail+b.ID; got != want {
+		t.Errorf("url got %s want %s", got, want)
+	}
 }
