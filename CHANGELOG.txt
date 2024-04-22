@@ -1,13 +1,10 @@
-Changelog for release v0.2.0
+Changelog for release v0.2.1
 
-This release restructures the cexfind module to have a simpler API,
-hence the change from v0.1.x to v0.2.
+This small release refactors the internal structure of the cexfind
+module. The API remains unchanged.
 
-The cli, webserver and console apps have been restrutured accordingly.
-
-* console: update to use new cexfind structure
-* webserver: update to use new cexfind structure
-* cli: update cli.gif and associated vhs file
-* cli: use new cexfind package structure
-* test: add test for Box.IDUrl
-* general: update package structure and command comments
+* a simpler duplicate item checker is used
+* sorting uses slices.SortFunc, promoting higher-grade equipment of the
+  same price
+* tests were adjusted to suit new sorting
+* the module comments were improved
