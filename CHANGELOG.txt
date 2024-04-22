@@ -1,0 +1,13 @@
+Changelog for release v0.2.0
+
+This release restructures the cexfind module to have a simpler API,
+hence the change from v0.1.x to v0.2.
+
+The cli, webserver and console apps have been restrutured accordingly.
+
+* console: update to use new cexfind structure
+* webserver: update to use new cexfind structure
+* cli: update cli.gif and associated vhs file
+* cli: use new cexfind package structure
+* test: add test for Box.IDUrl
+* general: update package structure and command comments
