@@ -87,30 +87,30 @@ func TestSearch(t *testing.T) {
 
 }
 
-// TestBoxMapIter iterates over a BoxMap container in key order and then
-// by Box Model
-func TestBoxMapIter(t *testing.T) {
+// TestBoxSort tests box sorting
+func TestBoxSort(t *testing.T) {
 
-	boxes := boxMap{
-		"b": []Box{
+	var toSortBoxes boxes
+	toSortBoxes = append(toSortBoxes,
+		[]Box{
 			{"bb", "bb", "id1", 20},
 			{"bc", "cc", "id2", 25},
 			{"ba", "aa", "id3", 15},
-		},
-		"a": []Box{
 			{"ab", "db", "id3", 30},
 			{"ac", "dc", "id2", 35},
 			{"aa", "da", "id1", 35},
-		},
-	}
+			{"aa", "la", "id1", 30},
+		}...,
+	)
 
-	var all []Box
-	all = append(all, boxes.asBoxes()...)
+	var sortedBoxes = make(boxes, len(toSortBoxes))
+	copy(sortedBoxes, toSortBoxes)
+	sortedBoxes.sort()
 
-	if diff := cmp.Diff(all[0], boxes["a"][0]); diff != "" {
+	if diff := cmp.Diff(sortedBoxes[0], toSortBoxes[6]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
-	if diff := cmp.Diff(all[3], boxes["b"][0]); diff != "" {
+	if diff := cmp.Diff(sortedBoxes[4], toSortBoxes[2]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
 }

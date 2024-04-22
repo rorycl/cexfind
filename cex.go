@@ -78,50 +78,15 @@ func (b Box) IDUrl() string {
 // boxes is a slice of Box
 type boxes []Box
 
-// sort boxes by a Box attribute
-func (b boxes) sort(typer string) {
+// sort boxes by box.model then box price ascending
+func (b boxes) sort() {
 	sort.SliceStable(b, func(i, j int) bool {
-		switch typer {
-		case "ID":
-			if b[i].ID < b[j].ID {
-				return true
-			}
-		default: // sort by price
-			if b[i].Price < b[j].Price {
-				return true
-			}
+		bs, js := strings.ToLower(b[i].Model), strings.ToLower(b[j].Model)
+		if bs != js {
+			return bs < js
 		}
-		return false
+		return b[i].Price < b[j].Price
 	})
-}
-
-// boxMap is a map of boxes by model name, used for aggregating the
-// results of several queries into a single map to avoid duplicate items
-type boxMap map[string]boxes
-
-// asBoxes returns an ordered slice of Box contained in the boxMap
-func (b boxMap) asBoxes() []Box {
-	var theseBoxes []Box
-	keys := []string{}
-	for k := range b {
-		keys = append(keys, k)
-	}
-	slices.Sort(keys)
-
-	for _, k := range keys {
-		bSlice := b[k]
-		bSlice.sort("Price")
-		for _, b := range bSlice {
-			theseBoxes = append(theseBoxes, b)
-		}
-	}
-	return theseBoxes
-}
-
-// boxResults encapsulates the responses from a search query
-type boxResults struct {
-	boxmap boxMap
-	err    error
 }
 
 // Search searches the Cex json endpoint at URL for the provided
@@ -131,35 +96,23 @@ type boxResults struct {
 // search queries as the non-strict results include additional
 // suggestions from the Cex/Webuy system.
 //
-// Multiple queries are run concurrently and their results aggregated
-// and sorted by model, then by price ascending.
+// Multiple queries are run concurrently and their results sorted by
+// model, then by price ascending, and then aggregated to remove
+// duplicates.
 func Search(queries []string, strict bool) ([]Box, error) {
-
-	var allBoxes []Box
-	allResults := boxMap{}
-
-	// get chan results from the (potentially) multiple queries
+	var allBoxes boxes
 	results := makeQueries(queries, strict)
-
 	for br := range results {
 		// exit on first error
 		if br.err != nil {
 			return allBoxes, br.err
 		}
-
-		// aggregate results and compact to remove duplicates
-		for k, v := range br.boxmap {
-			if _, ok := allResults[k]; !ok {
-				allResults[k] = v
-			} else {
-				tmp := slices.Concat(allResults[k], v)
-				tmp.sort("ID")
-				allResults[k] = slices.Compact(tmp)
-			}
-		}
+		allBoxes = append(allBoxes, br.box)
 	}
-	if len(allResults) == 0 {
+	allBoxes.sort()
+	allBoxes = slices.Compact(allBoxes)
+	if len(allBoxes) == 0 {
 		return allBoxes, errors.New("no results")
 	}
-	return allResults.asBoxes(), nil
+	return allBoxes, nil
 }
