@@ -105,9 +105,7 @@ func TestBoxMapIter(t *testing.T) {
 	}
 
 	var all []Box
-	for _, bi := range boxes.asBoxes() {
-		all = append(all, bi)
-	}
+	all = append(all, boxes.asBoxes()...)
 
 	if diff := cmp.Diff(all[0], boxes["a"][0]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)

@@ -6,14 +6,14 @@
 //
 // Example usage:
 //
-//    results, err := cex.Search(queries, strict)
-//    if err != nil {
-//    	log.Fatal(err)
-//    }
+//	results, err := cex.Search(queries, strict)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
 //
-//    for _, box := range results {
-//    	fmt.Printf("%20s : %3d %s\n", box.Model, box.Price, box.Name)
-//    }
+//	for _, box := range results {
+//		fmt.Printf("%20s : %3d %s\n", box.Model, box.Price, box.Name)
+//	}
 package cexfind
 
 import (
