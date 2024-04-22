@@ -32,9 +32,9 @@
 package cexfind
 
 import (
+	"cmp"
 	"errors"
 	"slices"
-	"sort"
 	"strings"
 )
 
@@ -75,17 +75,35 @@ func (b Box) IDUrl() string {
 	return urlDetail + b.ID
 }
 
+// reverseID is useful for sorting because the grade of the box is the
+// right-most character. The grade cannot be conveniently extracted
+// otherwise. For the same price, a higher grade (eg B) is prefereable
+// over a lower grade (eg C).
+func (b *Box) reverseID() string {
+	r := []rune(b.ID)
+	for i, j := 0, len(b.ID)-1; i < j; i, j = i+1, j-1 {
+		r[i], r[j] = r[j], r[i]
+	}
+	return string(r)
+}
+
 // boxes is a slice of Box
 type boxes []Box
 
-// sort boxes by box.model then box price ascending
-func (b boxes) sort() {
-	sort.SliceStable(b, func(i, j int) bool {
-		bs, js := strings.ToLower(b[i].Model), strings.ToLower(b[j].Model)
-		if bs != js {
-			return bs < js
+// sort sorts boxes by box.Model then Price ascending then ID.
+func (b *boxes) sort() {
+	slices.SortFunc(*b, func(i, j Box) int {
+		var c int
+		c = cmp.Compare(i.Model, j.Model)
+		if c != 0 {
+			return c
 		}
-		return b[i].Price < b[j].Price
+		c = cmp.Compare(i.Price, j.Price)
+		if c != 0 {
+			return c
+		}
+		// arguabl
+		return cmp.Compare(i.reverseID(), j.reverseID())
 	})
 }
 
@@ -97,20 +115,24 @@ func (b boxes) sort() {
 // suggestions from the Cex/Webuy system.
 //
 // Multiple queries are run concurrently and their results sorted by
-// model, then by price ascending, and then aggregated to remove
-// duplicates.
+// model, then by price ascending. Duplicate results are removed at
+// aggregation.
 func Search(queries []string, strict bool) ([]Box, error) {
 	var allBoxes boxes
+	var idMap = make(map[string]struct{})
+
 	results := makeQueries(queries, strict)
 	for br := range results {
-		// exit on first error
 		if br.err != nil {
 			return allBoxes, br.err
 		}
+		if _, ok := idMap[br.box.ID]; ok { // don't add duplicates
+			continue
+		}
 		allBoxes = append(allBoxes, br.box)
+		idMap[br.box.ID] = struct{}{}
 	}
 	allBoxes.sort()
-	allBoxes = slices.Compact(allBoxes)
 	if len(allBoxes) == 0 {
 		return allBoxes, errors.New("no results")
 	}

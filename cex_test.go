@@ -93,24 +93,34 @@ func TestBoxSort(t *testing.T) {
 	var toSortBoxes boxes
 	toSortBoxes = append(toSortBoxes,
 		[]Box{
-			{"bb", "bb", "id1", 20},
-			{"bc", "cc", "id2", 25},
-			{"ba", "aa", "id3", 15},
-			{"ab", "db", "id3", 30},
-			{"ac", "dc", "id2", 35},
-			{"aa", "da", "id1", 35},
-			{"aa", "la", "id1", 30},
+			{"bb", "bb", "id1a", 20},
+			{"bc", "cc", "id2a", 25},
+			{"ba", "aa", "id3a", 15},
+			{"ab", "db", "id3b", 30},
+			{"ac", "dc", "id2z", 35},
+			{"aa", "da", "id1a", 35},
+			{"aa", "la", "id1b", 30}, // 0
 		}...,
 	)
 
 	var sortedBoxes = make(boxes, len(toSortBoxes))
 	copy(sortedBoxes, toSortBoxes)
+
 	sortedBoxes.sort()
 
-	if diff := cmp.Diff(sortedBoxes[0], toSortBoxes[6]); diff != "" {
+	// t.Logf("\n%d: %v\n", len(toSortBoxes), toSortBoxes)
+	// t.Logf("\n%d: %v\n", len(sortedBoxes), sortedBoxes)
+	// t.Log(sortedBoxes)
+
+	// compaction does not happen here
+	if got, want := len(sortedBoxes), len(toSortBoxes); got != want {
+		t.Errorf("expected compaction want %d items, got %d", want, got)
+	}
+
+	if diff := cmp.Diff(toSortBoxes[6], sortedBoxes[0]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
-	if diff := cmp.Diff(sortedBoxes[4], toSortBoxes[2]); diff != "" {
+	if diff := cmp.Diff(toSortBoxes[0], sortedBoxes[5]); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
 }

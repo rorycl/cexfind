@@ -75,10 +75,10 @@ func TestMainMain(t *testing.T) {
 
 	expectedOutput := `
 Lenovo X390
-✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
-      https://uk.webuy.com/product-detail?id=PALSLENX39061C
 ✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B PALSLENX39065B
       https://uk.webuy.com/product-detail?id=PALSLENX39065B
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
+      https://uk.webuy.com/product-detail?id=PALSLENX39061C
 ✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B PALSLENX390662B
       https://uk.webuy.com/product-detail?id=PALSLENX390662B
 ✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B PALSLENX390420B
