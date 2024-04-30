@@ -116,6 +116,13 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 
 	err = json.Unmarshal(responseBytes, &r)
 	if err != nil {
+		var ju *json.UnmarshalTypeError
+		if errors.As(err, &ju) {
+			// no results tend to provide data that cannot be parsed,
+			// used for a general "home" type page
+			return r, errors.New("no results found")
+		}
+		// assume html page; try and extract heading
 		reason := headingExtract(responseBytes)
 		if reason == "" {
 			reason = "unknown or unmarshalling error"
