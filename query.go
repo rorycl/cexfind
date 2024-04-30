@@ -9,6 +9,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"strings"
@@ -59,7 +60,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 		defer close(results)
 
 		for _, query := range queries {
-			queryBody := strings.ReplaceAll(jsonBody, "MODEL", query)
+			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
 			response, err := postQuery(queryBytes)
 			if err != nil {
