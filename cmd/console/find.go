@@ -6,12 +6,12 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"strings"
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 
 	cex "github.com/rorycl/cexfind"
+	"github.com/rorycl/cexfind/cmd"
 )
 
 // find makes cexfind.Search queries and turns the results into
@@ -31,11 +31,9 @@ import (
 // valid items returned.
 func find(query string, strict bool) (items []list.Item, itemNo int, err error) {
 
-	queries := strings.Split(query, ",")
-	for _, q := range queries {
-		if len(q) < 4 {
-			return items, 0, errors.New("queries need to be at least 4 characters in length")
-		}
+	queries, err := cmd.QueryInputChecker(query)
+	if err != nil {
+		return items, 0, err
 	}
 
 	var results []cex.Box
@@ -73,11 +71,9 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 
 // findLocal simple returns the example list in list_example.go
 func findLocal(query string, strict bool) (items []list.Item, itemNo int, err error) {
-	queries := strings.Split(query, ",")
-	for _, q := range queries {
-		if len(q) < 4 {
-			return items, 0, errors.New("queries need to be at least 4 characters in length")
-		}
+	_, err = cmd.QueryInputChecker(query)
+	if err != nil {
+		return items, 0, err
 	}
 	return theseExampleItems, 15, nil
 }
