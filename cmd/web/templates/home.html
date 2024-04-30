@@ -36,9 +36,9 @@
 <p>Search for kit available online</p>
 <form id="trip" hx-post="./results" hx-trigger="submit" hx-target="#results">
 <section>
-<input type="text" id="queries" name="queries" required minlength="4" maxlength="400" size="400" value="
+<input type="text" id="queries" name="query" required minlength="3" maxlength="400" size="400" value="
 {{- if .Search }}
-{{ range $i, $v := .Search.Queries }}{{ if gt $i  0 }}, {{ end }}{{ $v }}{{ end }}
+{{ range $i, $v := .Search.Query }}{{ if gt $i  0 }}, {{ end }}{{ $v }}{{ end }}
 {{ end -}}
 " />
 <input type="checkbox" id="strict" name="strict" {{ if .Search.Strict }}checked{{ end }} />
@@ -46,7 +46,7 @@
 <button class="submit" type="submit">Search</button>
 </section>
 </form>
-<p>Use a comma between multiple search terms<br />
+<p>Use a semicolon between multiple search terms<br />
 Select "strict" for results that narrowly match the search terms.</p>
 </div>
 <div id="results">
