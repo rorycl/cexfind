@@ -1,10 +1,14 @@
-Changelog for release v0.2.1
+Changelog for release v0.2.2
 
-This small release refactors the internal structure of the cexfind
-module. The API remains unchanged.
-
-* a simpler duplicate item checker is used
-* sorting uses slices.SortFunc, promoting higher-grade equipment of the
-  same price
-* tests were adjusted to suit new sorting
-* the module comments were improved
+* docs: update READMEs
+* cli: update example gif, vhs creation file
+* console: update example gif, vhs creation file
+* feature: change query parameters
+* query: catch no results found error (non-standard json response)
+* query: escape queries sent to cex api endpoint
+  - closes #3 double quotes cannot be used in query
+* web: use centralised input query checker
+* console: use centralised input query checker; adjust query params
+  - closes #2 queries need to be at least 4 characters in length
+  - closes #4 change query delimiter
+* cmd: query input splitting for commands centralised
