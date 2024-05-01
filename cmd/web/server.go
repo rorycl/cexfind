@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strings"
 	"time"
 
 	"github.com/gorilla/handlers"
@@ -17,6 +16,7 @@ import (
 	"github.com/gorilla/schema"
 
 	cex "github.com/rorycl/cexfind"
+	"github.com/rorycl/cexfind/cmd"
 )
 
 var (
@@ -169,14 +169,10 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		log.Printf("url parsequery error: %v", err)
 		return
 	}
-	type PostResults struct {
-		Strict  bool   `schema:"strict"`
-		Queries string `schema:"queries"`
-	}
-	var postResults PostResults
+	var postResults QueriesType
 	var decoder = schema.NewDecoder() // best as package decoder
 	err = decoder.Decode(&postResults, urlVals)
-	if err != nil || len(postResults.Queries) == 0 {
+	if err != nil || len(postResults.Query) == 0 {
 		log.Printf("cex POST : %+v %v", postResults, err)
 		w.WriteHeader(http.StatusNoContent)
 		fmt.Fprint(w, "no query found")
@@ -184,10 +180,12 @@ func Results(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// split the comma delimited query into queries
-	queries := []string{}
-	qs := strings.Split(postResults.Queries, ",")
-	for _, q := range qs {
-		queries = append(queries, strings.TrimSpace(q))
+	queries, err := cmd.QueryInputChecker(postResults.Query...)
+	if err != nil {
+		log.Printf("cex queries error: %v %v", postResults.Query, err)
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "query error: %v", err)
+		return
 	}
 
 	base := fmt.Sprintf("strict=%s", func() string {
@@ -197,7 +195,7 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		return "false"
 	}())
 	for _, q := range queries {
-		base += fmt.Sprintf("&q=%s", url.PathEscape(q))
+		base += fmt.Sprintf("&query=%s", url.PathEscape(q))
 	}
 	// push the postResults terms to the url
 	w.Header().Set("HX-Push-Url", BaseURL+"/?"+base)
@@ -218,6 +216,11 @@ func Results(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type QueriesType struct {
+	Strict bool     `schema:"strict"`
+	Query  []string `schema:"query"`
+}
+
 // Home is the home page
 func Home(w http.ResponseWriter, r *http.Request) {
 
@@ -226,23 +229,19 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	type Search struct {
-		Strict  bool     `schema:"strict"`
-		Queries []string `schema:"q"`
-	}
-	var search Search
+	var search QueriesType
 	var decoder = schema.NewDecoder() // best as package decoder
 	err = decoder.Decode(&search, r.URL.Query())
 
 	if inDevelopment {
-		log.Printf("cex url GET : %+v %+v (%d items) err %v", r.URL.Query(), search, len(search.Queries), err)
+		log.Printf("cex url GET : %+v %+v (%d items) err %v", r.URL.Query(), search, len(search.Query), err)
 	}
 
 	data := struct {
 		Title   string
 		Address string
 		Port    string
-		Search  Search
+		Search  QueriesType
 	}{
 		"search cex",
 		ServerAddress,
@@ -268,6 +267,5 @@ func Health(w http.ResponseWriter, r *http.Request) {
 
 // Favicon serves up the favicon
 func Favicon(w http.ResponseWriter, r *http.Request) {
-	log.Println("got favicon")
 	http.ServeFileFS(w, r, DirFS.StaticFS, "/favicon.svg")
 }

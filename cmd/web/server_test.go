@@ -133,13 +133,25 @@ func TestResults(t *testing.T) {
 		{
 			name:       "succeed post",
 			method:     http.MethodPost,
-			input:      "queries=abc&queries=def&strict=false",
+			input:      "query=abc&query=def&strict=false",
 			statusCode: http.StatusOK,
+		},
+		{
+			name:       "fail post query too short",
+			method:     http.MethodPost,
+			input:      "query=ab&strict=false",
+			statusCode: http.StatusBadRequest,
+		},
+		{
+			name:       "fail post query too short 2",
+			method:     http.MethodPost,
+			input:      "query=abc&query=de&strict=false",
+			statusCode: http.StatusBadRequest,
 		},
 		{
 			name:       "fail get",
 			method:     http.MethodGet,
-			input:      "queries=abc&queries=def&strict=false",
+			input:      "query=abc&query=def&strict=false",
 			statusCode: http.StatusBadRequest,
 		},
 		{

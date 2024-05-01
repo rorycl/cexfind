@@ -9,6 +9,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"strings"
@@ -59,7 +60,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 		defer close(results)
 
 		for _, query := range queries {
-			queryBody := strings.ReplaceAll(jsonBody, "MODEL", query)
+			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
 			response, err := postQuery(queryBytes)
 			if err != nil {
@@ -115,6 +116,13 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 
 	err = json.Unmarshal(responseBytes, &r)
 	if err != nil {
+		var ju *json.UnmarshalTypeError
+		if errors.As(err, &ju) {
+			// no results tend to provide data that cannot be parsed,
+			// used for a general "home" type page
+			return r, errors.New("no results found")
+		}
+		// assume html page; try and extract heading
 		reason := headingExtract(responseBytes)
 		if reason == "" {
 			reason = "unknown or unmarshalling error"
