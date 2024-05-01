@@ -1,6 +1,8 @@
 # cexfind console app
 
-This console app is written using the
+This console app, which uses the
+[cexfind](https://github.com/rorycl/cexfind/) go module to make searches
+on Cex/Webuy, is written using the
 [bubbletea](https://github.com/charmbracelet/bubbletea) TUI framework.
 
 ## Running the programme
@@ -11,7 +13,8 @@ that the app only works for queries emanating from the UK.
 
 ![](console.gif)
 
-This gif was made using [vhs](https://github.com/charmbracelet/vhs):
+This gif was made using Charm's
+[vhs](https://github.com/charmbracelet/vhs):
 
 ```
 vhs console.vhs

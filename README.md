@@ -2,8 +2,13 @@
 
 A Go module with console, cli and web app clients for rapid and
 effective searches for equipment on Cex/Webuy using the unofficial
-`webuy.io` json search endpoint. Note that these programs only work for
-queries made in the UK (or via a proxy terminating in the UK).
+`webuy.io` json search endpoint.
+
+Note that these programs only work for queries made in the UK (or via a
+proxy terminating in the UK).
+
+This is intended to be a fun project and is not intended for commercial
+use.
 
 ## Usage
 
@@ -22,8 +27,8 @@ A [bubbletea](https://github.com/charmbracelet/bubbletea) console app.
 
 <img width="1000" src="cmd/console/console.gif" />
 
-Have a look at the [README](cmd/console/README.md) for the console app
-for more info about the architecture of this client.
+Have a look at the app [README](cmd/console/README.md) for more info
+about the architecture of this client.
 
 **cli**
 
@@ -43,6 +48,9 @@ Use the command line switches to change these options. (Use `-h` to see
 the switches.)
 
 <img width="1000" src="cmd/web/web.gif" />
+
+Note that since this gif was made the delimiter character between search
+terms has changed from `,` to `;`.
 
 
 ## Licence
