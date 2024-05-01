@@ -34,6 +34,7 @@ package cexfind
 import (
 	"cmp"
 	"errors"
+	"fmt"
 	"slices"
 	"strings"
 )
@@ -121,10 +122,12 @@ func Search(queries []string, strict bool) ([]Box, error) {
 	var allBoxes boxes
 	var idMap = make(map[string]struct{})
 
+	var err error
+
 	results := makeQueries(queries, strict)
 	for br := range results {
 		if br.err != nil {
-			return allBoxes, br.err
+			err = fmt.Errorf("\"%s\": %w", br.query, br.err)
 		}
 		if _, ok := idMap[br.box.ID]; ok { // don't add duplicates
 			continue
@@ -136,5 +139,5 @@ func Search(queries []string, strict bool) ([]Box, error) {
 	if len(allBoxes) == 0 {
 		return allBoxes, errors.New("no results")
 	}
-	return allBoxes, nil
+	return allBoxes, err
 }

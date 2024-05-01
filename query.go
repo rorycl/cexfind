@@ -46,8 +46,9 @@ type jsonResults struct {
 
 // boxResults encapsulates the responses from a search query
 type boxResults struct {
-	box Box
-	err error
+	query string
+	box   Box
+	err   error
 }
 
 // makeQueries makes queries concurrently; strict true requires that the
@@ -60,25 +61,27 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 		defer close(results)
 
 		for _, query := range queries {
+			br := boxResults{query: query}
 			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
 			response, err := postQuery(queryBytes)
 			if err != nil {
-				results <- boxResults{err: err}
+				br.err = err
+				results <- br
 				return
 			}
 
 			for _, j := range response.Results[0].Hits {
-				box := Box{}
-				box.Model = extractModelType(j.BoxName)
-				box.Name = j.BoxName
-				box.ID = j.BoxID
-				box.Price = j.Price
+				br.box = Box{}
+				br.box.Model = extractModelType(j.BoxName)
+				br.box.Name = j.BoxName
+				br.box.ID = j.BoxID
+				br.box.Price = j.Price
 				// in strict mode, don't add box if it doesn't match any query
-				if strict && !box.inQuery(queries) {
+				if strict && !br.box.inQuery(queries) {
 					continue
 				}
-				results <- boxResults{box: box}
+				results <- br
 			}
 		}
 	}()
