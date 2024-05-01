@@ -49,7 +49,7 @@ Enter
 Show
 
 # select item
-Type "./cli -query 'lenovo t480s' | head -n 20"
+Type "./cli -query 'lenovo t470s' | head -n 20"
 Enter
 Sleep 3s
 
@@ -60,7 +60,7 @@ Enter
 Show
 
 # select more items
-Type "./cli -query 'lenovo t480s' -query 'lenovo x390 yoga' -strict"
+Type "./cli -query 'lenovo t470s' -query 'lenovo x395' -strict"
 Enter
 Sleep 3s
 
