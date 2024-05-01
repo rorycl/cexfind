@@ -24,16 +24,16 @@ Enter
 Sleep 1s
 Show
 
-# type lenovo t480s
-Type "lenovo t480s"
+# type
+Type "lenovo t470s"
 Sleep 1s
 Enter
 Sleep 2s
 
-# select second item
+# select fourth item
 Type "j"
 Sleep 1s
-Type "j"
+Type "jjj"
 Sleep 1s
 Enter
 Sleep 2s
@@ -41,17 +41,15 @@ Sleep 2s
 # type lenovo t480s
 Tab
 Sleep 750ms
-Type ", lenovo x390"
-Sleep 1s
+Type "; lenovo x395"
+Sleep 500ms
 Tab
-Sleep 1s
+Sleep 500ms
 Type "x"
 Sleep 1s
 Enter
 Sleep 2s
 
 # select second item
-Type "j"
-Sleep 1s
-Type "j"
+Type@90ms "jj"
 Sleep 3s
