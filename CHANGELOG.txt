@@ -1,14 +1,10 @@
-Changelog for release v0.2.2
+Changelog for release v0.2.3
 
-* docs: update READMEs
-* cli: update example gif, vhs creation file
-* console: update example gif, vhs creation file
-* feature: change query parameters
-* query: catch no results found error (non-standard json response)
-* query: escape queries sent to cex api endpoint
-  - closes #3 double quotes cannot be used in query
-* web: use centralised input query checker
-* console: use centralised input query checker; adjust query params
-  - closes #2 queries need to be at least 4 characters in length
-  - closes #4 change query delimiter
-* cmd: query input splitting for commands centralised
+*   cex: allow both an error and results from Search
+    
+    This commit also makes web queries to be concurrent, which was the
+    original intention.
+
+*   cli: allow both an error and results on search
+*   console: allow both an error and results on search
+*   cex: add more context to erroring queries
