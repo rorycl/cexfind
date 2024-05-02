@@ -8,6 +8,7 @@ import (
 
 	"github.com/fatih/color"
 	cex "github.com/rorycl/cexfind"
+	"github.com/rorycl/cexfind/cmd"
 )
 
 var usage = `
@@ -71,10 +72,24 @@ func main() {
 
 	queries, strict := flagGetter()
 
-	results, err := cex.Search(queries, strict)
+	// clean queries
+	queries, err := cmd.QueryInputChecker(queries...)
 	if err != nil {
 		fmt.Println(err)
 		Exit(1)
+	}
+
+	// do search
+	results, err := cex.Search(queries, strict)
+	switch {
+	case err != nil && len(results) > 0:
+		fmt.Println(err)
+		// continue to show the list
+	case err != nil:
+		fmt.Println(err)
+		Exit(1)
+	default:
+		// show the list
 	}
 
 	k := ""
