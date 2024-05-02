@@ -49,10 +49,6 @@ the switches.)
 
 <img width="1000" src="cmd/web/web.gif" />
 
-Note that since this gif was made the delimiter character between search
-terms has changed from `,` to `;`.
-
-
 ## Licence
 
 This project is licensed under the [MIT Licence](LICENCE).
