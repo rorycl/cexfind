@@ -1,10 +1,10 @@
-<div id="results">
 <h3>Results</h3>
 
 {{ if .Err }}
-<p>An error occurred:<br />{{ .Err }}</p>
-{{ else }}
+<p class="error">Error: {{ .Err }}</p>
+{{ end }}
 
+{{- if .Results }}
 <div id="result-listing">
 {{ $currentModel := "" }}
 {{ range $box := .Results }}
@@ -25,4 +25,3 @@
 
 {{- end }} {{/* end not error */}}
 </p>
-</div>

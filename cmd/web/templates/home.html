@@ -6,7 +6,7 @@
     body {margin: 40px 40px; max-width: 860px; background-color:#fdfdfd;}
     h1 {font-size: 14pt; padding: 0 0 9px; }
     h2 {font-size: 13pt;}
-    h3 {font-size: 12pt; margin: 30px 0 20px; }
+    h3 {font-size: 12pt; margin: 20px 0 20px; }
 
     form { padding: 7px 0; }
     label { display: inline-block; width: 50px }
@@ -17,11 +17,12 @@
     button.submit { color: blue; }
 
     #results { margin-top: 1.4em; }
+    div#results p.error { color: red; }
 
     #result-listing { width: 850px; }
     ul { padding-left: 0px; margin-left:0px; margin-top: 0px; }
     li { padding-left: 0px; padding: 2px 0 3px; list-style-type: none; font-size: 9pt; }
-    li span.price { color: red; min-width: 50px; display: inline-block; }
+    li span.price { color: blue; min-width: 50px; display: inline-block; }
     li span.name { min-width: 500px; display: inline-block; }
     li span.boxid a { color: black; }
 </style>
@@ -33,12 +34,12 @@
 <h1>Search Cex</h1>
 
 <div id="search">
-<p>Search for kit available online</p>
+<p>Search for kit available to buy online</p>
 <form id="trip" hx-post="./results" hx-trigger="submit" hx-target="#results">
 <section>
 <input type="text" id="queries" name="query" required minlength="3" maxlength="400" size="400" value="
 {{- if .Search }}
-{{ range $i, $v := .Search.Query }}{{ if gt $i  0 }}, {{ end }}{{ $v }}{{ end }}
+{{ .Search -}} {{/* string representation of [].Search.Query */}}
 {{ end -}}
 " />
 <input type="checkbox" id="strict" name="strict" {{ if .Search.Strict }}checked{{ end }} />
