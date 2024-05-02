@@ -227,7 +227,26 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		log.Printf("findPerformMsg received %v", msg)
 		items, num, err := m.finder(msg.query, msg.strict)
 		var cmd tea.Cmd
-		if err != nil {
+		switch {
+		case num > 0 && err != nil:
+			// show the list results and change focus there, but also
+			// 1. show the error for a second in the status area
+			// 2. then show the normal "found" status
+			m.status = status("Error: " + err.Error())
+			m.listLen = num
+			cmd = func() tea.Msg {
+				time.Sleep(1250 * time.Millisecond)
+				return resetListStatus{}
+			}
+			cmds = append(cmds, cmd)
+			cmd = m.list.ReplaceList(items)
+			cmds = append(cmds, cmd)
+			cmd = m.stateSwitch(listState, false) // switch to list view
+			cmds = append(cmds, cmd)
+			return m, tea.Batch(cmds...)
+
+		case err != nil:
+			// the straight-forward error case
 			m.status = status("Error: " + err.Error())
 			emptyItem := item{}
 			emptyList := []list.Item{emptyItem} // empty list
@@ -236,14 +255,17 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			cmd = m.stateSwitch(inputState, false)
 			cmds = append(cmds, cmd)
 			return m, tea.Batch(cmds...)
+
+		default:
+			// standard, non-error list
+			m.listLen = num
+			m.status = m.status.setFoundItems(num)
+			cmd = m.list.ReplaceList(items)
+			cmds = append(cmds, cmd)
+			cmd = m.stateSwitch(listState, false) // switch to list view
+			cmds = append(cmds, cmd)
+			return m, tea.Batch(cmds...)
 		}
-		m.listLen = num
-		m.status = m.status.setFoundItems(num)
-		cmd = m.list.ReplaceList(items)
-		cmds = append(cmds, cmd)
-		cmd = m.stateSwitch(listState, false) // switch to list view
-		cmds = append(cmds, cmd)
-		return m, tea.Batch(cmds...)
 
 	// reset the list status
 	case resetListStatus:

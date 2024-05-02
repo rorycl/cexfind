@@ -23,12 +23,17 @@ import (
 //		item{desc: "this is a normal item 1"},
 //
 // The query is received from the app as a single string with queries
-// separated (potentially) by a comma. Queries are expected to each be
-// at least 4 characters in length.
+// separated (potentially) by a semicolon. Queries are expected to each
+// be at least 3 characters in length.
 //
 // The itemNo number of items is included since heading and empty items
 // are introduced for formatting reasons. itemNo counts the number of
 // valid items returned.
+//
+// Note that returning an error does not necessarily indicate a complete
+// search failure since more than one query may have been made. In the
+// case of an error for one query and results from others, for example,
+// both an error and items will be returned.
 func find(query string, strict bool) (items []list.Item, itemNo int, err error) {
 
 	queries, err := cmd.QueryInputChecker(query)
@@ -38,10 +43,11 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 
 	var results []cex.Box
 	log.Printf("  making search for %v, strict %t", queries, strict)
+
+	// note that err does not cause a failure
 	results, err = cex.Search(queries, strict)
-	if err != nil {
-		return
-	}
+
+	log.Printf("results %#v\nerr %v", results, err)
 	if results == nil {
 		err = errors.New("no results found")
 		return
