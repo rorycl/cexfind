@@ -103,7 +103,7 @@ func (b *boxes) sort() {
 		if c != 0 {
 			return c
 		}
-		// arguabl
+		// the most right char is the box condition (A, B or C)
 		return cmp.Compare(i.reverseID(), j.reverseID())
 	})
 }
@@ -128,6 +128,7 @@ func Search(queries []string, strict bool) ([]Box, error) {
 	for br := range results {
 		if br.err != nil {
 			err = fmt.Errorf("\"%s\": %w", br.query, br.err)
+			continue
 		}
 		if _, ok := idMap[br.box.ID]; ok { // don't add duplicates
 			continue

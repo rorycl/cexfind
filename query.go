@@ -13,6 +13,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"sync"
 
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
@@ -54,13 +55,12 @@ type boxResults struct {
 // makeQueries makes queries concurrently; strict true requires that the
 // return results contain all terms in at least one query
 func makeQueries(queries []string, strict bool) chan boxResults {
-
 	results := make(chan boxResults)
-
-	go func() {
-		defer close(results)
-
-		for _, query := range queries {
+	var wg sync.WaitGroup
+	for _, query := range queries {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
 			br := boxResults{query: query}
 			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
@@ -83,7 +83,11 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				}
 				results <- br
 			}
-		}
+		}()
+	}
+	go func() {
+		wg.Wait()
+		close(results)
 	}()
 	return results
 }
