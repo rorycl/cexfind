@@ -44,8 +44,8 @@ var listenAndServe = (*http.Server).ListenAndServe
 var (
 	// production is default; set inDevelopment to true with build tag
 	inDevelopment bool   = false
-	staticDirDev  string = "web/static"
-	tplDirDev     string = "web/templates"
+	staticDirDev  string = "static"
+	tplDirDev     string = "templates"
 	staticDir     string = "static"
 	tplDir        string = "templates"
 	DirFS         *fileSystem
@@ -219,6 +219,19 @@ func Results(w http.ResponseWriter, r *http.Request) {
 type QueriesType struct {
 	Strict bool     `schema:"strict"`
 	Query  []string `schema:"query"`
+}
+
+// String provides a string representation of QueriesType.Query,
+// suitable for use in a template
+func (q QueriesType) String() string {
+	output := ""
+	for i, query := range q.Query {
+		if i > 0 {
+			output += cmd.QuerySplitChar + " "
+		}
+		output += query
+	}
+	return output
 }
 
 // Home is the home page
