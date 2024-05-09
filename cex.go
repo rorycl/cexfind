@@ -127,7 +127,11 @@ func Search(queries []string, strict bool) ([]Box, error) {
 	results := makeQueries(queries, strict)
 	for br := range results {
 		if br.err != nil {
-			err = fmt.Errorf("\"%s\": %w", br.query, br.err)
+			if err != nil {
+				err = fmt.Errorf("\"%s\": %w\n%w", br.query, br.err, err)
+			} else {
+				err = fmt.Errorf("\"%s\": %w", br.query, br.err)
+			}
 			continue
 		}
 		if _, ok := idMap[br.box.ID]; ok { // don't add duplicates
@@ -138,7 +142,12 @@ func Search(queries []string, strict bool) ([]Box, error) {
 	}
 	allBoxes.sort()
 	if len(allBoxes) == 0 {
-		return allBoxes, errors.New("no results")
+		if err != nil {
+			err = fmt.Errorf("%w", err)
+		} else {
+			err = errors.New("no results")
+		}
+		return allBoxes, err
 	}
 	return allBoxes, err
 }
