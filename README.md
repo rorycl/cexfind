@@ -1,14 +1,15 @@
 # cexfind
 
 A Go module with console, cli and web app clients for rapid and
-effective searches for equipment on Cex/Webuy using the unofficial
-`webuy.io` json search endpoint.
+effective searches for second hand equipment for sale at Cex/Webuy using
+the unofficial `webuy.io` json search endpoint.
 
 Note that these programs only work for queries made in the UK (or via a
-proxy terminating in the UK).
+proxy terminating in the UK). This is intended to be a fun project and
+is not intended for commercial use.
 
-This is intended to be a fun project and is not intended for commercial
-use.
+The web client is presently deployed on Google Cloud Run. [Try it
+out!](https://cexfind-min-poyflf5akq-nw.a.run.app/).
 
 ## Usage
 
