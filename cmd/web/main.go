@@ -14,7 +14,7 @@ var Server func(address, port string) = Serve
 var usage = `
 run a webserver to search Cex/Webuy for second hand equipment
 
-eg <programme> [-a 127.0.0.1] [-p 8001]
+eg <programme> -address 192.168.4.5 -port 8001
 `
 
 // indirect Exit for testing
