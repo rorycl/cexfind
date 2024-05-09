@@ -28,6 +28,8 @@ var (
 	urlDetail = "https://uk.webuy.com/product-detail?id="
 	// save web output to temp file if DEBUG true
 	debug = false
+	//
+	NoResultsFoundError error = errors.New("no results found")
 )
 
 // jsonResults encompasses the interesting fields in a Cex web search result
@@ -127,7 +129,7 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 		if errors.As(err, &ju) {
 			// no results tend to provide data that cannot be parsed,
 			// used for a general "home" type page
-			return r, errors.New("no results found")
+			return r, NoResultsFoundError
 		}
 		// assume html page; try and extract heading
 		reason := headingExtract(responseBytes)
@@ -137,7 +139,7 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 		return r, errors.New(reason)
 	}
 	if len(r.Results) < 1 || len(r.Results[0].Hits) < 1 {
-		return r, errors.New("no results")
+		return r, NoResultsFoundError
 	}
 	return r, nil
 }
