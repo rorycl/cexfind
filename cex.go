@@ -43,10 +43,13 @@ import (
 // where each entry represents a "Box" or computer or other item for
 // sale.
 type Box struct {
-	Model string
-	Name  string
-	ID    string
-	Price int
+	Model         string
+	Name          string
+	ID            string
+	Price         int
+	PriceCash     int
+	PriceExchange int
+	Stores        []string
 }
 
 // inQuery checks to see if each of the words in at least one of the

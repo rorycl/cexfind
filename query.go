@@ -28,7 +28,7 @@ var (
 	urlDetail = "https://uk.webuy.com/product-detail?id="
 	// save web output to temp file if DEBUG true
 	debug = false
-	//
+	// no results sentinel error
 	NoResultsFoundError error = errors.New("no results found")
 )
 
@@ -39,8 +39,10 @@ type jsonResults struct {
 			BoxName string `json:"boxName"`
 			BoxID   string `json:"boxId"`
 			// Available int `json:"collectionQuantity"` // returns 0 or greater
-			Price  int      `json:"sellPrice"`
-			Stores []string `json:"stores"`
+			Price         int      `json:"sellPrice"`
+			PriceCash     int      `json:"cashPriceCalculated"`     // offer price for this kit in cash
+			PriceExchange int      `json:"exchangePriceCalculated"` // offer price for exchange
+			Stores        []string `json:"stores"`
 		} `json:"hits"`
 		NbHits      int `json:"nbHits"`
 		HitsPerPage int `json:"hitsPerPage"`
@@ -79,6 +81,9 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				br.box.Name = j.BoxName
 				br.box.ID = j.BoxID
 				br.box.Price = j.Price
+				br.box.PriceCash = j.PriceCash
+				br.box.PriceExchange = j.PriceExchange
+				br.box.Stores = j.Stores
 				// in strict mode, don't add box if it doesn't match any query
 				if strict && !br.box.inQuery(queries) {
 					continue
