@@ -21,10 +21,16 @@
 
     #result-listing { width: 850px; }
     ul { padding-left: 0px; margin-left:0px; margin-top: 0px; }
-    li { padding-left: 0px; padding: 2px 0 3px; list-style-type: none; font-size: 9pt; }
-    li span.price { color: blue; min-width: 50px; display: inline-block; }
-    li span.name { min-width: 500px; display: inline-block; }
+    li { padding-left: 0px; padding: 3px 0 5px; list-style-type: none; font-size: 12pt; }
+    .price { color: blue; min-width: 50px; display: inline-block; }
+    .header .price { min-width: 0px; }
+    li span.name { min-width: 600px; display: inline-block; }
     li span.boxid a { color: black; }
+    .cash { color: green; }
+    .exchange { color: red; }
+    .details { font-size: 11pt;}
+    .details .cash { margin-left: 52px; font-size: 11pt;}
+    .details .exchange { font-size: 11pt;}
 </style>
 <title>{{.Title}}</title>
 <script src="./static/htmx.min.js"></script>
@@ -48,7 +54,7 @@
 </section>
 </form>
 <p>Use a semicolon between multiple search terms<br />
-Select "strict" for results that narrowly match the search terms.</p>
+Select "strict" for results that narrowly match the search criteria.</p>
 </div>
 <div id="results">
 </div>

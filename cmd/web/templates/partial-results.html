@@ -2,6 +2,8 @@
 
 {{ if .Err }}
 <p class="error">Error: {{ .Err }}</p>
+{{ else }}
+<p class="header"><span class="price">price</span>/<span class="cash">cash</span>/<span class="exchange">exchange</span></p>
 {{ end }}
 
 {{- if .Results }}
@@ -18,6 +20,14 @@
     <span class="price">&pound;{{ $box.Price }}</span>
     <span class="name">{{ $box.Name }}</span>
     <span class="boxid"><a href="{{ $box.IDUrl }}">{{ $box.ID }}</a></span>
+    <span class="details">
+        <span class="cash">&pound;{{ $box.PriceCash }}/</span><span class="exchange">&pound;{{ $box.PriceExchange }}</span>
+        {{ $no := 0 }}
+        {{- range $i, $store := $box.Stores }}
+            {{- if gt $i 0 }}, {{ end }}
+            {{ $store }}
+        {{- end }}
+    </span>
 </li>
 {{ end }}
 </ul>
