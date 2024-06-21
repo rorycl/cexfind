@@ -22,11 +22,7 @@
     <span class="boxid"><a href="{{ $box.IDUrl }}">{{ $box.ID }}</a></span>
     <span class="details">
         <span class="cash">&pound;{{ $box.PriceCash }}/</span><span class="exchange">&pound;{{ $box.PriceExchange }}</span>
-        {{ $no := 0 }}
-        {{- range $i, $store := $box.Stores }}
-            {{- if gt $i 0 }}, {{ end }}
-            {{ $store }}
-        {{- end }}
+        {{ $box.StoresString }}
     </span>
 </li>
 {{ end }}
