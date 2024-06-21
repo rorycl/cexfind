@@ -138,6 +138,10 @@ func TestBoxStoresString(t *testing.T) {
 			thisBox: Box{Stores: []string{"a", "b", "c"}},
 			want:    "a, b, c",
 		},
+		{
+			thisBox: Box{Stores: []string{"a", "b", "c", "d", "e", "f", "g", "h"}},
+			want:    "a, b, c, d, e...(3 more)",
+		},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {

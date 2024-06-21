@@ -91,10 +91,19 @@ func (b *Box) reverseID() string {
 	return string(r)
 }
 
-// StoresString returns the stores as a comma delimited string
+// StoresString returns the stores as a comma delimited string,
+// truncating the list if necessary
 func (b *Box) StoresString() string {
+	var storeMaxCnt int = 5
 	if len(b.Stores) == 0 {
 		return ""
+	}
+	if len(b.Stores) > storeMaxCnt {
+		return fmt.Sprintf(
+			"%s...(%d more)",
+			strings.Join(b.Stores[:storeMaxCnt], ", "),
+			len(b.Stores)-storeMaxCnt,
+		)
 	}
 	return strings.Join(b.Stores, ", ")
 }

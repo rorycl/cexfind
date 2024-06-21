@@ -83,7 +83,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				br.box.Price = j.Price
 				br.box.PriceCash = j.PriceCash
 				br.box.PriceExchange = j.PriceExchange
-				br.box.Stores = j.Stores
+				br.box.Stores = storeSimplifier(j.Stores)
 				// in strict mode, don't add box if it doesn't match any query
 				if strict && !br.box.inQuery(queries) {
 					continue
@@ -158,6 +158,26 @@ func headingExtract(b []byte) string {
 		return ""
 	}
 	return string(results[1])
+}
+
+// storeSimplifier replaces some long store names with shorter ones
+func storeSimplifier(ss []string) []string {
+	output := []string{}
+	simpleMap := map[string]string{
+		"Tottenham Crt Rd": "London W1 TCR",
+		"Rathbone Place":   "London W1 Rathbone",
+	}
+LOOP:
+	for _, s := range ss {
+		for k, v := range simpleMap {
+			if strings.Contains(s, k) {
+				output = append(output, v)
+				continue LOOP
+			}
+		}
+		output = append(output, s)
+	}
+	return output
 }
 
 // extractModelType tries to extract a meaningful model type from a

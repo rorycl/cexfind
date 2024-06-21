@@ -108,3 +108,22 @@ func TestHeadingExtract(t *testing.T) {
 		})
 	}
 }
+
+// TestStoreSimplifier tests shortening of some store names
+func TestStoreSimplifier(t *testing.T) {
+
+	for i, tt := range []struct {
+		provided []string
+		want     []string
+	}{
+		{[]string{"Havant", "a"}, []string{"Havant", "a"}},
+		{[]string{"b", "London - W1 Tottenham Crt Rd"}, []string{"b", "London W1 TCR"}},
+		{[]string{"c", "London - W1 Rathbone Place"}, []string{"c", "London W1 Rathbone"}},
+	} {
+		t.Run(fmt.Sprintf("subtest_%d", i), func(t *testing.T) {
+			if got, want := storeSimplifier(tt.provided), tt.want; slices.Compare(got, want) != 0 {
+				fmt.Errorf("got %v want %v", got, want)
+			}
+		})
+	}
+}
