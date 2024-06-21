@@ -13,5 +13,5 @@ require (
 
 require (
 	github.com/felixge/httpsnoop v1.0.3 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
 )
