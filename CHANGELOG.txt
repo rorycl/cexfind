@@ -1,10 +1,13 @@
-Changelog for release v0.2.3
+Changelog for release v0.2.5
 
-*   cex: allow both an error and results from Search
-    
-    This commit also makes web queries to be concurrent, which was the
-    original intention.
-
-*   cli: allow both an error and results on search
-*   console: allow both an error and results on search
-*   cex: add more context to erroring queries
+* docs: update README for v0.2.4
+* cex: replace long store names and truncate store listings; update tests
+* cex: update results to show cash/exchange prices and stores
+* console: use both title and description for items to show prices, stores
+    also regenerate console.gif from console.vhs 
+* console: tweak colours
+* cli: update to provide verbose option to show pricing, stores
+    also regenerate cli.gif from cli.vhs
+* go: update modules
+* docker: minor "add" tweaks to Dockerfile
+* web: update htmx to v2.0
