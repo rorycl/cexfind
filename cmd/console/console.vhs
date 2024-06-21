@@ -41,7 +41,7 @@ Sleep 2s
 # type lenovo t480s
 Tab
 Sleep 750ms
-Type "; lenovo x395"
+Type "; lenovo t14s"
 Sleep 500ms
 Tab
 Sleep 500ms

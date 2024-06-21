@@ -19,18 +19,20 @@ import (
 //
 // function
 type item struct {
-	desc      string // a rendered description
-	isHeading bool
-	url       string // the url to see this item
+	title       string // a rendered title
+	description string // a rendered description
+	isHeading   bool
+	url         string // the url to see this item
 }
 
 // emptyItem is s special "empty" item to provide padding between item
 // headings
 const emptyItem = "-empty-"
 
-func (i item) Description() string { return i.desc }
+func (i item) Title() string       { return i.title }
+func (i item) Description() string { return i.description }
 func (i item) IsHeading() bool     { return i.isHeading }
-func (i item) FilterValue() string { return i.desc }
+func (i item) FilterValue() string { return i.title }
 
 type liModel struct {
 	list list.Model
@@ -76,8 +78,8 @@ func (li liModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			i := li.list.SelectedItem().(item)
 			cmd = func() tea.Msg {
 				return listEnterMsg{
-					desc: i.desc,
-					url:  i.url,
+					title: i.title,
+					url:   i.url,
 				}
 			}
 			cmds = append(cmds, cmd)
@@ -106,7 +108,7 @@ func (li *liModel) Next() {
 	for i := 1; i < 4; i++ {
 		li.list.CursorDown() // utilize list.CursorDown
 		thisItem := li.list.SelectedItem().(item)
-		if thisItem.isHeading || thisItem.desc == emptyItem {
+		if thisItem.isHeading || thisItem.title == emptyItem {
 			continue
 		}
 		return
@@ -119,7 +121,7 @@ func (li *liModel) Prev() {
 	for i := 1; i < 4; i++ {
 		li.list.CursorUp() // utilize list.CursorUp
 		thisItem := li.list.SelectedItem().(item)
-		if thisItem.isHeading || thisItem.desc == emptyItem {
+		if thisItem.isHeading || thisItem.title == emptyItem {
 			continue
 		}
 		return
@@ -135,7 +137,7 @@ func (li *liModel) ReplaceList(items []list.Item) tea.Cmd {
 	}
 	// continue to the first non-heading, non-empty item
 	thisItem := li.list.SelectedItem().(item)
-	if thisItem.isHeading || thisItem.desc == emptyItem {
+	if thisItem.isHeading || thisItem.title == emptyItem {
 		li.Next()
 	}
 	return cmd
@@ -143,14 +145,14 @@ func (li *liModel) ReplaceList(items []list.Item) tea.Cmd {
 
 // enter event message
 type listEnterMsg struct {
-	desc string
-	url  string
+	title string
+	url   string
 }
 
 // string representation of a listEnterMsg is used for status
 func (l listEnterMsg) String() string {
-	trimmedDesc := l.desc
-	fields := strings.Fields(l.desc)
+	trimmedDesc := l.title
+	fields := strings.Fields(l.title)
 	if len(fields) > 2 {
 		trimmedDesc = strings.Join(fields[1:len(fields)-1], " ")
 	}

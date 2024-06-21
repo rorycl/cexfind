@@ -27,7 +27,7 @@ var (
 
 	// top panel
 	topPanelStyle = lipgloss.NewStyle().
-			BorderForeground(lipgloss.Color("#56ff79")).
+			BorderForeground(lipgloss.Color("#ff982e")).
 			Border(lipgloss.NormalBorder(), false, false, true, false).
 			BorderBottom(true).
 			Height(5).

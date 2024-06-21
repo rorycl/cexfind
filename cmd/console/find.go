@@ -14,13 +14,17 @@ import (
 	"github.com/rorycl/cexfind/cmd"
 )
 
+// emptyItemOn defines if "empty items" should be added to make space
+// between items in the list
+const emptyItemOn bool = false
+
 // find makes cexfind.Search queries and turns the results into
 // list.Items as required by the bubbletea list and delegate which uses
 // the following format:
 //
 //	items := []list.Item{
-//		item{desc: "this is a heading", isHeading: true},
-//		item{desc: "this is a normal item 1"},
+//		item{title: "this is a heading", isHeading: true},
+//		item{title: "this is a normal item 1", description: "..."},
 //
 // The query is received from the app as a single string with queries
 // separated (potentially) by a semicolon. Queries are expected to each
@@ -57,19 +61,20 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 	latestModel := ""
 	for _, box := range results {
 		if box.Model != latestModel {
-			if len(items) != 0 {
+			if len(items) != 0 && emptyItemOn {
 				// add an empty item for spacing ahead of headings,
 				// except for the first heading
-				items = append(items, item{desc: emptyItem})
+				items = append(items, item{title: emptyItem})
 			}
 			// make heading
-			items = append(items, item{desc: box.Model, isHeading: true})
+			items = append(items, item{title: box.Model, isHeading: true})
 			latestModel = box.Model
 		}
 		// add standard item
 		items = append(items, item{
-			desc: fmt.Sprintf(boxTpl, box.Price, box.Name, box.ID),
-			url:  box.IDUrl(),
+			title:       fmt.Sprintf(boxTitleTpl, box.Price, box.Name),
+			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash, box.PriceExchange, box.StoresString()),
+			url:         box.IDUrl(),
 		})
 	}
 	return
@@ -84,7 +89,8 @@ func findLocal(query string, strict bool) (items []list.Item, itemNo int, err er
 	return theseExampleItems, 15, nil
 }
 
-const boxTpl string = "£%-3d %30s %s"
+const boxTitleTpl string = "£%-3d %s"
+const boxDescriptionTpl string = "     (£%d/£%d) %-40s"
 
 // findPerformMsg is a bubbletea Cmd message for performing a find
 type findPerformMsg struct {

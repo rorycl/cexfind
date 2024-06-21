@@ -35,11 +35,13 @@ type CustomItemStyles struct {
 	Heading         lipgloss.Style
 	SelectedHeading lipgloss.Style
 
-	// A Normal description
+	// Title and Description
+	NormalTitle         lipgloss.Style
+	SelectedTitle       lipgloss.Style
 	NormalDescription   lipgloss.Style
 	SelectedDescription lipgloss.Style
 	DimmedDesc          lipgloss.Style // default
-	// DimmedDescription lipgloss.Style
+	// DimmedTitle lipgloss.Style
 
 	// Characters matching the current filter, if any.
 	FilterMatch lipgloss.Style
@@ -50,7 +52,7 @@ type CustomItemStyles struct {
 func NewCustomItemStyles() (s CustomItemStyles) {
 
 	s.Heading = lipgloss.NewStyle().
-		Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
+		Foreground(lipgloss.AdaptiveColor{Light: "#d40000", Dark: "#d40000"}).
 		Padding(0, 0, 0, 2).
 		Bold(true)
 	s.SelectedHeading = lipgloss.NewStyle().
@@ -59,14 +61,19 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 		Padding(0, 0, 0, 2).
 		Bold(true)
 
-	s.NormalDescription = lipgloss.NewStyle().
-		Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
+	s.NormalTitle = lipgloss.NewStyle().
+		Foreground(lipgloss.AdaptiveColor{Light: "#dccbcb", Dark: "#dccbcb"}).
 		Padding(0, 0, 0, 2)
-	s.SelectedDescription = lipgloss.NewStyle().
+	s.SelectedTitle = lipgloss.NewStyle().
 		Border(lipgloss.NormalBorder(), false, false, false, true).
 		BorderForeground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).
 		Foreground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).
 		Padding(0, 0, 0, 1)
+
+	s.NormalDescription = s.NormalTitle.Copy().
+		Faint(true).
+		Foreground(lipgloss.AdaptiveColor{Light: "#9c9c9c", Dark: "#9c9c9c"})
+	s.SelectedDescription = s.SelectedTitle.Copy()
 
 	return s
 }
@@ -74,6 +81,7 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 // CustomItem describes an items designed to work with CustomDelegate.
 type CustomItem interface {
 	list.Item
+	Title() string
 	Description() string
 	IsHeading() bool
 }
@@ -118,7 +126,7 @@ func (d *CustomDelegate) SetHeight(i int) {
 // This has effect only if ShowDescription is true,
 // otherwise height is always 1.
 func (d CustomDelegate) Height() int {
-	return 1
+	return 2 // title + description
 }
 
 // SetSpacing sets the delegate's spacing.
@@ -142,13 +150,15 @@ func (d CustomDelegate) Update(msg tea.Msg, m *list.Model) tea.Cmd {
 // Render prints an item. Note filtering not used
 func (d CustomDelegate) Render(w io.Writer, m list.Model, index int, item list.Item) {
 	var (
-		isHeading bool
-		desc      string
-		s         = &d.Styles
+		isHeading   bool
+		title       string
+		description string
+		s           = &d.Styles
 	)
 
 	if i, ok := item.(CustomItem); ok {
-		desc = i.Description()
+		title = i.Title()
+		description = i.Description()
 		isHeading = i.IsHeading()
 	} else {
 		return
@@ -160,40 +170,47 @@ func (d CustomDelegate) Render(w io.Writer, m list.Model, index int, item list.I
 	}
 
 	// Prevent text from exceeding list width (see original // implementation)
-	textwidth := uint(m.Width() - s.NormalDescription.GetPaddingLeft() - s.NormalDescription.GetPaddingRight())
+	textwidth := uint(m.Width() - s.NormalTitle.GetPaddingLeft() - s.NormalTitle.GetPaddingRight())
 	var lines []string
-	for _, line := range strings.Split(desc, "\n") {
+	for _, line := range strings.Split(title, "\n") {
 		lines = append(lines, truncate.StringWithTail(line, textwidth, ellipsis))
 	}
-	desc = strings.Join(lines, "\n")
+	title = strings.Join(lines, "\n")
 
 	// Conditions
 	var (
 		isSelected = index == m.Index()
-		isEmpty    = desc == emptyItem
+		isEmpty    = title == emptyItem
 	)
 
 	// fixme (set heading)
 	if isEmpty {
-		desc = ""
+		title = ""
 	}
 	if isHeading {
 		switch {
+		// swap title to description to make space above
 		case isSelected:
-			desc = s.SelectedHeading.Render(desc)
+			description = s.SelectedHeading.Render(title)
 		default:
-			desc = s.Heading.Render(desc)
+			description = s.Heading.Render(title)
 		}
+		title = ""
 	} else {
 		switch {
 		case isSelected:
-			desc = s.SelectedDescription.Render(desc)
+			title = s.SelectedTitle.Render(title)
+			description = s.SelectedDescription.Render(description)
 		default:
-			desc = s.NormalDescription.Render(desc)
+			title = s.NormalTitle.Render(title)
+			description = s.NormalDescription.Render(description)
 		}
 	}
 
-	fmt.Fprintf(w, "%s", desc)
+	fmt.Fprintf(w, "%s", title)
+	// if !isHeading && !isEmpty {
+	fmt.Fprintf(w, "\n%s", description)
+	// }
 }
 
 // ShortHelp returns the delegate's short help.
