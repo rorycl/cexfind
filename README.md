@@ -2,6 +2,8 @@
 
 v0.2.4 : 21 June 2024 : add buy/exchange and store info; htmx 2.0
 
+<img width="600" src="cmd/web/static/web-detail.png" />
+
 A Go module with console, cli and web app clients for rapid and
 effective searches for second hand equipment for sale at Cex/Webuy using
 the unofficial `webuy.io` json search endpoint.
