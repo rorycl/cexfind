@@ -2,18 +2,19 @@
 
 v0.2.4 : 21 June 2024 : add buy/exchange and store info; htmx 2.0
 
-<img width="600" src="cmd/web/static/web-detail.png" />
+## Find kit on Cex, fast
 
-A Go module with console, cli and web app clients for rapid and
-effective searches for second hand equipment for sale at Cex/Webuy using
-the unofficial `webuy.io` json search endpoint.
+<img width="1000" src="cmd/web/static/web-detail.png" />
+
+[Try it out on GCP!](https://cexfind-min-poyflf5akq-nw.a.run.app/)
+
+This project is a Go module with console, cli and web app clients for
+rapid and effective searches for second hand equipment for sale at
+Cex/Webuy using the unofficial `webuy.io` json search endpoint.
 
 Note that these programs only work for queries made in the UK (or via a
 proxy terminating in the UK). This is intended to be a fun project and
 is not intended for commercial use.
-
-The web client is presently deployed on Google Cloud Run. [Try it
-out!](https://cexfind-min-poyflf5akq-nw.a.run.app/).
 
 ## Usage
 
