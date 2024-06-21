@@ -125,6 +125,29 @@ func TestBoxSort(t *testing.T) {
 	}
 }
 
+func TestBoxStoresString(t *testing.T) {
+	tests := []struct {
+		thisBox Box
+		want    string
+	}{
+		{
+			thisBox: Box{Stores: []string{}},
+			want:    "",
+		},
+		{
+			thisBox: Box{Stores: []string{"a", "b", "c"}},
+			want:    "a, b, c",
+		},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
+			if got, want := tt.thisBox.StoresString(), tt.want; got != want {
+				t.Errorf("got %s != want %s", got, want)
+			}
+		})
+	}
+}
+
 // TestBoxIDUrl checks a valid url is returned
 func TestBoxIDUrl(t *testing.T) {
 	b := Box{ID: "xyz"}

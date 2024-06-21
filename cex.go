@@ -91,6 +91,14 @@ func (b *Box) reverseID() string {
 	return string(r)
 }
 
+// StoresString returns the stores as a comma delimited string
+func (b *Box) StoresString() string {
+	if len(b.Stores) == 0 {
+		return ""
+	}
+	return strings.Join(b.Stores, ", ")
+}
+
 // boxes is a slice of Box
 type boxes []Box
 
