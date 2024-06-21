@@ -122,7 +122,7 @@ func TestStoreSimplifier(t *testing.T) {
 	} {
 		t.Run(fmt.Sprintf("subtest_%d", i), func(t *testing.T) {
 			if got, want := storeSimplifier(tt.provided), tt.want; slices.Compare(got, want) != 0 {
-				fmt.Errorf("got %v want %v", got, want)
+				t.Errorf("got %v want %v", got, want)
 			}
 		})
 	}
