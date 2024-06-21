@@ -18,7 +18,7 @@ var (
 	// intro text etc
 	inNormalStyle = lipgloss.NewStyle().
 		// Foreground(lipgloss.Color("#1ed71a"))
-		Foreground(lipgloss.Color("#ff5a56"))
+		Foreground(lipgloss.Color("#56ff79"))
 
 	// search
 	inFocusedStyle = lipgloss.NewStyle().
@@ -34,7 +34,7 @@ var (
 				Bold(true).
 				MarginTop(1)
 	checkBoxNormalStyle = lipgloss.NewStyle().
-				Foreground(lipgloss.AdaptiveColor{Light: "#ff5a56", Dark: "#ff5a56"}).
+				Foreground(lipgloss.AdaptiveColor{Light: "#56ff79", Dark: "#56ff79"}).
 				MarginTop(1)
 )
 
