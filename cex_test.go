@@ -93,13 +93,13 @@ func TestBoxSort(t *testing.T) {
 	var toSortBoxes boxes
 	toSortBoxes = append(toSortBoxes,
 		[]Box{
-			{"bb", "bb", "id1a", 20},
-			{"bc", "cc", "id2a", 25},
-			{"ba", "aa", "id3a", 15},
-			{"ab", "db", "id3b", 30},
-			{"ac", "dc", "id2z", 35},
-			{"aa", "da", "id1a", 35},
-			{"aa", "la", "id1b", 30}, // 0
+			{"bb", "bb", "id1a", 20, 15, 17, []string{"a"}},
+			{"bc", "cc", "id2a", 25, 15, 17, []string{"a"}},
+			{"ba", "aa", "id3a", 15, 15, 17, []string{"a"}},
+			{"ab", "db", "id3b", 30, 15, 17, []string{"a"}},
+			{"ac", "dc", "id2z", 35, 15, 17, []string{"a"}},
+			{"aa", "da", "id1a", 35, 15, 17, []string{"a"}},
+			{"aa", "la", "id1b", 30, 15, 17, []string{"a"}}, // 0
 		}...,
 	)
 
