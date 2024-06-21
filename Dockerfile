@@ -4,11 +4,9 @@ FROM golang:1.22 AS deps
 
 # setup module environment
 WORKDIR /build
-ADD *mod ./
-ADD *sum ./
+ADD go.mod go.sum ./
 RUN go mod download
-ADD cmd/web/*mod ./cmd/web/
-ADD cmd/web/*sum ./cmd/web/
+ADD cmd/web/*mod cmd/web/*sum ./cmd/web/
 RUN cd /build/cmd/web && go mod download
 
 # build
