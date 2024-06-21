@@ -1,5 +1,7 @@
 # charm vhs screen recording file for the cli app
 #
+# command reference: https://github.com/charmbracelet/vhs?tab=readme-ov-file#vhs-command-reference
+#
 # Where should we write the GIF?
 Output cli.gif
 
@@ -49,7 +51,14 @@ Enter
 Show
 
 # select item
-Type "./cli -query 'lenovo t470s' | head -n 20"
+Hide
+Type "# a basic query"
+# Ctrl+D
+Enter
+Show
+Sleep 500ms
+
+Type "./cli -query 'lenovo t490s' | head -n 19"
 Enter
 Sleep 3s
 
@@ -60,9 +69,33 @@ Enter
 Show
 
 # select more items
-Type "./cli -query 'lenovo t470s' -query 'lenovo x395' -strict"
+Hide
+Type "# only show strict matches"
 Enter
-Sleep 3s
+Show
+Sleep 500ms
+
+Type "./cli -query 'lenovo t490s' -strict"
+Enter
+Sleep 4s
+
+# clear
+Hide
+Type "clear"
+Enter
+Show
+Sleep 500ms
+
+# show buying prices, stores
+Hide
+Type "# also show cash/exchange pricing and stores"
+Enter
+Show
+Sleep 500ms
+
+Type "./cli -query 'lenovo t490s' -strict -verbose"
+Enter
+Sleep 4s
 
 # # type lenovo t480s
 # Tab
