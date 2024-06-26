@@ -108,14 +108,14 @@ func main() {
 		}
 		if verbose {
 			info := fmt.Sprintf("      (%d/%d) %s",
-				box.PriceCash,
-				box.PriceExchange,
+				box.PriceCash.IntPart(),
+				box.PriceExchange.IntPart(),
 				box.StoresString(),
 			)
 			fmt.Printf(
 				"%s %-3d %s %s\n%s\n      %s\n",
 				dotStyle("✱"),
-				box.Price,
+				box.Price.IntPart(),
 				box.Name,
 				box.ID,
 				infoStyle(info),
@@ -125,7 +125,7 @@ func main() {
 			fmt.Printf(
 				"%s %-3d %s %s\n      %s\n",
 				dotStyle("✱"),
-				box.Price,
+				box.Price.IntPart(),
 				box.Name,
 				box.ID,
 				urlStyle(box.IDUrl()),
