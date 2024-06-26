@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -15,6 +16,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/shopspring/decimal"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -23,7 +25,23 @@ var (
 	// URL is the Cex/Webuy search endpoint
 	URL = "https://search.webuy.io/1/indexes/*/queries"
 	// json body with placeholder MODEL; note that the availability online filter ensures only available kit is returned
-	jsonBody = `{"requests":[{"indexName":"prod_cex_uk","params":"clickAnalytics=true&facetFilters=%5B%5B%22availability%3AIn%20Stock%20Online%22%5D%5D&facets=%5B%22*%22%5D&filters=boxVisibilityOnWeb%3D1%20AND%20boxSaleAllowed%3D1&highlightPostTag=__%2Fais-highlight__&highlightPreTag=__ais-highlight__&hitsPerPage=17&maxValuesPerFacet=1000&page=0&query=MODEL&tagFilters=&userToken=71d182c769bd4dbc94081214a363c014"}]}`
+	jsonBody = strings.ReplaceAll(`{"requests": [
+    {
+      "indexName": "prod_cex_uk",
+      "params": "clickAnalytics=true
+		&facetFilters=%5B%5B%22availability%3AIn%20Stock%20Online%22%5D%5D
+		&facets=%5B%22*%22%5D
+		&filters=boxVisibilityOnWeb%3D1%20
+		&highlightPostTag=__%2Fais-highlight__
+		&highlightPreTag=__ais-highlight__
+		&hitsPerPage=50
+		&maxValuesPerFacet=1000
+		&page=0
+		&query=MODEL
+		&tagFilters=
+		&userToken=71d182c769bd4dbc94081214a363c014"
+    }]}`, "\n		", "")
+
 	// urlDetail is the Cex/Webuy base url for individual items
 	urlDetail = "https://uk.webuy.com/product-detail?id="
 	// save web output to temp file if DEBUG true
@@ -39,13 +57,13 @@ type jsonResults struct {
 			BoxName string `json:"boxName"`
 			BoxID   string `json:"boxId"`
 			// Available int `json:"collectionQuantity"` // returns 0 or greater
-			Price         int      `json:"sellPrice"`
-			PriceCash     int      `json:"cashPriceCalculated"`     // offer price for this kit in cash
-			PriceExchange int      `json:"exchangePriceCalculated"` // offer price for exchange
-			Stores        []string `json:"stores"`
+			Price         decimal.Decimal `json:"sellPrice"`
+			PriceCash     decimal.Decimal `json:"cashPriceCalculated"`     // offer price for this kit in cash
+			PriceExchange decimal.Decimal `json:"exchangePriceCalculated"` // offer price for exchange
+			Stores        []string        `json:"stores"`
 		} `json:"hits"`
-		NbHits      int `json:"nbHits"`
-		HitsPerPage int `json:"hitsPerPage"`
+		// NbHits      int `json:"nbHits",omitempty`
+		// HitsPerPage int `json:"hitsPerPage",omitempty`
 	} `json:"results"`
 }
 
@@ -111,13 +129,13 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
-		return r, err
+		return r, fmt.Errorf("http call error: %w", err)
 	}
 	defer response.Body.Close()
 
 	responseBytes, err := io.ReadAll(response.Body)
 	if err != nil {
-		return r, err
+		return r, fmt.Errorf("http response read error: %w", err)
 	}
 
 	/* save to a temporary json file for inspection */
@@ -130,18 +148,17 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 
 	err = json.Unmarshal(responseBytes, &r)
 	if err != nil {
+		// html page might have been returned; try and extract heading
+		reason := headingExtract(responseBytes)
+		if reason != "" {
+			reason = "unknown or unmarshalling error"
+			return r, errors.New(reason)
+		}
 		var ju *json.UnmarshalTypeError
 		if errors.As(err, &ju) {
-			// no results tend to provide data that cannot be parsed,
-			// used for a general "home" type page
-			return r, NoResultsFoundError
+			return r, fmt.Errorf("json unmarshalling error: %w", err)
 		}
-		// assume html page; try and extract heading
-		reason := headingExtract(responseBytes)
-		if reason == "" {
-			reason = "unknown or unmarshalling error"
-		}
-		return r, errors.New(reason)
+		return r, fmt.Errorf("json reading error %w", err)
 	}
 	if len(r.Results) < 1 || len(r.Results[0].Hits) < 1 {
 		return r, NoResultsFoundError
