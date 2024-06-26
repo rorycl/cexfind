@@ -52,9 +52,8 @@ type CustomItemStyles struct {
 func NewCustomItemStyles() (s CustomItemStyles) {
 
 	s.Heading = lipgloss.NewStyle().
-		Foreground(lipgloss.AdaptiveColor{Light: "#d40000", Dark: "#d40000"}).
-		Padding(0, 0, 0, 2).
-		Bold(true)
+		Foreground(lipgloss.AdaptiveColor{Light: "#f4eee0", Dark: "#f4eee0"}).
+		Padding(0, 0, 0, 2)
 	s.SelectedHeading = lipgloss.NewStyle().
 		Foreground(lipgloss.AdaptiveColor{Light: "#b7b7b7", Dark: "#b7b7b7"}).
 		BorderForeground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).

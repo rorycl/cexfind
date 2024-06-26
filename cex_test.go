@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/shopspring/decimal"
 )
 
 // TestBoxInQuery tests strict query/Box.Name matches
@@ -84,7 +85,42 @@ func TestSearch(t *testing.T) {
 	if err == nil || err.Error() != "no results" {
 		t.Fatalf("expected no results error, got %v", err)
 	}
+}
 
+// Search for terminator search string
+func TestSearchTerminator(t *testing.T) {
+
+	f, err := os.Open("testdata/terminator.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	contents, err := io.ReadAll(f)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, string(contents))
+	}))
+	defer ts.Close()
+
+	// overwrite global URL with test URL
+	URL = ts.URL
+
+	// non-strict search
+	results, err := Search([]string{"terminator"}, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if got, want := len(results), 17; got != want {
+		t.Fatalf("expected %d box results, got %d", want, got)
+	}
+
+	// verbose output (use test -v)
+	for _, v := range results {
+		t.Log("\t", v)
+	}
 }
 
 // TestBoxSort tests box sorting
@@ -93,13 +129,13 @@ func TestBoxSort(t *testing.T) {
 	var toSortBoxes boxes
 	toSortBoxes = append(toSortBoxes,
 		[]Box{
-			{"bb", "bb", "id1a", 20, 15, 17, []string{"a"}},
-			{"bc", "cc", "id2a", 25, 15, 17, []string{"a"}},
-			{"ba", "aa", "id3a", 15, 15, 17, []string{"a"}},
-			{"ab", "db", "id3b", 30, 15, 17, []string{"a"}},
-			{"ac", "dc", "id2z", 35, 15, 17, []string{"a"}},
-			{"aa", "da", "id1a", 35, 15, 17, []string{"a"}},
-			{"aa", "la", "id1b", 30, 15, 17, []string{"a"}}, // 0
+			{"bb", "bb", "id1a", decimal.NewFromInt(20), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"bc", "cc", "id2a", decimal.NewFromInt(25), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"ba", "aa", "id3a", decimal.NewFromInt(15), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"ab", "db", "id3b", decimal.NewFromInt(30), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"ac", "dc", "id2z", decimal.NewFromInt(35), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"aa", "da", "id1a", decimal.NewFromInt(35), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
+			{"aa", "la", "id1b", decimal.NewFromInt(30), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}}, // 0
 		}...,
 	)
 

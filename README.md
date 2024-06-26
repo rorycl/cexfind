@@ -1,6 +1,6 @@
 # cexfind
 
-v0.2.4 : 21 June 2024 : add buy/exchange and store info; htmx 2.0
+v0.2.6 : 26 June 2024 : change pricing from int to decimal.Decimal
 
 ## Find kit on Cex, fast
 
