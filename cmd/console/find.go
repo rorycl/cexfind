@@ -72,8 +72,8 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		}
 		// add standard item
 		items = append(items, item{
-			title:       fmt.Sprintf(boxTitleTpl, box.Price, box.Name),
-			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash, box.PriceExchange, box.StoresString()),
+			title:       fmt.Sprintf(boxTitleTpl, box.Price.IntPart(), box.Name),
+			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash.IntPart(), box.PriceExchange.IntPart(), box.StoresString()),
 			url:         box.IDUrl(),
 		})
 	}
