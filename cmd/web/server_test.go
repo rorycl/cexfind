@@ -13,6 +13,7 @@ import (
 	"testing"
 
 	cex "github.com/rorycl/cexfind"
+	"github.com/shopspring/decimal"
 )
 
 // TestSetupFS sets up the FS
@@ -118,9 +119,9 @@ func TestResults(t *testing.T) {
 	// override package global searcher which indirects Search
 	searcher = func(queries []string, strict bool) ([]cex.Box, error) {
 		return []cex.Box{
-			cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: 3},
-			cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: 1},
-			cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: 2},
+			cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: decimal.NewFromInt(3)},
+			cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: decimal.NewFromInt(1)},
+			cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: decimal.NewFromInt(2)},
 		}, nil
 	}
 

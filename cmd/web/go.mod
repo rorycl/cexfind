@@ -13,5 +13,6 @@ require (
 
 require (
 	github.com/felixge/httpsnoop v1.0.3 // indirect
+	github.com/shopspring/decimal v1.4.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
