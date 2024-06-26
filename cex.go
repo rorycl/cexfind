@@ -37,6 +37,8 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+
+	"github.com/shopspring/decimal"
 )
 
 // Box is a very simplified representation of a Cex/Webuy json entry,
@@ -46,9 +48,9 @@ type Box struct {
 	Model         string
 	Name          string
 	ID            string
-	Price         int
-	PriceCash     int
-	PriceExchange int
+	Price         decimal.Decimal
+	PriceCash     decimal.Decimal
+	PriceExchange decimal.Decimal
 	Stores        []string
 }
 
@@ -119,7 +121,7 @@ func (b *boxes) sort() {
 		if c != 0 {
 			return c
 		}
-		c = cmp.Compare(i.Price, j.Price)
+		c = i.Price.Compare(j.Price)
 		if c != 0 {
 			return c
 		}
