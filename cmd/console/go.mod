@@ -1,6 +1,6 @@
 module console
 
-go 1.22
+go 1.22.5
 
 replace github.com/rorycl/cexfind => ../../
 
