@@ -1,5 +1,9 @@
 # build the webapp including dependencies from / and /cmd
 
+# For information about the use of the gcr.io/distroless/static final
+# container image, see the gcr.io docs at
+# https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md
+
 FROM golang:1.22 AS deps
 
 # setup module environment
