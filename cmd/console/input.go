@@ -25,7 +25,7 @@ var (
 			PaddingTop(1)
 
 	// search cursor style
-	inCursorStyle = inFocusedStyle.Copy()
+	inCursorStyle = inFocusedStyle
 
 	// checkbox
 	checkBoxFocusedStyle = lipgloss.NewStyle().

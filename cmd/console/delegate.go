@@ -69,10 +69,10 @@ func NewCustomItemStyles() (s CustomItemStyles) {
 		Foreground(lipgloss.AdaptiveColor{Light: "#ff982e", Dark: "#ff982e"}).
 		Padding(0, 0, 0, 1)
 
-	s.NormalDescription = s.NormalTitle.Copy().
+	s.NormalDescription = s.NormalTitle.
 		Faint(true).
 		Foreground(lipgloss.AdaptiveColor{Light: "#9c9c9c", Dark: "#9c9c9c"})
-	s.SelectedDescription = s.SelectedTitle.Copy()
+	s.SelectedDescription = s.SelectedTitle
 
 	return s
 }
