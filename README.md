@@ -1,6 +1,6 @@
 # cexfind
 
-v0.2.6 : 26 June 2024 : change pricing from int to decimal.Decimal
+v0.2.7 : 19 January 2025 : add model to searchables
 
 ## Find kit on Cex, fast
 
