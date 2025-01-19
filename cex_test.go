@@ -35,6 +35,11 @@ func TestBoxInQuery(t *testing.T) {
 			queries: []string{"HIJ ABC"},
 			result:  true,
 		},
+		{
+			box:     Box{Name: "abc def hij", Model: "lenovo"},
+			queries: []string{"HIJ ABC Lenovo"},
+			result:  true,
+		},
 	}
 
 	for i, tt := range tests {

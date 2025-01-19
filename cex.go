@@ -61,11 +61,12 @@ type Box struct {
 func (b *Box) inQuery(queries []string) bool {
 	for _, q := range queries {
 		matches := 0
-		name := strings.ToLower(b.Name)
+		name := strings.ToLower(b.Name + " " + b.Model)
 		words := strings.Split(strings.ToLower(q), " ")
 		for _, w := range words {
 			if strings.Contains(name, w) {
 				matches++
+				continue
 			}
 		}
 		if matches == len(words) {
