@@ -67,17 +67,17 @@ type inModel struct {
 func newInModel() inModel {
 	t := textinput.New()
 	t.Cursor.Style = inCursorStyle
-	t.CharLimit = 60
+	t.CharLimit = 70
 	t.Placeholder = "enter terms"
 	t.PromptStyle = inFocusedStyle
-	t.Width = 55
+	t.Width = 60
 
 	p := textinput.New()
 	p.Cursor.Style = postcodeNormalStyle
 	p.CharLimit = 8
 	p.Placeholder = "postcode"
 	p.PromptStyle = postcodeNormalStyle
-	p.Width = 10
+	p.Width = 12
 
 	return inModel{
 		input:    t,
