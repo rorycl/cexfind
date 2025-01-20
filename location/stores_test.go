@@ -21,20 +21,20 @@ func TestGetStores(t *testing.T) {
 	// repoint url
 	storeURL = svr.URL
 
-	stores, err := getLocations()
+	err = getStoreLocations()
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	for k := range stores {
+	for k := range Stores {
 		fmt.Println(k)
 	}
 
-	if got, want := len(stores), 4; got != want {
+	if got, want := len(Stores), 4; got != want {
 		t.Errorf("got %d want %d stores", got, want)
 	}
 
-	w1, ok := stores["London - W1 Rathbone Place"]
+	w1, ok := Stores["London - W1 Rathbone Place"]
 	if !ok {
 		t.Error("expected value for London - W1 Rathbone Place")
 		return
@@ -43,7 +43,7 @@ func TestGetStores(t *testing.T) {
 		t.Errorf("got %d want %d storeid", got, want)
 	}
 
-	_, ok = stores["London W1 Rathbone"]
+	_, ok = Stores["London W1 Rathbone"]
 	if !ok {
 		t.Error("expected alias value for London - W1 Rathbone Place")
 		return
