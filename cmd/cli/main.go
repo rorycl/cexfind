@@ -22,7 +22,7 @@ eg <programme> [-strict] -query "query 1" [-query "query 2"...]
 var (
 	urlStyle  = color.New(color.FgCyan).SprintFunc()
 	dotStyle  = color.New(color.FgCyan).SprintFunc()
-	infoStyle = color.New(color.FgHiWhite).SprintFunc()
+	infoStyle = color.New(color.FgMagenta).SprintFunc()
 )
 
 // queriesType is a flag list type
@@ -43,18 +43,22 @@ func (q *queriesType) String() string {
 var Exit func(code int) = os.Exit
 
 // flagGetter indirects flagGet for testing
-var flagGetter func() (queriesType, bool, bool) = flagGet
+var flagGetter func() (queriesType, bool, string, bool) = flagGet
 
 // flagGet checks the flags
-func flagGet() (queriesType, bool, bool) {
+func flagGet() (queriesType, bool, string, bool) {
 
-	var strict bool
-	var queries queriesType
-	var verbose bool
+	var (
+		strict   bool
+		queries  queriesType
+		postCode string
+		verbose  bool
+	)
 
 	flag.BoolVar(&strict, "strict", false, "only return items that strictly match the search terms")
 	flag.Var(&queries, "query", "list of queries")
 	flag.BoolVar(&verbose, "verbose", false, "show verbose output, including cash/exchange prices and stores")
+	flag.StringVar(&postCode, "postcode", "", "specify postcodepostcode")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
@@ -68,12 +72,12 @@ func flagGet() (queriesType, bool, bool) {
 		Exit(1)
 	}
 
-	return queries, strict, verbose
+	return queries, strict, postCode, verbose
 }
 
 func main() {
 
-	queries, strict, verbose := flagGetter()
+	queries, strict, postCode, verbose := flagGetter()
 
 	// clean queries
 	queries, err := cmd.QueryInputChecker(queries...)
@@ -83,7 +87,7 @@ func main() {
 	}
 
 	// do search
-	results, err := cex.Search(queries, strict)
+	results, err := cex.Search(queries, strict, postCode)
 	switch {
 	case err != nil && len(results) > 0:
 		fmt.Println(err)
@@ -95,9 +99,13 @@ func main() {
 		// show the list
 	}
 
-	if verbose {
+	if verbose || postCode != "" {
 		// print header
-		fmt.Println("showing (cash price/exchange price) stores list")
+		fmt.Print("showing (cash price/exchange price) and stores list")
+		if postCode != "" {
+			fmt.Print(", distance to stores in miles.")
+		}
+		fmt.Println("")
 	}
 
 	k := ""
@@ -106,20 +114,20 @@ func main() {
 			fmt.Printf("\n%s\n", box.Model)
 			k = box.Model
 		}
-		if verbose {
-			info := fmt.Sprintf("      (%d/%d) %s",
+		if verbose || postCode != "" {
+			info := fmt.Sprintf("(%d/%d) %s",
 				box.PriceCash.IntPart(),
 				box.PriceExchange.IntPart(),
-				box.StoresString(),
+				box.StoresString(80),
 			)
 			fmt.Printf(
-				"%s %-3d %s %s\n%s\n      %s\n",
+				"%s %-3d %s %s\n      %s\n      %s\n",
 				dotStyle("✱"),
 				box.Price.IntPart(),
 				box.Name,
 				box.ID,
-				infoStyle(info),
 				urlStyle(box.IDUrl()),
+				infoStyle(info),
 			)
 		} else {
 			fmt.Printf(
