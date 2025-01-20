@@ -27,6 +27,15 @@ var (
 	// search cursor style
 	inCursorStyle = inFocusedStyle
 
+	// postcode
+	postcodeFocusedStyle = lipgloss.NewStyle().
+				Foreground(lipgloss.Color("#ff982e")).
+				PaddingTop(1)
+
+	postcodeNormalStyle = lipgloss.NewStyle().
+				Foreground(lipgloss.Color("#ff982e")).
+				PaddingTop(1)
+
 	// checkbox
 	checkBoxFocusedStyle = lipgloss.NewStyle().
 				Foreground(lipgloss.AdaptiveColor{Light: "#d7d7d7", Dark: "#d7d7d7"}).
@@ -42,6 +51,7 @@ type inCursor int
 
 const (
 	cursorInput inCursor = iota
+	cursorPostcode
 	cursorBox
 )
 
@@ -57,13 +67,21 @@ type inModel struct {
 func newInModel() inModel {
 	t := textinput.New()
 	t.Cursor.Style = inCursorStyle
-	t.CharLimit = 55
+	t.CharLimit = 60
 	t.Placeholder = "enter terms"
 	t.PromptStyle = inFocusedStyle
-	t.Width = 60
+	t.Width = 55
+
+	p := textinput.New()
+	p.Cursor.Style = postcodeNormalStyle
+	p.CharLimit = 8
+	p.Placeholder = "postcode"
+	p.PromptStyle = postcodeNormalStyle
+	p.Width = 10
 
 	return inModel{
 		input:    t,
+		postcode: p,
 		checkbox: false,
 	}
 }
@@ -71,14 +89,6 @@ func newInModel() inModel {
 // Init is a bubbletea required function
 func (in inModel) Init() tea.Cmd {
 	return textinput.Blink
-}
-
-func (in *inModel) Focus() {
-	in.input.Focus()
-}
-
-func (in *inModel) Blur() {
-	in.input.Blur()
 }
 
 // checkBoxAsString renders the checkbox as a string depending on its
@@ -105,6 +115,7 @@ func (in inModel) View() string {
 		lipgloss.JoinHorizontal(
 			lipgloss.Left,
 			in.input.View(),
+			in.postcode.View(),
 			in.checkBoxAsString(),
 		),
 	)
@@ -141,8 +152,8 @@ func (in inModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 	}
-
 	in.input, cmd = in.input.Update(msg)
+	in.postcode, cmd = in.postcode.Update(msg)
 	return in, cmd
 }
 

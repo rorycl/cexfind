@@ -32,7 +32,7 @@ var (
 			BorderBottom(true).
 			Height(5).
 			Margin(1, 2, 0, 3).
-			Width(80).
+			Width(100).
 			UnsetBold()
 
 	// an arbitrary offset amount to ensure the list panel does not push
@@ -57,11 +57,12 @@ type state int
 const (
 	listState state = iota // default
 	inputState
+	postcodeState
 	checkboxState
 )
 
 func (s state) String() string {
-	return []string{"list", "input", "checkbox"}[s]
+	return []string{"list", "input", "postcode", "checkbox"}[s]
 }
 
 // model contains a model for the textinput model and list model,
@@ -98,7 +99,7 @@ func NewModel() *model {
 		list:  newLiModel(),
 	}
 	m.state = inputState
-	m.input.Focus()
+	m.input.input.Focus()
 	m.status = newSelection()
 	m.inited = true
 	m.listLen = 0
@@ -139,32 +140,44 @@ func (m model) Init() tea.Cmd {
 	return m.input.Init()
 }
 
-// stateSwitch switches state between the input, checkbox and list.
-// The input and checkbox are part of the input model, while the list is
-// separate. tea.Msgs (which are converted to tea.Cmds) are triggered on
-// state switch to update the status area. The relevant key.KeyMap is
-// selected based on the current focus area
+// stateSwitch switches state between the input, postcode, checkbox and
+// list. The input, postcode and checkbox are part of the input model,
+// while the list is separate. tea.Msgs (which are converted to
+// tea.Cmds) are triggered on state switch to update the status area.
+// The relevant key.KeyMap is selected based on the current focus area
 func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 	defer log.Printf("state %s input.cursor %d input.focus %v", m.state, m.input.cursor, m.input.input.Focused())
 	m.state = targetState
 	switch targetState {
 	case inputState:
 		m.input.cursor = cursorInput
-		m.input.Focus()
+		m.input.input.Focus()
 		m.keys = getKeyMap(inputKeysState)
+		m.input.postcode.Blur()
+		m.input.postcode.Cursor.Blur()
 		if withStatus {
 			m.status = m.status.setInputting()
 		}
+	case postcodeState:
+		m.input.cursor = cursorPostcode
+		m.input.input.Blur()
+		m.input.postcode.Focus()
+		m.keys = getKeyMap(inputKeysState)
+		if withStatus {
+			m.status = m.status.setPostcoding()
+		}
 	case checkboxState:
 		m.input.cursor = cursorBox
-		m.input.Blur()
+		m.input.input.Blur()
+		m.input.postcode.Blur()
+		m.input.postcode.Cursor.Blur()
 		m.keys = getKeyMap(inputKeysState)
 		if withStatus {
 			m.status = m.status.setCheckbox()
 		}
 	case listState:
 		m.input.cursor = cursorInput
-		m.input.Blur()
+		m.input.input.Blur()
 		m.keys = getKeyMap(listKeysState)
 		m.state = listState
 	}
@@ -284,6 +297,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			var s state
 			switch m.state {
 			case inputState:
+				s = postcodeState
+			case postcodeState:
 				s = checkboxState
 			case checkboxState:
 				if m.listLen > 0 {
@@ -301,7 +316,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	// defer to input or list models depending on state
 	switch m.state {
-	case inputState, checkboxState:
+	case inputState, postcodeState, checkboxState:
 		var t tea.Model
 		t, cmd = m.input.Update(msg)
 		m.input = t.(inModel)

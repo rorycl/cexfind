@@ -44,6 +44,11 @@ func (s status) setInputting() status {
 	return status("add searches separated by a comma, tab to switch fields, enter to search")
 }
 
+// status formatting when in postcode
+func (s status) setPostcoding() status {
+	return status("optionally add a postcode to see distances to stores")
+}
+
 // status formatting when searching
 func (s status) setSearching(t string) status {
 	var searchPrefixTpl = "searching for \"%s\"..."
