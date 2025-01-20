@@ -1,0 +1,34 @@
+{
+  "response": {
+    "ack": "Success",
+    "data": {
+      "stores": [
+        {
+          "storeId": 1,
+          "storeName": "London - W1 Tottenham Crt Rd",
+          "regionName": "London and the South-East of England",
+          "latitude": 51.520383,
+          "longitude": -0.134501,
+          "regionImageUrls": null,
+          "phoneNumber": null,
+          "closingTime": "18:00"
+        },
+        {
+          "storeId": 2,
+          "storeName": "London - W1 Rathbone Place",
+          "regionName": "London and the South-East of England",
+          "latitude": 51.51764,
+          "longitude": -0.134483,
+          "regionImageUrls": null,
+          "phoneNumber": null,
+          "closingTime": "18:00"
+        }
+      ]
+    },
+    "error": {
+      "code": "",
+      "internal_message": "",
+      "moreInfo": []
+    }
+  }
+}
