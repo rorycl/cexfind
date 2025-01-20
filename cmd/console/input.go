@@ -49,6 +49,7 @@ const (
 type inModel struct {
 	input    textinput.Model
 	checkbox bool
+	postcode textinput.Model
 	cursor   inCursor
 }
 

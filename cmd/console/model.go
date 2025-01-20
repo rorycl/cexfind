@@ -87,7 +87,7 @@ type model struct {
 
 	// find function indirector allows for local/testing swapping of
 	// functions
-	finder func(query string, strict bool) (items []list.Item, itemNo int, err error)
+	finder func(query string, strict bool, postcode string) (items []list.Item, itemNo int, err error)
 }
 
 // NewModel creates a new model containing the input, status and list
@@ -205,7 +205,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case inputEnterMsg:
 		log.Printf("inputEnterMsg received %v", msg)
 		m.status = m.status.setSearching(string(msg))
-		return m, findPerform(string(msg), m.input.checkbox)
+		return m, findPerform(string(msg), m.input.checkbox, m.input.postcode.Value())
 
 	// data was selected in the list view; reset the status after a
 	// short wait
@@ -225,7 +225,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case findPerformMsg:
 		time.Sleep(250 * time.Millisecond) // give time for status to show
 		log.Printf("findPerformMsg received %v", msg)
-		items, num, err := m.finder(msg.query, msg.strict)
+		items, num, err := m.finder(msg.query, msg.strict, msg.postcode)
 		var cmd tea.Cmd
 		switch {
 		case num > 0 && err != nil:

@@ -38,7 +38,7 @@ const emptyItemOn bool = false
 // search failure since more than one query may have been made. In the
 // case of an error for one query and results from others, for example,
 // both an error and items will be returned.
-func find(query string, strict bool) (items []list.Item, itemNo int, err error) {
+func find(query string, strict bool, postcode string) (items []list.Item, itemNo int, err error) {
 
 	queries, err := cmd.QueryInputChecker(query)
 	if err != nil {
@@ -49,7 +49,7 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 	log.Printf("  making search for %v, strict %t", queries, strict)
 
 	// note that err does not cause a failure
-	results, err = cex.Search(queries, strict)
+	results, err = cex.Search(queries, strict, postcode)
 
 	log.Printf("results %#v\nerr %v", results, err)
 	if results == nil {
@@ -73,7 +73,7 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 		// add standard item
 		items = append(items, item{
 			title:       fmt.Sprintf(boxTitleTpl, box.Price.IntPart(), box.Name),
-			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash.IntPart(), box.PriceExchange.IntPart(), box.StoresString()),
+			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash.IntPart(), box.PriceExchange.IntPart(), box.StoresString(100)),
 			url:         box.IDUrl(),
 		})
 	}
@@ -81,7 +81,7 @@ func find(query string, strict bool) (items []list.Item, itemNo int, err error) 
 }
 
 // findLocal simple returns the example list in list_example.go
-func findLocal(query string, strict bool) (items []list.Item, itemNo int, err error) {
+func findLocal(query string, strict bool, postcode string) (items []list.Item, itemNo int, err error) {
 	_, err = cmd.QueryInputChecker(query)
 	if err != nil {
 		return items, 0, err
@@ -94,18 +94,20 @@ const boxDescriptionTpl string = "     (£%d/£%d) %-40s"
 
 // findPerformMsg is a bubbletea Cmd message for performing a find
 type findPerformMsg struct {
-	query  string
-	strict bool
+	query    string
+	strict   bool
+	postcode string
 }
 
 // findPerform wraps a findPerformMsg in a tea.Cmd for deferred
 // processing. See bubbleta/tutorials/commands
-func findPerform(query string, strict bool) tea.Cmd {
-	log.Println("   query triggered", query, strict)
+func findPerform(query string, strict bool, postcode string) tea.Cmd {
+	log.Println("   query triggered", query, strict, postcode)
 	return func() tea.Msg {
 		return findPerformMsg{
-			query:  query,
-			strict: strict,
+			query:    query,
+			strict:   strict,
+			postcode: postcode,
 		}
 	}
 }
