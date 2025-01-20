@@ -173,7 +173,7 @@ func Search(queries []string, strict bool, postcode string) ([]Box, error) {
 
 		br.box.Stores, err = location.StoreDistances(postcode, br.box.storeNames)
 		if err != nil {
-			err = fmt.Errorf("location error %w", err)
+			err = fmt.Errorf("Postcode error: %w", err)
 			return nil, err
 		}
 

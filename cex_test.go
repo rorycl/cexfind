@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/rorycl/cexfind/location"
 	"github.com/shopspring/decimal"
 )
@@ -160,10 +161,19 @@ func TestBoxSort(t *testing.T) {
 		t.Errorf("expected compaction want %d items, got %d", want, got)
 	}
 
-	if diff := cmp.Diff(toSortBoxes[6], sortedBoxes[0]); diff != "" {
+	if diff := cmp.Diff(
+		toSortBoxes[6],
+		sortedBoxes[0],
+		cmpopts.IgnoreFields(Box{}, "storeNames"),
+	); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
-	if diff := cmp.Diff(toSortBoxes[0], sortedBoxes[5]); diff != "" {
+
+	if diff := cmp.Diff(
+		toSortBoxes[0],
+		sortedBoxes[5],
+		cmpopts.IgnoreFields(Box{}, "storeNames"),
+	); diff != "" {
 		t.Errorf("mismatch (-want +got):\n%s", diff)
 	}
 }
