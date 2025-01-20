@@ -29,4 +29,7 @@ func TestStoreDistances(t *testing.T) {
 		fmt.Printf("got %d want %d for Havent distance", got, want)
 	}
 	// fmt.Printf("%#v\n", sd)
+
+	// reset stores
+	Stores = stores{}
 }
