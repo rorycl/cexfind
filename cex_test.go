@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/rorycl/cexfind/location"
 	"github.com/shopspring/decimal"
 )
 
@@ -71,7 +72,7 @@ func TestSearch(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	results, err := Search([]string{"lenovo x390s"}, false)
+	results, err := Search([]string{"lenovo x390s"}, false, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -86,7 +87,7 @@ func TestSearch(t *testing.T) {
 	}
 
 	// strict search for non-existing model
-	_, err = Search([]string{"lenovo x390st"}, true)
+	_, err = Search([]string{"lenovo x390st"}, true, "")
 	if err == nil || err.Error() != "no results" {
 		t.Fatalf("expected no results error, got %v", err)
 	}
@@ -113,7 +114,7 @@ func TestSearchTerminator(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	results, err := Search([]string{"terminator"}, false)
+	results, err := Search([]string{"terminator"}, false, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -133,14 +134,15 @@ func TestBoxSort(t *testing.T) {
 
 	var toSortBoxes boxes
 	toSortBoxes = append(toSortBoxes,
+
 		[]Box{
-			{"bb", "bb", "id1a", decimal.NewFromInt(20), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"bc", "cc", "id2a", decimal.NewFromInt(25), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"ba", "aa", "id3a", decimal.NewFromInt(15), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"ab", "db", "id3b", decimal.NewFromInt(30), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"ac", "dc", "id2z", decimal.NewFromInt(35), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"aa", "da", "id1a", decimal.NewFromInt(35), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}},
-			{"aa", "la", "id1b", decimal.NewFromInt(30), decimal.NewFromInt(15), decimal.NewFromInt(17), []string{"a"}}, // 0
+			{Model: "bb", Name: "bb", ID: "id1a", Price: decimal.NewFromInt(20), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "bc", Name: "cc", ID: "id2a", Price: decimal.NewFromInt(25), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "ba", Name: "aa", ID: "id3a", Price: decimal.NewFromInt(15), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "ab", Name: "db", ID: "id3b", Price: decimal.NewFromInt(30), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "ac", Name: "dc", ID: "id2z", Price: decimal.NewFromInt(35), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "aa", Name: "da", ID: "id1a", Price: decimal.NewFromInt(35), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)},
+			{Model: "aa", Name: "la", ID: "id1b", Price: decimal.NewFromInt(30), PriceCash: decimal.NewFromInt(15), PriceExchange: decimal.NewFromInt(17)}, // 0
 		}...,
 	)
 
@@ -168,25 +170,40 @@ func TestBoxSort(t *testing.T) {
 
 func TestBoxStoresString(t *testing.T) {
 	tests := []struct {
-		thisBox Box
-		want    string
+		length    int
+		boxString []string
+		want      string
 	}{
 		{
-			thisBox: Box{Stores: []string{}},
-			want:    "",
+			length:    6,
+			boxString: []string{},
+			want:      "",
 		},
 		{
-			thisBox: Box{Stores: []string{"a", "b", "c"}},
-			want:    "a, b, c",
+			length:    7,
+			boxString: []string{"a", "b", "c"},
+			want:      "a, b, c",
 		},
 		{
-			thisBox: Box{Stores: []string{"a", "b", "c", "d", "e", "f", "g", "h"}},
-			want:    "a, b, c, d, e...(3 more)",
+			length:    5,
+			boxString: []string{"a", "b", "c"},
+			want:      "a, b…",
+		},
+		{
+			length:    14,
+			boxString: []string{"a", "b", "c", "d", "e", "f", "g", "h"},
+			want:      "a, b, c, d, e…",
 		},
 	}
 	for i, tt := range tests {
+		box := Box{ID: "whatever"}
+		for _, bs := range tt.boxString {
+			box.Stores = append(box.Stores, location.StoreWithDistance{
+				StoreName: bs,
+			})
+		}
 		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
-			if got, want := tt.thisBox.StoresString(), tt.want; got != want {
+			if got, want := box.StoresString(tt.length), tt.want; got != want {
 				t.Errorf("got %s != want %s", got, want)
 			}
 		})

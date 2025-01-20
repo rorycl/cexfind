@@ -101,7 +101,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				br.box.Price = j.Price
 				br.box.PriceCash = j.PriceCash
 				br.box.PriceExchange = j.PriceExchange
-				br.box.Stores = storeSimplifier(j.Stores)
+				br.box.storeNames = storeSimplifier(j.Stores)
 				// in strict mode, don't add box if it doesn't match any query
 				if strict && !br.box.inQuery(queries) {
 					continue

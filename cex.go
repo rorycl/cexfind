@@ -38,6 +38,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/rorycl/cexfind/location"
 	"github.com/shopspring/decimal"
 )
 
@@ -51,7 +52,8 @@ type Box struct {
 	Price         decimal.Decimal
 	PriceCash     decimal.Decimal
 	PriceExchange decimal.Decimal
-	Stores        []string
+	storeNames    []string
+	Stores        []location.StoreWithDistance
 }
 
 // inQuery checks to see if each of the words in at least one of the
@@ -94,21 +96,26 @@ func (b *Box) reverseID() string {
 	return string(r)
 }
 
-// StoresString returns the stores as a comma delimited string,
-// truncating the list if necessary
-func (b *Box) StoresString() string {
-	var storeMaxCnt int = 5
-	if len(b.Stores) == 0 {
-		return ""
+// StoresString returns the stores as a comma delimited string to
+// roughly length, truncating with "..." where necessary
+func (b *Box) StoresString(length int) string {
+	storeString := ""
+	if len(b.Stores) > 0 {
+		storeString += fmt.Sprintf("%s", b.Stores[0])
 	}
-	if len(b.Stores) > storeMaxCnt {
-		return fmt.Sprintf(
-			"%s...(%d more)",
-			strings.Join(b.Stores[:storeMaxCnt], ", "),
-			len(b.Stores)-storeMaxCnt,
-		)
+	if len(b.Stores) < 2 {
+		return storeString
 	}
-	return strings.Join(b.Stores, ", ")
+	for _, s := range b.Stores[1:] {
+		storeString += fmt.Sprintf(", %s", s)
+	}
+	if len(storeString) > length {
+		storeString = storeString[:length]
+		storeString = strings.TrimSuffix(storeString, " ")
+		storeString = strings.TrimSuffix(storeString, ",")
+		storeString = storeString + "…"
+	}
+	return storeString
 }
 
 // boxes is a slice of Box
@@ -138,10 +145,13 @@ func (b *boxes) sort() {
 // search queries as the non-strict results include additional
 // suggestions from the Cex/Webuy system.
 //
+// The postcode, if provided, allows distances to be calculated from
+// each store.
+//
 // Multiple queries are run concurrently and their results sorted by
 // model, then by price ascending. Duplicate results are removed at
 // aggregation.
-func Search(queries []string, strict bool) ([]Box, error) {
+func Search(queries []string, strict bool, postcode string) ([]Box, error) {
 	var allBoxes boxes
 	var idMap = make(map[string]struct{})
 
@@ -160,6 +170,13 @@ func Search(queries []string, strict bool) ([]Box, error) {
 		if _, ok := idMap[br.box.ID]; ok { // don't add duplicates
 			continue
 		}
+
+		br.box.Stores, err = location.StoreDistances(postcode, br.box.storeNames)
+		if err != nil {
+			err = fmt.Errorf("location error %w", err)
+			return nil, err
+		}
+
 		allBoxes = append(allBoxes, br.box)
 		idMap[br.box.ID] = struct{}{}
 	}
