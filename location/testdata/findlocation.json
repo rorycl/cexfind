@@ -1,0 +1,49 @@
+{
+    "status": 200,
+    "result": [
+        {
+            "postcode": "NW1 6LG",
+            "quality": 1,
+            "eastings": 527310,
+            "northings": 182155,
+            "country": "England",
+            "nhs_ha": "London",
+            "longitude": -0.166312,
+            "latitude": 51.523969,
+            "european_electoral_region": "London",
+            "primary_care_trust": "Westminster",
+            "region": "London",
+            "lsoa": "Westminster 008A",
+            "msoa": "Westminster 008",
+            "incode": "6LG",
+            "outcode": "NW1",
+            "parliamentary_constituency": "Cities of London and Westminster",
+            "parliamentary_constituency_2024": "Cities of London and Westminster",
+            "admin_district": "Westminster",
+            "parish": "Westminster, unparished area",
+            "admin_county": null,
+            "date_of_introduction": "198001",
+            "admin_ward": "Regent's Park",
+            "ced": null,
+            "ccg": "NHS North West London",
+            "nuts": "Westminster",
+            "pfa": "Metropolitan Police",
+            "codes": {
+                "admin_district": "E09000033",
+                "admin_county": "E99999999",
+                "admin_ward": "E05013805",
+                "parish": "E43000236",
+                "parliamentary_constituency": "E14001172",
+                "parliamentary_constituency_2024": "E14001172",
+                "ccg": "E38000256",
+                "ccg_id": "W2U3Z",
+                "ced": "E99999999",
+                "nuts": "TLI32",
+                "lsoa": "E01004659",
+                "msoa": "E02000967",
+                "lau2": "E09000033",
+                "pfa": "E23000001"
+            }
+        }
+    ]
+}
