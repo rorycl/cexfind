@@ -6,6 +6,8 @@ import (
 	"sync"
 )
 
+// StoreWithDistance represents a store with a distance DistanceMiles
+// from the provided postcode.
 type StoreWithDistance struct {
 	StoreID       int
 	StoreName     string
@@ -15,10 +17,35 @@ type StoreWithDistance struct {
 	DistanceMiles float64
 }
 
+func (s StoreWithDistance) String() string {
+	tplEmpty := "%s"
+	tplShort := "%s (%.1fmi)"
+	tplLong := "%s (%.fmi)"
+	if s.StoreID == 0 {
+		return fmt.Sprintf(tplEmpty, s.StoreName)
+	}
+	if s.DistanceMiles <= 10 {
+		return fmt.Sprintf(tplShort, s.StoreName, s.DistanceMiles)
+	}
+	return fmt.Sprintf(tplLong, s.StoreName, s.DistanceMiles)
+}
+
 // StoreDistances finds the distances of the named stores from postcode
 // and returns a slice of StoreWithDistance sorted by increasing
 // distance
 func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, error) {
+
+	foundStores := []StoreWithDistance{}
+
+	// return sparse stores if no postcode is provided
+	if postcode == "" {
+		foundStores := []StoreWithDistance{}
+		for _, name := range storeNames {
+			swd := StoreWithDistance{StoreName: name}
+			foundStores = append(foundStores, swd)
+		}
+		return foundStores, nil
+	}
 
 	location, err := getLocationFromPostcode(postcode)
 	if err != nil {
@@ -35,7 +62,6 @@ func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, 
 		return nil, fmt.Errorf("could not get store locations: %w", err)
 	}
 
-	foundStores := []StoreWithDistance{}
 	for _, name := range storeNames {
 		fs := StoreWithDistance{StoreName: name}
 		thisStore, ok := Stores[name]
@@ -55,6 +81,9 @@ func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, 
 	}
 
 	sort.Slice(foundStores, func(i, j int) bool {
+		if foundStores[i].DistanceMiles == foundStores[j].DistanceMiles {
+			return foundStores[i].StoreName < foundStores[j].StoreName
+		}
 		return foundStores[i].DistanceMiles < foundStores[j].DistanceMiles
 	})
 

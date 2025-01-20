@@ -33,3 +33,51 @@ func TestStoreDistances(t *testing.T) {
 	// reset stores
 	Stores = stores{}
 }
+
+func TestPrintStoredDistances(t *testing.T) {
+
+	tests := []struct {
+		StoreID       int
+		StoreName     string
+		DistanceMiles float64
+		expected      string
+	}{
+		{
+			StoreID:       0,
+			StoreName:     "store 0",
+			DistanceMiles: 9999.9999,
+			expected:      "store 0",
+		},
+		{
+			StoreID:       1,
+			StoreName:     "store 1",
+			DistanceMiles: 1.22567,
+			expected:      "store 1 (1.2mi)",
+		},
+		{
+			StoreID:       2,
+			StoreName:     "store two",
+			DistanceMiles: 3.5111,
+			expected:      "store two (3.5mi)",
+		},
+		{
+			StoreID:       3,
+			StoreName:     "store Three",
+			DistanceMiles: 10.9999,
+			expected:      "store Three (11mi)",
+		},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("test_%d", i), func(t *testing.T) {
+			swd := StoreWithDistance{
+				StoreID:       tt.StoreID,
+				StoreName:     tt.StoreName,
+				DistanceMiles: tt.DistanceMiles,
+			}
+			output := fmt.Sprint(swd)
+			if got, want := output, tt.expected; got != want {
+				t.Errorf("got %s want %s", got, want)
+			}
+		})
+	}
+}
