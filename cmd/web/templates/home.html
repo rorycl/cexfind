@@ -11,6 +11,7 @@
     form { padding: 7px 0; }
     label { display: inline-block; width: 50px }
     input#queries { width: 540px; margin-right: 20px; font-size: 12pt; background-color: #99999929; }
+    input#postcode { width: 80px; margin-right: 20px; font-size: 12pt; background-color: #99999929; }
     input#strict { width: 17px; height: 17px; margin-right: 10px; font-size: 11pt; }
     input.label { width: 30px; margin-right: 10px; font-size: 11pt; }
     button { font-size: 11pt; }
@@ -21,15 +22,15 @@
 
     #result-listing { width: 850px; }
     ul { padding-left: 0px; margin-left:0px; margin-top: 0px; }
-    li { padding-left: 0px; padding: 3px 0 5px; list-style-type: none; font-size: 12pt; }
+    li { padding-left: 0px; padding: 3px 0 5px; list-style-type: none; font-size: 12pt; display: inline-block; }
     .price { color: blue; min-width: 50px; display: inline-block; }
     .header .price { min-width: 0px; }
-    li span.name { min-width: 600px; display: inline-block; }
-    li span.boxid a { color: black; }
+    li span.name { min-width: 600px; max-width: 620px; display: inline-block; }
+    li span.boxid a { color: black; width: 190px; display: inline-block;}
     .cash { color: green; }
     .exchange { color: red; }
-    .details { font-size: 11pt;}
-    .details .cash { margin-left: 53px; font-size: 11pt;}
+    .details { display: inline-block; width: 600px; margin-left: 53px; font-size: 11pt;}
+    .details .cash { font-size: 11pt;}
     .details .exchange { font-size: 11pt;}
 </style>
 <title>{{.Title}}</title>
@@ -48,13 +49,14 @@
 {{ .Search -}} {{/* string representation of [].Search.Query */}}
 {{ end -}}
 " />
-<input type="text" id="postcode" name="postcode" minlength="5" maxlength="8" size="8" value="{{ .Search.Postcode }}" />
+<input type="text" id="postcode" name="postcode" minlength="5" maxlength="8" size="8" placeholder="postcode" value="{{ .Search.Postcode }}" />
 <input type="checkbox" id="strict" name="strict" {{ if .Search.Strict }}checked{{ end }} />
 <label for="strict">strict</label>
 <button class="submit" type="submit">Search</button>
 </section>
 </form>
 <p>Use a semicolon between multiple search terms<br />
+Provide a postcode to see distances to shops<br />
 Select "strict" for results that narrowly match the search criteria.</p>
 </div>
 <div id="results">
