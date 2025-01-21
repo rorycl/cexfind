@@ -48,6 +48,7 @@
 {{ .Search -}} {{/* string representation of [].Search.Query */}}
 {{ end -}}
 " />
+<input type="text" id="postcode" name="postcode" minlength="5" maxlength="8" size="8" value="{{ .Search.Postcode }}" />
 <input type="checkbox" id="strict" name="strict" {{ if .Search.Strict }}checked{{ end }} />
 <label for="strict">strict</label>
 <button class="submit" type="submit">Search</button>

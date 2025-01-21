@@ -35,7 +35,7 @@ var (
 )
 
 // searcher is an indirect of cex.Search to allow testing
-var searcher func(queries []string, strict bool) ([]cex.Box, error) = cex.Search
+var searcher func(queries []string, strict bool, postcode string) ([]cex.Box, error) = cex.Search
 
 // listenAndServe is an indirect of http/net.Server.ListenAndServe
 var listenAndServe = (*http.Server).ListenAndServe
@@ -194,6 +194,9 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		}
 		return "false"
 	}())
+	if postResults.Postcode != "" {
+		base += fmt.Sprintf("&postcode=%s", url.PathEscape(postResults.Postcode))
+	}
 	for _, q := range queries {
 		base += fmt.Sprintf("&query=%s", url.PathEscape(q))
 	}
@@ -206,7 +209,7 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		Err     error
 	}
 	sr := SearchResults{}
-	sr.Results, sr.Err = searcher(queries, postResults.Strict)
+	sr.Results, sr.Err = searcher(queries, postResults.Strict, postResults.Postcode)
 
 	t := template.Must(template.ParseFS(DirFS.TplFS, "partial-results.html"))
 	err = t.Execute(w, sr)
@@ -217,8 +220,9 @@ func Results(w http.ResponseWriter, r *http.Request) {
 }
 
 type QueriesType struct {
-	Strict bool     `schema:"strict"`
-	Query  []string `schema:"query"`
+	Postcode string   `schema:"postcode"`
+	Strict   bool     `schema:"strict"`
+	Query    []string `schema:"query"`
 }
 
 // String provides a string representation of QueriesType.Query,
