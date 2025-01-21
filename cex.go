@@ -97,17 +97,23 @@ func (b *Box) reverseID() string {
 }
 
 // StoresString returns the stores as a comma delimited string to
-// roughly length, truncating with "..." where necessary
+// roughly length, truncating with "…" where necessary. Giving
+// StoreString an argument length of -1 means there is no limit on the
+// length of the returned string.
 func (b *Box) StoresString(length int) string {
+
 	storeString := ""
-	if len(b.Stores) > 0 {
-		storeString += fmt.Sprintf("%s", b.Stores[0])
-	}
-	if len(b.Stores) < 2 {
+	if len(b.Stores) == 0 {
 		return storeString
 	}
+
+	storeString += fmt.Sprintf("%s", b.Stores[0])
 	for _, s := range b.Stores[1:] {
 		storeString += fmt.Sprintf(", %s", s)
+	}
+
+	if len(b.Stores) < 2 || length == -1 {
+		return storeString
 	}
 	if len(storeString) > length {
 		storeString = storeString[:length]
