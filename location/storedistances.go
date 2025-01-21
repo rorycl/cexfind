@@ -30,6 +30,17 @@ func (s StoreWithDistance) String() string {
 	return fmt.Sprintf(tplLong, s.StoreName, s.DistanceMiles)
 }
 
+// storeSorter sorts a slice of StoreWithDistance, pulled out for
+// testing
+func storeSorter(fss []StoreWithDistance) {
+	sort.Slice(fss, func(i, j int) bool {
+		if fss[i].DistanceMiles == fss[j].DistanceMiles {
+			return fss[i].StoreName < fss[j].StoreName
+		}
+		return fss[i].DistanceMiles < fss[j].DistanceMiles
+	})
+}
+
 // StoreDistances finds the distances of the named stores from postcode
 // and returns a slice of StoreWithDistance sorted by increasing
 // distance
@@ -44,6 +55,7 @@ func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, 
 			swd := StoreWithDistance{StoreName: name}
 			foundStores = append(foundStores, swd)
 		}
+		storeSorter(foundStores)
 		return foundStores, nil
 	}
 
@@ -79,13 +91,7 @@ func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, 
 
 		foundStores = append(foundStores, fs)
 	}
-
-	sort.Slice(foundStores, func(i, j int) bool {
-		if foundStores[i].DistanceMiles == foundStores[j].DistanceMiles {
-			return foundStores[i].StoreName < foundStores[j].StoreName
-		}
-		return foundStores[i].DistanceMiles < foundStores[j].DistanceMiles
-	})
+	storeSorter(foundStores)
 
 	return foundStores, nil
 

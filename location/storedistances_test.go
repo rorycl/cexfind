@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestStoreDistances(t *testing.T) {
@@ -77,6 +79,56 @@ func TestPrintStoredDistances(t *testing.T) {
 			output := fmt.Sprint(swd)
 			if got, want := output, tt.expected; got != want {
 				t.Errorf("got %s want %s", got, want)
+			}
+		})
+	}
+}
+
+func TestStoreSorting(t *testing.T) {
+
+	tests := []struct {
+		swd               []StoreWithDistance
+		expectedNameSlice []string
+	}{
+		{
+			swd: []StoreWithDistance{
+				StoreWithDistance{StoreName: "z"},
+				StoreWithDistance{StoreName: "a"},
+				StoreWithDistance{StoreName: "A"},
+			},
+			expectedNameSlice: []string{"A", "a", "z"},
+		},
+		{
+			swd: []StoreWithDistance{
+				StoreWithDistance{StoreName: "zzz"},
+				StoreWithDistance{StoreName: "1"},
+				StoreWithDistance{StoreName: ""},
+			},
+			expectedNameSlice: []string{"", "1", "zzz"},
+		},
+		{
+			swd: []StoreWithDistance{
+				StoreWithDistance{StoreName: "z", DistanceMiles: 1},
+				StoreWithDistance{StoreName: "a", DistanceMiles: 2},
+				StoreWithDistance{StoreName: "A", DistanceMiles: 3},
+			},
+			expectedNameSlice: []string{"z", "a", "A"},
+		},
+	}
+
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("test_%d", i), func(t *testing.T) {
+			storeSorter(tt.swd)
+			got := []string{}
+			for _, g := range tt.swd {
+				got = append(got, g.StoreName)
+			}
+			want := tt.expectedNameSlice
+			if diff := cmp.Diff(
+				got,
+				want,
+			); diff != "" {
+				t.Errorf("mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}
