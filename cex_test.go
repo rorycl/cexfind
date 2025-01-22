@@ -73,7 +73,8 @@ func TestSearch(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	results, err := Search([]string{"lenovo x390s"}, false, "")
+	cex := NewCexFind()
+	results, err := cex.Search([]string{"lenovo x390s"}, false, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -88,7 +89,8 @@ func TestSearch(t *testing.T) {
 	}
 
 	// strict search for non-existing model
-	_, err = Search([]string{"lenovo x390st"}, true, "")
+	cex = NewCexFind()
+	_, err = cex.Search([]string{"lenovo x390st"}, true, "")
 	if err == nil || err.Error() != "no results" {
 		t.Fatalf("expected no results error, got %v", err)
 	}
@@ -115,7 +117,8 @@ func TestSearchTerminator(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	results, err := Search([]string{"terminator"}, false, "")
+	cex := NewCexFind()
+	results, err := cex.Search([]string{"terminator"}, false, "")
 	if err != nil {
 		t.Fatal(err)
 	}

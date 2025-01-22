@@ -11,24 +11,27 @@
 //
 // Example usage:
 //
-//	results, err := cex.Search(queries, strict)
-//	if err != nil {
-//		log.Fatal(err)
-//	}
-//
-//	latestModel := ""
-//	for _, box := range results {
-//		if box.Model != latestModel {
-//			fmt.Printf("\n%s\n", box.Model)
-//			latestModel = box.Model
+//	 postcode := "S10 1LT" // royal armouries museum, leeds
+//		kit := cex.NewCex()cex.Search(queries, strict, postcode)
+//		results, err := kit.Search(queries, strict)
+//		if err != nil {
+//			log.Fatal(err)
 //		}
-//		fmt.Printf(
-//			"   £%3d %s\n   %s\n",
-//			box.Price,
-//			box.Name,
-//			box.IDUrl(),
-//		)
-//	}
+//
+//		latestModel := ""
+//		for _, box := range results {
+//			if box.Model != latestModel {
+//				fmt.Printf("\n%s\n", box.Model)
+//				latestModel = box.Model
+//			}
+//			fmt.Printf(
+//				"   £%3d %s\n   %s\n   %s\n",
+//				box.Price,
+//				box.Name,
+//				box.IDUrl(),
+//				box.StoresString(100), // up to 100 chars of store info
+//			)
+//		}
 package cexfind
 
 import (
@@ -144,6 +147,20 @@ func (b *boxes) sort() {
 	})
 }
 
+// CexFind provides the means for searching Cex's API with store
+// location data.
+type CexFind struct {
+	storeDistances *location.StoreDistances
+}
+
+// NewCexFind makes a new Cex instance. This should only be initalised
+// once due to caching in the location submodules.
+func NewCexFind() *CexFind {
+	return &CexFind{
+		storeDistances: location.NewStoreDistances(),
+	}
+}
+
 // Search searches the Cex json endpoint at URL for the provided
 // queries, returning a slice of Box or error.
 //
@@ -157,7 +174,7 @@ func (b *boxes) sort() {
 // Multiple queries are run concurrently and their results sorted by
 // model, then by price ascending. Duplicate results are removed at
 // aggregation.
-func Search(queries []string, strict bool, postcode string) ([]Box, error) {
+func (cex *CexFind) Search(queries []string, strict bool, postcode string) ([]Box, error) {
 	var allBoxes boxes
 	var idMap = make(map[string]struct{})
 
@@ -177,7 +194,10 @@ func Search(queries []string, strict bool, postcode string) ([]Box, error) {
 			continue
 		}
 
-		br.box.Stores, err = location.StoreDistances(postcode, br.box.storeNames)
+		// store information is cached, as is any postcode with its
+		// location data. cached data only requires distances to be
+		// calculated.
+		br.box.Stores, err = cex.storeDistances.Distances(postcode, br.box.storeNames)
 		if err != nil {
 			err = fmt.Errorf("Postcode error: %w", err)
 			return nil, err
