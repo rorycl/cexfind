@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/fatih/color"
-	cex "github.com/rorycl/cexfind"
+	"github.com/rorycl/cexfind"
 	"github.com/rorycl/cexfind/cmd"
 )
 
@@ -87,6 +87,7 @@ func main() {
 	}
 
 	// do search
+	cex := cexfind.NewCexFind()
 	results, err := cex.Search(queries, strict, postCode)
 	switch {
 	case err != nil && len(results) > 0:
