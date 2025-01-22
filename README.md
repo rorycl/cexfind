@@ -32,6 +32,8 @@ build for your local machine using `make build-all` if you have go (>=
 
 ## Clients
 
+Three clients are provided:
+
 **web server**
 
 A simple htmx webserver client.
@@ -42,8 +44,6 @@ Use the command line switches to change these options. (Use `-h` to see
 the switches.)
 
 <img width="1000" src="cmd/web/web.gif" />
-
-Three clients are provided for the very simple `cexfind` golang module:
 
 **console**
 
