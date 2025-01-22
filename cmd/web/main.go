@@ -9,8 +9,6 @@ import (
 	"strconv"
 )
 
-var Server func(address, port string) = Serve
-
 var usage = `
 run a webserver to search Cex/Webuy for second hand equipment
 
@@ -56,7 +54,10 @@ func flagGet() (address, port string) {
 	return
 }
 
+var serveFunc func(s *server, address, port string) = (*server).Serve
+
 func main() {
 	address, port := flagGetter()
-	Server(address, port)
+	server := newServer()
+	serveFunc(server, address, port)
 }

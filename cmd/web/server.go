@@ -15,74 +15,103 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/gorilla/schema"
 
+	"github.com/rorycl/cexfind"
 	cex "github.com/rorycl/cexfind"
 	"github.com/rorycl/cexfind/cmd"
 )
 
-var (
-	// WebMaxHeaderBytes is the largest number of header bytes accepted by
-	// the webserver
-	WebMaxHeaderBytes int = 1 << 17 // ~125k
-
-	// ServerAddress is the default Server network address
-	ServerAddress string = "127.0.0.1"
-
-	// ServerPort is the default Server network port
-	ServerPort string = "8000"
-
-	// BaseURL is the base url for redirects, etc.
-	BaseURL string = ""
-)
-
-// searcher is an indirect of cex.Search to allow testing
-var searcher func(queries []string, strict bool, postcode string) ([]cex.Box, error) = cex.Search
-
 // listenAndServe is an indirect of http/net.Server.ListenAndServe
 var listenAndServe = (*http.Server).ListenAndServe
 
-// development flags and static and template directory locations
-var (
-	// production is default; set inDevelopment to true with build tag
-	inDevelopment bool   = false
-	staticDirDev  string = "static"
-	tplDirDev     string = "templates"
-	staticDir     string = "static"
-	tplDir        string = "templates"
+// production is default; set inDevelopment to true with build tag
+var inDevelopment bool = false
+
+// the server struct holds development flags and static and template
+// directory locations
+type server struct {
+	WebMaxHeaderBytes int
+	ServerAddress     string
+	ServerPort        string
+	BaseURL           string
+
+	// cex is the main cexfind plug point
+	cex *cexfind.CexFind
+
+	// searcher is an indirect of cex.Search to allow testing
+	searcher func(cex *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cex.Box, error)
+
+	inDevelopment bool
+	staticDirDev  string
+	tplDirDev     string
+	staticDir     string
+	tplDir        string
 	DirFS         *fileSystem
-)
+
+	// serveFunc is an indirect for the main server functionality,
+	// provided for testing
+	serveFunc func()
+}
+
+func newServer() *server {
+	s := server{
+		// paths
+		staticDirDev: "static",
+		tplDirDev:    "templates",
+		staticDir:    "static",
+		tplDir:       "templates",
+
+		// initialise the search apparatus
+		cex: cexfind.NewCexFind(),
+
+		// searcher is an indirect of cex.Search to allow testing
+		searcher: (*cex.CexFind).Search,
+
+		// WebMaxHeaderBytes is the largest number of header bytes accepted by
+		// the webserver
+		WebMaxHeaderBytes: 1 << 17, // ~125k
+
+		// ServerAddress is the default Server network address
+		ServerAddress: "127.0.0.1",
+
+		// ServerPort is the default Server network port
+		ServerPort: "8000",
+
+		// BaseURL is the base url for redirects, etc.
+		BaseURL: "",
+	}
+	// serveFunc is an indirect for testing
+	s.serveFunc = s.serve
+	return &s
+}
 
 // setupFS setup the filesystem for templates or static files, depending on
 // development (filesystem) or not (embedded)
-func setupFS() error {
+func (s *server) setupFS() error {
 	var err error
 	if inDevelopment {
-		DirFS, err = NewFileSystem(inDevelopment, tplDirDev, staticDirDev)
+		s.DirFS, err = NewFileSystem(inDevelopment, s.tplDirDev, s.staticDirDev)
 	} else {
-		DirFS, err = NewFileSystem(inDevelopment, tplDir, staticDir)
+		s.DirFS, err = NewFileSystem(inDevelopment, s.tplDir, s.staticDir)
 	}
 	return err
 }
 
 // Serve runs the web server on the specified address and port
-func Serve(addr, port string) {
-
-	if addr == "" {
-		addr = ServerAddress
-	} else {
-		ServerAddress = addr
+func (s *server) Serve(addr, port string) {
+	if addr != "" {
+		s.ServerAddress = addr
 	}
-
-	if port == "" {
-		port = ServerPort
-	} else {
-		ServerPort = port
+	if port != "" {
+		s.ServerPort = port
 	}
-
 	// setup the filesystem
-	if err := setupFS(); err != nil {
+	if err := s.setupFS(); err != nil {
 		log.Fatal(err)
 	}
+	s.serveFunc()
+}
 
+func (s *server) serve() {
 	// endpoint routing; gorilla mux is used because "/" in http.NewServeMux
 	// is a catch-all pattern
 	r := mux.NewRouter()
@@ -91,14 +120,14 @@ func Serve(addr, port string) {
 	// https://pkg.go.dev/github.com/gorilla/mux#section-readme :Static Files
 	r.PathPrefix("/static/").Handler(
 		http.StripPrefix("/static/",
-			http.FileServer(http.FS(DirFS.StaticFS))),
+			http.FileServer(http.FS(s.DirFS.StaticFS))),
 	)
 
 	// routes
-	r.HandleFunc("/results", Results)
-	r.HandleFunc("/health", Health)
-	r.HandleFunc("/favicon.ico", Favicon)
-	r.HandleFunc("/", Home)
+	r.HandleFunc("/results", s.Results)
+	r.HandleFunc("/health", s.Health)
+	r.HandleFunc("/favicon.ico", s.Favicon)
+	r.HandleFunc("/", s.Home)
 
 	// logging converts gorilla's handlers.CombinedLoggingHandler to a
 	// func(http.Handler) http.Handler to satisfy type MiddlewareFunc
@@ -125,16 +154,16 @@ func Serve(addr, port string) {
 
 	// configure server options
 	server := &http.Server{
-		Addr:    addr + ":" + port,
+		Addr:    s.ServerAddress + ":" + s.ServerPort,
 		Handler: r,
 		// timeouts and limits
-		MaxHeaderBytes:    WebMaxHeaderBytes,
+		MaxHeaderBytes:    s.WebMaxHeaderBytes,
 		ReadTimeout:       1 * time.Second,
 		WriteTimeout:      2 * time.Second,
 		IdleTimeout:       30 * time.Second,
 		ReadHeaderTimeout: 2 * time.Second,
 	}
-	log.Printf("serving on %s:%s", addr, port)
+	log.Printf("serving on %s:%s", s.ServerAddress, s.ServerPort)
 
 	err := listenAndServe(server)
 	if err != nil {
@@ -143,7 +172,7 @@ func Serve(addr, port string) {
 }
 
 // Results shows the results of a "search" form submission in an htmx partial
-func Results(w http.ResponseWriter, r *http.Request) {
+func (s *server) Results(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
 		w.WriteHeader(http.StatusBadRequest)
@@ -201,7 +230,7 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		base += fmt.Sprintf("&query=%s", url.PathEscape(q))
 	}
 	// push the postResults terms to the url
-	w.Header().Set("HX-Push-Url", BaseURL+"/?"+base)
+	w.Header().Set("HX-Push-Url", s.BaseURL+"/?"+base)
 
 	// search; note that searcher is an indirect to search/cex.Search
 	type SearchResults struct {
@@ -209,9 +238,9 @@ func Results(w http.ResponseWriter, r *http.Request) {
 		Err     error
 	}
 	sr := SearchResults{}
-	sr.Results, sr.Err = searcher(queries, postResults.Strict, postResults.Postcode)
+	sr.Results, sr.Err = s.searcher(s.cex, queries, postResults.Strict, postResults.Postcode)
 
-	t := template.Must(template.ParseFS(DirFS.TplFS, "partial-results.html"))
+	t := template.Must(template.ParseFS(s.DirFS.TplFS, "partial-results.html"))
 	err = t.Execute(w, sr)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -239,9 +268,9 @@ func (q QueriesType) String() string {
 }
 
 // Home is the home page
-func Home(w http.ResponseWriter, r *http.Request) {
+func (s *server) Home(w http.ResponseWriter, r *http.Request) {
 
-	t, err := template.ParseFS(DirFS.TplFS, "home.html")
+	t, err := template.ParseFS(s.DirFS.TplFS, "home.html")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -261,8 +290,8 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		Search  QueriesType
 	}{
 		"search cex",
-		ServerAddress,
-		ServerPort,
+		s.ServerAddress,
+		s.ServerPort,
 		search,
 	}
 	err = t.Execute(w, data)
@@ -273,7 +302,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 // HealthCheck shows if the service is up
-func Health(w http.ResponseWriter, r *http.Request) {
+func (s *server) Health(w http.ResponseWriter, r *http.Request) {
 	enc := json.NewEncoder(w)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	resp := map[string]string{"status": "up"}
@@ -283,6 +312,6 @@ func Health(w http.ResponseWriter, r *http.Request) {
 }
 
 // Favicon serves up the favicon
-func Favicon(w http.ResponseWriter, r *http.Request) {
-	http.ServeFileFS(w, r, DirFS.StaticFS, "/favicon.svg")
+func (s *server) Favicon(w http.ResponseWriter, r *http.Request) {
+	http.ServeFileFS(w, r, s.DirFS.StaticFS, "/favicon.svg")
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"testing"
 )
@@ -84,6 +85,6 @@ func TestWebMain(t *testing.T) {
 	if a, b := flagGetter(); a+":"+b != "127.0.0.1:8000" {
 		t.Errorf("expected indirected flagGetter == 127.0.0.1:8000")
 	}
-	Server = func(string, string) {}
+	serveFunc = func(s *server, address, port string) { log.Print("got here") }
 	main()
 }

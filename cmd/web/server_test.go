@@ -12,41 +12,42 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/rorycl/cexfind"
 	cex "github.com/rorycl/cexfind"
 	"github.com/shopspring/decimal"
 )
 
 // TestSetupFS sets up the FS
 func TestSetupFS(t *testing.T) {
-	staticDirDev = "static"
-	tplDirDev = "templates"
-	if got, want := setupFS(), error(nil); got != want {
+	s := newServer()
+	s.staticDirDev = "static"
+	s.tplDirDev = "templates"
+	if got, want := s.setupFS(), error(nil); got != want {
 		t.Errorf("testsetupfs error got %v != want %v", got, want)
 	}
 }
 
 // TestServe
 func TestServe(t *testing.T) {
-	listenAndServe = func(*http.Server) error {
-		return nil
-	}
-	staticDirDev = "static"
-	tplDirDev = "templates"
-	Serve("127.0.0.1", "8123")
-
+	s := newServer()
+	s.serveFunc = func() {}
+	s.staticDirDev = "static"
+	s.tplDirDev = "templates"
+	s.Serve("127.0.0.1", "8123")
 }
 
 // Test Home page returns a 200
 func TestHome(t *testing.T) {
 
+	s := newServer()
 	// home uses templates fs
-	DirFS = &fileSystem{}
-	DirFS.TplFS = os.DirFS("templates")
+	s.DirFS = &fileSystem{}
+	s.DirFS.TplFS = os.DirFS("templates")
 
 	r := httptest.NewRequest(http.MethodGet, "http://example.com/home", nil)
 	w := httptest.NewRecorder()
 
-	Home(w, r)
+	s.Home(w, r)
 
 	res := w.Result()
 	defer res.Body.Close()
@@ -66,7 +67,8 @@ func TestHealth(t *testing.T) {
 	r := httptest.NewRequest(http.MethodGet, "http://example.com/health", nil)
 	w := httptest.NewRecorder()
 
-	Health(w, r)
+	s := newServer()
+	s.Health(w, r)
 
 	res := w.Result()
 	defer res.Body.Close()
@@ -87,14 +89,15 @@ func TestHealth(t *testing.T) {
 // Favicon page returns a 200
 func TestFavicon(t *testing.T) {
 
+	s := newServer()
 	// favicon uses the static fs
-	DirFS = &fileSystem{}
-	DirFS.StaticFS = os.DirFS("static")
+	s.DirFS = &fileSystem{}
+	s.DirFS.StaticFS = os.DirFS("static")
 
 	r := httptest.NewRequest(http.MethodGet, "http://example.com/favicon.ico", nil)
 	w := httptest.NewRecorder()
 
-	Favicon(w, r)
+	s.Favicon(w, r)
 
 	res := w.Result()
 	defer res.Body.Close()
@@ -112,12 +115,13 @@ func TestFavicon(t *testing.T) {
 // swapped out
 func TestResults(t *testing.T) {
 
+	s := newServer()
 	// results uses the templates endpoint
-	DirFS = &fileSystem{}
-	DirFS.TplFS = os.DirFS("templates")
+	s.DirFS = &fileSystem{}
+	s.DirFS.TplFS = os.DirFS("templates")
 
 	// override package global searcher which indirects Search
-	searcher = func(queries []string, strict bool, postcode string) ([]cex.Box, error) {
+	s.searcher = func(cf *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cex.Box, error) {
 		return []cex.Box{
 			cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: decimal.NewFromInt(3)},
 			cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: decimal.NewFromInt(1)},
@@ -171,7 +175,7 @@ func TestResults(t *testing.T) {
 			r.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			w := httptest.NewRecorder()
 
-			Results(w, r)
+			s.Results(w, r)
 
 			res := w.Result()
 			defer res.Body.Close()
