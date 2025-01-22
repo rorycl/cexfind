@@ -52,6 +52,7 @@ import (
 type Box struct {
 	Model         string
 	Name          string
+	Category      string
 	ID            string
 	Price         decimal.Decimal
 	PriceCash     decimal.Decimal

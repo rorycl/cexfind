@@ -54,9 +54,9 @@ var (
 type jsonResults struct {
 	Results []struct {
 		Hits []struct {
-			BoxName string `json:"boxName"`
-			BoxID   string `json:"boxId"`
-			// Available int `json:"collectionQuantity"` // returns 0 or greater
+			BoxName       string          `json:"boxName"`
+			BoxID         string          `json:"boxId"`
+			Category      string          `json:"categoryFriendlyName"`
 			Price         decimal.Decimal `json:"sellPrice"`
 			PriceCash     decimal.Decimal `json:"cashPriceCalculated"`     // offer price for this kit in cash
 			PriceExchange decimal.Decimal `json:"exchangePriceCalculated"` // offer price for exchange
@@ -97,6 +97,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				br.box = Box{}
 				br.box.Model = extractModelType(j.BoxName)
 				br.box.Name = j.BoxName
+				br.box.Category = j.Category
 				br.box.ID = j.BoxID
 				br.box.Price = j.Price
 				br.box.PriceCash = j.PriceCash
