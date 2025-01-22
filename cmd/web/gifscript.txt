@@ -1,0 +1,9 @@
+lenovo t14 <search>
+scroll
+
+then add "gen 4"
+postcode SW1A 1AA
+strict
+<enter>
+
+that's it

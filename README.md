@@ -1,13 +1,10 @@
 # cexfind
 
-v0.2.8 : 22 January 2025 : add store distances
+v0.2.9 : 23 January 2025 : add product categories to output
 
-If you supply a postcode, cexfind will show the distance to stores from
-that location. The store locations are updated daily in local cache,
-so should be pretty fast to lookup.
-
-The lookup for the supplied postcode uses
-[api.postcodes.io](https://api.postcodes.io/). Let's see how that goes.
+Thanks to the suggestions and feedback of `u/CutieRachelSnow`, this
+release adds categories to output. Presently, categories are not
+included in searches.
 
 ## Find kit on Cex, fast
 

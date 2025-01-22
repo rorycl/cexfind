@@ -1,9 +1,7 @@
-Changelog for release v0.2.8
+Changelog for release v0.2.9
 
-Update to show distance to stores when a postcode is supplied.
+Add product category information to module and apps.
 
-* Store locations are cached in a goroutine safe manner.
-* Store postcode lookups are cached in a goroutine safe manner.
-
-The clients have been altered to show distances to stores where
-appropriate, and new gifs generated!
+* docker: update dockerfile to include location
+* cex: add product category to cexfind
+* apps: update to add category details
