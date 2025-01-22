@@ -1,6 +1,13 @@
 # cexfind
 
-v0.2.7 : 19 January 2025 : add model to searchables
+v0.2.8 : 22 January 2025 : add store distances
+
+If you supply a postcode, cexfind will show the distance to stores from
+that location. The store locations are updated daily in local cache,
+so should be pretty fast to lookup.
+
+The lookup for the supplied postcode uses
+[api.postcodes.io](https://api.postcodes.io/). Let's see how that goes.
 
 ## Find kit on Cex, fast
 
@@ -25,6 +32,17 @@ build for your local machine using `make build-all` if you have go (>=
 
 ## Clients
 
+**web server**
+
+A simple htmx webserver client.
+
+Run `./bin/webserver` or the windows alternative to run the server
+locally on the default local ip address of `127.0.0.1` and port `8000`.
+Use the command line switches to change these options. (Use `-h` to see
+the switches.)
+
+<img width="1000" src="cmd/web/web.gif" />
+
 Three clients are provided for the very simple `cexfind` golang module:
 
 **console**
@@ -44,16 +62,6 @@ Run `./bin/cli -h` or the windows alternative to see the switch options.
 
 <img width="1000" src="cmd/cli/cli.gif" />
 
-**web server**
-
-A simple htmx webserver client.
-
-Run `./bin/webserver` or the windows alternative to run the server
-locally on the default local ip address of `127.0.0.1` and port `8000`.
-Use the command line switches to change these options. (Use `-h` to see
-the switches.)
-
-<img width="1000" src="cmd/web/web.gif" />
 
 ## Licence
 

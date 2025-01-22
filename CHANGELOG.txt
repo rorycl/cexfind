@@ -1,12 +1,9 @@
-Changelog for release v0.2.6
+Changelog for release v0.2.8
 
-Update to use decimal.Decimal rather than int to support cheaper items
-on Cex which have decimal prices.
+Update to show distance to stores when a postcode is supplied.
 
-* go: update modules
-* web: update int pricing to use decimal.Decimal
-* console: update int pricing to use decimal.Decimal
-* cli: update int pricing to use decimal.Decimal
-* query: bubble up json unmarshall errors properly
-* cex: change int pricing to decimal.Decimal, update tests accordingly
-* testdata: add example data json file with decimal results
+* Store locations are cached in a goroutine safe manner.
+* Store postcode lookups are cached in a goroutine safe manner.
+
+The clients have been altered to show distances to stores where
+appropriate, and new gifs generated!
