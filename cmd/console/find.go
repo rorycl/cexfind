@@ -72,7 +72,7 @@ func find(m *model, query string, strict bool, postcode string) (items []list.It
 		}
 		// add standard item
 		items = append(items, item{
-			title:       fmt.Sprintf(boxTitleTpl, box.Price.IntPart(), box.Name),
+			title:       fmt.Sprintf(boxTitleTpl, box.Price.IntPart(), box.Name, box.Category),
 			description: fmt.Sprintf(boxDescriptionTpl, box.PriceCash.IntPart(), box.PriceExchange.IntPart(), box.StoresString(80)),
 			url:         box.IDUrl(),
 		})
@@ -89,7 +89,7 @@ func findLocal(m *model, query string, strict bool, postcode string) (items []li
 	return theseExampleItems, 15, nil
 }
 
-const boxTitleTpl string = "£%-3d %s"
+const boxTitleTpl string = "£%-3d %s [%s]"
 const boxDescriptionTpl string = "     (£%d/£%d) %-40s"
 
 // findPerformMsg is a bubbletea Cmd message for performing a find

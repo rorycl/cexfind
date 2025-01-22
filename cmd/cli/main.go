@@ -102,7 +102,7 @@ func main() {
 
 	if verbose || postCode != "" {
 		// print header
-		fmt.Print("showing (cash price/exchange price) and stores list")
+		fmt.Print("showing (cash/exchange price) and stores list")
 		if postCode != "" {
 			fmt.Print(", distance to stores in miles.")
 		}
@@ -122,21 +122,23 @@ func main() {
 				box.StoresString(80),
 			)
 			fmt.Printf(
-				"%s %-3d %s %s\n      %s\n      %s\n",
+				"%s %-3d %s [%s]\n      %s\n      %s\n",
 				dotStyle("✱"),
 				box.Price.IntPart(),
 				box.Name,
-				box.ID,
+				box.Category,
+				// box.ID,
 				urlStyle(box.IDUrl()),
 				infoStyle(info),
 			)
 		} else {
 			fmt.Printf(
-				"%s %-3d %s %s\n      %s\n",
+				"%s %-3d %s [%s]\n      %s\n",
 				dotStyle("✱"),
 				box.Price.IntPart(),
 				box.Name,
-				box.ID,
+				box.Category,
+				// box.ID,
 				urlStyle(box.IDUrl()),
 			)
 

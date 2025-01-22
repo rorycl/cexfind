@@ -18,7 +18,7 @@
 {{ end }} {{/* end of Model check */}}
 <li>
     <span class="price">&pound;{{ $box.Price }}</span>
-    <span class="name">{{ $box.Name }}</span>
+    <span class="name">{{ $box.Name }}<br />[{{ $box.Category }}]</span>
     <span class="boxid"><a href="{{ $box.IDUrl }}">{{ $box.ID }}</a></span>
     <span class="details">
         <span class="cash">&pound;{{ $box.PriceCash }}/</span><span class="exchange">&pound;{{ $box.PriceExchange }}</span>

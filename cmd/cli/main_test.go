@@ -103,17 +103,17 @@ func TestMainMain(t *testing.T) {
 		{
 			output: `
 Lenovo X390
-✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B PALSLENX39065B
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39065B
-✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39061C
-✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B PALSLENX390662B
+✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX390662B
-✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B PALSLENX390420B
+✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX390420B
-✱ 215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39078C
+✱ 215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39078C
-✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B PALSLENX39097B
+✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39097B
 `,
 			flagGetter: func() (queriesType, bool, string, bool) {
@@ -121,25 +121,25 @@ Lenovo X390
 			},
 		},
 		{
-			output: `showing (cash price/exchange price) and stores list
+			output: `showing (cash/exchange price) and stores list
 
 Lenovo X390
-✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B PALSLENX39065B
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W10/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39065B
       (82/116) store 10
-✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39061C
+✱ 175 Lenovo X390/i5-8265U/8GB Ram/256GB SSD/13"/W11/C [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39061C
       (82/116) store 4
-✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B PALSLENX390662B
+✱ 190 Lenovo X390/i5-8365U/16GB Ram/240GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX390662B
       (89/126) store name
-✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B PALSLENX390420B
+✱ 205 Lenovo X390/i5-8265U/16GB Ram/256GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX390420B
       (96/136) a specific store 2
-✱ 215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C PALSLENX39078C
+✱ 215 Lenovo X390/i5-8365U/8GB Ram/256GB SSD/13"/W11/C [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39078C
       (101/143) store 3
-✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B PALSLENX39097B
+✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39097B
       (169/240) store 1, store 2
 `,
