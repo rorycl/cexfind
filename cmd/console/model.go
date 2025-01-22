@@ -17,6 +17,7 @@ import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/rorycl/cexfind"
 )
 
 var (
@@ -77,6 +78,9 @@ type model struct {
 	// a standard help model
 	help help.Model
 
+	// cexfind is the cex kit finder
+	cex *cexfind.CexFind
+
 	// flags etc.
 	state   state
 	listLen int
@@ -88,7 +92,7 @@ type model struct {
 
 	// find function indirector allows for local/testing swapping of
 	// functions
-	finder func(query string, strict bool, postcode string) (items []list.Item, itemNo int, err error)
+	finder func(m *model, query string, strict bool, postcode string) (items []list.Item, itemNo int, err error)
 }
 
 // NewModel creates a new model containing the input, status and list
@@ -103,6 +107,9 @@ func NewModel() *model {
 	m.status = newSelection()
 	m.inited = true
 	m.listLen = 0
+
+	// initialise the cex finder
+	m.cex = cexfind.NewCexFind()
 
 	// initialise the help model and related keys
 	m.help = help.New()
@@ -238,7 +245,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case findPerformMsg:
 		time.Sleep(250 * time.Millisecond) // give time for status to show
 		log.Printf("findPerformMsg received %v", msg)
-		items, num, err := m.finder(msg.query, msg.strict, msg.postcode)
+		items, num, err := m.finder(&m, msg.query, msg.strict, msg.postcode)
 		var cmd tea.Cmd
 		switch {
 		case num > 0 && err != nil:
