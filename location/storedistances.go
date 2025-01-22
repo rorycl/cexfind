@@ -40,15 +40,15 @@ func storeSorter(fss []StoreWithDistance) {
 	})
 }
 
-// storeDistances is a struct containing a map of stores by name
+// StoreDistances is a struct containing a map of stores by name
 // allowing calculations for distances from a postcode.
-type storeDistances struct {
+type StoreDistances struct {
 	stores         *stores
 	locationFinder *locationFinder
 }
 
-func newStoreDistances() *storeDistances {
-	s := storeDistances{
+func NewStoreDistances() *StoreDistances {
+	s := StoreDistances{
 		stores:         newStores(),
 		locationFinder: newLocationFinder(),
 	}
@@ -57,7 +57,7 @@ func newStoreDistances() *storeDistances {
 
 // Distances finds the distances of the named stores from postcode and
 // returns a slice of StoreWithDistance sorted by increasing distance
-func (sd *storeDistances) Distances(postcode string, storeNames []string) ([]StoreWithDistance, error) {
+func (sd *StoreDistances) Distances(postcode string, storeNames []string) ([]StoreWithDistance, error) {
 
 	foundStores := []StoreWithDistance{}
 
