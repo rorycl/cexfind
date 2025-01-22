@@ -17,7 +17,8 @@ func TestStoreDistances(t *testing.T) {
 	//		location.StoreWithDistance{StoreID:193, StoreName:"Woolwich", RegionName:"London and the South-East of England", Latitude:51.491979, Longitude:0.064665, DistanceMiles:146.44476176156368},
 	//		location.StoreWithDistance{StoreID:3058, StoreName:"Havant", RegionName:"London and the South-East of England", Latitude:50.852325, Longitude:-0.982041, DistanceMiles:176.34720204432986}}
 	//	}
-	sd, err := StoreDistances("S10 1LT", []string{"Walthamstow", "Woolwich", "Havant"})
+	nsd := newStoreDistances()
+	sd, err := nsd.Distances("S10 1LT", []string{"Walthamstow", "Woolwich", "Havant"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,8 +33,6 @@ func TestStoreDistances(t *testing.T) {
 	}
 	// fmt.Printf("%#v\n", sd)
 
-	// reset stores
-	Stores = stores{}
 }
 
 func TestPrintStoredDistances(t *testing.T) {

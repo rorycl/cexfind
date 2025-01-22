@@ -3,7 +3,6 @@ package location
 import (
 	"fmt"
 	"sort"
-	"sync"
 )
 
 // StoreWithDistance represents a store with a distance DistanceMiles
@@ -41,10 +40,24 @@ func storeSorter(fss []StoreWithDistance) {
 	})
 }
 
-// StoreDistances finds the distances of the named stores from postcode
-// and returns a slice of StoreWithDistance sorted by increasing
-// distance
-func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, error) {
+// storeDistances is a struct containing a map of stores by name
+// allowing calculations for distances from a postcode.
+type storeDistances struct {
+	stores         *stores
+	locationFinder *locationFinder
+}
+
+func newStoreDistances() *storeDistances {
+	s := storeDistances{
+		stores:         newStores(),
+		locationFinder: newLocationFinder(),
+	}
+	return &s
+}
+
+// Distances finds the distances of the named stores from postcode and
+// returns a slice of StoreWithDistance sorted by increasing distance
+func (sd *storeDistances) Distances(postcode string, storeNames []string) ([]StoreWithDistance, error) {
 
 	foundStores := []StoreWithDistance{}
 
@@ -59,36 +72,26 @@ func StoreDistances(postcode string, storeNames []string) ([]StoreWithDistance, 
 		return foundStores, nil
 	}
 
-	location, err := getLocationFromPostcode(postcode)
+	location, err := sd.locationFinder.getLocationFromPostcode(postcode)
 	if err != nil {
 		return nil, fmt.Errorf("could not resolve postcode: %w", err)
 	}
 	locationCoord := coord{Lat: location.Latitude, Lon: location.Longitude}
 
-	// initialise the package global Stores
-	var once sync.Once
-	once.Do(func() {
-		err = getStoreLocations()
-	})
-	if err != nil {
-		return nil, fmt.Errorf("could not get store locations: %w", err)
-	}
-
+	// hope the API uses consistent store names
 	for _, name := range storeNames {
 		fs := StoreWithDistance{StoreName: name}
-		thisStore, ok := Stores[name]
-		if !ok {
-			continue
+		thisStore, ok := sd.stores.get(name)
+		if ok { // allow sparse stores
+			fs.StoreID = thisStore.StoreID
+			fs.RegionName = thisStore.RegionName
+			fs.Latitude = thisStore.Latitude
+			fs.Longitude = thisStore.Longitude
+
+			// haversine distance in miles
+			storeCoord := coord{Lat: fs.Latitude, Lon: fs.Longitude}
+			fs.DistanceMiles, _ = haversineDistance(locationCoord, storeCoord) // mi, km
 		}
-		fs.StoreID = thisStore.StoreID
-		fs.RegionName = thisStore.RegionName
-		fs.Latitude = thisStore.Latitude
-		fs.Longitude = thisStore.Longitude
-
-		// haversine distance in miles
-		storeCoord := coord{Lat: fs.Latitude, Lon: fs.Longitude}
-		fs.DistanceMiles, _ = haversineDistance(locationCoord, storeCoord) // mi, km
-
 		foundStores = append(foundStores, fs)
 	}
 	storeSorter(foundStores)
