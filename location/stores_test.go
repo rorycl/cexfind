@@ -6,6 +6,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
+	"time"
 )
 
 func TestGetStores(t *testing.T) {
@@ -21,20 +22,20 @@ func TestGetStores(t *testing.T) {
 	// repoint url
 	storeURL = svr.URL
 
-	err = getStoreLocations()
-	if err != nil {
-		t.Fatal(err)
+	stores := newStores()
+	if !stores.isInitialised() {
+		t.Fatal("initialisation failed")
 	}
 
-	for k := range Stores {
-		fmt.Println(k)
-	}
+	/*
+		consider a way of iterating over stores
+	*/
 
-	if got, want := len(Stores), 4; got != want {
+	if got, want := stores.length(), 4; got != want {
 		t.Errorf("got %d want %d stores", got, want)
 	}
 
-	w1, ok := Stores["London - W1 Rathbone Place"]
+	w1, ok := stores.get("London - W1 Rathbone Place")
 	if !ok {
 		t.Error("expected value for London - W1 Rathbone Place")
 		return
@@ -43,10 +44,19 @@ func TestGetStores(t *testing.T) {
 		t.Errorf("got %d want %d storeid", got, want)
 	}
 
-	_, ok = Stores["London W1 Rathbone"]
+	_, ok = stores.get("London W1 Rathbone")
 	if !ok {
 		t.Error("expected alias value for London - W1 Rathbone Place")
 		return
+	}
+
+	stores.Lock()
+	stores.initialised = false
+	stores.update.Reset(time.Millisecond * 40)
+	stores.Unlock()
+	time.Sleep(time.Millisecond * 50)
+	if !stores.isInitialised() {
+		t.Error("re-initialisation failed")
 	}
 
 }
