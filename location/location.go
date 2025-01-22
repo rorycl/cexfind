@@ -7,6 +7,9 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
+	"sync"
+	"time"
 )
 
 // findLocationURL is the url for looking up location by UK postcode.
@@ -34,11 +37,74 @@ type jsonLocation struct {
 	} `json:"result"`
 }
 
-func getLocationFromPostcode(postcode string) (*location, error) {
+// locationFinder holds information about postcodes, avoiding lookups
+// for the same postcode
+type locationFinder struct {
+	locationMap map[string]location
+	sync.RWMutex
+}
+
+// newLocationFinder returns a new locationFinder. This should only be
+// initialised once
+func newLocationFinder() *locationFinder {
+	l := locationFinder{
+		locationMap: map[string]location{},
+	}
+	return &l
+}
+
+func (lf *locationFinder) clean(postcode string) string {
+	return strings.ReplaceAll(strings.TrimSpace(strings.ToLower(postcode)), "  ", " ")
+}
+
+func (lf *locationFinder) has(postcode string) bool {
+	lf.RLock()
+	defer lf.RUnlock()
+	if _, ok := lf.locationMap[lf.clean(postcode)]; ok {
+		return true
+	}
+	return false
+}
+
+func (lf *locationFinder) get(postcode string) (location, bool) {
+	lf.RLock()
+	defer lf.RUnlock()
+	l, ok := lf.locationMap[lf.clean(postcode)]
+	return l, ok
+}
+
+func (lf *locationFinder) put(postcode string, l location) {
+	lf.Lock()
+	defer lf.Unlock()
+	lf.locationMap[lf.clean(postcode)] = l
+}
+
+func (lf *locationFinder) length() int {
+	lf.RLock()
+	defer lf.RUnlock()
+	return len(lf.locationMap)
+}
+
+// getLocationFromPostcode tries to extract the location data from the
+// locationMap. If that fails it tries to extract the necessary
+// information from a web service.
+func (lf *locationFinder) getLocationFromPostcode(postcode string) (*location, error) {
+
+	if postcode == "" {
+		return nil, errors.New("No postcode provided")
+	}
+
+	// check postcode in cache
+	if l, ok := lf.get(postcode); ok {
+		return &l, nil
+	}
 
 	var jloc jsonLocation
 
-	response, err := http.Get(findLocationURL + "?q=" + url.QueryEscape(postcode))
+	client := &http.Client{
+		Timeout: 2 * time.Second,
+	}
+	response, err := client.Get(findLocationURL + "?q=" + url.QueryEscape(postcode))
 	if err != nil {
 		return nil, err
 	}
@@ -59,11 +125,12 @@ func getLocationFromPostcode(postcode string) (*location, error) {
 
 	result := jloc.Result[0]
 
-	return &location{
+	l := location{
 		Postcode:  result.Postcode,
 		District:  result.District,
 		Latitude:  result.Latitude,
 		Longitude: result.Longitude,
-	}, nil
-
+	}
+	lf.put(postcode, l)
+	return &l, nil
 }

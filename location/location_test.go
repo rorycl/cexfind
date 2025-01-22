@@ -23,7 +23,9 @@ func TestGetLocationLocal(t *testing.T) {
 	// repoint url
 	findLocationURL = svr.URL
 
-	location, err := getLocationFromPostcode("NW1 6LG")
+	postcode := "NW1 6LG"
+	lFinder := newLocationFinder()
+	location, err := lFinder.getLocationFromPostcode(postcode)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -37,6 +39,13 @@ func TestGetLocationLocal(t *testing.T) {
 	if got, want := location.Longitude, -0.166312; got != want {
 		t.Errorf("longitude got %f want %f", got, want)
 	}
+
+	if !lFinder.has(postcode) {
+		t.Error("postcode could not be found in cache")
+	}
+	if got, want := lFinder.length(), 1; got != want {
+		t.Errorf("cache map len got %d want %d", got, want)
+	}
 }
 
 func TestGetLocationReal(t *testing.T) {
@@ -45,7 +54,9 @@ func TestGetLocationReal(t *testing.T) {
 
 	// Marlborough Mound 51.4166° N, 1.7371° W (numbers below are a bit
 	// off)
-	location, err := getLocationFromPostcode("SN8 1PA")
+	postcode := "SN8 1PA"
+	lFinder := newLocationFinder()
+	location, err := lFinder.getLocationFromPostcode(postcode)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -60,5 +71,11 @@ func TestGetLocationReal(t *testing.T) {
 	}
 	if got, want := location.Longitude, -1.735758; got != want {
 		t.Errorf("longitude got %f want %f", got, want)
+	}
+	if !lFinder.has(postcode) {
+		t.Error("postcode could not be found in cache")
+	}
+	if got, want := lFinder.length(), 1; got != want {
+		t.Errorf("cache map len got %d want %d", got, want)
 	}
 }
