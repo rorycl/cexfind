@@ -18,6 +18,7 @@ FROM deps as dev
 ADD *go ./
 ADD cmd/*go ./cmd/
 ADD cmd/web/ ./cmd/web/
+ADD location/ ./location/
 RUN cd cmd/web && \
     CGO_ENABLED=0 GOOS=linux \
     go build -ldflags "-w -X main.docker=true" -o /build/webserver .
