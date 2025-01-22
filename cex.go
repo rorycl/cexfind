@@ -12,7 +12,8 @@
 // Example usage:
 //
 //	 postcode := "S10 1LT" // royal armouries museum, leeds
-//		kit := cex.NewCex()cex.Search(queries, strict, postcode)
+//		kit := cex.NewCex()
+//		cex.Search(queries, strict, postcode)
 //		results, err := kit.Search(queries, strict)
 //		if err != nil {
 //			log.Fatal(err)
@@ -110,7 +111,7 @@ func (b *Box) StoresString(length int) string {
 		return storeString
 	}
 
-	storeString += fmt.Sprintf("%s", b.Stores[0])
+	storeString += b.Stores[0].String()
 	for _, s := range b.Stores[1:] {
 		storeString += fmt.Sprintf(", %s", s)
 	}

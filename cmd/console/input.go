@@ -76,7 +76,7 @@ func newInModel() inModel {
 	p.Cursor.Style = postcodeNormalStyle
 	p.CharLimit = 8
 	p.Placeholder = "postcode"
-	p.PromptStyle = postcodeNormalStyle
+	p.PromptStyle = postcodeFocusedStyle
 	p.Width = 12
 
 	return inModel{
@@ -152,9 +152,12 @@ func (in inModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 	}
+	cmds := []tea.Cmd{}
 	in.input, cmd = in.input.Update(msg)
+	cmds = append(cmds, cmd)
 	in.postcode, cmd = in.postcode.Update(msg)
-	return in, cmd
+	cmds = append(cmds, cmd)
+	return in, tea.Batch(cmds...)
 }
 
 // enter event message

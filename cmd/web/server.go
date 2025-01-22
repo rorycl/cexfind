@@ -40,12 +40,11 @@ type server struct {
 	// searcher is an indirect of cex.Search to allow testing
 	searcher func(cex *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cex.Box, error)
 
-	inDevelopment bool
-	staticDirDev  string
-	tplDirDev     string
-	staticDir     string
-	tplDir        string
-	DirFS         *fileSystem
+	staticDirDev string
+	tplDirDev    string
+	staticDir    string
+	tplDir       string
+	DirFS        *fileSystem
 
 	// serveFunc is an indirect for the main server functionality,
 	// provided for testing
