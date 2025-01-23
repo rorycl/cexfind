@@ -3,8 +3,8 @@
 v0.2.9 : 23 January 2025 : add product categories to output
 
 Thanks to the suggestions and feedback of `u/CutieRachelSnow`, this
-release adds categories to output. Presently, categories are not
-included in searches.
+release adds categories to output. Note that at present categories are
+not included in searches.
 
 ## Find kit on Cex, fast
 
@@ -17,8 +17,8 @@ rapid and effective searches for second hand equipment for sale at
 Cex/Webuy using the unofficial `webuy.io` json search endpoint.
 
 Note that these programs only work for queries made in the UK (or via a
-proxy terminating in the UK). This is intended to be a fun project and
-is not intended for commercial use.
+proxy terminating in the UK). This is intended to be a fun project not
+intended for commercial use.
 
 ## Usage
 
