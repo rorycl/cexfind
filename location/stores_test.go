@@ -22,9 +22,14 @@ func TestGetStores(t *testing.T) {
 	// repoint url
 	storeURL = svr.URL
 
-	stores := newStores()
+	stores := newStores(false)
+	if stores.isInitialised() {
+		t.Fatal("initialisation should have failed")
+	}
+
+	stores = newStores(true)
 	if !stores.isInitialised() {
-		t.Fatal("initialisation failed")
+		t.Fatal("initialisation should be ok")
 	}
 
 	/*

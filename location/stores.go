@@ -48,26 +48,38 @@ type stores struct {
 	update      *time.Ticker
 }
 
-// newStores initialises a concurrent safe stores struct
-func newStores() *stores {
+var tickerOKDuration time.Duration = time.Minute * 60 * 24
+var tickerProblemDuration time.Duration = time.Minute * 10
+
+// newStores initialises a concurrent safe stores struct. The stores are
+// only initialised if true, which is the default in production.
+func newStores(initialiseStores bool) *stores {
 	s := stores{
 		storeMap: map[string]store{},
-		update:   time.NewTicker(time.Minute * 60 * 24),
+		update:   time.NewTicker(tickerOKDuration),
 	}
-	err := s.getStoreLocations()
-	if err != nil {
-		log.Printf("store update error %s", err)
-	} else {
-		s.initialised = true
+	if initialiseStores {
+		err := s.getStoreLocations()
+		if err != nil {
+			log.Printf("store update error %s", err)
+			s.update.Reset(tickerProblemDuration)
+		} else {
+			s.initialised = true
+		}
 	}
 	go func() {
 		for range s.update.C {
 			err := s.getStoreLocations()
 			if err != nil {
+				s.Lock()
+				s.update.Reset(tickerProblemDuration)
+				s.Unlock()
 				log.Printf("store update error %s", err)
 			} else {
 				s.Lock()
+				log.Println("store updated")
 				s.initialised = true
+				s.update.Reset(tickerOKDuration)
 				s.Unlock()
 			}
 		}

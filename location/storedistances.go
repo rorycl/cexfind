@@ -47,9 +47,12 @@ type StoreDistances struct {
 	locationFinder *locationFinder
 }
 
-func NewStoreDistances() *StoreDistances {
+// NewStoreDistances initialises a StoresDistance instance, and passes a
+// testing flag to the stores initaliser. In production,
+// initialiseStores should be true
+func NewStoreDistances(initialiseStores bool) *StoreDistances {
 	s := StoreDistances{
-		stores:         newStores(),
+		stores:         newStores(initialiseStores),
 		locationFinder: newLocationFinder(),
 	}
 	return &s
@@ -61,8 +64,9 @@ func (sd *StoreDistances) Distances(postcode string, storeNames []string) ([]Sto
 
 	foundStores := []StoreWithDistance{}
 
-	// return sparse stores if no postcode is provided
-	if postcode == "" {
+	// return sparse stores if no postcode is provided or stores haven't
+	// been initialised.
+	if postcode == "" || !sd.IsOperational() {
 		foundStores := []StoreWithDistance{}
 		for _, name := range storeNames {
 			swd := StoreWithDistance{StoreName: name}
@@ -95,7 +99,11 @@ func (sd *StoreDistances) Distances(postcode string, storeNames []string) ([]Sto
 		foundStores = append(foundStores, fs)
 	}
 	storeSorter(foundStores)
-
 	return foundStores, nil
+}
 
+// IsOperational determines if the stores have been initalised and
+// therefore if distances are possible to be calculated
+func (sd *StoreDistances) IsOperational() bool {
+	return sd.stores.isInitialised()
 }
