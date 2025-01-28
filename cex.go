@@ -159,8 +159,16 @@ type CexFind struct {
 // once due to caching in the location submodules.
 func NewCexFind() *CexFind {
 	return &CexFind{
-		storeDistances: location.NewStoreDistances(),
+		storeDistances: location.NewStoreDistances(true),
 	}
+}
+
+// LocationDistancesOK indicates if the storeDistances.store has been
+// initialised and distances can be calculated. If the func returns
+// false then store distances won't be calculated, a fact that client
+// apps should probably report.
+func (c *CexFind) LocationDistancesOK() bool {
+	return c.storeDistances.IsOperational()
 }
 
 // Search searches the Cex json endpoint at URL for the provided
@@ -171,7 +179,8 @@ func NewCexFind() *CexFind {
 // suggestions from the Cex/Webuy system.
 //
 // The postcode, if provided, allows distances to be calculated from
-// each store.
+// each store if the store data has already been retrieved (store data
+// is retrieved asynchronously).
 //
 // Multiple queries are run concurrently and their results sorted by
 // model, then by price ascending. Duplicate results are removed at
@@ -196,9 +205,10 @@ func (cex *CexFind) Search(queries []string, strict bool, postcode string) ([]Bo
 			continue
 		}
 
-		// store information is cached, as is any postcode with its
+		// Store information is cached, as is any postcode with its
 		// location data. cached data only requires distances to be
-		// calculated.
+		// calculated. If stores are offline distance calcs are skipped,
+		// but stores "with distances" are still returned.
 		br.box.Stores, err = cex.storeDistances.Distances(postcode, br.box.storeNames)
 		if err != nil {
 			err = fmt.Errorf("Postcode error: %w", err)

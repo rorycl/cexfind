@@ -230,3 +230,12 @@ func TestBoxIDUrl(t *testing.T) {
 		t.Errorf("url got %s want %s", got, want)
 	}
 }
+
+func TestCexInitialised(t *testing.T) {
+	cex := &CexFind{
+		storeDistances: location.NewStoreDistances(false),
+	}
+	if got, want := cex.LocationDistancesOK(), false; got != want {
+		t.Errorf("got %t want %t", got, want)
+	}
+}
