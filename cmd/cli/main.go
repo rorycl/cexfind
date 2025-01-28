@@ -104,7 +104,11 @@ func main() {
 		// print header
 		fmt.Print("showing (cash/exchange price) and stores list")
 		if postCode != "" {
-			fmt.Print(", distance to stores in miles.")
+			if !cex.LocationDistancesOK() {
+				fmt.Print("\nnote: distance calculations failed.")
+			} else {
+				fmt.Print(", distance to stores in miles.")
+			}
 		}
 		fmt.Println("")
 	}
