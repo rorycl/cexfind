@@ -283,15 +283,17 @@ func (s *server) Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := struct {
-		Title   string
-		Address string
-		Port    string
-		Search  QueriesType
+		Title               string
+		Address             string
+		Port                string
+		Search              QueriesType
+		LocationDistancesOK bool
 	}{
 		"search cex",
 		s.ServerAddress,
 		s.ServerPort,
 		search,
+		s.cex.LocationDistancesOK(),
 	}
 	err = t.Execute(w, data)
 	if err != nil {

@@ -8,6 +8,8 @@
     h2 {font-size: 13pt;}
     h3 {font-size: 12pt; margin: 20px 0 20px; }
 
+	#info {float: right; margin-top:-2.8em; margin-right: 30px;}
+
     form { padding: 7px 0; }
     label { display: inline-block; width: 50px }
     input#queries { width: 540px; margin-right: 20px; font-size: 12pt; background-color: #99999929; }
@@ -42,6 +44,10 @@
 <body>
 <h1>Search Cex</h1>
 
+<div id="info">
+fork or comment on <a href="https://github.com/rorycl/cexfind">Github</a>
+</div>
+
 <div id="search">
 <p>Search for kit available to buy online</p>
 <form id="trip" hx-post="./results" hx-trigger="submit" hx-target="#results">
@@ -51,14 +57,18 @@
 {{ .Search -}} {{/* string representation of [].Search.Query */}}
 {{ end -}}
 " />
-<input type="text" id="postcode" name="postcode" minlength="5" maxlength="8" size="8" placeholder="postcode" value="{{ .Search.Postcode }}" />
+<input type="text" {{ if eq .LocationDistancesOK false }}disabled="disabled" {{ end }}id="postcode" name="postcode" minlength="5" maxlength="8" size="8" placeholder={{ if .LocationDistancesOK }}"postcode"{{ else }}"disabled"{{ end }} value="{{ .Search.Postcode }}" />
 <input type="checkbox" id="strict" name="strict" {{ if .Search.Strict }}checked{{ end }} />
 <label for="strict">strict</label>
 <button class="submit" type="submit">Search</button>
 </section>
 </form>
 <p>Use a semicolon between multiple search terms<br />
+{{ if .LocationDistancesOK }}
 Provide a postcode to see distances to shops<br />
+{{ else }}
+Searching by postcode is currently <u>offline</u>.<br />
+{{ end }}
 Select "strict" for results that narrowly match the search criteria.</p>
 </div>
 <div id="results">
