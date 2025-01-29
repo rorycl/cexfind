@@ -1,7 +1,5 @@
-Changelog for release v0.2.9
+Changelog for release v0.3.0
 
-Add product category information to module and apps.
+This release exposes location service unavailability in the Cexfind
+library and apps.
 
-* docker: update dockerfile to include location
-* cex: add product category to cexfind
-* apps: update to add category details

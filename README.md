@@ -1,16 +1,15 @@
 # cexfind
 
-v0.2.9 : 23 January 2025 : add product categories to output
+v0.3.0 : 29 January 2025 : add location service unavailability checks
 
-Thanks to the suggestions and feedback of `u/CutieRachelSnow`, this
-release adds categories to output. Note that at present categories are
-not included in searches.
+This release exposes location service unavailability in the Cexfind
+library and apps.
+
+[Try it out on GCP!](https://cexfind-min-poyflf5akq-nw.a.run.app/)
 
 ## Find kit on Cex, fast
 
 <img width="1000" src="cmd/web/static/web-detail.png" />
-
-[Try it out on GCP!](https://cexfind-min-poyflf5akq-nw.a.run.app/)
 
 This project is a Go module with console, cli and web app clients for
 rapid and effective searches for second hand equipment for sale at
