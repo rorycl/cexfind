@@ -167,12 +167,22 @@ func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 		}
 	case postcodeState:
 		m.input.cursor = cursorPostcode
-		m.input.input.Blur()
-		m.input.postcode.Focus()
-		m.keys = getKeyMap(inputKeysState)
-		if withStatus {
-			m.status = m.status.setPostcoding()
+		if !m.cex.LocationDistancesOK() {
+			m.input.input.Blur()
+			m.input.postcode.Blur() // disable postcode input
+			m.input.postcode.Placeholder = "disabled"
+			if withStatus {
+				m.status = m.status.setPostcodingInvalid()
+			}
+		} else {
+			m.input.input.Blur()
+			m.input.postcode.Placeholder = "postcode"
+			m.input.postcode.Focus()
+			if withStatus {
+				m.status = m.status.setPostcoding()
+			}
 		}
+		m.keys = getKeyMap(inputKeysState)
 	case checkboxState:
 		m.input.cursor = cursorBox
 		m.input.input.Blur()

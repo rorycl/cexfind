@@ -49,6 +49,12 @@ func (s status) setPostcoding() status {
 	return status("optionally add a postcode to see distances to stores")
 }
 
+// status formatting when in postcode but location searching is
+// unavailable
+func (s status) setPostcodingInvalid() status {
+	return status("sorry -- searching by postcode is currently unavailable")
+}
+
 // status formatting when searching
 func (s status) setSearching(t string) status {
 	var searchPrefixTpl = "searching for \"%s\"..."
