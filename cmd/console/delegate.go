@@ -168,7 +168,8 @@ func (d CustomDelegate) Render(w io.Writer, m list.Model, index int, item list.I
 		return
 	}
 
-	// Prevent text from exceeding list width (see original // implementation)
+	// Prevent text from exceeding list width (see original implementation)
+	// nolint
 	textwidth := uint(m.Width() - s.NormalTitle.GetPaddingLeft() - s.NormalTitle.GetPaddingRight())
 	var lines []string
 	for _, line := range strings.Split(title, "\n") {
