@@ -66,8 +66,8 @@ func TestTypeExtraction(t *testing.T) {
 	}
 }
 
-// TestHeadingExtract tests if extracting an h1 heading from a stream of
-// bytes works
+// TestErrorExtract tests if extracting an h1 heading from a stream of
+// bytes works, or if there is a cloudflare error
 func TestHeadingExtract(t *testing.T) {
 
 	f, err := os.Open("testdata/error.html")
@@ -95,16 +95,20 @@ func TestHeadingExtract(t *testing.T) {
 			input:  contents,
 			output: "Sorry, you have been blocked",
 		},
+		{
+			input:  []byte(`<p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks.`),
+			output: "CloudFlare has blocked this service.",
+		},
 	} {
 		t.Run(fmt.Sprintf("subtest %d", i), func(t *testing.T) {
-			if got, want := headingExtract(tt.input), tt.output; got != want {
+			if got, want := errorExtract(tt.input), tt.output; got != want {
 				t.Errorf("got %s != want %s", got, want)
 			}
 			shortInput := tt.input
 			if len(shortInput) > 30 {
 				shortInput = slices.Concat(shortInput[:30], []byte("..."))
 			}
-			t.Logf("%s resulted in `%s`", string(shortInput), headingExtract(tt.input))
+			t.Logf("%s resulted in `%s`", string(shortInput), errorExtract(tt.input))
 		})
 	}
 }

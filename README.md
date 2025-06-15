@@ -5,7 +5,8 @@ v0.3.0 : 29 January 2025 : add location service unavailability checks
 This release exposes location service unavailability in the Cexfind
 library and apps.
 
-[Try it out on GCP!](https://cexfind-min-poyflf5akq-nw.a.run.app/)
+*Unfortunately the GCP instance of Cexfind is presently being blocked by
+CloudFlare.*
 
 ## Find kit on Cex, fast
 

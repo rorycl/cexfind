@@ -150,9 +150,9 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 	err = json.Unmarshal(responseBytes, &r)
 	if err != nil {
 		// html page might have been returned; try and extract heading
-		reason := headingExtract(responseBytes)
+		reason := errorExtract(responseBytes)
 		if reason != "" {
-			reason = "unknown or unmarshalling error"
+			reason = "Cex API unknown retrieval or unmarshalling error"
 			return r, errors.New(reason)
 		}
 		var ju *json.UnmarshalTypeError
@@ -167,15 +167,20 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 	return r, nil
 }
 
-// headingExtract attempts to extract an h1 heading from a stream of
-// bytes, typically needed if there is an html error page
-func headingExtract(b []byte) string {
+// errorExtract attempts to extract meaningful error messages from html
+// error pages. It looks for an h1 heading from a stream of bytes,
+// typically needed if there is an html error page, alternatively a
+// CloudFlare blocking report.
+func errorExtract(b []byte) string {
 	reH1 := regexp.MustCompile(`<h1[^>]*>([^<]+)</h1>`)
 	results := reH1.FindSubmatch(b)
-	if len(results) < 2 {
-		return ""
+	if len(results) >= 2 {
+		return string(results[1])
 	}
-	return string(results[1])
+	if bytes.Contains(b, []byte("This website is using a security service to protect itself from online attacks")) {
+		return "CloudFlare has blocked this service."
+	}
+	return ""
 }
 
 // storeSimplifier replaces some long store names with shorter ones

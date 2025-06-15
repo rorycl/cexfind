@@ -4,7 +4,7 @@
 # container image, see the gcr.io docs at
 # https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md
 
-FROM golang:1.22.5 AS deps
+FROM golang:1.24 AS deps
 
 # setup module environment
 WORKDIR /build
