@@ -211,7 +211,7 @@ func (cex *CexFind) Search(queries []string, strict bool, postcode string) ([]Bo
 		// but stores "with distances" are still returned.
 		br.box.Stores, err = cex.storeDistances.Distances(postcode, br.box.storeNames)
 		if err != nil {
-			err = fmt.Errorf("Postcode error: %w", err)
+			err = fmt.Errorf("postcode error: %w", err)
 			return nil, err
 		}
 

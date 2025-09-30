@@ -16,7 +16,6 @@ import (
 	"github.com/gorilla/schema"
 
 	"github.com/rorycl/cexfind"
-	cex "github.com/rorycl/cexfind"
 	"github.com/rorycl/cexfind/cmd"
 )
 
@@ -38,7 +37,7 @@ type server struct {
 	cex *cexfind.CexFind
 
 	// searcher is an indirect of cex.Search to allow testing
-	searcher func(cex *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cex.Box, error)
+	searcher func(cex *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cexfind.Box, error)
 
 	staticDirDev string
 	tplDirDev    string
@@ -63,7 +62,7 @@ func newServer() *server {
 		cex: cexfind.NewCexFind(),
 
 		// searcher is an indirect of cex.Search to allow testing
-		searcher: (*cex.CexFind).Search,
+		searcher: (*cexfind.CexFind).Search,
 
 		// WebMaxHeaderBytes is the largest number of header bytes accepted by
 		// the webserver
@@ -233,7 +232,7 @@ func (s *server) Results(w http.ResponseWriter, r *http.Request) {
 
 	// search; note that searcher is an indirect to search/cex.Search
 	type SearchResults struct {
-		Results []cex.Box
+		Results []cexfind.Box
 		Err     error
 	}
 	sr := SearchResults{}

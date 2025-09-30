@@ -13,7 +13,6 @@ import (
 	"testing"
 
 	"github.com/rorycl/cexfind"
-	cex "github.com/rorycl/cexfind"
 	"github.com/shopspring/decimal"
 )
 
@@ -111,7 +110,7 @@ func TestFavicon(t *testing.T) {
 	}
 }
 
-// TestResults tests a POST to Results; note that cex.Search is
+// TestResults tests a POST to Results; note that cexfind.Search is
 // swapped out
 func TestResults(t *testing.T) {
 
@@ -121,11 +120,11 @@ func TestResults(t *testing.T) {
 	s.DirFS.TplFS = os.DirFS("templates")
 
 	// override package global searcher which indirects Search
-	s.searcher = func(cf *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cex.Box, error) {
-		return []cex.Box{
-			cex.Box{Model: "2a", Name: "2a name", ID: "id3", Price: decimal.NewFromInt(3)},
-			cex.Box{Model: "1a", Name: "1a name", ID: "id1", Price: decimal.NewFromInt(1)},
-			cex.Box{Model: "1b", Name: "1b name", ID: "id2", Price: decimal.NewFromInt(2)},
+	s.searcher = func(cf *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cexfind.Box, error) {
+		return []cexfind.Box{
+			cexfind.Box{Model: "2a", Name: "2a name", ID: "id3", Price: decimal.NewFromInt(3)},
+			cexfind.Box{Model: "1a", Name: "1a name", ID: "id1", Price: decimal.NewFromInt(1)},
+			cexfind.Box{Model: "1b", Name: "1b name", ID: "id2", Price: decimal.NewFromInt(2)},
 		}, nil
 	}
 

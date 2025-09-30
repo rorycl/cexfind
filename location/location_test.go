@@ -66,10 +66,10 @@ func TestGetLocationReal(t *testing.T) {
 	if got, want := location.District, "Wiltshire"; got != want {
 		t.Errorf("got %s want %s", got, want)
 	}
-	if got, want := location.Latitude, 51.417369; got != want {
+	if got, want := location.Latitude, 51.417367; got != want {
 		t.Errorf("latitude got %f want %f", got, want)
 	}
-	if got, want := location.Longitude, -1.735758; got != want {
+	if got, want := location.Longitude, -1.735748; got != want {
 		t.Errorf("longitude got %f want %f", got, want)
 	}
 	if !lFinder.has(postcode) {

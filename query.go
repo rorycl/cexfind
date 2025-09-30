@@ -47,7 +47,7 @@ var (
 	// save web output to temp file if DEBUG true
 	debug = false
 	// no results sentinel error
-	NoResultsFoundError error = errors.New("no results found")
+	ErrNoResultsFound error = errors.New("no results found")
 )
 
 // jsonResults encompasses the interesting fields in a Cex web search result
@@ -152,7 +152,7 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 		// html page might have been returned; try and extract heading
 		reason := errorExtract(responseBytes)
 		if reason != "" {
-			reason = "Cex API unknown retrieval or unmarshalling error"
+			reason = "unknown API retrieval or unmarshalling error"
 			return r, errors.New(reason)
 		}
 		var ju *json.UnmarshalTypeError
@@ -162,7 +162,7 @@ func postQuery(queryBytes []byte) (jsonResults, error) {
 		return r, fmt.Errorf("json reading error %w", err)
 	}
 	if len(r.Results) < 1 || len(r.Results[0].Hits) < 1 {
-		return r, NoResultsFoundError
+		return r, ErrNoResultsFound
 	}
 	return r, nil
 }

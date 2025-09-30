@@ -16,7 +16,7 @@ import (
 // Note that the full url is findLocationURL + ?q=
 var findLocationURL string = "https://api.postcodes.io/postcodes"
 
-var ErrLocationNotFound error = errors.New("Location not found")
+var ErrLocationNotFound error = errors.New("location not found")
 
 // Location represents the location derived from a web call
 type location struct {
@@ -91,7 +91,7 @@ func (lf *locationFinder) length() int {
 func (lf *locationFinder) getLocationFromPostcode(postcode string) (*location, error) {
 
 	if postcode == "" {
-		return nil, errors.New("No postcode provided")
+		return nil, errors.New("no postcode provided")
 	}
 
 	// check postcode in cache

@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var InputTooShortErr = errors.New("each query needs to be at least 3 characters in length")
+var ErrInputTooShort = errors.New("each query needs to be at least 3 characters in length")
 var QuerySplitChar = ";"
 
 // QueryInputChecker checks a query input from a command and splits it
@@ -16,7 +16,7 @@ var QuerySplitChar = ";"
 // each part.
 func QueryInputChecker(inQueries ...string) ([]string, error) {
 	if len(inQueries) < 1 {
-		return []string{}, InputTooShortErr
+		return []string{}, ErrInputTooShort
 	}
 	outputQueries := []string{}
 	for _, iq := range inQueries {
@@ -24,7 +24,7 @@ func QueryInputChecker(inQueries ...string) ([]string, error) {
 		for _, q := range innerQueries {
 			q = strings.TrimSpace(q)
 			if len(q) < 3 {
-				return outputQueries, InputTooShortErr
+				return outputQueries, ErrInputTooShort
 			}
 			outputQueries = append(outputQueries, q)
 		}

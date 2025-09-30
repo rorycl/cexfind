@@ -98,7 +98,7 @@ testme:
 
 install-lint:
 	# https://golangci-lint.run/usage/install/#local-installation to GOPATH
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(HEREGOPATH)/bin v1.57.2
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.5.0
 	# report version
 	${HEREGOPATH}/bin/golangci-lint --version
 

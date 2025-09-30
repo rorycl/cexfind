@@ -17,7 +17,7 @@ func TestFindLocal(t *testing.T) {
 		{
 			input:  "",
 			output: []string{},
-			err:    InputTooShortErr,
+			err:    ErrInputTooShort,
 		},
 		{
 			input:  "one",
@@ -38,7 +38,7 @@ func TestFindLocal(t *testing.T) {
 			// second input too short
 			input:  "one;tw",
 			output: []string{"one"}, // fail
-			err:    InputTooShortErr,
+			err:    ErrInputTooShort,
 		},
 		{
 			input:  `14" laptop`,
