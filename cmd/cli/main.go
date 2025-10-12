@@ -58,7 +58,7 @@ func flagGet() (queriesType, bool, string, bool) {
 	flag.BoolVar(&strict, "strict", false, "only return items that strictly match the search terms")
 	flag.Var(&queries, "query", "list of queries")
 	flag.BoolVar(&verbose, "verbose", false, "show verbose output, including cash/exchange prices and stores")
-	flag.StringVar(&postCode, "postcode", "", "specify postcodepostcode")
+	flag.StringVar(&postCode, "postcode", "", "specify postcode")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
