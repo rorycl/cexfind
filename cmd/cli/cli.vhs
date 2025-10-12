@@ -58,7 +58,7 @@ Enter
 Show
 Sleep 500ms
 
-Type "./cli -query 'Lenovo t14 Gen4' | head -n 19"
+Type "./cli -query 'Lenovo T14s' | head -n 19"
 Enter
 Sleep 4s
 
@@ -75,7 +75,7 @@ Enter
 Show
 Sleep 500ms
 
-Type "./cli -query 'Lenovo t14 Gen4' -strict"
+Type "./cli -query 'Lenovo t14s Gen5' -strict"
 Enter
 Sleep 4s
 
@@ -93,7 +93,7 @@ Enter
 Show
 Sleep 500ms
 
-Type "./cli -query 'Lenovo t14 Gen4' -strict -verbose"
+Type "./cli -query 'Lenovo t14s Gen5' -strict -verbose"
 Enter
 Sleep 4s
 
@@ -111,7 +111,7 @@ Enter
 Show
 Sleep 500ms
 
-Type `./cli -query 'Lenovo t14 Gen4' -strict -postcode "B3 2BJ"`
+Type `./cli -query 'Lenovo t14s Gen5' -strict -postcode "B3 2BJ"`
 Enter
 Sleep 4s
 
@@ -129,7 +129,7 @@ Enter
 Show
 Sleep 500ms
 
-Type `./cli -query 'Lenovo t14 Gen4' -query "lenovo x390" -strict -postcode "B3 2BJ"`
+Type `./cli -query 'Lenovo T14 Gen1' -query 'Lenovo t14s Gen5' -strict -postcode "B3 2BJ"`
 Enter
 Sleep 6s
 
