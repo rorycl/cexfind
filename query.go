@@ -80,9 +80,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 	results := make(chan boxResults)
 	var wg sync.WaitGroup
 	for _, query := range queries {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
+		wg.Go(func() {
 			br := boxResults{query: query}
 			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
@@ -109,7 +107,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				}
 				results <- br
 			}
-		}()
+		})
 	}
 	go func() {
 		wg.Wait()

@@ -1,6 +1,6 @@
 module webserver
 
-go 1.25
+go 1.26
 
 replace github.com/rorycl/cexfind => ../../
 
@@ -16,5 +16,5 @@ require (
 
 require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	golang.org/x/text v0.33.0 // indirect
+	golang.org/x/text v0.34.0 // indirect
 )

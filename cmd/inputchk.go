@@ -20,8 +20,8 @@ func QueryInputChecker(inQueries ...string) ([]string, error) {
 	}
 	outputQueries := []string{}
 	for _, iq := range inQueries {
-		innerQueries := strings.Split(iq, QuerySplitChar)
-		for _, q := range innerQueries {
+		innerQueries := strings.SplitSeq(iq, QuerySplitChar)
+		for q := range innerQueries {
 			q = strings.TrimSpace(q)
 			if len(q) < 3 {
 				return outputQueries, ErrInputTooShort
