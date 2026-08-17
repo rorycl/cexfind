@@ -37,10 +37,14 @@ package cexfind
 
 import (
 	"cmp"
+	"context"
 	"errors"
 	"fmt"
+	"net/http"
+	"net/url"
 	"slices"
 	"strings"
+	"time"
 
 	"github.com/rorycl/cexfind/location"
 	"github.com/shopspring/decimal"
@@ -150,16 +154,54 @@ func (b *boxes) sort() {
 }
 
 // CexFind provides the means for searching Cex's API with store
-// location data.
+// location data and a configurable http Client.
 type CexFind struct {
 	storeDistances *location.StoreDistances
+	client         *http.Client
 }
 
-// NewCexFind makes a new Cex instance. This should only be initalised
-// once due to caching in the location submodules.
-func NewCexFind() *CexFind {
-	return &CexFind{
+// Option is an initialiser opt.
+type Option func(*CexFind) error
+
+// NewCexFind makes a new Cex instance taking zero or more Option. This should only be
+// initalised once due to caching in the location submodules.
+func NewCexFind(opts ...Option) (*CexFind, error) {
+	cex := &CexFind{
 		storeDistances: location.NewStoreDistances(true),
+		client: &http.Client{
+			Transport: &http.Transport{
+				MaxConnsPerHost: 8,
+			},
+			Timeout: 30 * time.Second,
+		},
+	}
+	for _, opt := range opts {
+		if err := opt(cex); err != nil {
+			return nil, err
+		}
+	}
+
+	return cex, nil
+}
+
+// WithProxy configures the HTTP client to use a proxy (e.g. socks5://...)
+func WithProxy(proxyStr string) Option {
+
+	return func(c *CexFind) error {
+		if proxyStr == "" {
+			return nil
+		}
+
+		u, err := url.Parse(proxyStr)
+		if err != nil {
+			return fmt.Errorf("proxy string %q could not be parsed: %w", proxyStr, err)
+		}
+
+		if t, ok := c.client.Transport.(*http.Transport); !ok {
+			t.Proxy = http.ProxyURL(u)
+			return nil
+		}
+		return errors.New("unknown transport could not be used with proxy")
 	}
 }
 
@@ -189,9 +231,13 @@ func (cex *CexFind) Search(queries []string, strict bool, postcode string) ([]Bo
 	var allBoxes boxes
 	var idMap = make(map[string]struct{})
 
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
 	var err error
 
-	results := makeQueries(queries, strict)
+	results := makeQueries(ctx, cex.client, queries, strict)
+
 	for br := range results {
 		if br.err != nil {
 			if err != nil {

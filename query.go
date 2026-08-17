@@ -5,6 +5,7 @@ package cexfind
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -76,7 +77,7 @@ type boxResults struct {
 
 // makeQueries makes queries concurrently; strict true requires that the
 // return results contain all terms in at least one query
-func makeQueries(queries []string, strict bool) chan boxResults {
+func makeQueries(ctx context.Context, client *http.Client, queries []string, strict bool) chan boxResults {
 	results := make(chan boxResults)
 	var wg sync.WaitGroup
 	for _, query := range queries {
@@ -84,7 +85,7 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 			br := boxResults{query: query}
 			queryBody := strings.ReplaceAll(jsonBody, "MODEL", url.QueryEscape(query))
 			queryBytes := []byte(queryBody)
-			response, err := postQuery(queryBytes)
+			response, err := postQuery(client, queryBytes)
 			if err != nil {
 				br.err = err
 				results <- br
@@ -105,7 +106,12 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 				if strict && !br.box.inQuery(queries) {
 					continue
 				}
-				results <- br
+
+				select {
+				case results <- br:
+				case <-ctx.Done(): // return on context cancellation
+					return
+				}
 			}
 		})
 	}
@@ -117,15 +123,20 @@ func makeQueries(queries []string, strict bool) chan boxResults {
 }
 
 // postQuery posts the web query
-func postQuery(queryBytes []byte) (jsonResults, error) {
+func postQuery(client *http.Client, queryBytes []byte) (jsonResults, error) {
 	var r jsonResults
+
+	_, err := url.ParseRequestURI(URL)
+	if err != nil {
+		return r, fmt.Errorf("url parsing error: %w", err)
+	}
+
 	request, err := http.NewRequest("POST", URL, bytes.NewBuffer(queryBytes))
 	if err != nil {
 		return r, err
 	}
 
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
-	client := &http.Client{}
 	response, err := client.Do(request)
 	if err != nil {
 		return r, fmt.Errorf("http call error: %w", err)

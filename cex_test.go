@@ -73,7 +73,10 @@ func TestSearch(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	cex := NewCexFind()
+	cex, err := NewCexFind()
+	if err != nil {
+		t.Fatalf("unexpected init error: %s", err)
+	}
 	results, err := cex.Search([]string{"lenovo x390s"}, false, "")
 	if err != nil {
 		t.Fatal(err)
@@ -89,7 +92,10 @@ func TestSearch(t *testing.T) {
 	}
 
 	// strict search for non-existing model
-	cex = NewCexFind()
+	cex, err = NewCexFind()
+	if err != nil {
+		t.Fatalf("unexpected init error: %s", err)
+	}
 	_, err = cex.Search([]string{"lenovo x390st"}, true, "")
 	if err == nil || err.Error() != "no results" {
 		t.Fatalf("expected no results error, got %v", err)
@@ -117,7 +123,10 @@ func TestSearchTerminator(t *testing.T) {
 	URL = ts.URL
 
 	// non-strict search
-	cex := NewCexFind()
+	cex, err := NewCexFind()
+	if err != nil {
+		t.Fatalf("unexpected init error: %s", err)
+	}
 	results, err := cex.Search([]string{"terminator"}, false, "")
 	if err != nil {
 		t.Fatal(err)
