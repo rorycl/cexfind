@@ -1,7 +1,14 @@
 package location
 
+// This part of the location module brings together the following elements:
+// * stores: the location of Cex stores
+// * location: a person's present location, and distances to stores
+// * haversine: a rough calculation between stores and present location
+
 import (
+	"errors"
 	"fmt"
+	"net/http"
 	"sort"
 )
 
@@ -47,15 +54,27 @@ type StoreDistances struct {
 	locationFinder *locationFinder
 }
 
-// NewStoreDistances initialises a StoresDistance instance, and passes a
-// testing flag to the stores initaliser. In production,
-// initialiseStores should be true
-func NewStoreDistances(initialiseStores bool) *StoreDistances {
-	s := StoreDistances{
-		stores:         newStores(initialiseStores),
-		locationFinder: newLocationFinder(),
+// NewStoreDistances initialises a StoresDistance instance.
+func NewStoreDistances(client *http.Client) (*StoreDistances, error) {
+	if client == nil {
+		return nil, errors.New("nil http client provided to NewStoreDistances")
 	}
-	return &s
+	s := StoreDistances{
+		stores:         newStores(client),
+		locationFinder: newLocationFinder(client),
+	}
+	return &s, nil
+}
+
+// Initialise explicitly initialises the stores.
+func (sd *StoreDistances) Initialise() error {
+	return sd.stores.initialise()
+}
+
+// StartPeriodicReinitialisation starts the periodic reinitialisation of the store map,
+// to pick up changes on a regular basis (say, daily).
+func (sd *StoreDistances) StartPeriodicReinitialisation() {
+	sd.stores.periodicallyReinitialise()
 }
 
 // Distances finds the distances of the named stores from postcode and

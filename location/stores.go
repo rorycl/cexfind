@@ -40,33 +40,44 @@ type store struct {
 }
 
 // stores is a collection of store safe for concurrent access. The Store
-// cache is updated once a day.
+// cache is updated by default once a day.
 type stores struct {
-	storeMap map[string]store
-	sync.RWMutex
+	client      *http.Client
+	storeMap    map[string]store
 	initialised bool
 	update      *time.Ticker
+	sync.RWMutex
 }
 
 var tickerOKDuration time.Duration = time.Minute * 60 * 24
 var tickerProblemDuration time.Duration = time.Minute * 10
 
-// newStores initialises a concurrent safe stores struct. The stores are
-// only initialised if true, which is the default in production.
-func newStores(initialiseStores bool) *stores {
+// newStores initialises a concurrent safe stores struct.
+func newStores(client *http.Client) *stores {
 	s := stores{
+		client:   client,
 		storeMap: map[string]store{},
 		update:   time.NewTicker(tickerOKDuration),
 	}
-	if initialiseStores {
-		err := s.getStoreLocations()
-		if err != nil {
-			log.Printf("store update error %s", err)
-			s.update.Reset(tickerProblemDuration)
-		} else {
-			s.initialised = true
-		}
+	return &s
+}
+
+// initialise initialises the store database, returning an error if this fails.
+func (s *stores) initialise() error {
+	err := s.getStoreLocations()
+	if err != nil {
+		return fmt.Errorf("store database initialisation error %s", err)
+	} else {
+		s.Lock()
+		s.initialised = true
+		s.Unlock()
 	}
+	return nil
+}
+
+// periodicallyReinitialise periodicically updates for long running clients, such as the
+// web client.
+func (s *stores) periodicallyReinitialise() {
 	go func() {
 		for range s.update.C {
 			err := s.getStoreLocations()
@@ -84,14 +95,18 @@ func newStores(initialiseStores bool) *stores {
 			}
 		}
 	}()
-	return &s
 }
 
-func (s *stores) get(name string) (store, bool) {
+// get the store information for a named store.
+func (s *stores) get(name string) (*store, bool) {
+	if !s.isInitialised() {
+		return nil, false
+	}
+
 	s.RLock()
 	defer s.RUnlock()
 	st, ok := s.storeMap[name]
-	return st, ok
+	return &st, ok
 }
 
 func (s *stores) isInitialised() bool {
@@ -130,10 +145,8 @@ LOOP:
 func (s *stores) getStoreLocations() error {
 
 	var jsonStores storeLocations
-	client := &http.Client{
-		Timeout: 2 * time.Second,
-	}
-	response, err := client.Get(storeURL)
+
+	response, err := s.client.Get(storeURL)
 	if err != nil {
 		return err
 	}

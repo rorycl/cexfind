@@ -22,12 +22,16 @@ func TestGetStores(t *testing.T) {
 	// repoint url
 	storeURL = svr.URL
 
-	stores := newStores(false)
+	stores := newStores(nil)
 	if stores.isInitialised() {
 		t.Fatal("initialisation should have failed")
 	}
 
-	stores = newStores(true)
+	stores = newStores(nil)
+	err = stores.initialise()
+	if err != nil {
+		t.Fatal(err)
+	}
 	if !stores.isInitialised() {
 		t.Fatal("initialisation should be ok")
 	}
@@ -54,6 +58,8 @@ func TestGetStores(t *testing.T) {
 		t.Error("expected alias value for London - W1 Rathbone Place")
 		return
 	}
+
+	stores.periodicallyReinitialise()
 
 	stores.Lock()
 	stores.initialised = false

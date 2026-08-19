@@ -1,11 +1,13 @@
 package location
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"testing"
+	"time"
 )
 
 var originalURL string = findLocationURL
@@ -24,7 +26,7 @@ func TestGetLocationLocal(t *testing.T) {
 	findLocationURL = svr.URL
 
 	postcode := "NW1 6LG"
-	lFinder := newLocationFinder()
+	lFinder := newLocationFinder(&http.Client{Timeout: time.Second * 2})
 	location, err := lFinder.getLocationFromPostcode(postcode)
 	if err != nil {
 		t.Fatal(err)
@@ -48,15 +50,26 @@ func TestGetLocationLocal(t *testing.T) {
 	}
 }
 
+// TestGetLocationReal uses a live callout.
 func TestGetLocationReal(t *testing.T) {
 
 	findLocationURL = originalURL
 
+	client := &http.Client{
+		Transport: &http.Transport{
+			// Proxy:           http.ProxyURL(someProxyURL),
+		},
+		Timeout: time.Millisecond * 750,
+	}
+
 	// Marlborough Mound 51.4166° N, 1.7371° W (numbers below are a bit
 	// off)
 	postcode := "SN8 1PA"
-	lFinder := newLocationFinder()
+	lFinder := newLocationFinder(client)
 	location, err := lFinder.getLocationFromPostcode(postcode)
+	if _, ok := errors.AsType[ErrorLocationHTTPGet](err); ok {
+		t.Fatalf("http error\n** This test requires internet access **\n%s", err)
+	}
 	if err != nil {
 		t.Fatal(err)
 	}

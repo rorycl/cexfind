@@ -9,7 +9,6 @@ import (
 	"net/url"
 	"strings"
 	"sync"
-	"time"
 )
 
 // findLocationURL is the url for looking up location by UK postcode.
@@ -40,14 +39,16 @@ type jsonLocation struct {
 // locationFinder holds information about postcodes, avoiding lookups
 // for the same postcode
 type locationFinder struct {
+	client      *http.Client
 	locationMap map[string]location
 	sync.RWMutex
 }
 
 // newLocationFinder returns a new locationFinder. This should only be
-// initialised once
-func newLocationFinder() *locationFinder {
+// initialised once.
+func newLocationFinder(client *http.Client) *locationFinder {
 	l := locationFinder{
+		client:      client,
 		locationMap: map[string]location{},
 	}
 	return &l
@@ -85,6 +86,14 @@ func (lf *locationFinder) length() int {
 	return len(lf.locationMap)
 }
 
+type ErrorLocationHTTPGet struct {
+	err error
+}
+
+func (elhg ErrorLocationHTTPGet) Error() string {
+	return elhg.err.Error()
+}
+
 // getLocationFromPostcode tries to extract the location data from the
 // locationMap. If that fails it tries to extract the necessary
 // information from a web service.
@@ -101,12 +110,9 @@ func (lf *locationFinder) getLocationFromPostcode(postcode string) (*location, e
 
 	var jloc jsonLocation
 
-	client := &http.Client{
-		Timeout: 2 * time.Second,
-	}
-	response, err := client.Get(findLocationURL + "?q=" + url.QueryEscape(postcode))
+	response, err := lf.client.Get(findLocationURL + "?q=" + url.QueryEscape(postcode))
 	if err != nil {
-		return nil, err
+		return nil, ErrorLocationHTTPGet{err}
 	}
 	defer response.Body.Close()
 

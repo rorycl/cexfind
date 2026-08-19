@@ -3,7 +3,9 @@ package location
 import (
 	"fmt"
 	"math"
+	"net/http"
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 )
@@ -17,8 +19,16 @@ func TestStoreDistances(t *testing.T) {
 	//		location.StoreWithDistance{StoreID:193, StoreName:"Woolwich", RegionName:"London and the South-East of England", Latitude:51.491979, Longitude:0.064665, DistanceMiles:146.44476176156368},
 	//		location.StoreWithDistance{StoreID:3058, StoreName:"Havant", RegionName:"London and the South-East of England", Latitude:50.852325, Longitude:-0.982041, DistanceMiles:176.34720204432986}}
 	//	}
-	initialiseStoreDistances := true
-	nsd := NewStoreDistances(initialiseStoreDistances)
+
+	client := &http.Client{
+		Transport: &http.Transport{
+			// Proxy:           http.ProxyURL(someProxyURL),
+		},
+		Timeout: time.Second * 2,
+	}
+
+	nsd, err := NewStoreDistances(client)
+
 	sd, err := nsd.Distances("S10 1LT", []string{"Walthamstow", "Woolwich", "Havant"})
 	if err != nil {
 		t.Fatal(err)
