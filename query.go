@@ -45,7 +45,7 @@ var (
 
 	// urlDetail is the Cex/Webuy base url for individual items
 	urlDetail = "https://uk.webuy.com/product-detail?id="
-	// save web output to temp file if DEBUG true
+	// save web output to temp file if debug true
 	debug = false
 	// no results sentinel error
 	ErrNoResultsFound error = errors.New("no results found")

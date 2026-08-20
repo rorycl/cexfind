@@ -11,22 +11,24 @@
 //
 // Example usage:
 //
-//	 postcode := "S10 1LT" // royal armouries museum, leeds
-//		kit := cex.NewCex()
-//		cex.Search(queries, strict, postcode)
-//		results, err := kit.Search(queries, strict)
+//		queries := []string{"Lenovo T14s"}
+//		strict := false
+//		postcode := "S10 1LT" // royal armouries museum, leeds
+//		var kit *CexFind
+//		if postcode != "" {
+//			kit, _ := cex.NewCexFind(WithStoreDistanceInitiliase())
+//		} else {
+//			kit, _ := cex.NewCexFind()
+//	    }
+//		results, err := cex.Search(queries, strict, postcode)
 //		if err != nil {
 //			log.Fatal(err)
 //		}
 //
-//		latestModel := ""
 //		for _, box := range results {
-//			if box.Model != latestModel {
-//				fmt.Printf("\n%s\n", box.Model)
-//				latestModel = box.Model
-//			}
+//			fmt.Printf("\n%s\n", box.Model)
 //			fmt.Printf(
-//				"   £%3d %s\n   %s\n   %s\n",
+//			"   £%3d %s\n   %s\n   %s\n",
 //				box.Price,
 //				box.Name,
 //				box.IDUrl(),
@@ -156,52 +158,136 @@ func (b *boxes) sort() {
 // CexFind provides the means for searching Cex's API with store
 // location data and a configurable http Client.
 type CexFind struct {
-	storeDistances *location.StoreDistances
 	client         *http.Client
+	storeDistances *location.StoreDistances
 }
 
 // Option is an initialiser opt.
 type Option func(*CexFind) error
 
-// NewCexFind makes a new Cex instance taking zero or more Option. This should only be
-// initalised once due to caching in the location submodules.
+// NewCexFind makes a new Cex instance taking zero or more Option. To use the
+// `WithProxy` for example the function should be called along the following lines:
+//
+//	c, err := NewCexFind(WithProxy("socks5://127.0.0.1:8081"))
+//
+// If store distances from a postcode are needed, use the WithStoreDistanceInitiliase
+// option. For store distances with periodic updates (for long running programmes, such
+// as the web interface perhaps), use the WithStoreDistanceInitializeAndUpdates option.
+// Note that only one of WithStoreDistanceInitiliase and
+// WithStoreDistanceInitializeAndUpdates should be used.
+//
+// An example of using both a socks5 proxy and WithStoreDistanceInitiliase:
+//
+//	c, err := NewCexFind(
+//		WithProxy("socks5://127.0.0.1:8081"),
+//		WithStoreDistanceInitialize(),
+//	)
 func NewCexFind(opts ...Option) (*CexFind, error) {
-	cex := &CexFind{
-		storeDistances: location.NewStoreDistances(true),
-		client: &http.Client{
-			Transport: &http.Transport{
-				MaxConnsPerHost: 8,
-			},
-			Timeout: 30 * time.Second,
-		},
+	client, _ := newHTTPClient("")
+
+	// Setup the stores and location finder.
+	nsd, err := location.NewStoreDistances(client)
+	if err != nil {
+		return nil, fmt.Errorf("NewStoreDistances new error: %w", err)
 	}
+
+	cex := &CexFind{
+		client:         client,
+		storeDistances: nsd,
+	}
+
+	// Add options, if any.
 	for _, opt := range opts {
 		if err := opt(cex); err != nil {
 			return nil, err
 		}
 	}
-
 	return cex, nil
+}
+
+// proxySchemeOK checks if the proxy url includes the expected `scheme` component.
+func proxySchemeOK(u *url.URL) error {
+	expected := []string{"socks5", "http", "https"}
+	for _, mtch := range expected {
+		if strings.Contains(u.Scheme, mtch) {
+			return nil
+		}
+	}
+	return fmt.Errorf("shema %q not recognised, expected one of %v", u.Scheme, expected)
+}
+
+// newHTTPClient is a convenience func for initialising an http client from scratch at
+// initialisation or update ("with" options), since updating a transport via
+// <obj>.(*http.Transport) appears unreliable.
+func newHTTPClient(proxy string) (*http.Client, error) {
+
+	maxConnsPerHost := 8
+	timeout := time.Second * 15
+
+	if proxy == "" {
+		return &http.Client{
+			Transport: &http.Transport{
+				MaxConnsPerHost: maxConnsPerHost,
+			},
+			Timeout: timeout,
+		}, nil
+	}
+
+	// Parse and check the provided proxy url.
+	u, err := url.Parse(proxy)
+	if err != nil {
+		return nil, fmt.Errorf("proxy %q could not be parsed: %w", proxy, err)
+	}
+	if err := proxySchemeOK(u); err != nil {
+		return nil, err
+	}
+
+	// Attach a new client.
+	return &http.Client{
+		Transport: &http.Transport{
+			MaxConnsPerHost: maxConnsPerHost,
+			Proxy:           http.ProxyURL(u),
+		},
+		Timeout: timeout,
+	}, nil
 }
 
 // WithProxy configures the HTTP client to use a proxy (e.g. socks5://...)
 func WithProxy(proxyStr string) Option {
-
 	return func(c *CexFind) error {
-		if proxyStr == "" {
-			return nil
-		}
+		var err error
+		c.client, err = newHTTPClient(proxyStr)
+		return err
+	}
+}
 
-		u, err := url.Parse(proxyStr)
+// WithStoreDistanceInitialize initialises the store distancer.
+func WithStoreDistanceInitiliase() Option {
+	return func(c *CexFind) error {
+		if c.storeDistances.IsOperational() {
+			return errors.New("store distances already initialised")
+		}
+		err := c.storeDistances.Initialise()
 		if err != nil {
-			return fmt.Errorf("proxy string %q could not be parsed: %w", proxyStr, err)
+			return fmt.Errorf("store distances initialisation error: %w", err)
 		}
+		return nil
+	}
+}
 
-		if t, ok := c.client.Transport.(*http.Transport); !ok {
-			t.Proxy = http.ProxyURL(u)
-			return nil
+// WithStoreDistanceInitializeAndUpdates initialises and starts running the periodic
+// store distance updater.
+func WithStoreDistanceInitializeAndUpdates() Option {
+	return func(c *CexFind) error {
+		if c.storeDistances.IsOperational() {
+			return errors.New("store distances already initialised")
 		}
-		return errors.New("unknown transport could not be used with proxy")
+		err := c.storeDistances.Initialise()
+		if err != nil {
+			return fmt.Errorf("store distances initialisation error: %w", err)
+		}
+		c.storeDistances.StartPeriodicReinitialisation()
+		return nil
 	}
 }
 

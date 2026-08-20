@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"os"
 	"testing"
 
@@ -241,10 +242,44 @@ func TestBoxIDUrl(t *testing.T) {
 }
 
 func TestCexInitialised(t *testing.T) {
+	nsd, err := location.NewStoreDistances(http.DefaultClient)
+	if err != nil {
+		t.Fatal(err)
+	}
 	cex := &CexFind{
-		storeDistances: location.NewStoreDistances(false),
+		storeDistances: nsd,
 	}
 	if got, want := cex.LocationDistancesOK(), false; got != want {
 		t.Errorf("got %t want %t", got, want)
+	}
+}
+
+// Test proxy schema
+func TestProxySchema(t *testing.T) {
+	tests := []struct {
+		URL string
+		ok  bool
+	}{
+		{"socks5://127.0.0.1:8081", true},
+		{"socks7://127.0.0.1:8081", false},
+		{"https://127.0.0.2:8080", true},
+		{"ftp://127.0.0.2:8080", false},
+		{"", false},
+	}
+
+	for ii, tt := range tests {
+		t.Run(fmt.Sprintf("test_%d", ii), func(t *testing.T) {
+			u, err := url.Parse(tt.URL)
+			if err != nil {
+				t.Fatal(err) // setup failure
+			}
+			err = proxySchemeOK(u)
+			if err == nil && !tt.ok {
+				t.Errorf("expected error for %q", tt.URL)
+			}
+			if err != nil && tt.ok {
+				t.Errorf("unexpected error %s for %q", err, tt.URL)
+			}
+		})
 	}
 }
