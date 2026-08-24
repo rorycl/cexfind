@@ -322,7 +322,10 @@ func (cex *CexFind) Search(queries []string, strict bool, postcode string) ([]Bo
 
 	var err error
 
-	results := makeQueries(ctx, cex.client, queries, strict)
+	results, err := makeQueries(ctx, cex.client, queries, strict)
+	if err != nil {
+		return nil, err
+	}
 
 	for br := range results {
 		if br.err != nil {

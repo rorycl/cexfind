@@ -28,6 +28,9 @@ func TestStoreDistances(t *testing.T) {
 	}
 
 	nsd, err := NewStoreDistances(client)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	sd, err := nsd.Distances("S10 1LT", []string{"Walthamstow", "Woolwich", "Havant"})
 	if err != nil {

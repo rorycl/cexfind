@@ -131,3 +131,24 @@ func TestStoreSimplifier(t *testing.T) {
 		})
 	}
 }
+
+func TestValidQuery(t *testing.T) {
+
+	tests := []struct {
+		query string
+		ok    bool
+	}{
+		{"abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij", true},
+		{"abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijk", false},
+		{"https://evilredirect.com", false},
+		{"a simple search", true},
+	}
+
+	for ii, tt := range tests {
+		t.Run(fmt.Sprintf("test_%d", ii), func(t *testing.T) {
+			if result := validQuery(tt.query); result != tt.ok {
+				t.Errorf("got %t expected %t for %s (%d)", result, tt.ok, tt.query, len(tt.query))
+			}
+		})
+	}
+}

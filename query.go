@@ -75,10 +75,30 @@ type boxResults struct {
 	err   error
 }
 
+// validQuery checks that an incoming query fragment is ok to pass upstream.
+func validQuery(query string) bool {
+	if len(query) > 50 {
+		return false
+	}
+	if u, _ := url.Parse(query); u.Scheme != "" {
+		return false
+	}
+	return true
+}
+
 // makeQueries makes queries concurrently; strict true requires that the
 // return results contain all terms in at least one query
-func makeQueries(ctx context.Context, client *http.Client, queries []string, strict bool) chan boxResults {
+func makeQueries(ctx context.Context, client *http.Client, queries []string, strict bool) (<-chan boxResults, error) {
+
 	results := make(chan boxResults)
+
+	// first check queries seem valid, to avoid possing these up to the upstream server
+	for _, q := range queries {
+		if !validQuery(q) {
+			return results, fmt.Errorf("query %q is too long or not valid", q)
+		}
+	}
+
 	var wg sync.WaitGroup
 	for _, query := range queries {
 		wg.Go(func() {
@@ -119,7 +139,7 @@ func makeQueries(ctx context.Context, client *http.Client, queries []string, str
 		wg.Wait()
 		close(results)
 	}()
-	return results
+	return results, nil
 }
 
 // postQuery posts the web query
@@ -137,6 +157,9 @@ func postQuery(client *http.Client, queryBytes []byte) (jsonResults, error) {
 	}
 
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+	// The request here triggers a possible SSRF warning, however the base URL is
+	// provided as a static var and the query parameters are escaped before addition.
+	// nolint:gosec
 	response, err := client.Do(request)
 	if err != nil {
 		return r, fmt.Errorf("http call error: %w", err)
