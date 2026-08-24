@@ -1,6 +1,6 @@
 # cexfind
 
-v0.3.1 : 24 August 2026 : add proxying
+v0.3.2 : 24 August 2026 : add proxying
 
 HTTP Proxy support is now provided in the library and cli, console and
 web clients. This is convenient to use when out of the UK, for example
