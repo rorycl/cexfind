@@ -1,12 +1,10 @@
 # cexfind
 
-v0.3.0 : 29 January 2025 : add location service unavailability checks
+v0.3.1 : 24 August 2026 : add proxying
 
-This release exposes location service unavailability in the Cexfind
-library and apps.
-
-*Unfortunately the GCP instance of Cexfind is presently being blocked by
-CloudFlare.*
+HTTP Proxy support is now provided in the library and cli, console and
+web clients. This is convenient to use when out of the UK, for example
+with a `ssh -D 8081 user@ukserver.com` type of socks5 proxy.
 
 ## Find kit on Cex, fast
 
@@ -17,8 +15,8 @@ rapid and effective searches for second hand equipment for sale at
 Cex/Webuy using the unofficial `webuy.io` json search endpoint.
 
 Note that these programs only work for queries made in the UK (or via a
-proxy terminating in the UK). This is intended to be a fun project not
-intended for commercial use.
+proxy terminating in the UK). This is intended to be a fun project and
+is not intended for commercial use.
 
 ## Usage
 

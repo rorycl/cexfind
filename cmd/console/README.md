@@ -11,6 +11,9 @@ This console app needs to be built or downloaded from the
 [releases](https://github.com/rorycl/cexfind/releases) page. Please note
 that the app only works for queries emanating from the UK.
 
+SET the `PROXY` environmental variable to use, for example, a socks5
+proxy.
+
 ![](console.gif)
 
 This gif was made using Charm's
