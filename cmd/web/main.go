@@ -7,6 +7,8 @@ import (
 	"net"
 	"os"
 	"strconv"
+
+	"github.com/rorycl/cexfind"
 )
 
 var usage = `
@@ -19,13 +21,14 @@ eg <programme> -address 192.168.4.5 -port 8001
 var Exit func(code int) = os.Exit
 
 // flagGetter indirects flagGet for testing
-var flagGetter func() (string, string) = flagGet
+var flagGetter func() (string, string, string) = flagGet
 
 // flagGet checks the flags
-func flagGet() (address, port string) {
+func flagGet() (address, port, proxy string) {
 
 	flag.StringVar(&address, "address", "127.0.0.1", "server network address")
 	flag.StringVar(&port, "port", "8000", "server network port")
+	flag.StringVar(&proxy, "proxy", "", "proxy, such as 'socks5://127.0.0.1:8081'")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
@@ -54,10 +57,25 @@ func flagGet() (address, port string) {
 	return
 }
 
-var serveFunc func(s *server, address, port string) = (*server).Serve
+var serveFunc func(s *server) = (*server).Serve
 
 func main() {
-	address, port := flagGetter()
-	server := newServer()
-	serveFunc(server, address, port)
+	address, port, proxy := flagGetter()
+
+	// initialise cex client with proxy (if provided) and background updating.
+	cex, err := cexfind.NewCexFind(
+		cexfind.WithProxy(proxy),
+		cexfind.WithStoreDistanceInitializeAndUpdates(),
+	)
+	if err != nil {
+		fmt.Println("cex client init error:", err)
+		os.Exit(1)
+	}
+
+	server, err := newServer(address, port, proxy, cex)
+	if err != nil {
+		fmt.Println("server init error:", err)
+		os.Exit(1)
+	}
+	serveFunc(server)
 }

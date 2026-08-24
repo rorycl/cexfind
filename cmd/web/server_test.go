@@ -16,9 +16,34 @@ import (
 	"github.com/shopspring/decimal"
 )
 
+type srch struct {
+	f       func() ([]cexfind.Box, error)
+	locDist bool
+}
+
+func (s *srch) Search(queries []string, strict bool, postcode string) ([]cexfind.Box, error) {
+	if s.f == nil {
+		return []cexfind.Box{}, nil
+	} else {
+		return s.f()
+	}
+}
+func (s *srch) LocationDistancesOK() bool {
+	return s.locDist
+}
+
+// newTestSearcher returns an object fulfilling the Searcher interface.
+func newTestSearcher() Searcher {
+	return &srch{}
+}
+
 // TestSetupFS sets up the FS
 func TestSetupFS(t *testing.T) {
-	s := newServer()
+	s, err := newServer("127.0.0.1", "8000", "socks5://127.0.0.1:8002", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	s.staticDirDev = "static"
 	s.tplDirDev = "templates"
 	if got, want := s.setupFS(), error(nil); got != want {
@@ -28,17 +53,24 @@ func TestSetupFS(t *testing.T) {
 
 // TestServe
 func TestServe(t *testing.T) {
-	s := newServer()
+	s, err := newServer("", "", "", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	s.serveFunc = func() {}
 	s.staticDirDev = "static"
 	s.tplDirDev = "templates"
-	s.Serve("127.0.0.1", "8123")
+	s.Serve()
 }
 
 // Test Home page returns a 200
 func TestHome(t *testing.T) {
 
-	s := newServer()
+	s, err := newServer("127.0.0.1", "8003", "socks5://127.0.0.1:8003", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
 	// home uses templates fs
 	s.DirFS = &fileSystem{}
 	s.DirFS.TplFS = os.DirFS("templates")
@@ -50,7 +82,7 @@ func TestHome(t *testing.T) {
 
 	res := w.Result()
 	defer res.Body.Close()
-	_, err := io.ReadAll(res.Body)
+	_, err = io.ReadAll(res.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -66,7 +98,11 @@ func TestHealth(t *testing.T) {
 	r := httptest.NewRequest(http.MethodGet, "http://example.com/health", nil)
 	w := httptest.NewRecorder()
 
-	s := newServer()
+	s, err := newServer("127.0.0.1", "8000", "", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	s.Health(w, r)
 
 	res := w.Result()
@@ -88,7 +124,11 @@ func TestHealth(t *testing.T) {
 // Favicon page returns a 200
 func TestFavicon(t *testing.T) {
 
-	s := newServer()
+	s, err := newServer("127.0.0.1", "8000", "", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	// favicon uses the static fs
 	s.DirFS = &fileSystem{}
 	s.DirFS.StaticFS = os.DirFS("static")
@@ -100,7 +140,7 @@ func TestFavicon(t *testing.T) {
 
 	res := w.Result()
 	defer res.Body.Close()
-	_, err := io.ReadAll(res.Body)
+	_, err = io.ReadAll(res.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -114,19 +154,31 @@ func TestFavicon(t *testing.T) {
 // swapped out
 func TestResults(t *testing.T) {
 
-	s := newServer()
+	/*
+		type srch struct {}
+		func (s *srch)
+	*/
+
+	s, err := newServer("127.0.0.1", "8000", "", newTestSearcher())
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	// results uses the templates endpoint
 	s.DirFS = &fileSystem{}
 	s.DirFS.TplFS = os.DirFS("templates")
 
-	// override package global searcher which indirects Search
-	s.searcher = func(cf *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cexfind.Box, error) {
+	// override searcher.Search
+	ss := &srch{}
+	ss.f = func() ([]cexfind.Box, error) {
 		return []cexfind.Box{
 			cexfind.Box{Model: "2a", Name: "2a name", ID: "id3", Price: decimal.NewFromInt(3)},
 			cexfind.Box{Model: "1a", Name: "1a name", ID: "id1", Price: decimal.NewFromInt(1)},
 			cexfind.Box{Model: "1b", Name: "1b name", ID: "id2", Price: decimal.NewFromInt(2)},
 		}, nil
 	}
+	ss.locDist = false
+	s.searcher = ss
 
 	tt := []struct {
 		name       string

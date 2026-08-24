@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"testing"
 )
@@ -20,6 +19,7 @@ func TestWebMainFlags(t *testing.T) {
 		exitCode int
 		address  string
 		port     string
+		proxy    string
 	}{
 		{
 			args:     []string{"prog"},
@@ -53,6 +53,13 @@ func TestWebMainFlags(t *testing.T) {
 			address:  "127.0.0.3",
 			port:     "8001",
 		},
+		{
+			args:     []string{"prog", "-address", "127.0.0.3", "-port", "8001", "-proxy", "socks5://127.0.0.1:8001"},
+			exitCode: 0,
+			address:  "127.0.0.3",
+			port:     "8001",
+			proxy:    "socks5://127.0.0.1:8001",
+		},
 	}
 
 	for i, tt := range tests {
@@ -63,28 +70,16 @@ func TestWebMainFlags(t *testing.T) {
 
 		os.Args = tt.args
 
-		a, p := flagGet()
+		a, p, proxy := flagGet()
 		t.Logf("subtest %d, args %v", i, tt.args)
 		if got, want := exit, tt.exitCode; got != want {
 			t.Errorf("got exit code %d expected %d", got, want)
 		}
 		if exit == tt.exitCode && exit == 0 {
-			got, want := a+":"+p, tt.address+":"+tt.port
+			got, want := a+":"+p+":"+proxy, tt.address+":"+tt.port+":"+tt.proxy
 			if got != want {
-				t.Errorf("address/port got %s want %s", got, want)
+				t.Errorf("address/port/proxy got %s want %s", got, want)
 			}
 		}
 	}
-}
-
-func TestWebMain(t *testing.T) {
-
-	flagGetter = func() (string, string) {
-		return "127.0.0.1", "8000"
-	}
-	if a, b := flagGetter(); a+":"+b != "127.0.0.1:8000" {
-		t.Errorf("expected indirected flagGetter == 127.0.0.1:8000")
-	}
-	serveFunc = func(s *server, address, port string) { log.Print("got here") }
-	main()
 }

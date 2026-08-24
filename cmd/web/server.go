@@ -31,13 +31,12 @@ type server struct {
 	WebMaxHeaderBytes int
 	ServerAddress     string
 	ServerPort        string
+	ProxyURL          string
 	BaseURL           string
 
-	// cex is the main cexfind plug point
-	cex *cexfind.CexFind
-
-	// searcher is an indirect of cex.Search to allow testing
-	searcher func(cex *cexfind.CexFind, queries []string, strict bool, postcode string) ([]cexfind.Box, error)
+	// searcher provides the search func to use, normally cex.Search, and whether
+	// location/distance calculations are in use cex.LocationDistanceOK.
+	searcher Searcher
 
 	staticDirDev string
 	tplDirDev    string
@@ -50,7 +49,20 @@ type server struct {
 	serveFunc func()
 }
 
-func newServer() *server {
+type Searcher interface {
+	Search(queries []string, strict bool, postcode string) ([]cexfind.Box, error)
+	LocationDistancesOK() bool
+}
+
+// newServer configuress a new http server.
+func newServer(addr, port, proxy string, searcher Searcher) (*server, error) {
+	if addr == "" {
+		addr = "127.0.0.1"
+	}
+	if port == "" {
+		port = "8000"
+	}
+
 	s := server{
 		// paths
 		staticDirDev: "static",
@@ -58,28 +70,25 @@ func newServer() *server {
 		staticDir:    "static",
 		tplDir:       "templates",
 
-		// initialise the search apparatus
-		cex: cexfind.NewCexFind(),
-
-		// searcher is an indirect of cex.Search to allow testing
-		searcher: (*cexfind.CexFind).Search,
+		// searcher is the passed-in search function.
+		searcher: searcher,
 
 		// WebMaxHeaderBytes is the largest number of header bytes accepted by
 		// the webserver
 		WebMaxHeaderBytes: 1 << 17, // ~125k
 
 		// ServerAddress is the default Server network address
-		ServerAddress: "127.0.0.1",
+		ServerAddress: addr,
 
 		// ServerPort is the default Server network port
-		ServerPort: "8000",
+		ServerPort: port,
 
 		// BaseURL is the base url for redirects, etc.
 		BaseURL: "",
 	}
 	// serveFunc is an indirect for testing
 	s.serveFunc = s.serve
-	return &s
+	return &s, nil
 }
 
 // setupFS setup the filesystem for templates or static files, depending on
@@ -95,13 +104,7 @@ func (s *server) setupFS() error {
 }
 
 // Serve runs the web server on the specified address and port
-func (s *server) Serve(addr, port string) {
-	if addr != "" {
-		s.ServerAddress = addr
-	}
-	if port != "" {
-		s.ServerPort = port
-	}
+func (s *server) Serve() {
 	// setup the filesystem
 	if err := s.setupFS(); err != nil {
 		log.Fatal(err)
@@ -236,7 +239,7 @@ func (s *server) Results(w http.ResponseWriter, r *http.Request) {
 		Err     error
 	}
 	sr := SearchResults{}
-	sr.Results, sr.Err = s.searcher(s.cex, queries, postResults.Strict, postResults.Postcode)
+	sr.Results, sr.Err = s.searcher.Search(queries, postResults.Strict, postResults.Postcode)
 
 	t := template.Must(template.ParseFS(s.DirFS.TplFS, "partial-results.html"))
 	err = t.Execute(w, sr)
@@ -292,7 +295,7 @@ func (s *server) Home(w http.ResponseWriter, r *http.Request) {
 		s.ServerAddress,
 		s.ServerPort,
 		search,
-		s.cex.LocationDistancesOK(),
+		s.searcher.LocationDistancesOK(),
 	}
 	err = t.Execute(w, data)
 	if err != nil {
