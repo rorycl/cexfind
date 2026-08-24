@@ -43,22 +43,24 @@ func (q *queriesType) String() string {
 var Exit func(code int) = os.Exit
 
 // flagGetter indirects flagGet for testing
-var flagGetter func() (queriesType, bool, string, bool) = flagGet
+var flagGetter func() (queriesType, bool, string, string, bool) = flagGet
 
 // flagGet checks the flags
-func flagGet() (queriesType, bool, string, bool) {
+func flagGet() (queriesType, bool, string, string, bool) {
 
 	var (
 		strict   bool
 		queries  queriesType
 		postCode string
 		verbose  bool
+		proxy    string
 	)
 
 	flag.BoolVar(&strict, "strict", false, "only return items that strictly match the search terms")
 	flag.Var(&queries, "query", "list of queries")
 	flag.BoolVar(&verbose, "verbose", false, "show verbose output, including cash/exchange prices and stores")
 	flag.StringVar(&postCode, "postcode", "", "specify postcode")
+	flag.StringVar(&proxy, "proxy", "", "proxy, eg: socks5://127.0.0.1:8080")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage of %s:\n", os.Args[0])
@@ -72,12 +74,12 @@ func flagGet() (queriesType, bool, string, bool) {
 		Exit(1)
 	}
 
-	return queries, strict, postCode, verbose
+	return queries, strict, postCode, proxy, verbose
 }
 
 func main() {
 
-	queries, strict, postCode, verbose := flagGetter()
+	queries, strict, postCode, proxy, verbose := flagGetter()
 
 	// clean queries
 	queries, err := cmd.QueryInputChecker(queries...)
@@ -87,7 +89,17 @@ func main() {
 	}
 
 	// do search
-	cex := cexfind.NewCexFind()
+	var cex *cexfind.CexFind
+	if proxy != "" {
+		cex, err = cexfind.NewCexFind(cexfind.WithProxy(proxy))
+	} else {
+		cex, err = cexfind.NewCexFind()
+	}
+	if err != nil {
+		fmt.Println(err)
+		Exit(1)
+	}
+
 	results, err := cex.Search(queries, strict, postCode)
 	switch {
 	case err != nil && len(results) > 0:

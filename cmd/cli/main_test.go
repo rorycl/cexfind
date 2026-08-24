@@ -27,6 +27,7 @@ func TestMainFlags(t *testing.T) {
 		isStrict    bool
 		isVerbose   bool
 		hasPostcode string
+		hasProxy    string
 		numQueries  int
 	}{
 		{
@@ -60,6 +61,15 @@ func TestMainFlags(t *testing.T) {
 			hasPostcode: "SW1A 0AA",
 			numQueries:  2,
 		},
+		{
+			args:        []string{"prog", "-postcode", "SW1A 0AA", "-strict", "-verbose", "-query", "query 1", "-query", "query 2", "-proxy", "socks5://127.0.0.1:8081"},
+			exitCode:    0,
+			isStrict:    true,
+			isVerbose:   true,
+			hasPostcode: "SW1A 0AA",
+			hasProxy:    "socks5://127.0.0.1:8081",
+			numQueries:  2,
+		},
 	}
 
 	for i, tt := range tests {
@@ -70,7 +80,7 @@ func TestMainFlags(t *testing.T) {
 
 		os.Args = tt.args
 
-		queries, strict, postCode, verbose := flagGet()
+		queries, strict, postCode, proxy, verbose := flagGet()
 		t.Logf("subtest %d, args %v", i, tt.args)
 		t.Logf("subtest %d, strict %v postcode %v verbose %v queries %v", i, strict, postCode, verbose, queries)
 		if got, want := exit, tt.exitCode; got != want {
@@ -88,6 +98,9 @@ func TestMainFlags(t *testing.T) {
 		if got, want := postCode, tt.hasPostcode; got != want {
 			t.Errorf("postCode got %s expected %s", got, want)
 		}
+		if got, want := proxy, tt.hasProxy; got != want {
+			t.Errorf("proxy got %s expected %s", got, want)
+		}
 		if got, want := len(queries), tt.numQueries; got != want {
 			t.Errorf("num queries got %d expected %d", got, want)
 		}
@@ -98,7 +111,7 @@ func TestMainMain(t *testing.T) {
 
 	tests := []struct {
 		output     string
-		flagGetter func() (queriesType, bool, string, bool)
+		flagGetter func() (queriesType, bool, string, string, bool)
 	}{
 		{
 			output: `
@@ -116,8 +129,8 @@ Lenovo X390
 ✱ 360 Lenovo X390/i7-8665U/16GB Ram/512GB SSD/13"/W11/B [Laptops - Windows]
       https://uk.webuy.com/product-detail?id=PALSLENX39097B
 `,
-			flagGetter: func() (queriesType, bool, string, bool) {
-				return queriesType{"nonstrict", "nonverbose"}, false, "", false
+			flagGetter: func() (queriesType, bool, string, string, bool) {
+				return queriesType{"nonstrict", "nonverbose"}, false, "", "", false
 			},
 		},
 		{
@@ -143,8 +156,8 @@ Lenovo X390
       https://uk.webuy.com/product-detail?id=PALSLENX39097B
       (169/240) store 1, store 2
 `,
-			flagGetter: func() (queriesType, bool, string, bool) {
-				return queriesType{"nonstrict", "verbose"}, false, "", true
+			flagGetter: func() (queriesType, bool, string, string, bool) {
+				return queriesType{"nonstrict", "verbose"}, false, "", "", true
 			},
 		},
 	}
