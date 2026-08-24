@@ -111,7 +111,10 @@ func NewModel(proxy string) (*model, error) {
 
 	// initialise the cex finder
 	var err error
-	m.cex, err = cexfind.NewCexFind(cexfind.WithProxy(proxy))
+	m.cex, err = cexfind.NewCexFind(
+		cexfind.WithProxy(proxy),
+		cexfind.WithStoreDistanceInitiliase(),
+	)
 	if err != nil {
 		return nil, fmt.Errorf("model initialisation error: %w", err)
 	}
@@ -172,20 +175,11 @@ func (m *model) stateSwitch(targetState state, withStatus bool) tea.Cmd {
 		}
 	case postcodeState:
 		m.input.cursor = cursorPostcode
-		if !m.cex.LocationDistancesOK() {
-			m.input.input.Blur()
-			m.input.postcode.Blur() // disable postcode input
-			m.input.postcode.Placeholder = "disabled"
-			if withStatus {
-				m.status = m.status.setPostcodingInvalid()
-			}
-		} else {
-			m.input.input.Blur()
-			m.input.postcode.Placeholder = "postcode"
-			m.input.postcode.Focus()
-			if withStatus {
-				m.status = m.status.setPostcoding()
-			}
+		m.input.input.Blur()
+		m.input.postcode.Placeholder = "postcode"
+		m.input.postcode.Focus()
+		if withStatus {
+			m.status = m.status.setPostcoding()
 		}
 		m.keys = getKeyMap(inputKeysState)
 	case checkboxState:
