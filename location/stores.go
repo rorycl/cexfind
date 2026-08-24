@@ -42,6 +42,7 @@ type store struct {
 // stores is a collection of store safe for concurrent access. The Store
 // cache is updated by default once a day.
 type stores struct {
+	URL         string
 	client      *http.Client
 	storeMap    map[string]store
 	initialised bool
@@ -52,9 +53,14 @@ type stores struct {
 var tickerOKDuration time.Duration = time.Minute * 60 * 24
 var tickerProblemDuration time.Duration = time.Minute * 10
 
-// newStores initialises a concurrent safe stores struct.
+// newStores initialises a concurrent safe stores struct. Normally this is initialised
+// with an http client initialised and shared from a caller.
 func newStores(client *http.Client) *stores {
+	if client == nil {
+		client = http.DefaultClient
+	}
 	s := stores{
+		URL:      storeURL, // default
 		client:   client,
 		storeMap: map[string]store{},
 		update:   time.NewTicker(tickerOKDuration),
@@ -140,13 +146,23 @@ LOOP:
 	}
 }
 
+func (s *stores) list() []*store {
+	var all []*store
+	s.Lock()
+	defer s.Unlock()
+	for _, v := range s.storeMap {
+		all = append(all, &v)
+	}
+	return all
+}
+
 // getStoreLocations gets the store locations from the storeURL and
 // processes them into the stores map by the store name.
 func (s *stores) getStoreLocations() error {
 
 	var jsonStores storeLocations
 
-	response, err := s.client.Get(storeURL)
+	response, err := s.client.Get(s.URL)
 	if err != nil {
 		return err
 	}
@@ -164,7 +180,7 @@ func (s *stores) getStoreLocations() error {
 
 	s.Lock()
 	for _, jStore := range jsonStores.Response.Data.Stores {
-		// fmt.Printf("%3d %20s lat %5.8f long %5.8f\n", store.StoreID, store.StoreName, store.Latitude, store.Longitude)
+		// fmt.Printf("%3d %20s lat %5.8f long %5.8f\n", jStore.StoreID, jStore.StoreName, jStore.Latitude, jStore.Longitude)
 		s.storeMap[jStore.StoreName] = store{
 			StoreID:    jStore.StoreID,
 			StoreName:  jStore.StoreName,

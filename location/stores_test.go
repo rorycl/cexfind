@@ -19,15 +19,14 @@ func TestGetStores(t *testing.T) {
 		fmt.Fprint(w, string(testdata))
 	}))
 
-	// repoint url
-	storeURL = svr.URL
-
 	stores := newStores(nil)
 	if stores.isInitialised() {
 		t.Fatal("initialisation should have failed")
 	}
 
 	stores = newStores(nil)
+	stores.URL = svr.URL // repoint url to test server
+
 	err = stores.initialise()
 	if err != nil {
 		t.Fatal(err)
@@ -36,12 +35,11 @@ func TestGetStores(t *testing.T) {
 		t.Fatal("initialisation should be ok")
 	}
 
-	/*
-		consider a way of iterating over stores
-	*/
-
 	if got, want := stores.length(), 4; got != want {
 		t.Errorf("got %d want %d stores", got, want)
+		for i, s := range stores.list() {
+			fmt.Printf("%5d : %v\n", i, *s)
+		}
 	}
 
 	w1, ok := stores.get("London - W1 Rathbone Place")
