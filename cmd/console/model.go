@@ -7,6 +7,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -97,7 +98,7 @@ type model struct {
 
 // NewModel creates a new model containing the input, status and list
 // models within it. Focus starts in the input model
-func NewModel() *model {
+func NewModel(proxy string) (*model, error) {
 	m := model{
 		input: newInModel(),
 		list:  newLiModel(),
@@ -109,7 +110,11 @@ func NewModel() *model {
 	m.listLen = 0
 
 	// initialise the cex finder
-	m.cex = cexfind.NewCexFind()
+	var err error
+	m.cex, err = cexfind.NewCexFind(cexfind.WithProxy(proxy))
+	if err != nil {
+		return nil, fmt.Errorf("model initialisation error: %w", err)
+	}
 
 	// initialise the help model and related keys
 	m.help = help.New()
@@ -123,7 +128,7 @@ func NewModel() *model {
 		m.finder = findLocal
 	}
 
-	return &m
+	return &m, nil
 }
 
 // switchStylesForListing sets the list panel style padding and margins

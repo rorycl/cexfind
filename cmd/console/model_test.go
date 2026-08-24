@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/charmbracelet/bubbles/list"
@@ -34,7 +35,10 @@ func TestMain(t *testing.T) {
 		item{title: "e this is a normal item 5", url: "https://test.com/abc/o"},
 	}
 
-	m := NewModel()
+	m, err := NewModel("")
+	if err != nil {
+		t.Fatal(err)
+	}
 	m.list.ReplaceList(items)
 
 	if got, want := len(m.list.list.Items()), 21; got != want {
@@ -47,4 +51,28 @@ func TestMain(t *testing.T) {
 		t.Errorf("checkbox set to %t want %t", got, want)
 	}
 
+}
+
+func TestNewModelFailures(t *testing.T) {
+
+	tests := []struct {
+		proxy string
+		ok    bool
+	}{
+		{"socks5://127.0.0.1:8081", true},
+		{"socks7://127.0.0.1:8081", false},
+		{"nonsense", false},
+	}
+
+	for ii, tt := range tests {
+		t.Run(fmt.Sprintf("test_%d", ii), func(t *testing.T) {
+			_, err := NewModel(tt.proxy)
+			if err != nil && tt.ok {
+				t.Errorf("error %s, expected none", err)
+			}
+			if err == nil && !tt.ok {
+				t.Errorf("go no error, expected one")
+			}
+		})
+	}
 }
