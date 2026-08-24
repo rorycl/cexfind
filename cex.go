@@ -213,7 +213,7 @@ func proxySchemeOK(u *url.URL) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("shema %q not recognised, expected one of %v", u.Scheme, expected)
+	return fmt.Errorf("proxy schema %q in %s not recognised, expected one of %v", u.Scheme, u.String(), expected)
 }
 
 // newHTTPClient is a convenience func for initialising an http client from scratch at
