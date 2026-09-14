@@ -187,8 +187,7 @@ func postQuery(client *http.Client, queryBytes []byte) (jsonResults, error) {
 			reason = "unknown API retrieval or unmarshalling error"
 			return r, errors.New(reason)
 		}
-		var ju *json.UnmarshalTypeError
-		if errors.As(err, &ju) {
+		if _, ok := errors.AsType[*json.UnmarshalTypeError](err); ok {
 			return r, fmt.Errorf("json unmarshalling error: %w", err)
 		}
 		return r, fmt.Errorf("json reading error %w", err)
